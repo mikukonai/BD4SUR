@@ -9000,6 +9000,7 @@ function restore_status() {
 
 function add_to_collections(id) {
     if(COLLECTIONS.indexOf(id) < 0) COLLECTIONS.push(id);
+    window.localStorage.setItem("collections", JSON.stringify(COLLECTIONS));
     render_collections();
 }
 
@@ -9011,6 +9012,7 @@ function delete_collection(id) {
             if(i !== index) new_collections.push(COLLECTIONS[i]);
         }
         COLLECTIONS = new_collections;
+        window.localStorage.setItem("collections", JSON.stringify(COLLECTIONS));
     }
     render_collections();
 }
