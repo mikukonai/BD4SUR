@@ -1,0 +1,135 @@
+<!-- Framework Iroha -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>CW练习器</title>
+
+<!--页面自定义样式开始-->
+<style>
+.CodeContainer {
+    display: inline-block;
+    background-color: #b3e5ff;
+    padding: 0px 5px; margin: 2px;
+    font-size: 12px; text-align: center;
+    font-weight: bold;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<div style="text-align: center; font-size: 20px; font-weight: bold;">CW莫尔斯电码收发练习</div>
+<div style="text-align: center; font-size: 13px; color: #aaa;">Copyright &copy; 2020 Mikukonai / Ver 2020.7.30</div>
+
+<div id="speed"></div>
+<div id="message"></div>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script>
+
+// 莫尔斯编码表
+const Morse = {
+    "01":   "A",   "1000": "B",  "1010": "C",   "100":  "D",   "0": "E",
+    "0010": "F",   "110":  "G",  "0000": "H",   "00":   "I",   "0111": "J",
+    "101":  "K",   "0100": "L",  "11":   "M",   "10":   "N",   "111": "O",
+    "0110": "P",   "1101": "Q",  "010":  "R",   "000":  "S",   "1": "T",
+    "001":  "U",   "0001": "V",  "011":  "W",   "1001": "X",   "1011": "Y",   "1100": "Z",
+
+    "11111": "0", "01111": "1", "00111": "2", "00011": "3", "00001": "4",
+    "00000": "5", "10000": "6", "11000": "7", "11100": "8", "11110": "9",
+
+    "011010": "@", "001100": "?", "10010": "/", "101101": "()",
+    "100001": "—", "010101": "。"
+};
+
+const longSignThreshold = 250; // ms
+
+// 利用 Web Audio API 输出正弦波，仅供耳听，无任何调制或加窗处理
+let audioCtx = new window.AudioContext();
+let osc = audioCtx.createOscillator();
+osc.type = "sine";
+osc.frequency.value = 1000;
+osc.start();
+
+let status = -1;
+let startTime, endTime, prevDuration = 0, prevSign = 0;
+let signString = "";
+
+let codeCount = 0;
+
+let idleTimer = 0;
+
+let messageContainer = document.querySelector("#message");
+let codeContainer = document.createElement("span");
+codeContainer.setAttribute("class", "CodeContainer");
+messageContainer.append(codeContainer);
+
+function keydown() {
+    clearTimeout(idleTimer);
+    if(status === -1) {
+        let firstStartTime = Date.now();
+        status = 0;
+        // 开始计时
+        setInterval(() => {
+            let time = (Date.now() - firstStartTime) / 1000;
+            let cpm = Math.round(codeCount / time * 60);
+            document.querySelector("#speed").innerHTML = `每分钟符号数 = ${cpm}`;
+        }, 10);
+    }
+    else if(status !== 0) {
+        return;
+    }
+    startTime = Date.now();
+    osc.connect(audioCtx.destination);
+    status = 1;
+}
+
+
+function keyup() {
+    endTime = Date.now();
+    status = 0;
+    osc.disconnect(audioCtx.destination);
+
+    let duration = endTime - startTime;
+    let sign = 0;
+    if(prevSign === 0 && duration >= longSignThreshold) sign = 1;
+    else if(prevSign === 0 && duration < longSignThreshold) sign = 0;
+    else if(prevSign === 1 && duration < longSignThreshold) sign = 0;
+    else if(prevSign === 1 && duration >= longSignThreshold) sign = 1;
+
+    signString += String(sign);
+    codeContainer.innerHTML += ((sign === 0) ? "· " : "— ");
+
+    prevDuration = duration;
+    prevSign = sign;
+
+    // 空闲一段时间，代表一个符号已经拍发完成
+    idleTimer = setTimeout(() => {
+        codeContainer.innerHTML += ("<br>" + Morse[signString]);
+        window.scrollTo(0, document.documentElement.clientHeight); // 滚动到底部
+        signString = "";
+        codeCount++;
+        // 创建新的框
+        codeContainer = document.createElement("span");
+        codeContainer.setAttribute("class", "CodeContainer");
+        messageContainer.append(codeContainer);
+    }, longSignThreshold);
+}
+
+document.addEventListener("keydown", keydown);
+document.addEventListener("keyup", keyup);
+
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>
