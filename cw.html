@@ -26,6 +26,7 @@
 
 <div style="text-align: center; font-size: 20px; font-weight: bold;">CW莫尔斯电码收发练习</div>
 <div style="text-align: center; font-size: 13px; color: #aaa;">Copyright &copy; 2020 Mikukonai / Ver 2020.7.30</div>
+<div style="text-align: center; font-size: 13px; color: #aaa;">点击屏幕或使用键盘上的任意按键，模拟按下电键</div>
 
 <div id="speed"></div>
 <div id="message"></div>
@@ -126,6 +127,8 @@ function keyup() {
 
 document.addEventListener("keydown", keydown);
 document.addEventListener("keyup", keyup);
+document.addEventListener("touchstart", keydown);
+document.addEventListener("touchend", keyup);
 
 
 </script>
