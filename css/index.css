@@ -1,0 +1,101 @@
+
+* {
+    outline: none;
+}
+
+.CallsignContainer {
+    margin: 30px 0;
+    text-align: center;
+}
+.CallsignTitleZh {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 3px;
+}
+.CallsignTitleEn {
+    color:#888;
+    font-size: 16px;
+}
+.Callsign {
+    margin: 5px auto;
+    font-size: 50px;
+    font-weight: bold;
+
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    background: linear-gradient(to right, rgb(255, 94, 134), rgb(210, 162, 255), rgb(36, 200, 255));
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.Location {
+    color: #888;
+    text-align: center;
+    margin: 10px;
+    font-size: 14px;
+}
+
+
+.SectionHeader {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #1ea0f0;
+    margin: 30px 0;
+    padding: 12px 0;
+    background: linear-gradient(90deg, #ffffff, #eff9ff, #ffffff);
+}
+.SectionHeaderComment {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    font-weight: normal;
+    color: #aaa;
+    padding-top: 5px;
+    font-variant-caps: small-caps;
+}
+.SectionContent {
+    text-align: center;
+}
+
+
+.RigInfo {
+    margin: 20px 0;
+}
+.RigTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 3px 0;
+}
+.RigSubtitle {
+    font-size: 14px;
+    color: #aaa;
+    margin: 3px 0;
+}
+.RigImage {
+    margin: 10px 0;
+}
+
+@media(min-width:651px) { /* Desktop */
+    .Image {
+        margin: 10px 0;
+        max-width: 90%;
+        max-height: 800px;
+        vertical-align: middle;
+        border: none;
+        border-radius: 5px;
+    }
+}
+@media(max-width:650px) { /* Mobile */
+    .Image {
+        margin: 10px 0;
+        max-width: 320px;
+        max-height: 800px;
+        vertical-align: middle;
+        border: none;
+        border-radius: 5px;
+    }
+}
