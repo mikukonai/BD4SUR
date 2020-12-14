@@ -3,16 +3,29 @@
     outline: none;
 }
 
+a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #1ea0f0;
+}
+
 .CallsignContainer {
     margin: 30px 0;
     text-align: center;
 }
 .CallsignTitleZh {
+    font-family: "方正小标宋_GBK";
     color: #333;
     font-size: 22px;
     margin-bottom: 3px;
 }
 .CallsignTitleEn {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
     color:#888;
     font-size: 16px;
 }
@@ -24,7 +37,8 @@
     width: fit-content;
     width: -moz-fit-content;
     width: -webkit-fit-content;
-    background: linear-gradient(to right, rgb(255, 94, 134), rgb(210, 162, 255), rgb(36, 200, 255));
+    /* background: linear-gradient(to right, rgb(255, 94, 134), rgb(210, 162, 255), rgb(36, 200, 255)); */
+    background: linear-gradient(to right, #8471d1, #6285d7,#66c3e2);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
