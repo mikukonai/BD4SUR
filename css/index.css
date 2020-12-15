@@ -89,9 +89,6 @@ a:hover {
     color: #aaa;
     margin: 3px 0;
 }
-.RigImage {
-    margin: 10px 0;
-}
 
 @media(min-width:651px) { /* Desktop */
     .Image {
