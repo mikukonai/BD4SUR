@@ -116,7 +116,7 @@
     <div style="padding: 10px; background-color: #f8f8f8;">
         <strong>题库：B类</strong>（版本<a href="http://www.crac.org.cn/News/Detail?ID=1862">V171031</a>）<br>
         可以自动保存做题进度和错题记录，刷新页面不会清除。除非点击这个按钮→<button id="clear">清除所有状态</button><br>
-        <button id="goto">跳转到任意题目</button>
+        <button id="goto">跳转到任意题目</button> <a href="https://mikukonai.com/BD4SUR">返回BD4SUR首页</a>
     </div>
 
     <div class="Collections" id="collections"></div>
@@ -8983,7 +8983,7 @@ function render_question(paper, index, amount) {
     $("#question").html(question);
 
     if(illust.length > 0) {
-        $("#illust").attr("src", `./image/${illust}`);
+        $("#illust").attr("src", `./image/exam/${illust}`);
         $("#illust").show();
     }
     else {
