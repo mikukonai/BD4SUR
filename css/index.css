@@ -3,6 +3,12 @@
     outline: none;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
 a {
     color: inherit;
     text-decoration: underline;
