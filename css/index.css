@@ -148,6 +148,36 @@ ul {
     padding-inline-start: 20px;
 }
 
+
+.ContentBlock {
+    margin: 25px 0;
+    text-align: center;
+    max-width: 650px;
+    margin: 10px auto;
+    font-size: 14px;
+    line-height: 22px;
+    color: #333;
+}
+.ContentBlockTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+.ContentBlockSubtitle {
+    font-size: 14px;
+    color: #aaa;
+    margin: 3px 0;
+}
+.ContentBlock table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: smaller;
+}
+.ContentBlock td, .ContentBlock th {
+    border: 1px solid #ccc;
+}
+
+
 @media(min-width:651px) { /* Desktop */
     .Image {
         margin: 10px 0;
