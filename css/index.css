@@ -123,6 +123,7 @@ a:hover {
     text-align: center;
     max-width: 650px;
     margin: 10px auto;
+    padding: 0 15px;
     font-size: 14px;
     line-height: 22px;
     color: #333;
@@ -187,7 +188,7 @@ ul {
 @media(min-width:651px) { /* Desktop */
     .Image {
         margin: 10px 0;
-        max-width: 90%;
+        max-width: 650px;
         max-height: 800px;
         vertical-align: middle;
         border: none;
@@ -203,4 +204,12 @@ ul {
         border: none;
         border-radius: 5px;
     }
+}
+
+footer {
+    text-align: center;
+    margin: 50px 0 0 0;
+    padding: 50px 20px;
+    background: linear-gradient(180deg, white, #f0f0f0);
+    font-size: 14px;
 }
