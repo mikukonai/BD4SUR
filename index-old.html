@@ -1,0 +1,895 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN">
+<head>
+    <title>BD4SUR 业余无线电台</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./css/index.css" charset="utf-8"/>
+</head>
+<body>
+    <div class="CallsignContainer">
+        <!-- <img src="./crac-logo.jpg" style="width: 75px; margin: 20px 0;">
+        <div class="CallsignTitleZh">中 国 业 余 无 线 电 台</div>
+        <div class="CallsignTitleEn">Amateur Radio Station of China</div>
+        <div class="Callsign">BD4SUR</div> -->
+
+        <div style="text-align: center;"><img src="image/callsign.png" class="Image" style="margin: 0;"></div>
+        <div class="Location">CQ 24 / ITU 44 / OM91<br>江苏·南京 Nanjing, Jiangsu, China</div>
+        <!-- <div style="text-align: center;"><img src="image/nanjing-location.png" style="width: 100px;"></div> -->
+
+        
+    </div>
+
+    <div style="text-align: center;">
+        <a href="exam.html">模拟考试</a> / <a href="cw.html">CW练习器</a> / <a href="https://mikukonai.com">博客</a>
+    </div>
+
+    <div class="SectionHeader">电台设备<div class="SectionHeaderComment">Rigs</div></div>
+
+    <div class="SectionContent">
+        <div class="RigInfo">
+            <img src="image/rigs/rigs.jpg" class="Image RigImage">
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">ICOM IC-705</div>
+            <div class="RigSubtitle">便携式HF/UHF/VHF全模式收发信机</div>
+            <div class="RigSubtitle">2020年9月12日购</div>
+            <div class="RigSubtitle"><b>执照注册设备</b></div>
+            <div class="RigIntro">
+                <p>IC-705是ICOM社2019年推出的一款QRP全波段全模式便携电台，支持在HF/VHF/UHF波段的各业余频段上，以最高10W、最低0.5W的功率进行发射。</p>
+                <details>
+                    <summary>IC-705接收机框图</summary>
+                    <img src="image/rigs/ic-705-diagram.png" class="Image">
+                </details>
+                <p>该电台采用SDR架构。从框图中可以看出，705对于24MHz以下的HF信号采用射频直接采样的方式，通过FPGA进行处理。而24MHz以上的信号先经过下变频到中频，再使用ADC进行采样。经FPGA处理后的数字中频信号被送入DSP进行处理，实现高刷新率的频谱瀑布图功能。</p>
+                <p>作为一款QRP电台，IC-705对天线要求比较高。但受限于体积，705并未提供内置天调。</p>
+                <p>在438.850MHz和439.300MHz两个频点附近有自我干扰。</p>
+                <details>
+                    <summary>内部结构分析</summary>
+                    <p>从拆机视频可以看出，705内部结构相当紧凑，大致可以分为4层。从屏幕开始，第一层主要是屏幕和按键，第二层负责基带数字信号处理（SDR），第三、四层负责射频信号处理。机器核心芯片列表如下（报价来源贸泽电子，均为单片价格，含税）：</p>
+                    <ul>
+                        <li>ADC：亚德诺AD9266BCPZ-65，550元。</li>
+                        <li>DAC：亚德诺AD9706BCP，100元。</li>
+                        <li>FPGA：英特尔10CL025ZU256I8G，200元。</li>
+                        <li>MCU：瑞萨<a target="_blank" href="https://www.renesas.com/cn/zh/products/microcontrollers-microprocessors/rz/rza/rza1h/device/R7S721001VCBG.html">R7S721001VCBG</a>，280元。</li>
+                        <li>DSP：德仪TMS320C5517AZCHA20，100元。</li>
+                        <li>DSP：亚德诺ADSP21478BBCZ-2A，150元左右。</li>
+                        <li>Wi-Fi模块：120元。</li>
+                    </ul>
+
+                    <p>SDR板上有两个射频接口，猜测其中一个是由AD直接采样的24MHz以下射频信号，另一个是经下变频得到的中频信号。这两个信号将进入ADC被转换为数字信号。</p>
+
+                    <img src="image/rigs/ic-705-main-1.jpg" class="Image">
+                    <img src="image/rigs/ic-705-main-2.jpg" class="Image">
+                    <img src="image/rigs/ic-705-panel.jpg" class="Image">
+                    <img src="image/rigs/ic-705-filters.jpg" class="Image">
+                    <img src="image/rigs/ic-705-rf-1.jpg" class="Image">
+                    <img src="image/rigs/ic-705-fet.jpg" class="Image">
+                    <img src="image/rigs/ic-705-rf-2.jpg" class="Image">
+
+                    <p>参考资料：</p>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=cbCrfFzmfTI" target="_blank">IC-705拆机视频</a></li>
+                        <li><a href="http://radiochief.ru/kv-ukv/vnutri-transivera-icom-ic-705/" target="_blank">IC-705拆机加扩频</a></li>
+                        <li><a href="https://radioaficion.com/cms/ic-705-teardown/" target="_blank">IC-705拆机</a></li>
+                        <li><a href="https://radioaficion.com/cms/ic-705-mod/" target="_blank">IC-705扩频</a></li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">宝锋 UV-5R</div>
+            <div class="RigSubtitle">手持UHF/VHF调频收发信机</div>
+            <div class="RigSubtitle">2020年8月3日购</div>
+            <div class="RigSubtitle"><b>执照注册设备</b></div>
+            <div class="RigIntro">
+                <p>宝锋的这款手台，价格非常便宜，仅100元出头，是许多新手Ham入门的第一部机器。该机支持业余V/U段收发以及调频广播接收，最大发射功率5W，仅支持模拟FM模式。作为入门机器，UV-5R带有一块点阵液晶屏幕以及全数字键盘，手动置频比较方便。</p>
+            </div>
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">德生 PL-330</div>
+            <div class="RigSubtitle">LW/MW/SW/FM/SSB收音机</div>
+            <div class="RigSubtitle">2020年11月30日购</div>
+            <div class="RigIntro">
+                <p>德生PL-330是2020年7月推出的一款支持SSB接收的中端DSP收音机，可接收的波段包括长波、中波、短波、以及调频广播。</p>
+                <details>
+                    <summary>PL-330彩蛋</summary>
+                    <ul>
+                        <li>显示固件版本号。在关机的状态下，长按VF/VM按键，直至屏幕上呈现全显。在屏幕显示复归正常前，右上角会显示固件版本号。</li>
+                        <li>校准上边带或下边带。在开机的状态下，首先，调到一个调幅强台（即中波或短波强台都可以——译者注）。其次，长按SSB按键。再次，微调频率，直至实现零拍（零拍的标准为：除了声音的音调降低之外，没有呜呜声或其他声音失真现象——译者注）。最后，长按LSB按键，直至屏幕开始闪烁。</li>
+                        <li>在中波磁棒天线/拉杆天线与外接天线插口之间切换。在开机的状态下，进入长波或中波波段。长按数字键3，屏幕上显示CH-A时，代表使用机器自带的天线；显示CH-5时，代表使用外接天线。当选择外接天线这种模式的时候，屏幕上会同时显示SWMW的字眼。</li>
+                        <li>调制频偏设置。在开机状态下，进入调频波段。长按数字按键4，就能实现75HZ（适用于美国）和50HZ（适用于欧洲）之间的切换。</li>
+                        <li>最大音量。打开收音机，切换到任意波段。首先，长按数字键7。其次，调节音量旋钮。再次，长按数字键7保存。最后，每个波段都能进行单独的设置，默认值为58。</li>
+                        <li>让时间显示读秒。关闭收音机，长按数字按键8能够让时间显示读秒或关闭读秒。</li>
+                        <li>静音门槛。在PL990收音机上，长按数字键9能够启用静音门槛设置，然而在PL330上却没有生效。具体操作流程是：开启收音机，进入任何波段都可以。首先，长按数字键9，其次，旋转快步进飞梭。再次，改变屏幕左上角的数值，第四，长按ENTER按键保存。每个波段都可独立进行设置，默认值为01。</li>
+                    </ul>
+                    <p>参考资料：</p>
+                    <ul>
+                        <li><a target="_blank" href="https://www.toutiao.com/i6855943904831734276/">PL330收音机评测</a></li>
+                        <li><a target="_blank" href="https://xw.qq.com/cmsid/20201013A00TWQ00">PL330彩蛋</a></li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">德生 PL-380</div>
+            <div class="RigSubtitle">LW/MW/SW/FM收音机</div>
+            <div class="RigSubtitle">2020年7月18日购</div>
+            <div class="RigIntro">
+                <p>德生PL-380除不支持SSB解调之外，功能和架构上的差异不大，性能指标也大致相同。</p>
+                <details>
+                    <summary>PL-380参考资料</summary>
+                    <ul>
+                        <li><a target="_blank" href="http://bbs.mydigit.cn/read.php?tid=143662">PL-380数字全波段收音机拆解</a></li>
+                        <li><a target="_blank" href="https://kknews.cc/digital/z52p8rp.html">德生DSP经典收音机PL-380拆机图赏</a></li>
+                        <li><a target="_blank" href="https://tieba.baidu.com/p/5385996163">有关数字调谐技术和软件定义无线电</a></li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">RTL-SDR</div>
+            <div class="RigSubtitle">基于RTL2832U的SDR接收机</div>
+            <div class="RigSubtitle">2020年8月8日、14日购</div>
+            <div class="RigIntro">
+                <p>RTL-SDR是基于瑞昱RTL2832U和R820T2调谐芯片的电视棒，配合PC、手机上的SDR#等软件可实现SDR无线电接收和解调功能。目前拥有的有两个版本：普通版和上变频版。上变频版可以将短波段的信号上变频到125MHz，以提高接收短波的灵敏度。</p>
+                <p>RTL-SDR是成本极低的SDR入门设备，可玩性很高，详情另文。</p>
+                <details>
+                    <summary>上变频版PCB</summary>
+                    <img src="image/rigs/rtl-sdr.jpg" class="Image">
+                    <img src="image/rigs/rtl-sdr-fm.jpg" class="Image">
+                </details>
+            </div>
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">Comet HFJ-350M</div>
+            <div class="RigSubtitle">短波全波段拉杆式GP天线</div>
+            <div class="RigSubtitle">2020年9月12日购</div>
+            <div class="RigIntro">
+                <p>拉杆天线，支持3.5～50M所有业余短波段的发射和接收，耐功率100W（SSB，不含3.5MHz）。</p>
+            </div>
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">Diamond SRJ-770</div>
+            <div class="RigSubtitle">VHF/UHF拉杆天线</div>
+            <div class="RigSubtitle">2020年11月28日购</div>
+            <div class="RigIntro">
+                <p>拉杆天线，支持业余V/U段的发射和接收，支持300MHz接收。业余2m波段增益2.15dBi，业余0.7m波段增益5.5dBi。耐功率20W，阻抗50Ω。</p>
+            </div>
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">八木天线</div>
+            <div class="RigSubtitle">五单元UHF单波段八木天线</div>
+            <div class="RigIntro">
+                <p>仅工作在业余0.7m波段，主瓣方向标称增益8dBi。</p>
+            </div>
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">HF20A</div>
+            <div class="RigSubtitle">单线短波全段行波天线</div>
+            <div class="RigIntro">
+                <p>这是一款行波天线，包含一个巴伦和一个吸收电阻元件（实测电阻150Ω）。由于暂时无法发射短波，因此发射效果未测试，但接收效果似乎不错，接收FM调频广播的效果尤其好，背景黑，信号强，不知道为什么。</p>
+                <details>
+                    <summary>HF20A参考资料</summary>
+                    <p>驻波天线支持驻波，类似于谐振回路。行波天线的作用类似于导波结构，在天线末端加上匹配负载吸收剩余电磁能量，可以防止反射波的产生。对于很长的线天线，由于电流沿着天线流动时不断地辐射，能量不断地消耗掉，仅仅有很少的电磁能量到达天线末端，也可以看成是行波天线。</p>
+                    <ul>
+                        <li><a target="_blank" href="https://blog.csdn.net/bear_miao/article/details/52270187">行波天线和驻波天线</a><br><b>行波天线</b> 电流在导线中流动的速度很快。在直流电路和低频交流电路中，流过导线某一截面的电流总是会在电路参数发生变化之前流过其它各截面，因此任何时刻一条导线上各截面电流的方向和大小是一样的。<br>不过，电流从一点流到另一点毕竟还是需要时间的。在高频电路中，在高频率交流电源的驱动下，电流、电压的大小和方向都变化得极快，前一时刻流过某点的电流刚刚来得及流到相邻段，该点电流的大小或方向已经随电源而发生改变，这样就造成同一时刻电路各点的电流和电压不再彼此相同。<br>如果我们用一个等幅高频率交流电源联接到一对无穷长的均匀平行长线上，那么靠近电源端的导线之中就会有同步于电源的高频交变电压和电流。就导线的每一截面而言，流过的电流都是幅度相同的高频交流电流，只是流过各截面的电流的时间相位不同。就整个导线而言，同一时刻各点的电流随离电源端的距离而呈正弦分布。看起来就像一个正弦电流波源源不断地从无穷远端沿一根导线留向电源，再从电源沿另一根导线流向无穷远端，我们把电流波的这种流动方式称为“行波”。如果两根平行导线的距离很近，由于其对称结构，同一时刻流过两根导线相对段的电流总是大小相等方向相对的，因此它们中间的电流在周围空间形成的电磁场互相抵消，不会传播到远处。所以这种均匀平行长线可以用来作为传输高频能量的“传输线”，或者叫“馈线”。<br>如果我们把上述无穷长均匀长线的两臂向两边水平张开，就形成了一副无穷长的偶极天线，导线中的电流从无穷远处沿一臂流向电源，再从电源沿另一臂流向无穷远，方向连续一致。每一小段导线中的电流在周围空间产生电磁场，向四周传播，构成一副“行波天线”。从远处看，其中沿导线轴向传播的那部分能量由于相位关系正好互相叠加，因此这种行波天线的最大辐射方向是接近于轴向的，方向性很尖锐。<br>当然，实际生活中无穷长的天线是不存在的。但是我们可以把上述天线架设得尽量长，例如每臂数倍于波长，同时在每一臂的端点对地联接一个吸收电阻，把传到端点的电流全部吸收掉，使到达端点的电流波永不回头，继续维持无穷长行波天线的工作方式，只是总长度短了很多。这样的行波天线的方向性和发射效率虽然比不上理想的无穷长行波天线，但是还是可以在一定程度上保持宽频带、高增益的特点。它的变种，例如菱形天线，曾经成为很多远程短波通信电台广泛采用。美国著名的业余电台W6AM也曾经拥有令人称羡的巨大的菱形天线场。<br>但是，行波天线只有做得很长才能取得较好效果，而业余无线电爱好者往往不具备足够的空间来架设行波天线，因而更多地采用驻波天线。<br><b>驻波天线</b> 前面我们说到用等幅高频率交流电源驱动一对无穷长的均匀平行长线上的情况，由于导线无穷长，电源所激起的电流波（实际上还有电压波）会顺着导线向远处流动，永不回头。但是如果平行线的长度是有限的，那么末端边界就会破坏电流波和电压波的原来状态，例如如果开路末端的导线中电流永远是零，短路末端导线间的电压永远是零。这种边界状态会顺着长线反向影响到其他部分，扰乱原来的行波状态。这种扰乱也可以看作是从电源传输过来的能量因为不能继续传输下去、又没有可以刚好消耗完的地方，只能被反射回去。<br>如果我们把有限长度平行长线的两条导线向两边张开，就成为偶极天线。当偶极天线两臂的总长度等于半波长的整倍数时，天线达到谐振，这时电流电压在天线上正反向传播的分量在各处的叠加刚好形成一种特殊状态，即天线各点电压和电流的时间相位正好和电源电压及其供出的电流相同，只是各点的电压电流幅度不同，两端的电压最高、电流总是为零，中间的电流最大、电压总是为零。<br>馈线或天线中各点电压电流同相位、每一点都有各自固定幅度的这种状态看起来好像是电压波、电流波不再沿导线移动，因此称为“驻波”状态。这样的天线就是“驻波天线”。驻波天线中，各段电流所产生的电磁场相位一致，在垂直于天线的远方互相叠加，在较短长度下取得较好的辐射效果。<br>驻波天线的任何一点都是纯电阻性质的馈电点，只是不同位置的纯电阻阻抗值不同。如果馈电点选择合适，送到天线的能量将全部被辐射出去，从馈电点流进去的只有行波。</li>
+                        <li><a target="_blank" href="http://blog.sina.com.cn/s/blog_975ebc600100xwtk.html">山寨HF20A短波无盲区天线</a></li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">Y-200A</div>
+            <div class="RigSubtitle">短波有源小环天线</div>
+            <div class="RigIntro">
+                <p>这款天线是有源天线，通过前置放大器放大微弱的信号，工作频率为100k~180MHz。</p>
+            </div>
+        </div>
+
+        <div class="RigInfo">
+            <div class="RigTitle">NanoVNA</div>
+            <div class="RigSubtitle">矢量网络分析仪</div>
+            <div class="RigSubtitle">2020年10月10日购</div>
+            <div class="RigIntro">
+                <p>一款低成本的网络分析仪。</p>
+                <details>
+                    <summary>PCB</summary>
+                    <img src="image/rigs/nanovna.jpg" class="Image">
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <div class="SectionHeader">QSL Card</div>
+
+    <div style="text-align: center;"><img src="image/qsl/qsl.jpg" class="Image"></div>
+    <div style="text-align: center;"><img src="image/qsl/qsl-v2.png" class="Image"></div>
+    <div style="text-align: center;"><img src="image/qsl/qsl2.png" class="Image"></div>
+
+    <div class="SectionHeader">电台日志<div class="SectionHeaderComment">Station Log</div></div>
+
+    <div class="StationLog">
+        <details>
+            <summary style="text-align: center;">通联日志</summary>
+            <table>
+                <tr>
+                    <th>日期时间(CST)</th>
+                    <th>对方呼号</th>
+                    <th>频率(MHz)</th>
+                    <th>模式</th>
+                    <th>RST</th>
+                    <th>本台信息</th>
+                    <th>对方信息</th>
+                </tr>
+                <tr>
+                    <td>2020-12-08 18:15</td>
+                    <td>BG4RBB</td>
+                    <td>439.375中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>UV-5R/原装天线/5W/公司</td>
+                    <td>自由通588车台/吸盘天线/10W/南站</td>
+                </tr>
+                <tr>
+                    <td>2020-12-08 22:09</td>
+                    <td>BH4WHQ</td>
+                    <td>439.375中继</td>
+                    <td>NFM</td>
+                    <td>59/58</td>
+                    <td>IC-705/SRJ770/5W/家</td>
+                    <td>Yaesu FT-991A/玻璃钢天线/5W/丁家庄32楼</td>
+                </tr>
+                <tr>
+                    <td>2020-12-10 19:07</td>
+                    <td>BH4WHQ</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>UV-5R/原装天线/5W/公司</td>
+                    <td>Yaesu FT-991A/玻璃钢天线/5W/丁家庄32楼</td>
+                </tr>
+                <tr>
+                    <td>2020-12-11 21:00</td>
+                    <td>BG4WIP</td>
+                    <td>439.375中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/八木/5W/家</td>
+                    <td>车台/玻璃钢天线/20W/丁山花园酒店</td>
+                </tr>
+                <tr>
+                    <td>2020-12-11 21:05</td>
+                    <td>BG4WIP</td>
+                    <td>431.7375</td>
+                    <td>NFM</td>
+                    <td>?/59</td>
+                    <td>同上</td>
+                    <td>同上</td>
+                </tr>
+                <tr>
+                    <td>2020-12-11 21:10</td>
+                    <td>BG4RBB</td>
+                    <td>431.7375</td>
+                    <td>NFM</td>
+                    <td>48/59</td>
+                    <td>同上</td>
+                    <td>60W，其余未抄清</td>
+                </tr>
+                <tr>
+                    <td>2020-12-11 21:20</td>
+                    <td>BG4RCI</td>
+                    <td>431.7375</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>同上</td>
+                    <td>即时通车台/1米玻璃钢天线/5W/大行宫</td>
+                </tr>
+                <tr>
+                    <td>2020-12-12 19:20</td>
+                    <td>BD4STQ</td>
+                    <td>433.550</td>
+                    <td>NFM</td>
+                    <td>58/58</td>
+                    <td>IC-705/八木/5W/家</td>
+                    <td>自由通878/老鹰660S/5W/岔路口</td>
+                </tr>
+                <tr>
+                    <td>2020-12-13 13:50</td>
+                    <td>BD4STQ</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/断续</td>
+                    <td>IC-705/SRJ770/5W/羊山公园湖边/雾霾</td>
+                    <td>自由通878/老鹰660S/5W/岔路口</td>
+                </tr>
+                <tr>
+                    <td>2020-12-18 19:45</td>
+                    <td>BG4WIP</td>
+                    <td>439.375中继</td>
+                    <td>NFM</td>
+                    <td>48/59</td>
+                    <td>IC-705/八木/10W/家</td>
+                    <td>？</td>
+                </tr>
+                <tr>
+                    <td>2020-12-18 19:51</td>
+                    <td>BG4WIP</td>
+                    <td>431.7375</td>
+                    <td>NFM</td>
+                    <td>59+/59+</td>
+                    <td>IC-705/八木/10W/家</td>
+                    <td>？</td>
+                </tr>
+                <tr>
+                    <td>2020-12-18 20:00</td>
+                    <td>BD4STQ</td>
+                    <td>433.550</td>
+                    <td>NFM</td>
+                    <td>59+/59+</td>
+                    <td>IC-705/八木/10W/家</td>
+                    <td>森海克斯8800/老鹰天线/5W/岔路口</td>
+                </tr>
+                <tr>
+                    <td colspan="7"><strong>—— 第 2 页 ——</strong></td>
+                </tr>
+                <tr>
+                    <td>2020-12-19 19:42</td>
+                    <td>BD4STQ<br>（台网主控）</td>
+                    <td>439.675</td>
+                    <td>NFM</td>
+                    <td>48/59</td>
+                    <td>IC-705/八木/5W/家</td>
+                    <td>宝锋/1.4m玻璃钢天线/5W/马群5楼</td>
+                </tr>
+                <tr>
+                    <td>2020-12-20 20:24</td>
+                    <td>BI4UMB<br>（台网主控）</td>
+                    <td>438.475<br>（扬州中继）</td>
+                    <td>NFM</td>
+                    <td>59/?</td>
+                    <td>IC-705/八木/10W/楼顶</td>
+                    <td>扬州城南，其余未知</td>
+                </tr>
+                <tr>
+                    <td>2020-12-24 21:40</td>
+                    <td>BD4STQ</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/八木/5W/家</td>
+                    <td>自由通878/车载天线/7W/岔路口</td>
+                </tr>
+                <tr>
+                    <td>2020-12-26 21:20</td>
+                    <td>BH9FLV</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/58</td>
+                    <td>IC-705/钻石770/5W/家/毛毛雨</td>
+                    <td>滔滔链路/陕西西安</td>
+                </tr>
+                <tr>
+                    <td>2020-12-26 21:23</td>
+                    <td>BI4RXM</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/钻石770/5W/家/毛毛雨</td>
+                    <td>森海克斯8600/老鹰775/5W/兴卫村</td>
+                </tr>
+                <tr>
+                    <td>2021-01-01 14:10</td>
+                    <td>BD4REC</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/钻石770/5W/家/晴</td>
+                    <td>欧讯UV9D/拇指天线/2W/龙眠大道</td>
+                </tr>
+                <tr>
+                    <td>2021-01-01 19:52</td>
+                    <td>BG4WIP<br>（台网主控）</td>
+                    <td>431.7375</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/拉杆/5W/家/晴</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td>2021-01-02 19:38</td>
+                    <td>BD4SUH<br>（台网主控）</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/八木/5W/家/晴</td>
+                    <td>海能达BD500/玻璃钢天线/5W/马群5楼</td>
+                </tr>
+            </table>
+        </details>
+
+        <!--
+        <details>
+            <summary style="text-align: center;">收听日志</summary>
+            <table>
+                <tr>
+                    <th>时间<br>(BJT)</th>
+                    <th>频率<br>(MHz)</th>
+                    <th>模式</th>
+                    <th>设备/天线</th>
+                    <th>内容/信号报告</th>
+                </tr>
+                <tr>
+                    <td>20200821/2259</td>
+                    <td>4.215</td>
+                    <td>CW</td>
+                    <td>RTL-SDR/有源小环</td>
+                    <td>上海海岸电台XSG，信号599</td>
+                </tr>
+                <tr>
+                    <td>20200821/2300</td>
+                    <td>8.433</td>
+                    <td>CW</td>
+                    <td>RTL-SDR/有源小环</td>
+                    <td>上海海岸电台XSG，信号599</td>
+                </tr>
+                <tr>
+                    <td>20200821/2300</td>
+                    <td>8.484</td>
+                    <td>CW</td>
+                    <td>RTL-SDR/有源小环</td>
+                    <td>首尔海岸电台HLG，内容为“CQ CQ CQ DE HLG HLG HLG QSX 8MHZ K”，信号599</td>
+                </tr>
+                <tr>
+                    <td>20200822/0030</td>
+                    <td>3.6225</td>
+                    <td>USB</td>
+                    <td>RTL-SDR/有源小环</td>
+                    <td>JMH气象传真
+                        <details>
+                            <summary>详情</summary>
+                            <img src="./image/20200822-jmh.jpg" class="Image">
+                            <p>选择USB模式，载频对齐3620kHz，通带宽5kHz，使频谱落在通带的中心。将音频信号输入到虚拟声卡，再使用软件接收，即可绘制出黑白两色的气象传真。</p>
+                            <ul>
+                                <li><a target="_blank" href="https://ibcl.us/JMHWeather-Fax_20180706/">参考1</a></li>
+                                <li><a target="_blank" href="https://bh8sel.com/5179.html">参考2</a></li>
+                                <li><a target="_blank" href="http://www2.plala.or.jp/hikokibiyori/soft/kgfax/">接收软件</a></li>
+                                <li><a target="_blank" href="https://www.jma-net.go.jp/common/177jmh/JMH-ENG.pdf">频率和时间表</a></li>
+                                <li><a target="_blank" href="https://www.jma.go.jp/en/g3/">日本气象厅官网的信息</a></li>
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td>20200908/2210</td>
+                    <td>0.420</td>
+                    <td>AM</td>
+                    <td>PL-380</td>
+                    <td>禄口机场NDE，呼号Z</td>
+                </tr>
+                <tr>
+                    <td>20200911/2046</td>
+                    <td>0.440</td>
+                    <td>AM</td>
+                    <td>PL-380</td>
+                    <td>小丹阳NDB，呼号ID</td>
+                </tr>
+                <tr>
+                    <td>20200918/0129</td>
+                    <td>4.888</td>
+                    <td>CW</td>
+                    <td>IC-705/350M</td>
+                    <td>神秘CW电台，内容为“DE 9WFV 9WFV V QYE2 QYE2 QYE2”</td>
+                </tr>
+                <tr>
+                    <td>20201031/1446</td>
+                    <td>8.182</td>
+                    <td>CW</td>
+                    <td>IC-705/350M</td>
+                    <td>神秘CW电台，内容为“DE 9WFV 9WFV V QYE2 QYE2 QYE2”</td>
+                </tr>
+            </table>
+            <p>参考资料：</p>
+            <ul>
+                <li><a target="_blank" href="http://www.zgjtb.com/2016-05/31/content_85259.htm">长江海事局全面规范长江水上甚高频使用</a></li>
+            </ul>
+        </details>
+        -->
+
+        <details>
+            <summary style="text-align: center;">SSTV收信日志</summary>
+            <div class="ContentBlockTitle">2020年12月ARISS的SSTV活动</div>
+            <img src="image/ariss-sstv-award.jpg" class="Image">
+            <img src="image/ariss_sstv.jpg" class="Image">
+        </details>
+    </div>
+
+    <div class="SectionHeader">电台编年史<div class="SectionHeaderComment">Station Chronicles</div></div>
+
+    <div class="Timeline">
+        <table>
+            <tr><th colspan="2" style="text-align: center; padding: 5px 0;">2020年</th></tr>
+            <tr><th>07.18</th><td>购买PL-380。</td></tr>
+            <tr><th>07.20</th><td>开始阅读《业余无线电通信》。</td></tr>
+            <tr><th>08.01</th><td>前往新时代大厦（操作证考场）探路。</td></tr>
+            <tr><th>08.13</th><td>凌晨1点左右在楼顶看到一颗英仙座流星。</td></tr>
+            <tr><th>09.05</th><td>参加并通过A类操作证考试。</td></tr>
+            <tr><th>11.20</th><td>领取操作证并验机。</td></tr>
+            <tr><th>12.08</th><td>领取电台执照；首次合法通联。</td></tr>
+            <tr><th>12.13</th><td>首次野外通联（羊山公园）。</td></tr>
+        </table>
+        <details>
+            <summary style="text-align: center;">新时代大厦铁塔</summary>
+            <img src="image/新时代大厦铁塔.jpg" class="Image">
+        </details>
+        <details>
+            <summary style="text-align: center;">其他事件</summary>
+            <p><strong>2020-08-04</strong> 使用PL-380收听到10MHz的BPM，并发出收听报告。收听到央广中国之声的停机检修音乐。</p>
+            <p><strong>2020-08-05</strong> 电话咨询无线电管理处。</p>
+            <p><strong>2020-08-15</strong> 诸君！深夜守在SDR#前面，观察人类文明在电波频谱上激起的微弱涟漪，这种感觉实在是好极了。希望操作证考试早日恢复，早日领取呼号，早日实现通联，在业余频段也留下属于我的一点涟漪。</p>
+            <p><strong>2020-08-18</strong> 在8484kHz上收听到清晰的CW信号，RST599，报文内容为：CQ CQ CQ DE HLG HLG HLG QSX 8MHZ K。经查询，此电台是韩国首尔海岸电台。<br>在15325kHz上听到NHK国际日语广播，信号59。电波来自八俣送信所（茨城县古河市），同之前听到的“故乡的风”对朝电台。</p>
+            <p><strong>2020-09-16</strong> 晚间，江北发生停电事故，在439.675中继上第一时间听到这个消息。</p>
+            <p><strong>2020-10-26</strong> 买了30多米的廉价同轴线，每米价格不到10元，用来连接拉杆天线和IC-705听短波广播。不知道这种线跟那些动辄成百上千的成品品牌货有什么区别。我隐约感觉到火腿器材市场上也有很多智商税，但是目前还没有足够的判断力。先凑合用吧，毕竟现在还不用发射。</p>
+            <p><strong>2020-10-31</strong> 在家里架设一条15米长的馈线，从环境比较好的北侧小房间接到主卧，这样就可以躺在床上听短波了。短波损耗比较小，但是U/V段损耗非常大。今晚中继点名是直频方式进行，信号本来就很弱，接上这条馈线后就完全收不到什么信号了。在7050上第一次听到有人跟朴某对骂。</p>
+        </details>
+    </div>
+
+    <div class="SectionHeader">备忘录<div class="SectionHeaderComment">Notes</div></div>
+
+    <div class="ContentBlock">
+        <div class="ContentBlockTitle">图书资料共享</div>
+        <img src="image/arbook.jpg" class="Image">
+        <p>本台收藏有一些业余无线电领域的图书资料，欢迎各位Ham和对业余无线电感兴趣的朋友们索取。请访问台站负责人的<a href="https://mikukonai.com/#/about" target="_blank">博客</a>，以与本台取得联系。</p>
+        <p>欢迎持证（照）Ham到本台来客席操作。</p>
+    </div>
+
+    <div class="ContentBlock">
+        <div class="ContentBlockTitle">莫尔斯编码</div>
+        <p>符合 <a href="https://www.itu.int/rec/R-REC-M.1677/en">ITU-R M.1677 建议书</a></p>
+        <details>
+            <summary style="text-align: center;">展开</summary>
+            <table><tr><th>字符</th><th>编码</th><th>字符</th><th>编码</th></tr><tr><td>A</td><td>● — </td><td>0</td><td>— — — — — </td></tr><tr><td>B</td><td>— ● ● ● </td><td>1</td><td>● — — — — </td></tr><tr><td>C</td><td>— ● — ● </td><td>2</td><td>● ● — — — </td></tr><tr><td>D</td><td>— ● ● </td><td>3</td><td>● ● ● — — </td></tr><tr><td>E</td><td>● </td><td>4</td><td>● ● ● ● — </td></tr><tr><td>F</td><td>● ● — ● </td><td>5</td><td>● ● ● ● ● </td></tr><tr><td>G</td><td>— — ● </td><td>6</td><td>— ● ● ● ● </td></tr><tr><td>H</td><td>● ● ● ● </td><td>7</td><td>— — ● ● ● </td></tr><tr><td>I</td><td>● ● </td><td>8</td><td>— — — ● ● </td></tr><tr><td>J</td><td>● — — — </td><td>9</td><td>— — — — ● </td></tr><tr><td>K</td><td>— ● — </td><td>@</td><td>● — — ● — ● </td></tr><tr><td>L</td><td>● — ● ● </td><td>?</td><td>● ● — — ● ● </td></tr><tr><td>M</td><td>— — </td><td>/</td><td>— ● ● — ● </td></tr><tr><td>N</td><td>— ● </td><td>()</td><td>— ● — — ● — </td></tr><tr><td>O</td><td>— — — </td><td>—</td><td>— ● ● ● ● — </td></tr><tr><td>P</td><td>● — — ● </td><td>。</td><td>● — ● — ● — </td></tr><tr><td>Q</td><td>— — ● — </td><td></td><td></td></tr><tr><td>R</td><td>● — ● </td><td></td><td></td></tr><tr><td>S</td><td>● ● ● </td><td></td><td></td></tr><tr><td>T</td><td>— </td><td></td><td></td></tr><tr><td>U</td><td>● ● — </td><td></td><td></td></tr><tr><td>V</td><td>● ● ● — </td><td></td><td></td></tr><tr><td>W</td><td>● — — </td><td></td><td></td></tr><tr><td>X</td><td>— ● ● — </td><td></td><td></td></tr><tr><td>Y</td><td>— ● — — </td><td></td><td></td></tr><tr><td>Z</td><td>— — ● ● </td><td></td><td></td></tr></table>
+        </details>
+    </div>
+
+    <div class="ContentBlock">
+        <div class="ContentBlockTitle">中国业余无线电呼号分区</div>
+        <details>
+            <summary style="text-align: center;">展开</summary>
+            <img src="http://www.crac.org.cn/wp-content/uploads/2011/07/2011-0802-%E4%B8%AD%E5%9B%BD%E4%B8%9A%E4%BD%99%E5%88%86%E5%8C%BA%E5%9C%B0%E5%9B%BE%E8%8B%B1%E6%96%871800x1344-1024x764.jpg" class="Image">
+        </details>
+    </div>
+
+    <div class="ContentBlock">
+        <div class="ContentBlockTitle">业余业务频率划分</div>
+        <details>
+            <summary style="text-align: center;">展开</summary>
+            <img src="image/业余无线电频率划分.svg" class="Image">
+        </details>
+    </div>
+
+    <div class="ContentBlock">
+        <div class="ContentBlockTitle">业余电台频率使用推荐规范</div>
+        <details>
+            <summary style="text-align: center;">展开</summary>
+            <table>
+                <tbody><tr>
+                    <th rowspan="2">频段</th>
+                    <th rowspan="2">通信方式</th>
+                    <th rowspan="2">频率范围</th>
+                    <th rowspan="1" colspan="2">应急通信主控/公用呼叫频率</th>
+                </tr>
+                <tr>
+                    <th rowspan="1">国内通信</th>
+                    <th rowspan="1">IARU R3</th>
+                </tr>
+                <tr>
+                    <td>135kHz</td>
+                    <td>CW/NB</td>
+                    <td>135.7-137.8</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr><tr>
+                    <td rowspan="3">1.8MHz</td>
+                    <td>CW</td>
+                    <td>1.800-2.000</td>
+                    <td rowspan="3">-</td>
+                    <td rowspan="3">-</td>
+                </tr>
+                <tr>
+                    <td>RTTY DX窗口</td>
+                    <td>1.830-1.834</td>
+                </tr>
+                <tr>
+                    <td>无线电话</td>
+                    <td>1.840-2.000</td>
+                </tr><tr>
+                    <td rowspan="4">3.5MHz</td>
+                    <td>CW</td>
+                    <td>3.500-3.900</td>
+                    <td rowspan="4">3.600</td>
+                    <td rowspan="4">3.600</td>
+                </tr>
+                <tr>
+                    <td>CW DX窗口</td>
+                    <td>3.500-3.510</td>
+                </tr>
+                <tr>
+                    <td>无线电话</td>
+                    <td>3.535-3.900</td>
+                </tr>
+                <tr>
+                    <td>无线电话DX窗口</td>
+                    <td>3.775-3.800</td>
+                </tr><tr>
+                    <td rowspan="3">7MHz</td>
+                    <td>CW</td>
+                    <td>7.000-7.025</td>
+                    <td rowspan="3">7.030(CW/NB)<br>7.050(SSB)</td>
+                    <td rowspan="3">7.110</td>
+                </tr>
+                <tr>
+                    <td>窄带</td>
+                    <td>7.025-7.040</td>
+                </tr>
+                <tr>
+                    <td>无线电话</td>
+                    <td>7.030-7.200</td>
+                </tr><tr>
+                    <td rowspan="2">10MHz</td>
+                    <td>CW</td>
+                    <td>10.100-10.150</td>
+                    <td rowspan="2">10.145(CW/NB)</td>
+                    <td rowspan="2">-</td>
+                </tr>
+                <tr>
+                    <td>窄带</td>
+                    <td>10.140-10.150</td>
+                </tr><tr>
+                    <td rowspan="6">14MHz</td>
+                    <td>CW</td>
+                    <td>14.000-14.350</td>
+                    <td rowspan="6">14.050(CW/NB)<br>14.270(SSB)</td>
+                    <td rowspan="6">14.300</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">窄带</td>
+                    <td>14.070-14.095<br>(传统)</td>
+                </tr>
+                <tr>
+                    <td>14.095-14.112<br>(Packet等)</td>
+                </tr>
+                <tr>
+                    <td>信标保护频带</td>
+                    <td>14.0995-14.1005</td>
+                </tr>
+                <tr>
+                    <td>无线电话</td>
+                    <td>14.100-14.350</td>
+                </tr>
+                <tr>
+                    <td>SSTV推荐频率</td>
+                    <td>14.225-14.235</td>
+                </tr><tr>
+                    <td rowspan="4">18MHz</td>
+                    <td>CW</td>
+                    <td>18.068-18.168</td>
+                    <td rowspan="4">18.160</td>
+                    <td rowspan="4">18.160</td>
+                </tr>
+                <tr>
+                    <td>窄带</td>
+                    <td>18.100-18.110</td>
+                </tr>
+                <tr>
+                    <td>信标保护频带</td>
+                    <td>18.1095-18.1105</td>
+                </tr>
+                <tr>
+                    <td>无线电话</td>
+                    <td>18.110-18.168</td>
+                </tr><tr>
+                    <td rowspan="5">21MHz</td>
+                    <td>CW</td>
+                    <td>21.000-21.450</td>
+                    <td rowspan="5">21.080(CW/NB)<br>21.400(SSB)</td>
+                    <td rowspan="5">21.360</td>
+                </tr>
+                <tr>
+                    <td>窄带</td>
+                    <td>21.070-21.125</td>
+                </tr>
+                <tr>
+                    <td>信标保护频带</td>
+                    <td>21.1495 21.1505</td>
+                </tr>
+                <tr>
+                    <td>无线电话</td>
+                    <td>21.125-21.450</td>
+                </tr>
+                <tr>
+                    <td>SSTV推荐频率</td>
+                    <td>21.335-21.345</td>
+                </tr><tr>
+                    <td rowspan="4">24MHz</td>
+                    <td>CW</td>
+                    <td>24.890-24.990</td>
+                    <td rowspan="4">-</td>
+                    <td rowspan="4">-</td>
+                </tr>
+                <tr>
+                    <td>窄带</td>
+                    <td>24.920-24.930</td>
+                </tr>
+                <tr>
+                    <td>信标保护频带</td>
+                    <td>24.9295-29.9305</td>
+                </tr>
+                <tr>
+                    <td>无线电话</td>
+                    <td>24.930-24.990</td>
+                </tr><tr>
+                    <td rowspan="7">28MHz</td>
+                    <td>CW</td>
+                    <td>28.000-29.700</td>
+                    <td rowspan="7">28.080(CW/NB)<br>28.400(SSB)<br>29.600(FM)</td>
+                    <td rowspan="7">-</td>
+                </tr>
+                <tr>
+                    <td>窄带</td>
+                    <td>28.050-28.150</td>
+                </tr>
+                <tr>
+                    <td>信标保护频带</td>
+                    <td>28.200±500Hz</td>
+                </tr>
+                <tr>
+                    <td>无线电话</td>
+                    <td>28.300-29.300</td>
+                </tr>
+                <tr>
+                    <td>SSTV推荐频率</td>
+                    <td>28.675-28.685</td>
+                </tr>
+                <tr>
+                    <td>业余卫星</td>
+                    <td>29.300-29.510</td>
+                </tr>
+                <tr>
+                    <td>宽带</td>
+                    <td>29.510-29.700</td>
+                </tr><tr>
+                    <td rowspan="3">50MHz</td>
+                    <td>CW</td>
+                    <td>50.000-54.000</td>
+                    <td rowspan="3">-</td>
+                    <td rowspan="3">-</td>
+                </tr>
+                <tr>
+                    <td>信标保护频带</td>
+                    <td>50.050-50.100</td>
+                </tr>
+                <tr>
+                    <td>CW/AM/NB/WB</td>
+                    <td>50.100-54.000</td>
+                </tr><tr>
+                    <td rowspan="4">144MHz</td>
+                    <td>EME</td>
+                    <td>144.000-144.035</td>
+                    <td rowspan="4">145.000<br>本地中继频率<br>APRS频率</td>
+                    <td rowspan="4">-</td>
+                </tr>
+                <tr>
+                    <td>CW/AM/NB/WB</td>
+                    <td>144.035-145.800</td>
+                </tr>
+                <tr>
+                    <td>业余卫星</td>
+                    <td>145.800-146.000</td>
+                </tr>
+                <tr>
+                    <td>各种方式</td>
+                    <td>146.000-148.000</td>
+                </tr><tr>
+                    <td rowspan="5">430MHz</td>
+                    <td>CW/AM/NB/WB</td>
+                    <td>430.000-431.900</td>
+                    <td rowspan="5">435.000<br>本地中继频率<br>APRS频率</td>
+                    <td rowspan="5">-</td>
+                </tr>
+                <tr>
+                    <td>EME</td>
+                    <td>431.900-432.240</td>
+                </tr>
+                <tr>
+                    <td>CW/AM/NB/WB</td>
+                    <td>432.240-435.000</td>
+                </tr>
+                <tr>
+                    <td>业余卫星</td>
+                    <td>435.000-438.000</td>
+                </tr>
+                <tr>
+                    <td>CW/AM/NB/WB</td>
+                    <td>438.000-439.000</td>
+                </tr></tbody></table>
+        </details>
+    </div>
+
+    <div class="ContentBlock">
+        <div class="ContentBlockTitle">常用数值表</div>
+        <details>
+            <summary style="text-align: center;">分贝（功率值）</summary>
+            <table><tbody><tr><th>分贝</th><th>线性值</th><th>分贝</th><th>线性值</th></tr><tr><td>0dB</td><td>1</td><td></td><td></td></tr><tr><td>3dB</td><td>2</td><td>-3dB</td><td>0.5</td></tr><tr><td>4dB</td><td>2.5</td><td>-4dB</td><td>0.4</td></tr><tr><td>6dB</td><td>4</td><td>-6dB</td><td>0.25</td></tr><tr><td>7dB</td><td>5</td><td>-7dB</td><td>0.2</td></tr><tr><td>9dB</td><td>8</td><td>-9dB</td><td>0.125</td></tr><tr><td>10dB</td><td>10</td><td>-10dB</td><td>0.1</td></tr><tr><td>20dB</td><td>100</td><td>-20dB</td><td>百分之一</td></tr><tr><td>30dB</td><td>1000</td><td>-30dB</td><td>千分之一</td></tr><tr><td>40dB</td><td>10000</td><td>-40dB</td><td>万分之一</td></tr></tbody></table>
+        </details>
+        <details>
+            <summary style="text-align: center;">波长频率换算</summary>
+            <p>光速300M米/秒</p>
+            <table><tbody><tr><th>频率</th><th>波长</th><th>波段名称</th></tr><tr><td>~300kHz</td><td>1km</td><td>长波/低频LF</td></tr><tr><td>~3MHz</td><td>100m</td><td>中波/中频MF</td></tr><tr><td>~30MHz</td><td>10m</td><td>短波/高频HF</td></tr><tr><td>~300MHz</td><td>1m</td><td>米波/甚高频VHF</td></tr><tr><td>~3GHz</td><td>10cm</td><td>分米波/特高频UHF</td></tr><tr><td>~30GHz</td><td>1cm</td><td>厘米波/超高频SHF</td></tr><tr><td>~300GHz</td><td>1mm</td><td>毫米波/EHF</td></tr><tr><td>~3THz</td><td>0.1mm</td><td>亚毫米波/太赫兹</td></tr></tbody></table>
+            <ul>
+                <li>红外光：几μm</li>
+                <li>可见光：几百nm</li>
+                <li>紫外光：几十nm</li>
+            </ul>
+        </details>
+    </div>
+
+    <div class="ContentBlock">
+        <div class="ContentBlockTitle">传播预测</div>
+        <center>
+            <a href="http://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!"><img src="http://www.hamqsl.com/solar101vhf.php"></a>
+        </center>
+    </div>
+
+    <div class="ContentBlock">
+        <div class="ContentBlockTitle">ISS追踪</div>
+        <p><a href="https://isstracker.spaceflight.esa.int/" target="_blank">原始网页</a></p>
+        <details>
+            <summary style="text-align: center;">展开</summary>
+            <iframe src="https://isstracker.spaceflight.esa.int/" style="width: 100%; height: 400px;"></iframe>
+        </details>
+    </div>
+
+    <div class="ContentBlock">
+        <div class="ContentBlockTitle">法律法规</div>
+        <div style="text-align: center; font-size: 14px;">
+            <div><a href="http://www.gov.cn/zhengce/content/2016-11/25/content_5137687.htm">中华人民共和国无线电管理条例</a></div>
+            <div><a href="https://www.miit.gov.cn/jgsj/wgj/wjfb/art/2020/art_83e48005edf142a38b17aeff93ef9053.html">中华人民共和国无线电频率划分规定2018</a></div>
+            <div><a href="http://www.gov.cn/flfg/2012-11/08/content_2260255.htm">业余无线电台管理办法</a></div>
+            <div><a href="http://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/hxxhj/dcfsbz/201410/t20141022_290449.htm">GB 8702-2014 电磁环境控制限值</a></div>
+        </div>
+    </div>
+
+    <div class="ContentBlock">
+        <div class="ContentBlockTitle">链接</div>
+        <div style="text-align: center; font-size: 14px;">
+            <div><a href="https://ibcl.us/">ibcl.us</a></div>
+        </div>
+    </div>
+
+    <footer>
+        <div style="color:#888; margin: 10px 0;">
+            Copyright &copy; 2020~2021 BD4SUR (Mikukonai)
+        </div>
+        <div style="color:#888; margin: 10px 0;">
+            <a href="https://mikukonai.com/" target="_blank">博客首页</a> / <a href="http://www.crac.org.cn/" target="_blank">CRAC</a> / <a href="https://www.iaru.org/" target="_blank">IARU</a>
+        </div>
+        <div style="color:#888; margin: 15px 0; font-size: 12px;">
+            <span style="letter-spacing: 1px;">体谅·忠诚·进取·友爱·适度·爱国</span><br>
+            Considerate / Loyal / Progressive<br>Friendly / Balanced / Patriotic
+        </div>
+    </footer>
+
+</body>
+</html>
