@@ -384,7 +384,339 @@ ul {
 
 
 <!--日志模板-->
+<style>
+.StationLog {
+    text-align: center;
+    max-width: 1000px;
+    margin: 10px auto;
+    font-size: 14px;
+    line-height: 22px;
+    color: #333;
+}
+.StationLog table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.StationLog td, .StationLog th {
+    font-family: 'Consolas', Courier, monospace;
+    border: 1px solid #ccc;
+}
+</style>
 <template id="logs">
+    <div class="StationLog">
+        <details>
+            <summary style="text-align: center;">通联日志</summary>
+            <table>
+                <tr>
+                    <th>日期时间(CST)</th>
+                    <th>对方呼号</th>
+                    <th>频率(MHz)</th>
+                    <th>模式</th>
+                    <th>RST</th>
+                    <th>本台信息</th>
+                    <th>对方信息</th>
+                </tr>
+                <tr>
+                    <td>2020-12-08 18:15</td>
+                    <td>BG4RBB</td>
+                    <td>439.375中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>UV-5R/原装天线/5W/公司</td>
+                    <td>自由通588车台/吸盘天线/10W/南站</td>
+                </tr>
+                <tr>
+                    <td>2020-12-08 22:09</td>
+                    <td>BH4WHQ</td>
+                    <td>439.375中继</td>
+                    <td>NFM</td>
+                    <td>59/58</td>
+                    <td>IC-705/SRJ770/5W/家</td>
+                    <td>Yaesu FT-991A/玻璃钢天线/5W/丁家庄32楼</td>
+                </tr>
+                <tr>
+                    <td>2020-12-10 19:07</td>
+                    <td>BH4WHQ</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>UV-5R/原装天线/5W/公司</td>
+                    <td>Yaesu FT-991A/玻璃钢天线/5W/丁家庄32楼</td>
+                </tr>
+                <tr>
+                    <td>2020-12-11 21:00</td>
+                    <td>BG4WIP</td>
+                    <td>439.375中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/八木/5W/家</td>
+                    <td>车台/玻璃钢天线/20W/丁山花园酒店</td>
+                </tr>
+                <tr>
+                    <td>2020-12-11 21:05</td>
+                    <td>BG4WIP</td>
+                    <td>431.7375</td>
+                    <td>NFM</td>
+                    <td>?/59</td>
+                    <td>同上</td>
+                    <td>同上</td>
+                </tr>
+                <tr>
+                    <td>2020-12-11 21:10</td>
+                    <td>BG4RBB</td>
+                    <td>431.7375</td>
+                    <td>NFM</td>
+                    <td>48/59</td>
+                    <td>同上</td>
+                    <td>60W，其余未抄清</td>
+                </tr>
+                <tr>
+                    <td>2020-12-11 21:20</td>
+                    <td>BG4RCI</td>
+                    <td>431.7375</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>同上</td>
+                    <td>即时通车台/1米玻璃钢天线/5W/大行宫</td>
+                </tr>
+                <tr>
+                    <td>2020-12-12 19:20</td>
+                    <td>BD4STQ</td>
+                    <td>433.550</td>
+                    <td>NFM</td>
+                    <td>58/58</td>
+                    <td>IC-705/八木/5W/家</td>
+                    <td>自由通878/老鹰660S/5W/岔路口</td>
+                </tr>
+                <tr>
+                    <td>2020-12-13 13:50</td>
+                    <td>BD4STQ</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/断续</td>
+                    <td>IC-705/SRJ770/5W/羊山公园湖边/雾霾</td>
+                    <td>自由通878/老鹰660S/5W/岔路口</td>
+                </tr>
+                <tr>
+                    <td>2020-12-18 19:45</td>
+                    <td>BG4WIP</td>
+                    <td>439.375中继</td>
+                    <td>NFM</td>
+                    <td>48/59</td>
+                    <td>IC-705/八木/10W/家</td>
+                    <td>？</td>
+                </tr>
+                <tr>
+                    <td>2020-12-18 19:51</td>
+                    <td>BG4WIP</td>
+                    <td>431.7375</td>
+                    <td>NFM</td>
+                    <td>59+/59+</td>
+                    <td>IC-705/八木/10W/家</td>
+                    <td>？</td>
+                </tr>
+                <tr>
+                    <td>2020-12-18 20:00</td>
+                    <td>BD4STQ</td>
+                    <td>433.550</td>
+                    <td>NFM</td>
+                    <td>59+/59+</td>
+                    <td>IC-705/八木/10W/家</td>
+                    <td>森海克斯8800/老鹰天线/5W/岔路口</td>
+                </tr>
+                <tr>
+                    <td colspan="7"><strong>—— 第 2 页 ——</strong></td>
+                </tr>
+                <tr>
+                    <td>2020-12-19 19:42</td>
+                    <td>BD4STQ<br>（台网主控）</td>
+                    <td>439.675</td>
+                    <td>NFM</td>
+                    <td>48/59</td>
+                    <td>IC-705/八木/5W/家</td>
+                    <td>宝锋/1.4m玻璃钢天线/5W/马群5楼</td>
+                </tr>
+                <tr>
+                    <td>2020-12-20 20:24</td>
+                    <td>BI4UMB<br>（台网主控）</td>
+                    <td>438.475<br>（扬州中继）</td>
+                    <td>NFM</td>
+                    <td>59/?</td>
+                    <td>IC-705/八木/10W/楼顶</td>
+                    <td>扬州城南，其余未知</td>
+                </tr>
+                <tr>
+                    <td>2020-12-24 21:40</td>
+                    <td>BD4STQ</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/八木/5W/家</td>
+                    <td>自由通878/车载天线/7W/岔路口</td>
+                </tr>
+                <tr>
+                    <td>2020-12-26 21:20</td>
+                    <td>BH9FLV</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/58</td>
+                    <td>IC-705/钻石770/5W/家/毛毛雨</td>
+                    <td>滔滔链路/陕西西安</td>
+                </tr>
+                <tr>
+                    <td>2020-12-26 21:23</td>
+                    <td>BI4RXM</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/钻石770/5W/家/毛毛雨</td>
+                    <td>森海克斯8600/老鹰775/5W/兴卫村</td>
+                </tr>
+                <tr>
+                    <td>2021-01-01 14:10</td>
+                    <td>BD4REC</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/钻石770/5W/家/晴</td>
+                    <td>欧讯UV9D/拇指天线/2W/龙眠大道</td>
+                </tr>
+                <tr>
+                    <td>2021-01-01 19:52</td>
+                    <td>BG4WIP<br>（台网主控）</td>
+                    <td>431.7375</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/拉杆/5W/家/晴</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td>2021-01-02 19:38</td>
+                    <td>BD4SUH<br>（台网主控）</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/八木/5W/家/晴</td>
+                    <td>海能达BD500/玻璃钢天线/5W/马群5楼</td>
+                </tr>
+                <tr>
+                    <td>2021-01-09 19:43</td>
+                    <td>BD4SUH<br>（台网主控）</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/八木/5W/家/晴</td>
+                    <td>海能达BD500/玻璃钢天线/5W/马群5楼</td>
+                </tr>
+                <tr>
+                    <td>2021-01-09 21:53</td>
+                    <td>BY4WNG<br>Op.0</td>
+                    <td>439.675中继</td>
+                    <td>NFM</td>
+                    <td>59/59</td>
+                    <td>IC-705/八木/5W/家/晴</td>
+                    <td>IC-7000/5.2m直立天线/25W/<br>东大九龙湖校区大活601</td>
+                </tr>
+            </table>
+        </details>
+
+        <!--
+        <details>
+            <summary style="text-align: center;">收听日志</summary>
+            <table>
+                <tr>
+                    <th>时间<br>(BJT)</th>
+                    <th>频率<br>(MHz)</th>
+                    <th>模式</th>
+                    <th>设备/天线</th>
+                    <th>内容/信号报告</th>
+                </tr>
+                <tr>
+                    <td>20200821/2259</td>
+                    <td>4.215</td>
+                    <td>CW</td>
+                    <td>RTL-SDR/有源小环</td>
+                    <td>上海海岸电台XSG，信号599</td>
+                </tr>
+                <tr>
+                    <td>20200821/2300</td>
+                    <td>8.433</td>
+                    <td>CW</td>
+                    <td>RTL-SDR/有源小环</td>
+                    <td>上海海岸电台XSG，信号599</td>
+                </tr>
+                <tr>
+                    <td>20200821/2300</td>
+                    <td>8.484</td>
+                    <td>CW</td>
+                    <td>RTL-SDR/有源小环</td>
+                    <td>首尔海岸电台HLG，内容为“CQ CQ CQ DE HLG HLG HLG QSX 8MHZ K”，信号599</td>
+                </tr>
+                <tr>
+                    <td>20200822/0030</td>
+                    <td>3.6225</td>
+                    <td>USB</td>
+                    <td>RTL-SDR/有源小环</td>
+                    <td>JMH气象传真
+                        <details>
+                            <summary>详情</summary>
+                            <img src="./image/20200822-jmh.jpg" class="Image">
+                            <p>选择USB模式，载频对齐3620kHz，通带宽5kHz，使频谱落在通带的中心。将音频信号输入到虚拟声卡，再使用软件接收，即可绘制出黑白两色的气象传真。</p>
+                            <ul>
+                                <li><a target="_blank" href="https://ibcl.us/JMHWeather-Fax_20180706/">参考1</a></li>
+                                <li><a target="_blank" href="https://bh8sel.com/5179.html">参考2</a></li>
+                                <li><a target="_blank" href="http://www2.plala.or.jp/hikokibiyori/soft/kgfax/">接收软件</a></li>
+                                <li><a target="_blank" href="https://www.jma-net.go.jp/common/177jmh/JMH-ENG.pdf">频率和时间表</a></li>
+                                <li><a target="_blank" href="https://www.jma.go.jp/en/g3/">日本气象厅官网的信息</a></li>
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td>20200908/2210</td>
+                    <td>0.420</td>
+                    <td>AM</td>
+                    <td>PL-380</td>
+                    <td>禄口机场NDE，呼号Z</td>
+                </tr>
+                <tr>
+                    <td>20200911/2046</td>
+                    <td>0.440</td>
+                    <td>AM</td>
+                    <td>PL-380</td>
+                    <td>小丹阳NDB，呼号ID</td>
+                </tr>
+                <tr>
+                    <td>20200918/0129</td>
+                    <td>4.888</td>
+                    <td>CW</td>
+                    <td>IC-705/350M</td>
+                    <td>神秘CW电台，内容为“DE 9WFV 9WFV V QYE2 QYE2 QYE2”</td>
+                </tr>
+                <tr>
+                    <td>20201031/1446</td>
+                    <td>8.182</td>
+                    <td>CW</td>
+                    <td>IC-705/350M</td>
+                    <td>神秘CW电台，内容为“DE 9WFV 9WFV V QYE2 QYE2 QYE2”</td>
+                </tr>
+            </table>
+            <p>参考资料：</p>
+            <ul>
+                <li><a target="_blank" href="http://www.zgjtb.com/2016-05/31/content_85259.htm">长江海事局全面规范长江水上甚高频使用</a></li>
+            </ul>
+        </details>
+        -->
+
+        <details>
+            <summary style="text-align: center;">SSTV收信日志</summary>
+            <div class="ContentBlockTitle">2020年12月ARISS的SSTV活动</div>
+            <img src="image/ariss-sstv-award.jpg" class="Image">
+            <img src="image/ariss_sstv.jpg" class="Image">
+        </details>
+    </div>
+
+
     <!--正文容器-->
     <div class="InspirationContainer" id="InspirationContainer"></div>
     <!--底部内容-->
