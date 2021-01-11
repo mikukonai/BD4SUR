@@ -1,0 +1,385 @@
+[
+    {
+        "time":     "2020-12-08 18:15",
+        "callsign": "BG4RBB",
+        "freq":     "439.375R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "自由通588车台",
+        "ant":      "吸盘",
+        "pwr":      "10W",
+        "qth":      "南站",
+
+        "rig_self": "UV-5R",
+        "ant_self": "原装",
+        "pwr_self": "5W",
+        "qth_self": "公司",
+
+        "note":     "首次通联"
+    },
+    {
+        "time":     "2020-12-08 22:09",
+        "callsign": "BH4WHQ",
+        "freq":     "439.375R",
+        "mode":     "NFM",
+        "rst":      "59/58",
+
+        "rig":      "Yaesu FT-991A",
+        "ant":      "玻璃钢",
+        "pwr":      "5W",
+        "qth":      "丁家庄32楼",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     ""
+    },
+    {
+        "time":     "2020-12-10 19:07",
+        "callsign": "BH4WHQ",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "Yaesu FT-991A",
+        "ant":      "玻璃钢",
+        "pwr":      "5W",
+        "qth":      "丁家庄32楼",
+
+        "rig_self": "UV-5R",
+        "ant_self": "原装",
+        "pwr_self": "5W",
+        "qth_self": "公司",
+
+        "note":     ""
+    },
+    {
+        "time":     "2020-12-11 21:00",
+        "callsign": "BG4WIP",
+        "freq":     "439.375R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "车台",
+        "ant":      "玻璃钢",
+        "pwr":      "20W",
+        "qth":      "丁山花园酒店",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     ""
+    },
+    {
+        "time":     "2020-12-11 21:05",
+        "callsign": "BG4WIP",
+        "freq":     "431.7375",
+        "mode":     "NFM",
+        "rst":      "?/59",
+
+        "rig":      "车台",
+        "ant":      "玻璃钢",
+        "pwr":      "20W",
+        "qth":      "丁山花园酒店",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     ""
+    },
+    {
+        "time":     "2020-12-11 21:10",
+        "callsign": "BG4RBB",
+        "freq":     "431.7375",
+        "mode":     "NFM",
+        "rst":      "48/59",
+
+        "rig":      "?",
+        "ant":      "?",
+        "pwr":      "60W",
+        "qth":      "?",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     ""
+    },
+    {
+        "time":     "2020-12-11 21:20",
+        "callsign": "BG4RCI",
+        "freq":     "431.7375",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "即时通车台",
+        "ant":      "1米玻璃钢",
+        "pwr":      "5W",
+        "qth":      "大行宫",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     ""
+    },
+    {
+        "time":     "2020-12-12 19:20",
+        "callsign": "BD4STQ",
+        "freq":     "433.550",
+        "mode":     "NFM",
+        "rst":      "58/58",
+
+        "rig":      "自由通878",
+        "ant":      "老鹰660S",
+        "pwr":      "5W",
+        "qth":      "岔路口",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     ""
+    },
+    {
+        "time":     "2020-12-13 13:50",
+        "callsign": "BD4STQ",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/断续",
+
+        "rig":      "自由通878",
+        "ant":      "老鹰660S",
+        "pwr":      "5W",
+        "qth":      "岔路口",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "5W",
+        "qth_self": "羊山公园",
+
+        "note":     "首次野外架台"
+    },
+    {
+        "time":     "2020-12-18 20:00",
+        "callsign": "BD4STQ",
+        "freq":     "433.550",
+        "mode":     "NFM",
+        "rst":      "59+/59+",
+
+        "rig":      "森海克斯8800",
+        "ant":      "老鹰天线",
+        "pwr":      "5W",
+        "qth":      "岔路口",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "10W",
+        "qth_self": "家",
+
+        "note":     ""
+    },
+
+
+
+    {
+        "time":     "2020-12-19 19:42",
+        "callsign": "BD4STQ",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "48/59",
+
+        "rig":      "宝锋?",
+        "ant":      "1.4m玻璃钢天线",
+        "pwr":      "5W",
+        "qth":      "马群5楼",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     "江苏无协中继点名"
+    },
+    {
+        "time":     "2020-12-20 20:24",
+        "callsign": "BI4UMB",
+        "freq":     "438.475R",
+        "mode":     "NFM",
+        "rst":      "59/?",
+
+        "rig":      "?",
+        "ant":      "?",
+        "pwr":      "?",
+        "qth":      "扬州城南",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "10W",
+        "qth_self": "家楼顶",
+
+        "note":     "扬州镇江武汉三地联合点名"
+    },
+    {
+        "time":     "2020-12-24 21:40",
+        "callsign": "BD4STQ",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "自由通878",
+        "ant":      "车载天线",
+        "pwr":      "7W",
+        "qth":      "岔路口",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     ""
+    },
+    {
+        "time":     "2020-12-26 21:20",
+        "callsign": "BH9FLV",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/58",
+
+        "rig":      "滔滔",
+        "ant":      "",
+        "pwr":      "",
+        "qth":      "西安",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     ""
+    },
+    {
+        "time":     "2020-12-26 21:23",
+        "callsign": "BI4RXM",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "森海克斯8600",
+        "ant":      "老鹰775",
+        "pwr":      "5W",
+        "qth":      "兴卫村",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     ""
+    },
+    {
+        "time":     "2021-01-01 14:10",
+        "callsign": "BD4REC",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "欧讯UV9D",
+        "ant":      "拇指天线",
+        "pwr":      "2W",
+        "qth":      "龙眠大道",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     "2021首次通联"
+    },
+    {
+        "time":     "2021-01-01 19:52",
+        "callsign": "BG4WIP",
+        "freq":     "431.7375",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "?",
+        "ant":      "?",
+        "pwr":      "?",
+        "qth":      "?",
+
+        "rig_self": "IC-705",
+        "ant_self": "拉杆",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     "石城73俱乐部台网点名"
+    },
+    {
+        "time":     "2021-01-02 19:38",
+        "callsign": "BD4SUH",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "海能达BD500",
+        "ant":      "玻璃钢",
+        "pwr":      "5W",
+        "qth":      "马群5楼",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     "江苏无协中继点名"
+    },
+    {
+        "time":     "2021-01-09 19:43",
+        "callsign": "BD4SUH",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "海能达BD500",
+        "ant":      "玻璃钢",
+        "pwr":      "5W",
+        "qth":      "马群5楼",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     "江苏无协中继点名"
+    },
+    {
+        "time":     "2021-01-09 21:53",
+        "callsign": "BY4WNG",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "IC-7000",
+        "ant":      "5.2m GP",
+        "pwr":      "25W",
+        "qth":      "东大九龙湖校区",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     "与东南大学集体电台的首次通联，对方操作员0号。电台位置：九龙湖校区大活601。"
+    }
+]

@@ -121,6 +121,7 @@ function SPA_Render(pathString, callback) {
                 <div id="InspirationMenuList"></div>
             `);
             LoadInspirations();
+            LoadStationLog();
         }
         else if(PageID === "docs") {
             // 默认排序方式

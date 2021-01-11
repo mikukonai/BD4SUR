@@ -400,222 +400,35 @@ ul {
 .StationLog td, .StationLog th {
     font-family: 'Consolas', Courier, monospace;
     border: 1px solid #ccc;
+    padding: 1px 3px;
+}
+.InfoTable td, .InfoTable th{
+    text-align: left;
+    border: none;
+}
+
+.LogColoumInfo {
+    width: 25px;
+}
+.LogColoumInfoValue {
+    max-width: 100px;
+}
+.LogColoumNote {
+    max-width: 80px;
 }
 </style>
 <template id="logs">
     <div class="StationLog">
         <details>
             <summary style="text-align: center;">通联日志</summary>
-            <table>
+            <table id="StationLogTable">
                 <tr>
-                    <th>日期时间(CST)</th>
+                    <th>时间</th>
                     <th>对方呼号</th>
-                    <th>频率(MHz)</th>
-                    <th>模式</th>
-                    <th>RST</th>
-                    <th>本台信息</th>
+                    <th>频率/模式/RST</th>
                     <th>对方信息</th>
-                </tr>
-                <tr>
-                    <td>2020-12-08 18:15</td>
-                    <td>BG4RBB</td>
-                    <td>439.375中继</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>UV-5R/原装天线/5W/公司</td>
-                    <td>自由通588车台/吸盘天线/10W/南站</td>
-                </tr>
-                <tr>
-                    <td>2020-12-08 22:09</td>
-                    <td>BH4WHQ</td>
-                    <td>439.375中继</td>
-                    <td>NFM</td>
-                    <td>59/58</td>
-                    <td>IC-705/SRJ770/5W/家</td>
-                    <td>Yaesu FT-991A/玻璃钢天线/5W/丁家庄32楼</td>
-                </tr>
-                <tr>
-                    <td>2020-12-10 19:07</td>
-                    <td>BH4WHQ</td>
-                    <td>439.675中继</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>UV-5R/原装天线/5W/公司</td>
-                    <td>Yaesu FT-991A/玻璃钢天线/5W/丁家庄32楼</td>
-                </tr>
-                <tr>
-                    <td>2020-12-11 21:00</td>
-                    <td>BG4WIP</td>
-                    <td>439.375中继</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>IC-705/八木/5W/家</td>
-                    <td>车台/玻璃钢天线/20W/丁山花园酒店</td>
-                </tr>
-                <tr>
-                    <td>2020-12-11 21:05</td>
-                    <td>BG4WIP</td>
-                    <td>431.7375</td>
-                    <td>NFM</td>
-                    <td>?/59</td>
-                    <td>同上</td>
-                    <td>同上</td>
-                </tr>
-                <tr>
-                    <td>2020-12-11 21:10</td>
-                    <td>BG4RBB</td>
-                    <td>431.7375</td>
-                    <td>NFM</td>
-                    <td>48/59</td>
-                    <td>同上</td>
-                    <td>60W，其余未抄清</td>
-                </tr>
-                <tr>
-                    <td>2020-12-11 21:20</td>
-                    <td>BG4RCI</td>
-                    <td>431.7375</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>同上</td>
-                    <td>即时通车台/1米玻璃钢天线/5W/大行宫</td>
-                </tr>
-                <tr>
-                    <td>2020-12-12 19:20</td>
-                    <td>BD4STQ</td>
-                    <td>433.550</td>
-                    <td>NFM</td>
-                    <td>58/58</td>
-                    <td>IC-705/八木/5W/家</td>
-                    <td>自由通878/老鹰660S/5W/岔路口</td>
-                </tr>
-                <tr>
-                    <td>2020-12-13 13:50</td>
-                    <td>BD4STQ</td>
-                    <td>439.675中继</td>
-                    <td>NFM</td>
-                    <td>59/断续</td>
-                    <td>IC-705/SRJ770/5W/羊山公园湖边/雾霾</td>
-                    <td>自由通878/老鹰660S/5W/岔路口</td>
-                </tr>
-                <tr>
-                    <td>2020-12-18 19:45</td>
-                    <td>BG4WIP</td>
-                    <td>439.375中继</td>
-                    <td>NFM</td>
-                    <td>48/59</td>
-                    <td>IC-705/八木/10W/家</td>
-                    <td>？</td>
-                </tr>
-                <tr>
-                    <td>2020-12-18 19:51</td>
-                    <td>BG4WIP</td>
-                    <td>431.7375</td>
-                    <td>NFM</td>
-                    <td>59+/59+</td>
-                    <td>IC-705/八木/10W/家</td>
-                    <td>？</td>
-                </tr>
-                <tr>
-                    <td>2020-12-18 20:00</td>
-                    <td>BD4STQ</td>
-                    <td>433.550</td>
-                    <td>NFM</td>
-                    <td>59+/59+</td>
-                    <td>IC-705/八木/10W/家</td>
-                    <td>森海克斯8800/老鹰天线/5W/岔路口</td>
-                </tr>
-                <tr>
-                    <td colspan="7"><strong>—— 第 2 页 ——</strong></td>
-                </tr>
-                <tr>
-                    <td>2020-12-19 19:42</td>
-                    <td>BD4STQ<br>（台网主控）</td>
-                    <td>439.675</td>
-                    <td>NFM</td>
-                    <td>48/59</td>
-                    <td>IC-705/八木/5W/家</td>
-                    <td>宝锋/1.4m玻璃钢天线/5W/马群5楼</td>
-                </tr>
-                <tr>
-                    <td>2020-12-20 20:24</td>
-                    <td>BI4UMB<br>（台网主控）</td>
-                    <td>438.475<br>（扬州中继）</td>
-                    <td>NFM</td>
-                    <td>59/?</td>
-                    <td>IC-705/八木/10W/楼顶</td>
-                    <td>扬州城南，其余未知</td>
-                </tr>
-                <tr>
-                    <td>2020-12-24 21:40</td>
-                    <td>BD4STQ</td>
-                    <td>439.675中继</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>IC-705/八木/5W/家</td>
-                    <td>自由通878/车载天线/7W/岔路口</td>
-                </tr>
-                <tr>
-                    <td>2020-12-26 21:20</td>
-                    <td>BH9FLV</td>
-                    <td>439.675中继</td>
-                    <td>NFM</td>
-                    <td>59/58</td>
-                    <td>IC-705/钻石770/5W/家/毛毛雨</td>
-                    <td>滔滔链路/陕西西安</td>
-                </tr>
-                <tr>
-                    <td>2020-12-26 21:23</td>
-                    <td>BI4RXM</td>
-                    <td>439.675中继</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>IC-705/钻石770/5W/家/毛毛雨</td>
-                    <td>森海克斯8600/老鹰775/5W/兴卫村</td>
-                </tr>
-                <tr>
-                    <td>2021-01-01 14:10</td>
-                    <td>BD4REC</td>
-                    <td>439.675中继</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>IC-705/钻石770/5W/家/晴</td>
-                    <td>欧讯UV9D/拇指天线/2W/龙眠大道</td>
-                </tr>
-                <tr>
-                    <td>2021-01-01 19:52</td>
-                    <td>BG4WIP<br>（台网主控）</td>
-                    <td>431.7375</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>IC-705/拉杆/5W/家/晴</td>
-                    <td>?</td>
-                </tr>
-                <tr>
-                    <td>2021-01-02 19:38</td>
-                    <td>BD4SUH<br>（台网主控）</td>
-                    <td>439.675中继</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>IC-705/八木/5W/家/晴</td>
-                    <td>海能达BD500/玻璃钢天线/5W/马群5楼</td>
-                </tr>
-                <tr>
-                    <td>2021-01-09 19:43</td>
-                    <td>BD4SUH<br>（台网主控）</td>
-                    <td>439.675中继</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>IC-705/八木/5W/家/晴</td>
-                    <td>海能达BD500/玻璃钢天线/5W/马群5楼</td>
-                </tr>
-                <tr>
-                    <td>2021-01-09 21:53</td>
-                    <td>BY4WNG<br>Op.0</td>
-                    <td>439.675中继</td>
-                    <td>NFM</td>
-                    <td>59/59</td>
-                    <td>IC-705/八木/5W/家/晴</td>
-                    <td>IC-7000/5.2m直立天线/25W/<br>东大九龙湖校区大活601</td>
+                    <th>本台信息</th>
+                    <th style="max-width: 50px;">备注</th>
                 </tr>
             </table>
         </details>
@@ -773,7 +586,7 @@ ul {
         CQ 24 / ITU 44 / OM91<br>中国·江苏·南京<br>Nanjing, Jiangsu, China<br>
         <img src="image/nanjing-location.png" style="margin-top: 20px; width: 100px;">
     </div>
-    <div class="SectionHeader" id="blogroll">电台编年史<div class="SectionHeaderComment">Station Chronicles</div></div>
+    <div class="SectionHeader">电台编年史<div class="SectionHeaderComment">Station Chronicles</div></div>
     <div class="SectionBody">
         <div class="Chronicles">
             <table>
@@ -804,11 +617,21 @@ ul {
         </div>
     </div>
 
-    <div class="SectionHeader">台站信息</div>
-    <div class="SectionSubHeader">执照信息</div>
-    <div class="SectionBody">2020年12月取得A类电台执照</div>
-    <div class="SectionSubHeader">操作证信息</div>
-    <div class="SectionBody">2020年11月取得A类操作证</div>
+    <div class="SectionHeader">图书资料共享<div class="SectionHeaderComment">Book Sharing</div></div>
+    <div class="ContentBlock">
+        <div class="SectionBody"><img src="image/arbook.jpg" style="width: 300px; margin: 0 auto;"></div>
+        <div class="SectionBody">本台收藏有一些关于业余无线电的图书资料，欢迎各位Ham和对业余无线电感兴趣的朋友们索取。<br>请访问<a href="https://mikukonai.com/#/about" target="_blank">博客</a>，以与本台取得联系。</div>
+        <div class="SectionBody">欢迎持证（照）Ham到本台来客席操作。</div>
+    </div>
+
+    <div class="SectionHeader">QSL卡片</div>
+    <div class="SectionBody">
+        <img src="image/qsl/qsl.jpg" style="width: 90%;">
+        <img src="image/qsl/qsl-v2.png" style="width: 90%;">
+        <img src="image/qsl/qsl2.png" style="width: 90%;">
+    </div>
+
+    <div class="SectionBody" style="color:#ff88aa; font-size: 18px; letter-spacing: 2px; margin: 30px 0;">73!</div>
 
 </template>
 
@@ -843,6 +666,8 @@ MathJax.Hub.Config({
 <script src="./script/framework/framework.js"></script>
 
 <script src="./script/framework/list.js"></script>
+
+<script src="./script/framework/station_log.js"></script>
 
 <script src="./script/framework/inspiration.js"></script>
 

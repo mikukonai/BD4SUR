@@ -10,6 +10,16 @@
         "cover":     ""
     },
     {
+        "title":     "莫尔斯编码",
+        "date":      "2020-12-08",
+        "updates":  ["2021-01-12"],
+        "authors":  ["Mikukonai"],
+        "category":  "通信理论",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
         "title":     "软件定义无线电",
         "date":      "2020-12-08",
         "updates":  ["2021-01-10"],
@@ -56,6 +66,56 @@
         "authors":  ["Mikukonai"],
         "category":  "电磁理论",
         "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "业余业务频率划分",
+        "date":      "2020-12-08",
+        "updates":  ["2021-01-12"],
+        "authors":  ["Mikukonai"],
+        "category":  "政策法规",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "业余电台频率使用推荐规范",
+        "date":      "2020-12-08",
+        "updates":  ["2021-01-12"],
+        "authors":  ["Mikukonai"],
+        "category":  "政策法规",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "中国业余无线电呼号分区",
+        "date":      "2020-12-08",
+        "updates":  ["2021-01-12"],
+        "authors":  ["Mikukonai"],
+        "category":  "政策法规",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "业余无线电相关法规汇编",
+        "date":      "2020-12-08",
+        "updates":  ["2021-01-12"],
+        "authors":  ["Mikukonai"],
+        "category":  "政策法规",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "常用数值表",
+        "date":      "2020-12-08",
+        "updates":  ["2021-01-12"],
+        "authors":  ["Mikukonai"],
+        "category":  "电磁理论",
+        "copyright": "杂项",
         "tags":     [],
         "cover":     ""
     },
