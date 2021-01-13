@@ -250,6 +250,25 @@
         "note":     ""
     },
     {
+        "time":     "2020-12-26 11:25",
+        "callsign": "RS0ISS",
+        "freq":     "145.800",
+        "mode":     "NFM/SSTV",
+        "rst":      "-",
+
+        "rig":      "Kenwood D-700",
+        "ant":      "棒状天线",
+        "pwr":      "25W",
+        "qth":      "ISS",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "(Rx only)",
+        "qth_self": "家楼顶",
+
+        "note":     "参加2020年12月ARISS的SSTV活动，接收SSTV。<a target=\"_blank\" href=\"./image/ariss_sstv.jpg\">接收到的图片</a>。<a target=\"_blank\" href=\"./image/ariss-sstv-award.jpg\">活动证书</a>。"
+    },
+    {
         "time":     "2020-12-26 21:20",
         "callsign": "BH9FLV",
         "freq":     "439.675R",
