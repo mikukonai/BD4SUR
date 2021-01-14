@@ -1,0 +1,361 @@
+<!-- Framework Iroha -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Frame Iroha - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+<script src="../script/framework/jquery/jquery.easing.js"></script>
+
+<!--页面自定义样式开始-->
+<style>
+
+canvas {
+    display: block;
+    border: 1px solid #aaaaaa;
+    margin: 10px auto 10px auto;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<canvas id="time" style="width:330px; height:100px;" width="330" height="100"></canvas>
+
+<div style="text-align: center;">
+    <button id="square" class="MikumarkButton">方波</button>
+    <button id="sine" class="MikumarkButton">正弦波</button>
+    <button id="sweep" class="MikumarkButton">扫频</button>
+    <button id="filter" class="MikumarkButton">方波加变宽矩形窗</button>
+</div>
+
+<canvas id="freq" style="width:330px; height:200px;" width="330" height="200"></canvas>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/signal.js"></script>
+<script src="../script/canvas.js"></script>
+<script>
+
+// 将实数序列转换为复数序列
+Array.prototype.toComplexList = function() {
+    let list = this;
+    let clist = new Array();
+    let normLen = (LOG[list.length] === undefined) ? parseInt(Math.pow(2, parseInt(Math.log2(list.length) + 1))) : list.length;
+    for(let i = 0; i < normLen; i++) {
+        if(list[i] !== undefined) {
+            clist.push(new Complex(list[i], 0));
+        }
+        else {
+            clist.push(new Complex(0, 0));
+        }
+    }
+    return clist;
+};
+
+function clear(canvas) {
+    canvas.height = canvas.height;
+}
+
+function adaptRatio(context) {
+    var devicePixelRatio = window.devicePixelRatio || 1;
+    var backingStoreRatio = context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
+    return devicePixelRatio / backingStoreRatio;
+}
+
+function canvasInit(canvas) {
+    let context = canvas.getContext('2d');
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+    canvas.width = WIDTH * adaptRatio(context);
+    canvas.height = HEIGHT * adaptRatio(context);
+}
+
+
+function plot(xs, ys, canvas) {
+    let context = canvas.getContext('2d');
+
+    // const WIDTH = canvas.width;
+    // const HEIGHT = canvas.height;
+
+    const SHIFT  = ((Math.max.apply(null, ys) - Math.min.apply(null, ys)) === 0) ? (Math.max.apply(null, ys) * 0.05) : (Math.max.apply(null, ys) - Math.min.apply(null, ys)) * 0.05;
+    var XMIN   = Math.min.apply(null, xs) - SHIFT;
+    var XMAX   = Math.max.apply(null, xs) + SHIFT;
+    var YMIN   = Math.min.apply(null, ys) - SHIFT;
+    var YMAX   = Math.max.apply(null, ys) + SHIFT;
+    var XRANGE = XMAX - XMIN;
+    var YRANGE = YMAX - YMIN;
+
+    // if(YRANGE <= 1) {
+    //     YRANGE = Math.abs(YMAX);
+    //     if(YMAX > 0) {
+    //         YMIN = 0;
+    //     }
+    //     else {
+    //         YMIN = YMAX;
+    //         YMAX = 0;
+    //     }
+    // }
+
+    const toCanvasX = function(x) {
+        return (x-XMIN) * canvas.width / XRANGE;
+    };
+    const toCanvasY = function(y) {
+        return (YMAX-y) * canvas.height / YRANGE;
+    };
+
+    // background
+    context.fillStyle = '#000000';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    // axis
+    context.strokeStyle = '#555555';
+    context.beginPath();
+    context.moveTo(toCanvasX(XMIN), toCanvasY(0));
+    context.lineTo(toCanvasX(XMAX), toCanvasY(0));
+    context.stroke();
+    context.beginPath();
+    context.moveTo(toCanvasX(0), toCanvasY(YMIN));
+    context.lineTo(toCanvasX(0), toCanvasY(YMAX));
+    context.stroke();
+
+    // number
+    context.font = '13px Arial';
+    context.fillStyle = '#aaaaaa';
+    context.fillText((Math.round((YMAX-SHIFT) * 1000) / 1000).toString(), toCanvasX(0)+5, toCanvasY(YMAX)+12);
+    context.fillText((Math.round((YMIN+SHIFT) * 1000) / 1000).toString(), toCanvasX(0)+5, toCanvasY(YMIN)-8);
+    context.fillText((Math.round((XMIN-SHIFT) * 1000) / 1000).toString(), toCanvasX(XMIN), toCanvasY(0)-5);
+    context.fillText((Math.round((XMAX+SHIFT) * 1000) / 1000).toString(), toCanvasX(XMAX)-50, toCanvasY(0)-5);
+
+    context.strokeStyle = '#00bb66';
+    context.beginPath();
+    context.moveTo(toCanvasX(xs[0]), toCanvasY(ys[0]));
+    for(let i = 0; i < xs.length; i++) {
+        // context.beginPath();
+        // context.moveTo(toCanvasX(xs[i]), toCanvasY(0));
+        context.lineTo(toCanvasX(xs[i]), toCanvasY(ys[i]));
+        // context.stroke();
+
+        // context.fillRect(toCanvasX(xs[i]), toCanvasY(ys[i]), 1, 1);
+    }
+    context.stroke();
+}
+
+// 将[0~SIZE)序列做周期延拓，然后取[-0.5SIZE~0.5SIZE)
+function reverse(seq, size) {
+    let newSeq = new Array();
+    for(let i = 0; i < size / 2; i++) {
+        newSeq[i] = seq[i + size / 2];
+    }
+    for(let i = size / 2; i < size; i++) {
+        newSeq[i] = seq[i - size / 2];
+    }
+    return newSeq;
+}
+
+// 输入Wave中的波形[0~SIZE)
+// 输出频谱实部[-pi~pi)
+function RealFFT(input, SIZE) {
+    let IN = input.toComplexList();
+    let OUT = FFT(IN, IN.length);
+    // 取实部
+    let outRe = new Array();
+    for(let i = 0; i < OUT.length; i++) {
+        // outRe.push(Math.log(Math.abs(OUT[i].rep)));
+        // outRe[i] = Math.sqrt(OUT[i].imp * OUT[i].imp + OUT[i].rep * OUT[i].rep);
+        outRe[i] = OUT[i].rep;
+    }
+    // 平移到[-pi~pi)
+    // return reverse(outRe, SIZE);
+    return outRe;
+}
+function RealIFFT(input, SIZE) {
+    let IN = input.toComplexList();
+    let OUT = IFFT(IN, IN.length);
+    // 取实部
+    let outRe = new Array();
+    for(let i = 0; i < OUT.length; i++) {
+        outRe[i] = OUT[i].rep;
+    }
+    return outRe;
+}
+
+// https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform
+const NormRandom = function() {
+    let U1 = Math.random();
+    let U2 = Math.random();
+    let Z0 = Math.sqrt(-2 * Math.log2(U1)) * Math.cos(2 * Math.PI * U2);
+    let Z1 = Math.sqrt(-2 * Math.log2(U2)) * Math.cos(2 * Math.PI * U1);
+    return Z1;
+};
+
+
+// 预置波形：[0~SIZE)
+// 都是一个周期的
+const Wave = {
+    square: function(ratio, SIZE) {
+        let inRep = new Array(SIZE);
+        // 方波
+        for(let i = 0; i < SIZE; i++) {
+            inRep[i] = 0;
+        }
+        for(let i = 0; i < SIZE / 2 * ratio; i++) {
+            inRep[i] = 1;
+            inRep[SIZE-1-i] = 1;
+        }
+        return inRep;
+    },
+    dirac: function(phase, energy, SIZE) {
+        let inRep = new Array(SIZE);
+        for(let i = 0; i < SIZE; i++) {
+            inRep[i] = 0;
+        }
+        inRep[Math.round(SIZE * phase)] = energy;
+        return inRep;
+    },
+    sine: function(period, SIZE) {
+        let inRep = new Array(SIZE);
+        for(let i = 0; i < SIZE; i++) {
+            inRep[i] = Math.sin((2 * Math.PI / period) * i);
+        }
+        return inRep;
+    },
+    noise_sine: function(period, SIZE) {
+        let inRep = new Array(SIZE);
+        for(let i = 0; i < SIZE; i++) {
+            inRep[i] = Math.sin((2 * Math.PI / period) * i) + NormRandom() * 0.05;
+        }
+        return inRep;
+    },
+    gauss: function(SIZE) {
+        let seq = new Array(SIZE);
+        for(let i = 0; i < SIZE; i++) {
+            seq[i] = NormRandom();
+        }
+        return seq;
+    },
+}
+
+
+
+
+$(function() {
+    const timeCanvas = document.getElementById('time');
+    const freqCanvas = document.getElementById('freq');
+
+    canvasInit(timeCanvas);
+    canvasInit(freqCanvas);
+
+    const SIZE = 512;
+
+    let timer = 0;
+
+    let xs = new Array(SIZE);
+    for(let i = 0; i < SIZE; i++) {
+        xs[i] = i - SIZE / 2;
+    }
+    let x0 = new Array(SIZE);
+    for(let i = 0; i < SIZE; i++) {
+        x0[i] = i;
+    }
+
+    let input = Wave.square(0.1, SIZE);
+    let outRep = RealFFT(input, SIZE);
+
+    
+    plot(xs, reverse(input,SIZE), timeCanvas);
+    plot(xs, reverse(outRep,SIZE), freqCanvas);
+
+    $('#filter').click(function() {
+        clearInterval(timer);
+        var winWidth = 0;
+        var delta = 0.01;
+        timer = setInterval(function() {
+            // 输入方波
+            let input = Wave.square(0.2, SIZE);
+            // 矩形窗滤波器
+            let filter = Wave.square(winWidth, SIZE);
+            // 输入信号的频谱
+            let inputSpect = RealFFT(input, SIZE);
+            // 频域相乘
+            let res = new Array();
+            for(let i = 0; i < SIZE; i++) {
+                res[i] = inputSpect[i] * filter[i];
+            }
+            // 结果反变换为时域
+            let resTime = RealIFFT(res, SIZE);
+
+            clear(freqCanvas);
+            clear(timeCanvas);
+            plot(xs, reverse(input,SIZE), timeCanvas);
+            plot(xs, reverse(resTime,SIZE), freqCanvas);
+            winWidth += delta;
+            if(winWidth >= 0.99) {
+                delta = -0.01;
+            }
+            else if(winWidth <= 0){
+                delta = 0.01;
+            }
+        }, 20);
+    });
+
+    $('#square').click(function() {
+        clearInterval(timer);
+        clear(freqCanvas);
+        clear(timeCanvas);
+        let input = Wave.square(0.1, SIZE);
+        let outRep = RealFFT(input, SIZE);
+        plot(xs, reverse(input,SIZE), timeCanvas);
+        plot(xs, reverse(outRep,SIZE), freqCanvas);
+    });
+
+    $('#sweep').click(function() {
+        clearInterval(timer);
+        var phase = 0;
+        var delta = 0.01;
+        timer = setInterval(function() {
+            clear(freqCanvas);
+            clear(timeCanvas);
+            let input = Wave.dirac(phase, 1, SIZE);
+            let outRep = RealIFFT(input, SIZE);
+            plot(xs, reverse(input,SIZE), timeCanvas);
+            plot(xs, reverse(outRep,SIZE), freqCanvas);
+            phase += delta;
+            if(phase >= 0.98) {
+                delta = -0.01;
+            }
+            else if(phase <= 0){
+                delta = 0.01;
+            }
+        }, 50);
+    });
+
+    $('#sine').click(function() {
+        clearInterval(timer);
+        clear(freqCanvas);
+        clear(timeCanvas);
+        let input = Wave.sine(20, SIZE);
+        let outRep = RealFFT(input, SIZE);
+        plot(x0, input, timeCanvas);
+        plot(xs, reverse(outRep,SIZE), freqCanvas);
+    });
+
+});
+
+$('#clear').click(function() {
+    clear();
+});
+
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>
