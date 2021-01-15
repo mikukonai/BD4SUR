@@ -70,6 +70,26 @@
         "cover":     ""
     },
     {
+        "title":     "IC-705内部结构",
+        "date":      "2020-12-08",
+        "updates":  ["2021-01-14"],
+        "authors":  ["Mikukonai"],
+        "category":  "设备",
+        "copyright": "",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "IC-705购买决策复盘",
+        "date":      "2020-09-14",
+        "updates":  ["2021-01-11"],
+        "authors":  ["Mikukonai"],
+        "category":  "设备",
+        "copyright": "",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
         "title":     "天线与馈线",
         "date":      "2020-12-08",
         "updates":  ["2021-01-11"],
@@ -134,8 +154,8 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-12"],
         "authors":  ["Mikukonai"],
-        "category":  "电磁理论",
-        "copyright": "杂项",
+        "category":  "杂项",
+        "copyright": "",
         "tags":     [],
         "cover":     ""
     },
@@ -144,27 +164,17 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-14"],
         "authors":  ["Mikukonai"],
-        "category":  "电磁理论",
-        "copyright": "杂项",
-        "tags":     [],
-        "cover":     ""
-    },
-    {
-        "title":     "IC-705内部结构",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-14"],
-        "authors":  ["Mikukonai"],
-        "category":  "设备",
+        "category":  "杂项",
         "copyright": "",
         "tags":     [],
         "cover":     ""
     },
     {
-        "title":     "IC-705购买决策复盘",
-        "date":      "2020-09-14",
-        "updates":  ["2021-01-11"],
+        "title":     "业余无线电亚文化",
+        "date":      "2021-01-16",
+        "updates":  ["2021-01-16"],
         "authors":  ["Mikukonai"],
-        "category":  "设备",
+        "category":  "杂项",
         "copyright": "",
         "tags":     [],
         "cover":     ""
