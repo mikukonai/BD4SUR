@@ -400,5 +400,43 @@
         "qth_self": "家",
 
         "note":     "与东南大学集体电台的首次通联，对方操作员0号。电台位置：九龙湖校区大活601。"
+    },
+    {
+        "time":     "2021-01-16 16:57",
+        "callsign": "BD4STQ",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "森海克斯8800",
+        "ant":      "?",
+        "pwr":      "?",
+        "qth":      "江宁景枫",
+
+        "rig_self": "UV-5R",
+        "ant_self": "拉杆",
+        "pwr_self": "5W",
+        "qth_self": "公司",
+
+        "note":     ""
+    },
+    {
+        "time":     "2021-01-16 19:41",
+        "callsign": "BD4REC",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "?",
+        "ant":      "1.2m玻璃钢",
+        "pwr":      "5W",
+        "qth":      "天印大道",
+
+        "rig_self": "UV-5R",
+        "ant_self": "拉杆",
+        "pwr_self": "5W",
+        "qth_self": "公司",
+
+        "note":     "江苏无协中继点名"
     }
 ]
