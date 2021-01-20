@@ -232,11 +232,11 @@ body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Aria
 }
 .ArticleTitle {
     text-align: left;
-    padding: 7px 0;
+    padding: 8px 0;
 }
 .ArticleTitleLink {
     color: #333;
-    font-size: 15px;
+    font-size: 16px;
     letter-spacing: 1px;
     cursor: pointer;
 }
@@ -253,10 +253,10 @@ body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Aria
     line-height: inherit;
     background-color: #e8f6ff;
     color: #1ea0f0;
-    font-size: 10px;
+    font-size: 13px;
     border: none;
     border-radius: 10px;
-    padding: 1px 4px 1px 4px;
+    padding: 1px 5px 1px 5px;
     margin-left: 5px;
 }
 .ArticleCover {
