@@ -438,5 +438,24 @@
         "qth_self": "公司",
 
         "note":     "江苏无协中继点名"
+    },
+    {
+        "time":     "2021-01-22 19:45",
+        "callsign": "BG4WIP",
+        "freq":     "431.7375",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "?",
+        "ant":      "?",
+        "pwr":      "?",
+        "qth":      "?",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "10W",
+        "qth_self": "家",
+
+        "note":     "石城73俱乐部点名"
     }
 ]
