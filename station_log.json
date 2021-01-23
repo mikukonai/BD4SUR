@@ -457,5 +457,24 @@
         "qth_self": "家",
 
         "note":     "石城73俱乐部点名"
+    },
+    {
+        "time":     "2021-01-23 19:46",
+        "callsign": "BH4WHQ",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "Yaesu FT-991A",
+        "ant":      "玻璃钢",
+        "pwr":      "5W",
+        "qth":      "丁家庄32楼",
+
+        "rig_self": "UV-5R",
+        "ant_self": "原装",
+        "pwr_self": "5W",
+        "qth_self": "公司",
+
+        "note":     "江苏无协中继点名"
     }
 ]
