@@ -90,6 +90,16 @@
         "cover":     ""
     },
     {
+        "title":     "FT-817原理图",
+        "date":      "2021-01-24",
+        "updates":  [],
+        "authors":  ["Mikukonai"],
+        "category":  "设备",
+        "copyright": "转载",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
         "title":     "天线与馈线",
         "date":      "2020-12-08",
         "updates":  ["2021-01-11"],
