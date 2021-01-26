@@ -37,7 +37,7 @@ function LoadList(pageId) {
 <tr class="ArticleItem enter" data-title="${title}">
     <td class="ArticleTitle">
         <span class="ArticleTitleLink SPA_TRIGGER" data-target="${pageId}/${TitleToFilename(title)}">${title}</span>
-        <div style="font-size: 9px; color: #c0d0e0; margin-top: 4px;">${date}</div>
+        <div style="font-size: 12px; color: #c0d0e0; margin-top: 4px;">${date}</div>
     </td>
     <td class="ArticleInfo"><span class="ArticleTag">${category}</span></td>
 </tr>`;

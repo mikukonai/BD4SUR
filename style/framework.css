@@ -99,7 +99,7 @@ body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Aria
 
 /* 导航按钮组件 */
 .NavbarItem { position: relative; height: var(--NavbarHeight); min-width: 60px; font-size: 14px; line-height: var(--NavbarHeight); padding: auto 15px; border: none; background-color: transparent; align-items: center;}
-.NavbarItem:hover { color: #1ea0f0; }
+.NavbarItem:hover { color: #1ea0f0; background-color: #1ea0f010;}
 .NavbarItem[active="true"] { color: #1ea0f0; }
 .NavbarItem[active="true"]:after { content: "."; display: block; position: absolute; left: 0; top: 0; width: 100%; color: rgba(0,0,0,0); box-shadow: inset 0 -3px #1ea0f0; animation: NavbarItemActiveAnimation 0.3s cubic-bezier(0.4, 0, 0.4, 1) 0s;}
 @keyframes NavbarItemActiveAnimation { 0% { opacity: 0; width: 0; } to { opacity: 1; width: 100%; }}
@@ -172,22 +172,54 @@ body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Aria
 #InspirationMenuList { margin-top: 0; margin-bottom: 30px;}
 .InspirationMenuItem { display: block; height: 40px; line-height: 40px; padding-left: 30px; cursor: pointer;}
 .InspirationMenuItem:before { content: "❖"; padding-right: 10px;}
-.InspirationMenuItem:hover, .InspirationMenuItem_active { color: #1a73e8; background: #e8f0fe; /*border-radius: 0 24px 24px 0;*/}
-.InspirationMenuItemHrline { position: relative; margin: 18px 0 18px 0; border-bottom: 1px solid #dadce0; font-size: 13px; color: #1a73e8;}
+.InspirationMenuItem:hover, .InspirationMenuItem_active { color: #1ea0f0; background: #f0f9ff; /*border-radius: 0 24px 24px 0;*/}
+.InspirationMenuItemHrline { position: relative; margin: 18px 0 18px 0; border-bottom: 1px solid #dadce0; font-size: 13px; color: #1ea0f0;}
 /* 灵感页框架 */
 .InspirationContainer { background: none; width: 100%; height: 100%;}
 .InspirationEnding { text-align: center; font-size: 12px; letter-spacing: 2px; color: #bbbbbb; padding: 20px 0;}
 /* Poster 样式 */
-.Poster { margin: 0; padding: 10px 10px 10px 10px; border-bottom: 1px solid #e0e0e0; border-radius: 0; color: #666666; background-color: #ffffff; text-align: left; opacity:0.0;}
-@media(min-width:651px){ /* Desktop */.Poster { padding: 20px 40px 20px 40px;}}
-.PosterTitle { display: block; width: fit-content; margin:3px 20px 0px 60px; padding:0; border-bottom: 1px solid #dddddd; color:#000; line-height: 27px; font-size:17px; letter-spacing: 1px;}
-.PosterSubtitle { display: block; text-align: left; margin:0px 20px 8px 60px; padding:0; line-height: 22px; color:#aaaaaa; font-size:13px;}
-.PosterAvater { float:left; position:relative; top:7px; left:6px; margin:0; padding:0; border-radius:50%; border: 0.5px solid #eeeeee; width:40px; height:40px;}
+@media(min-width:651px){ /* Desktop */
+    .Poster {
+        margin: 20px 0;
+        padding: 0px 30px;
+    }
+    .PosterHeader {
+        margin-inline-start: -30px;
+        margin-top: 30px;
+        padding: 10px 30px;
+        background: linear-gradient(90deg, #eff9ff, #fff);
+        border-radius: 100px 0 0 100px;
+    }
+    .PosterTitle { margin:0px; padding:0; color:#1ea0f0; font-size:16px; letter-spacing: 1px; font-weight: bold;}
+    .PosterDate {
+        display: inline-block;
+        color: #b1b6b9; font-weight: normal; font-size: 12px;
+        padding-left: 8px;
+    }
+}
+@media(max-width:650px) { /* Mobile */
+    .Poster {
+        margin: 10px 0;
+        padding: 0px 25px;
+        /* border-bottom: 1px solid #e0e0e0; */
+        color: #666666; background-color: #ffffff; text-align: left; opacity:0.0;
+    }
+    .PosterHeader {
+        margin-inline-start: -25px;
+        margin-top: 30px;
+        padding: 8px 22px;
+        background: linear-gradient(90deg, #eff9ff, #fff);
+        border-left: 3px solid #1ea0f0;
+    }
+    .PosterTitle { display: block; margin:0px; padding:0; color:#1ea0f0; font-size:16px; letter-spacing: 1px; font-weight: bold;}
+    .PosterDate { display: block; color: #b1b6b9; font-weight: normal; font-size: 12px; margin-top: 4px; }
+}
+
 .Poster blockquote { font-size: 13px; line-height: 21px; color:#888888; margin:10px 10px 10px 10px; padding: 8px 10px; border: 1px solid #9ee0f8; border-radius: 5px; box-shadow: #c0ebfb 0 0 5px 0;}
-.PosterParagraph { margin: 10px 5px 10px 6px; padding: 0; color: #333; font-size: 14px; line-height: 23px; display: block; text-indent: 0;}
+.PosterParagraph { margin: 10px 0px; padding: 0; color: #333; font-size: 14px; line-height: 23px; display: block; text-indent: 0;}
 .PosterLink { color: #558bc4; text-decoration: none; cursor: pointer;}
 .PosterLink:hover { color: #0066dd; text-decoration: none;}
-.PosterTag { color: #00aaff; font-weight: bold;}
+.PosterTag { color: #1ea0f0; font-weight: bold;}
 
 /****************************************/
 /*  列 表 样 式 */

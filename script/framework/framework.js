@@ -9,8 +9,6 @@
 //
 ////////////////////////////////////////////////////////
 
-// 默认灵感头像
-const DEFAULT_POSTER_AVATAR = `./image/avatar.jpg`;
 // 监听器节流延时（无需纳入配置项）
 const OBSERVER_THROTTLE_DELAY = 100;
 
