@@ -370,18 +370,15 @@ ul {
 .StationLog td:last-child, .StationLog th:last-child { border-right: none; }
 .StationLog td:first-child, .StationLog th:first-child { border-left: none; }
 
-.InfoTable td, .InfoTable th{
-    text-align: left;
-    border: none;
-    padding: 1px 3px;
+.StationLogItem {
+    font-size: 12px;
+    cursor: pointer;
 }
-
-.LogColoumInfo {
-    font-weight: bold;
-    width: 25px;
+.StationLogItem:hover {
+    background-color: #f0f9ff;
 }
-.LogColoumNote {
-    max-width: 100px;
+.StationLogItemDetails {
+    font-size: 12px;
 }
 </style>
 <template id="logs">
@@ -397,10 +394,9 @@ ul {
             <tr>
                 <th>时间</th>
                 <th>对方呼号</th>
-                <th>频率/模式/RST</th>
-                <th>对方信息</th>
-                <th>本台信息</th>
-                <th style="max-width: 50px;">备注</th>
+                <th>频率</th>
+                <th>模式</th>
+                <th>RST</th>
             </tr>
         </table>
 

@@ -133,34 +133,21 @@ function LoadStationLog() {
                 let date = item.time.split(" ")[0];
                 let time = item.time.split(" ")[1];
                 $("#StationLogTable").append(`
-    <tr data-date="${date}">
-        <td>${date}<br>${time}</td>
-        <td>${item.callsign}</td>
-        <td>
-            <table class="InfoTable">
-                <tr><td class="LogColoumInfo">FREQ</td><td class="LogColoumInfoValue">${item.freq}</td></tr>
-                <tr><td class="LogColoumInfo">MODE</td><td class="LogColoumInfoValue">${item.mode}</td></tr>
-                <tr><td class="LogColoumInfo">RST</td><td class="LogColoumInfoValue">${item.rst}</td></tr>
-            </table>
-        </td>
-        <td>
-            <table class="InfoTable">
-                <tr><td class="LogColoumInfo">RIG</td><td class="LogColoumInfoValue">${item.rig}</td></tr>
-                <tr><td class="LogColoumInfo">ANT</td><td class="LogColoumInfoValue">${item.ant}</td></tr>
-                <tr><td class="LogColoumInfo">PWR</td><td class="LogColoumInfoValue">${item.pwr}</td></tr>
-                <tr><td class="LogColoumInfo">QTH</td><td class="LogColoumInfoValue">${item.qth}</td></tr>
-            </table>
-        <td>
-            <table class="InfoTable">
-                <tr><td class="LogColoumInfo">RIG</td><td class="LogColoumInfoValue">${item.rig_self}</td></tr>
-                <tr><td class="LogColoumInfo">ANT</td><td class="LogColoumInfoValue">${item.ant_self}</td></tr>
-                <tr><td class="LogColoumInfo">PWR</td><td class="LogColoumInfoValue">${item.pwr_self}</td></tr>
-                <tr><td class="LogColoumInfo">QTH</td><td class="LogColoumInfoValue">${item.qth_self}</td></tr>
-            </table>
-        </td>
-        <td class="LogColoumNote">${item.note}</td>
-    </tr>
-                `);
+<tr data-date="${date}" onclick="$('#StationLog_${i}').toggle();" class="StationLogItem">
+    <td>${date} ${time}</td>
+    <td><strong>${item.callsign}</strong></td>
+    <td>${item.freq}</td>
+    <td>${item.mode}</td>
+    <td>${item.rst}</td>
+</tr>
+<tr id="StationLog_${i}" style="display: none;" class="StationLogItemDetails">
+    <td colspan="5">
+        <strong>对方 </strong>${item.rig} / ${item.ant} / ${item.pwr} / ${item.qth}<br>
+        <strong>本台 </strong>${item.rig_self} / ${item.ant_self} / ${item.pwr_self} / ${item.qth_self}<br>
+        <strong>备注 </strong>${item.note}
+    </td>
+</tr>
+`);
             }
 
             RenderTimeline(log);
