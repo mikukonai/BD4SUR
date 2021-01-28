@@ -134,7 +134,7 @@ function LoadArticle(PageID, ArticleID) {
     // 渲染文章正文
     function Render(mikumark) {
         // 标题
-        document.getElementsByTagName("title")[0].innerHTML = `${mikumark.title} / Project Aurora`;
+        document.getElementsByTagName("title")[0].innerHTML = `${mikumark.title} / BD4SUR 业余无线电台`;
         $('#StickyTitle').html(mikumark.title);
         $('#MikumarkArticleTitle').html(mikumark.title);
 

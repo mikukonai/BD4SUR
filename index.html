@@ -97,7 +97,7 @@
         }
         </style>
         <div style="font-size: 20px; text-align: center; line-height: 32px; color: #ccc;" class="RBGradient">BD4SUR</div>
-        <div class="FooterContent">版权所有 © 2020-<span class="CopyrightYear"></span> BD4SUR (Mikukonai)</div>
+        <div class="FooterContent">版权所有 © 2020-<span class="CopyrightYear"></span> BD4SUR</div>
         <div class="FooterContent">
             <a class="FooterLink" href="https://mikukonai.com/" target="_blank">博客首页</a> / <a class="FooterLink" href="http://www.crac.org.cn/" target="_blank">CRAC</a> / <a class="FooterLink" href="https://www.iaru.org/" target="_blank">IARU</a>
         </div>
@@ -118,10 +118,8 @@
         <img src="image/licenses.jpg" style="width: 90%; max-width: 600px; margin: 20px auto; border-radius: 10px;">
     </div>
 
-    <div style="text-align: center; margin: 10px 0;">
-        <div style="text-align: center;">
-            <a href="./html/exam.html">模拟考试</a> / <a href="./html/cw.html">CW练习器</a> / <a href="https://mikukonai.com">博客</a>
-        </div>
+    <div style="font-size: 14px; text-align: center; margin: 10px 0;">
+        <a href="./html/exam.html">模拟考试</a> / <a href="./html/cw.html">CW练习器</a> / <a href="https://mikukonai.com">博客</a>
     </div>
 
 </template>
@@ -296,10 +294,16 @@ ul {
     </div>
 
     <div class="RigInfo">
-        <div class="RigTitle">八木天线</div>
-        <div class="RigSubtitle">五单元UHF单波段八木天线</div>
+        <div class="RigTitle">五单元UHF八木天线</div>
         <div class="RigIntro">
             <p>仅工作在业余0.7m波段，主瓣方向标称增益8dBi。</p>
+        </div>
+    </div>
+
+    <div class="RigInfo">
+        <div class="RigTitle">七单元UHF八木天线</div>
+        <div class="RigIntro">
+            <p>仅工作在业余0.7m波段，主瓣方向标称增益14dBi。</p>
         </div>
     </div>
 
@@ -338,6 +342,16 @@ ul {
 
 <!--日志模板-->
 <style>
+.StationLogSummary {
+    font-size: 13px;
+    color: #919da8;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+.StationLogSummary:hover {
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
+}
 .StationLog {
     text-align: center;
     line-height: 22px;
@@ -382,112 +396,30 @@ ul {
 }
 </style>
 <template id="logs">
-    <!--时间线-->
-    <div class="TimelineContainer">
-        <table class="Timeline">
-            <tr id="WeekCountContainer"></tr>
-            <tr id="DaysContainer"></tr>
-        </table>
-    </div>
-    <div class="StationLog">
-        <table id="StationLogTable">
-            <tr>
-                <th>时间</th>
-                <th>对方呼号</th>
-                <th>频率</th>
-                <th>模式</th>
-                <th>RST</th>
-            </tr>
-        </table>
-
-        <!--
-        <details>
-            <summary style="text-align: center;">收听日志</summary>
-            <table>
+    <details>
+        <summary class="StationLogSummary">
+            点击展开电台日志<br><span style="font-weight: normal;">根据《业余无线电台管理办法》第三十条：业余无线电台的通信时间、通信频率、通信模式和通信对象等内容应当记入电台日志。电台日志应当保留两年，供无线电管理机构检查。</span>
+        </summary>
+        <!--时间线-->
+        <div class="TimelineContainer">
+            <table class="Timeline">
+                <tr id="WeekCountContainer"></tr>
+                <tr id="DaysContainer"></tr>
+            </table>
+        </div>
+        <!--电台日志-->
+        <div class="StationLog">
+            <table id="StationLogTable">
                 <tr>
-                    <th>时间<br>(BJT)</th>
-                    <th>频率<br>(MHz)</th>
+                    <th>时间</th>
+                    <th>对方呼号</th>
+                    <th>频率</th>
                     <th>模式</th>
-                    <th>设备/天线</th>
-                    <th>内容/信号报告</th>
-                </tr>
-                <tr>
-                    <td>20200821/2259</td>
-                    <td>4.215</td>
-                    <td>CW</td>
-                    <td>RTL-SDR/有源小环</td>
-                    <td>上海海岸电台XSG，信号599</td>
-                </tr>
-                <tr>
-                    <td>20200821/2300</td>
-                    <td>8.433</td>
-                    <td>CW</td>
-                    <td>RTL-SDR/有源小环</td>
-                    <td>上海海岸电台XSG，信号599</td>
-                </tr>
-                <tr>
-                    <td>20200821/2300</td>
-                    <td>8.484</td>
-                    <td>CW</td>
-                    <td>RTL-SDR/有源小环</td>
-                    <td>首尔海岸电台HLG，内容为“CQ CQ CQ DE HLG HLG HLG QSX 8MHZ K”，信号599</td>
-                </tr>
-                <tr>
-                    <td>20200822/0030</td>
-                    <td>3.6225</td>
-                    <td>USB</td>
-                    <td>RTL-SDR/有源小环</td>
-                    <td>JMH气象传真
-                        <details>
-                            <summary>详情</summary>
-                            <img src="./image/20200822-jmh.jpg" class="Image">
-                            <p>选择USB模式，载频对齐3620kHz，通带宽5kHz，使频谱落在通带的中心。将音频信号输入到虚拟声卡，再使用软件接收，即可绘制出黑白两色的气象传真。</p>
-                            <ul>
-                                <li><a target="_blank" href="https://ibcl.us/JMHWeather-Fax_20180706/">参考1</a></li>
-                                <li><a target="_blank" href="https://bh8sel.com/5179.html">参考2</a></li>
-                                <li><a target="_blank" href="http://www2.plala.or.jp/hikokibiyori/soft/kgfax/">接收软件</a></li>
-                                <li><a target="_blank" href="https://www.jma-net.go.jp/common/177jmh/JMH-ENG.pdf">频率和时间表</a></li>
-                                <li><a target="_blank" href="https://www.jma.go.jp/en/g3/">日本气象厅官网的信息</a></li>
-                            </ul>
-                        </details>
-                    </td>
-                </tr>
-                <tr>
-                    <td>20200908/2210</td>
-                    <td>0.420</td>
-                    <td>AM</td>
-                    <td>PL-380</td>
-                    <td>禄口机场NDE，呼号Z</td>
-                </tr>
-                <tr>
-                    <td>20200911/2046</td>
-                    <td>0.440</td>
-                    <td>AM</td>
-                    <td>PL-380</td>
-                    <td>小丹阳NDB，呼号ID</td>
-                </tr>
-                <tr>
-                    <td>20200918/0129</td>
-                    <td>4.888</td>
-                    <td>CW</td>
-                    <td>IC-705/350M</td>
-                    <td>神秘CW电台，内容为“DE 9WFV 9WFV V QYE2 QYE2 QYE2”</td>
-                </tr>
-                <tr>
-                    <td>20201031/1446</td>
-                    <td>8.182</td>
-                    <td>CW</td>
-                    <td>IC-705/350M</td>
-                    <td>神秘CW电台，内容为“DE 9WFV 9WFV V QYE2 QYE2 QYE2”</td>
+                    <th>RST</th>
                 </tr>
             </table>
-            <p>参考资料：</p>
-            <ul>
-                <li><a target="_blank" href="http://www.zgjtb.com/2016-05/31/content_85259.htm">长江海事局全面规范长江水上甚高频使用</a></li>
-            </ul>
-        </details>
-        -->
-    </div>
+        </div>
+    </details>
 
     <!--正文容器-->
     <div class="InspirationContainer" id="InspirationContainer"></div>
@@ -564,6 +496,13 @@ ul {
                 <p><strong>2020-10-31</strong> 在家里架设一条15米长的馈线，从环境比较好的北侧小房间接到主卧，这样就可以躺在床上听短波了。短波损耗比较小，但是U/V段损耗非常大。今晚中继点名是直频方式进行，信号本来就很弱，接上这条馈线后就完全收不到什么信号了。在7050上第一次听到有人跟朴某对骂。</p>
             </details>
         </div>
+    </div>
+
+    <div class="SectionHeader">权利声明<div class="SectionHeaderComment">Copyright Notice</div></div>
+    <div class="ContentBlock">
+        <div class="SectionBody">版权所有 &copy; 2020-<span class="CopyrightYear"></span> BD4SUR</div>
+        <div class="SectionBody" style="font-size: smaller;">除另有声明外，所有<b>原创</b>内容均可在<br>①署电台呼号BD4SUR或链接 & ②非盈利 & ③无实质修改<br>的前提下使用和传播。</div>
+        <div class="SectionBody" style="font-size: smaller;">所有<b>非原创</b>内容均尽可能注明原作者或出处<br>且遵守合理使用原则。<br>在此感谢并致敬各位原作者。</div>
     </div>
 
     <div class="SectionHeader">图书资料共享<div class="SectionHeaderComment">Book Sharing</div></div>
