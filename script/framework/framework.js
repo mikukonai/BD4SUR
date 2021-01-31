@@ -73,26 +73,50 @@ function SPA_Render(pathString, callback) {
 
     // 每个格局各自的渲染流程，目前包括：注册监听器以处理渲染后动作、渲染格局对应的视图布局
 
-    // 博客/Wiki文章
-    if((PageID === "docs") && ArticleID !== undefined) {
-
-        // 显示返回和菜单按钮
-        $("#BackButton").show();
-        $(".MenuContainer").show();
-        // 控制导航栏的显示
-        if(GetMediaType() === "Desktop") {
-            $("#MainNavbar").show();
-        }
-        else if(GetMediaType() === "Mobile") {
-            $("#MainNavbar").hide();
-        }
-        // 创建菜单内容的锚点"ContentsContainer"
-        $("#MenuContentContainer").html(`<div id="ContentsContainer"></div>`);
-        // 页面内容（框架）
-        $('.SPA_MAIN_CONTAINER').html($(`template#${PageID}-article`).html());
-        LoadArticle(PageID, ArticleID);
+    // 门户格局公用渲染动作
+    function PortalConfigInit(PageID) {
+        $("title").html("BD4SUR 业余无线电台");  // 页面标题
+        $(".StickyTitleContainer").hide();      // 控制顶栏显示
+        $("#MainNavbar").show();                // 控制导航栏显示
+        $("#BackButton").hide();                // 不显示返回按钮
+        $(".MenuContainer").hide();             // 不显示菜单按钮
+        // 使用模板设置页面内容（框架）
+        $('.SPA_MAIN_CONTAINER').html($(`template#${PageID}`).html());
     }
 
+    // 资料（文章）
+    if(PageID === "docs") {
+        // 正文
+        if(ArticleID !== undefined) {
+            $("#BackButton").show();     // 显示返回按钮
+            $(".MenuContainer").show();  // 显示菜单按钮
+            // 控制导航栏的显示
+            if(GetMediaType() === "Desktop") { $("#MainNavbar").show(); }
+            else if(GetMediaType() === "Mobile") { $("#MainNavbar").hide(); }
+            // 创建菜单内容的锚点"ContentsContainer"
+            $("#MenuContentContainer").html(`<div id="ContentsContainer"></div>`);
+            // 页面内容（框架）
+            $('.SPA_MAIN_CONTAINER').html($(`template#${PageID}-article`).html());
+            // 载入文章主体内容
+            LoadArticle(PageID, ArticleID);
+        }
+        // 列表
+        else {
+            PortalConfigInit(PageID);
+            LoadList("docs");
+        }
+        
+    }
+    // 日志
+    else if(PageID === "logs") {
+        PortalConfigInit(PageID);
+        $("#BackButton").hide();     // 不显示返回按钮
+        $(".MenuContainer").show();  // 显示菜单（目录）按钮
+        // 创建菜单内容的锚点"ContentsContainer"
+        $("#MenuContentContainer").html(`<!--标签容器--><div id="InspirationMenuTags"></div><!--目录容器--><div id="InspirationMenuList"></div>`);
+        LoadInspirations();
+        LoadStationLog();
+    }
     // 其他 TODO 待开发，注意有些格局的初始化代码位于其他模块中，是动态加载动态执行的。这些模块之间的关系，后续需要妥善规划。
     else {
         // 页面标题
@@ -105,27 +129,6 @@ function SPA_Render(pathString, callback) {
         $(".MenuContainer").hide();
         // 页面内容（框架）
         $('.SPA_MAIN_CONTAINER').html($(`template#${PageID}`).html());
-
-        if(PageID === "logs") {
-            // 不显示返回按钮
-            $("#BackButton").hide();
-            // 显示菜单（目录）按钮
-            $(".MenuContainer").show();
-            // 创建菜单内容的锚点"ContentsContainer"
-            $("#MenuContentContainer").html(`
-                <!--标签容器-->
-                <div id="InspirationMenuTags"></div>
-                <!--目录容器-->
-                <div id="InspirationMenuList"></div>
-            `);
-            LoadInspirations();
-            LoadStationLog();
-        }
-        else if(PageID === "docs") {
-            // 默认排序方式
-            SORTING_OPTION = "category";
-            LoadList("docs");
-        }
     }
 
     // 所有格局共享的：渲染框架布局、格局切入时的初始化工作、SPA触发器注册，等等
@@ -260,7 +263,7 @@ function MenuToggle(state) {
 
     if(currentState === "on") {
         $("#MenuButton").attr("data-state", "off");
-        $("#MenuButton").html("menu");
+        $("#MenuButton").html(`<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path d="M896.704 569.087H127.296c-31.398 0-57.087-25.689-57.087-57.087 0-31.398 25.689-57.087 57.087-57.087h769.409c31.398 0 57.087 25.689 57.087 57.087-0.001 31.398-25.69 57.087-57.088 57.087zM953.791 266c0-31.398-25.689-57.087-57.087-57.087H127.296c-31.398 0-57.087 25.689-57.087 57.087 0 31.398 25.689 57.087 57.087 57.087h769.409c31.397 0 57.086-25.689 57.086-57.087z m-57.087 549.087H127.296c-31.398 0-57.087-25.689-57.087-57.087 0-31.398 25.689-57.087 57.087-57.087h769.409c31.398 0 57.087 25.689 57.087 57.087-0.001 31.398-25.69 57.087-57.088 57.087z" fill="#505050"></path></svg>`);
         if(GetMediaType() === "Desktop") {
             $("#MenuContainer").animate({width: "40px", height: "40px"}, 200, "easeOutExpo");
         }
@@ -272,7 +275,7 @@ function MenuToggle(state) {
     }
     else if(currentState === "off") {
         $("#MenuButton").attr("data-state", "on");
-        $("#MenuButton").html("close");
+        $("#MenuButton").html(`<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path d="M857.085876 995.34637L511.878687 650.139181 166.773873 995.34637a97.665379 97.665379 0 0 1-138.205725-138.10335L373.775337 512.035831 28.568148 166.828642A97.665379 97.665379 0 0 1 166.773873 28.725292L511.878687 373.932481 856.983501 28.725292A97.665379 97.665379 0 0 1 995.086852 166.828642L649.982038 512.035831 995.086852 857.24302a97.563004 97.563004 0 1 1-138.000976 138.10335z" fill="#505050"></path></svg>`);
         if(GetMediaType() === "Desktop") {
             $("#MenuContainer").css("border-radius", "20px");
             $("#MenuContainer").animate({width: "400px", height: "600px"}, 200, "easeOutExpo");

@@ -32,7 +32,7 @@
 <aside class="LeftAside">
     <!--左上：后退按钮-->
     <button id="BackButton" class="SideButton Raised Round" onclick="history.go(-1);" style="display: none;">
-        <img src="./image/icons/back-gray.png" style="height:16px;width:16px;margin-bottom: 2px; vertical-align: middle;">
+        <svg viewBox="0 0 1086 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M471.381333 33.978182a62.060606 62.060606 0 0 1 87.753697 87.784727L238.312727 442.554182h763.84194c37.794909 0 68.732121 29.106424 71.245575 66.435879l0.155152 4.902787a71.369697 71.369697 0 0 1-71.400727 71.369697H226.521212l320.853333 320.791273a62.060606 62.060606 0 0 1 3.599516 83.812849l-3.630546 3.971878a62.060606 62.060606 0 0 1-87.753697 0L51.386182 585.603879a93.028848 93.028848 0 0 1 0-131.599515z" fill="#505050"></path></svg>
     </button>
 </aside>
 
@@ -42,7 +42,7 @@
     <div id="MenuContainer" class="MenuContainer" style="display: none;">
         <!--菜单顶部的导航栏，包括Toggle按钮-->
         <div class="StickyNavbar">
-            <button id="MenuButton" class="MenuButton" data-state="off">menu</button>
+            <button id="MenuButton" class="MenuButton" data-state="off">=</button>
             <nav class="Navbar" id="MenuNavbar" style="top: 40px; z-index: 100000; border: none;">
                 <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="rigs">设 备</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="logs">日 志</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="docs">资 料</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
             </nav>
@@ -52,7 +52,7 @@
     </div>
     <!--右下：回到顶部按钮-->
     <button id="GoTopButton" class="SideButton Raised Round" style="position: absolute; bottom: 80px; right: 0;" onclick="$('html, body').animate({scrollTop:0},'fast');">
-        <img src="./image/icons/gotop.png"  style="height:19px;width:17px; vertical-align: middle;">
+        <svg t="1612060475911" class="icon" viewBox="0 0 1130 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15578" width="20" height="20"><path d="M326.064494 672.882463 207.758878 672.882463 207.758878 1015.219306 119.163494 1015.219306 119.163494 672.882463 1.125537 672.882463 1.125537 600.614327 326.064494 600.614327 326.064494 672.882463ZM356.845369 813.403842C356.845369 748.451414 375.804412 695.589138 413.72307 654.815428 451.641726 614.041721 501.738211 593.655172 564.014029 593.655172 623.256353 593.655172 670.943925 613.372577 707.078175 652.80798 743.212425 692.243383 761.279278 742.919793 761.279278 804.838729 761.279278 869.434275 742.498673 921.850456 704.936896 962.088843 667.375122 1002.32723 618.170827 1022.44612 557.322534 1022.44612 497.901769 1022.44612 449.634273 1002.951762 412.518601 963.962461 375.402926 924.97316 356.845369 874.787456 356.845369 813.403842L356.845369 813.403842ZM449.723308 808.585966C449.723308 848.913574 459.448183 881.880004 478.898222 907.48625 498.348264 933.092495 525.024753 945.895426 558.928492 945.895426 593.545997 945.895426 620.490143 933.627811 639.761743 909.092209 659.033342 884.556608 668.668999 851.590175 668.668999 810.191925 668.668999 767.009267 659.301001 732.882988 640.564723 707.812063 621.828445 682.74114 595.419613 670.205866 561.33743 670.205866 526.719927 670.205866 499.463514 683.053407 479.567371 708.748873 459.67123 734.444339 449.723308 767.723037 449.723308 808.585966L449.723308 808.585966ZM919.733862 870.683032 919.733862 1015.219306 831.406137 1015.219306 831.406137 600.614327 974.068793 600.614327C1077.207539 600.614327 1128.776139 644.33165 1128.776139 731.767612 1128.776139 774.236509 1113.207417 808.273569 1082.069511 833.879815 1050.931602 859.48606 1011.987494 871.753677 965.236021 870.683032L919.733862 870.683032ZM919.733862 669.135228 919.733862 802.965111 958.009207 802.965111C1009.935462 802.965111 1035.8982 780.392695 1035.8982 735.24719 1035.8982 691.172328 1010.203118 669.135228 958.812186 669.135228L919.733862 669.135228ZM648.035789 56.820649C615.791212 24.816746 588.79392 0 572.251266 0L567.754055 0 564.387893 0 559.890684 0C543.348028 0 516.348577 24.815664 484.106158 56.820649L271.290004 302.979953C229.441234 344.957537 233.450624 419.310345 312.767514 419.310345L564.385735 419.310345 567.751896 419.310345 819.371196 419.310345C898.687007 419.310345 902.696397 344.957537 860.848706 302.979953L648.035789 56.820649Z" p-id="15579" fill="#505050"></path></svg>
     </button>
 </aside>
 
@@ -549,7 +549,6 @@ MathJax.Hub.Config({
 <script async src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML&delayStartupUntil=configured"></script>
 
 <script src="./script/framework/jquery/jquery.min.js"></script>
-<script src="./script/framework/jquery/jquery.easing.js"></script>
 
 <script src="./script/framework/framework.js"></script>
 
@@ -559,8 +558,7 @@ MathJax.Hub.Config({
 
 <script src="./script/framework/inspiration.js"></script>
 
-<script src="./script/framework/highlight/highlight.js"></script>
-<script src="./script/framework/mikumark.js"></script>
+<!--包含 highlight.js 和 mikumark.js-->
 <script src="./script/framework/article.js"></script>
 
 <script>

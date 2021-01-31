@@ -369,11 +369,11 @@ body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Aria
 
 /* 菜单按钮 */
 @media(min-width:651px){
-    .MenuButton { position: absolute; top: 0; right: 0; font-family: "Material Icons"; font-size: 20px; width: 40px; height: 40px; color: #666; background-color: #fff; transition: 0.1s linear; border-radius: 50%; border: none; line-height: 40px; text-align: center; cursor: pointer; }
+    .MenuButton { position: absolute; top: 0; right: 0; padding: 0; font-size: 20px; width: 40px; height: 40px; color: #666; background-color: #fff; transition: 0.1s linear; border-radius: 50%; border: none; line-height: 40px; text-align: center; cursor: pointer; }
     .MenuButton:hover { background-color: #f0f0f0; }
 }
 @media(max-width:650px){
-    .MenuButton { position: absolute; top: 0; right: 0; margin: 0 0 auto auto; width: 40px; height: 40px; font-family: "Material Icons"; font-size: 23px; color: #222222; background: none; border: none; line-height: 40px; text-align: center; cursor: pointer; }
+    .MenuButton { position: absolute; top: 0; right: 0; margin: 0 0 auto auto; width: 40px; height: 40px; padding: 0; font-size: 23px; color: #222222; background: none; border: none; line-height: 40px; text-align: center; cursor: pointer; }
 }
 
 /* 菜单内部的导航栏 */
