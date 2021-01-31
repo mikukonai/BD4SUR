@@ -90,7 +90,7 @@
         "cover":     ""
     },
     {
-        "title":     "IC-705购买决策复盘",
+        "title":     "IC-705消费决策报告",
         "date":      "2020-09-14",
         "updates":  ["2021-01-11"],
         "authors":  ["Mikukonai"],
@@ -145,6 +145,16 @@
         "updates":  ["2021-01-11"],
         "authors":  ["Mikukonai"],
         "category":  "BCL",
+        "copyright": "",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "麦克斯韦方程组",
+        "date":      "2021-01-31",
+        "updates":  ["2021-01-31"],
+        "authors":  ["Mikukonai"],
+        "category":  "电磁理论",
         "copyright": "",
         "tags":     [],
         "cover":     ""

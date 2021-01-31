@@ -52,15 +52,15 @@
 
 /********** 基本段内样式 **********/
 
-strong { font-weight: bold; }
-s, strike, del { text-decoration: line-through; }
-i, cite, em, var, address, dfn { font-style: italic;}
+.Mikumark strong { font-weight: bold; }
+.Mikumark s, .Mikumark strike, .Mikumark del { text-decoration: line-through; }
+.Mikumark i, .Mikumark cite, .Mikumark em, .Mikumark var, .Mikumark address, .Mikumark dfn { font-style: italic;}
 
 /********** 段落样式 **********/
 
 @media(min-width:651px) { /* Desktop */
     /* 段落基础样式（只可改动参数） */
-    p.MikumarkParagraph {
+    .Mikumark p {
         margin: var(--p_margin_bottom) 0;
         color: var(--p_color);
         font-size: var(--p_font_size);
@@ -71,7 +71,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
 }
 @media(max-width:650px) { /* Mobile */
     /* 段落基础样式（只可改动参数） */
-    p.MikumarkParagraph {
+    .Mikumark p {
         margin: var(--p_margin_bottom) 0;
         color: var(--p_color);
         font-size: var(--p_font_size);
@@ -85,12 +85,12 @@ i, cite, em, var, address, dfn { font-style: italic;}
 
 @media(min-width:651px) { /* Desktop */
     /* 各级标题基础样式（只可改动参数） */
-    h1.MikumarkTitle,
-    h2.MikumarkTitle,
-    h3.MikumarkTitle,
-    h4.MikumarkTitle,
-    h5.MikumarkTitle,
-    h6.MikumarkTitle {
+    .Mikumark h1,
+    .Mikumark h2,
+    .Mikumark h3,
+    .Mikumark h4,
+    .Mikumark h5,
+    .Mikumark h6 {
         margin: calc(var(--hx_margin_bottom) / 2) 0 var(--hx_margin_bottom) 0;
         font-family: inherit;
         font-weight: normal;
@@ -98,7 +98,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
         text-rendering: optimizelegibility;
     }
     /* 标题样式（可直接改动） */
-    h1.MikumarkTitle {font-size:20px;line-height:42px;font-weight:bold;
+    .Mikumark h1 {font-size:20px;line-height:42px;font-weight:bold;
         color: #1ea0f0;
         border-radius: 100px 0 0 100px;
         background: linear-gradient(90deg, #eff9ff, #fff);
@@ -106,20 +106,20 @@ i, cite, em, var, address, dfn { font-style: italic;}
         position: relative;
         padding-left: var(--MikumarkHorizontalPadding);
     }
-    h2.MikumarkTitle {font-size:18px;line-height:36px;font-weight:bold;color:var(--p_color);}
-    h3.MikumarkTitle {font-size:16px;line-height:30px;font-weight:bold;color:var(--p_color);}
-    h4.MikumarkTitle {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
-    h5.MikumarkTitle {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
-    h6.MikumarkTitle {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
+    .Mikumark h2 {font-size:18px;line-height:36px;font-weight:bold;color:var(--p_color);}
+    .Mikumark h3 {font-size:16px;line-height:30px;font-weight:bold;color:var(--p_color);}
+    .Mikumark h4 {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
+    .Mikumark h5 {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
+    .Mikumark h6 {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
 }
 @media(max-width:650px) { /* Mobile */
     /* 各级标题基础样式（只可改动参数） */
-    h1.MikumarkTitle,
-    h2.MikumarkTitle,
-    h3.MikumarkTitle,
-    h4.MikumarkTitle,
-    h5.MikumarkTitle,
-    h6.MikumarkTitle {
+    .Mikumark h1,
+    .Mikumark h2,
+    .Mikumark h3,
+    .Mikumark h4,
+    .Mikumark h5,
+    .Mikumark h6 {
         margin: calc(var(--hx_margin_bottom) / 2) 0 var(--hx_margin_bottom) 0;
         font-family: inherit;
         font-weight: normal;
@@ -127,23 +127,23 @@ i, cite, em, var, address, dfn { font-style: italic;}
         text-rendering: optimizelegibility;
     }
     /* 标题样式（可直接改动） */
-    h1.MikumarkTitle {font-size:20px;line-height:42px;font-weight:bold;
+    .Mikumark h1 {font-size:20px;line-height:42px;font-weight:bold;
         color: #1ea0f0;
         background: linear-gradient(90deg, #eff9ff, #fff);
         left: calc(0px - var(--MikumarkHorizontalPadding));
         position: relative;
         padding-left: var(--MikumarkHorizontalPadding);
     }
-    h2.MikumarkTitle {font-size:18px;line-height:36px;font-weight:bold;color:var(--p_color);}
-    h3.MikumarkTitle {font-size:16px;line-height:30px;font-weight:bold;color:var(--p_color);}
-    h4.MikumarkTitle {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
-    h5.MikumarkTitle {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
-    h6.MikumarkTitle {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
+    .Mikumark h2 {font-size:18px;line-height:36px;font-weight:bold;color:var(--p_color);}
+    .Mikumark h3 {font-size:16px;line-height:30px;font-weight:bold;color:var(--p_color);}
+    .Mikumark h4 {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
+    .Mikumark h5 {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
+    .Mikumark h6 {font-size:14px;line-height:23px;font-weight:bold;color:var(--p_color);}
 }
 
 /********** 表格样式 **********/
 
-.MikumarkTableContainer {
+.Mikumark .MikumarkTableContainer {
     overflow-x: auto;
     margin: 20px auto 20px auto;
     border-radius: 8px;
@@ -151,7 +151,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
 }
 @media(min-width:651px) { /* Desktop */
     /* 表格和单元格基础样式（只可改动参数） */
-    .MikumarkTable {
+    .Mikumark table {
         color: var(--p_color);
         font-size: calc(var(--p_font_size) - 1px);
         /* border: 2px solid var(--table_border_color); */
@@ -160,11 +160,11 @@ i, cite, em, var, address, dfn { font-style: italic;}
         background-color: transparent;
         border-spacing: 0;
     }
-    .MikumarkTable tr {
+    .Mikumark tr {
         border-bottom: 1px solid var(--table_border_color);
     }
-    .MikumarkTable td,
-    .MikumarkTable th {
+    .Mikumark td,
+    .Mikumark th {
         min-width: 4em;
         line-height: var(--cell_line_height);
         vertical-align: middle;
@@ -172,19 +172,19 @@ i, cite, em, var, address, dfn { font-style: italic;}
         padding: var(--cell_padding_vert) var(--cell_padding_hori);
     }
     /* 去掉表头和最后一行的横线 */
-    .MikumarkTable tr:last-child,
-    .MikumarkTable tr:first-child {
+    .Mikumark tr:last-child,
+    .Mikumark tr:first-child {
         border: none;
     }
     /* 表头样式（可直接改动） */
-    .MikumarkTable th {
+    .Mikumark th {
         font-weight: bold;
         background-color: #f5f5f5;
     }
 }
 @media(max-width:650px) { /* Mobile */
     /* 表格和单元格基础样式（只可改动参数） */
-    .MikumarkTable {
+    .Mikumark table {
         color: var(--p_color);
         font-size: calc(var(--p_font_size) - 1px);
         /* border: 2px solid var(--table_border_color); */
@@ -193,11 +193,11 @@ i, cite, em, var, address, dfn { font-style: italic;}
         background-color: transparent;
         border-spacing: 0;
     }
-    .MikumarkTable tr {
+    .Mikumark tr {
         border-bottom: 1px solid var(--table_border_color);
     }
-    .MikumarkTable td,
-    .MikumarkTable th {
+    .Mikumark td,
+    .Mikumark th {
         min-width: 4em;
         line-height: var(--cell_line_height);
         vertical-align: middle;
@@ -206,12 +206,12 @@ i, cite, em, var, address, dfn { font-style: italic;}
         padding: var(--cell_padding_vert) var(--cell_padding_hori);
     }
     /* 去掉表头和最后一行的横线 */
-    .MikumarkTable tr:last-child,
-    .MikumarkTable tr:first-child {
+    .Mikumark tr:last-child,
+    .Mikumark tr:first-child {
         border: none;
     }
     /* 表头样式（可直接改动） */
-    .MikumarkTable th {
+    .Mikumark th {
         font-weight: bold;
         background-color: #f9f9f9;
     }
@@ -221,7 +221,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
 
 @media(min-width:651px) { /* Desktop */
     /* 引用框样式（部分可直接改动） */
-    blockquote.MikumarkBlockquote {
+    .Mikumark blockquote {
         background-color: inherit;
         font-size: calc(var(--p_font_size) - 1px);
         line-height: calc(var(--p_line_height) - 2px);
@@ -231,14 +231,14 @@ i, cite, em, var, address, dfn { font-style: italic;}
         border-radius: 5px;
         box-shadow: 0 1px 1px 0 rgba(64,64,64,0.08), 0 1px 3px 1px rgba(64,64,64,0.16);
     }
-    blockquote.MikumarkBlockquote p.MikumarkParagraph {
+    .Mikumark blockquote p {
         margin: var(--quote_p_margin) 0;
         font-size: inherit;
         line-height: inherit;
         /* overflow-x: auto; */
     }
-    blockquote.MikumarkBlockquote ul.MikumarkList,
-    blockquote.MikumarkBlockquote ol.MikumarkList {
+    .Mikumark blockquote ul,
+    .Mikumark blockquote ol {
         margin: var(--quote_p_margin) 0;
         font-size: inherit;
         line-height: inherit;
@@ -246,7 +246,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
 }
 @media(max-width:650px) { /* Mobile */
     /* 引用框样式（部分可直接改动） */
-    blockquote.MikumarkBlockquote {
+    .Mikumark blockquote {
         background-color: inherit;
         font-size: calc(var(--p_font_size) - 1px);
         line-height: calc(var(--p_line_height) - 2px);
@@ -256,14 +256,14 @@ i, cite, em, var, address, dfn { font-style: italic;}
         border-radius: 5px;
         box-shadow: 0 1px 1px 0 rgba(64,64,64,0.08), 0 1px 3px 1px rgba(64,64,64,0.16);
     }
-    blockquote.MikumarkBlockquote p.MikumarkParagraph {
+    .Mikumark blockquote p {
         margin: var(--quote_p_margin) 0;
         font-size: inherit;
         line-height: inherit;
         /* overflow-x: auto; */
     }
-    blockquote.MikumarkBlockquote ul.MikumarkList,
-    blockquote.MikumarkBlockquote ol.MikumarkList {
+    .Mikumark blockquote ul,
+    .Mikumark blockquote ol {
         margin: var(--quote_p_margin) 0;
         font-size: inherit;
         line-height: inherit;
@@ -274,12 +274,12 @@ i, cite, em, var, address, dfn { font-style: italic;}
 
 @media(min-width:651px) { /* Desktop */
     /* 超链接样式（部分可直接改动） */
-    a.MikumarkLink {
+    .Mikumark a {
         color: inherit;
         text-decoration: none;
         border-bottom: 1px dotted var(--p_color);
     }
-    a.MikumarkLink:hover{
+    .Mikumark a:hover {
         color: #0066dd;
         text-decoration:none;
         border-bottom: 1px solid #0066dd;
@@ -287,16 +287,16 @@ i, cite, em, var, address, dfn { font-style: italic;}
 }
 @media(max-width:650px) { /* Mobile */
     /* 超链接样式（部分可直接改动） */
-    a.MikumarkLink{color: #558bc4;text-decoration: none;}
-    a.MikumarkLink:hover{color:#0066dd;text-decoration:underline;}
+    .Mikumark a {color: #558bc4;text-decoration: none;}
+    .Mikumark a:hover {color:#0066dd;text-decoration:underline;}
 }
 
 /********** 列表样式 **********/
 
 @media(min-width:651px) { /* Desktop */
     /* 列表和表项样式（部分可直接改动） */
-    ul.MikumarkList,
-    ol.MikumarkList {
+    .Mikumark ul,
+    .Mikumark ol {
         color: var(--p_color);
         padding-left: 2em;
         text-indent: 0;
@@ -308,7 +308,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
         font-weight: inherit;
         word-wrap:break-word;
     }
-    li.MikumarkListItem {
+    .Mikumark li {
         max-width: 100%;
         line-height: var(--p_line_height);
         word-wrap:break-word;
@@ -316,8 +316,8 @@ i, cite, em, var, address, dfn { font-style: italic;}
 }
 @media(max-width:650px) { /* Mobile */
     /* 列表和表项样式（部分可直接改动） */
-    ul.MikumarkList,
-    ol.MikumarkList {
+    .Mikumark ul,
+    .Mikumark ol {
         color: var(--p_color);
         padding-left: 2em;
         text-indent: 0;
@@ -329,7 +329,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
         font-weight: inherit;
         word-wrap:break-word;
     }
-    li.MikumarkListItem {
+    .Mikumark li {
         max-width: 100%;
         line-height: var(--p_line_height);
         word-wrap:break-word;
@@ -340,7 +340,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
 
 @media(min-width:651px) { /* Desktop */
     /* 代码区样式（部分可直接改动） */
-    code.MikumarkCode {
+    .Mikumark code {
         padding: 2px 4px;
         background-color: var(--code_background_color);
         font-size: calc(var(--p_font_size) - 1px);
@@ -349,7 +349,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
         font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
         -webkit-font-smoothing: antialiased;
     }
-    pre.MikumarkPre {
+    .Mikumark pre.MikumarkPre {
         tab-size: 4;
         display: block;
         padding: 10px;
@@ -358,11 +358,11 @@ i, cite, em, var, address, dfn { font-style: italic;}
         background-color: var(--code_background_color);
         border-radius: 5px;
     }
-    pre.MikumarkPre code.MikumarkCode { padding: 0; }
+    .Mikumark pre.MikumarkPre code { padding: 0; }
 }
 @media(max-width:650px) { /* Mobile */
     /* 代码区样式（部分可直接改动） */
-    code.MikumarkCode {
+    .Mikumark code {
         padding: 2px 4px;
         background-color: var(--code_background_color);
         font-size: calc(var(--p_font_size) - 1px);
@@ -371,7 +371,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
         font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
         -webkit-font-smoothing: antialiased;
     }
-    pre.MikumarkPre {
+    .Mikumark pre.MikumarkPre {
         tab-size: 4;
         display: block;
         padding: 10px;
@@ -380,25 +380,25 @@ i, cite, em, var, address, dfn { font-style: italic;}
         background-color: var(--code_background_color);
         border-radius: 5px;
     }
-    pre.MikumarkPre code.MikumarkCode { padding: 0; }
+    .Mikumark pre.MikumarkPre code { padding: 0; }
 }
 
 /********** 图片样式 **********/
 
 @media(min-width:651px) { /* Desktop */
     /* 图片样式（部分可直接改动） */
-    img.MikumarkImage {
+    .Mikumark img.MikumarkImage {
         max-width: var(--img_max_width);
         max-height: var(--img_max_height);
         vertical-align: middle;
         border: none;
     }
-    div.MikumarkImageContainer {
+    .Mikumark div.MikumarkImageContainer {
         padding: 10px 0;
         margin: var(--p_margin_bottom) auto;
         text-align: center;
     }
-    div.MikumarkImageTitle {
+    .Mikumark div.MikumarkImageTitle {
         font-size: calc(var(--p_font_size) - 1px);
         line-height: calc(var(--p_line_height) - 1px);
         margin-top: 8px;
@@ -407,18 +407,18 @@ i, cite, em, var, address, dfn { font-style: italic;}
 }
 @media(max-width:650px) { /* Mobile */
     /* 图片样式（部分可直接改动） */
-    img.MikumarkImage {
+    .Mikumark img.MikumarkImage {
         max-width: var(--img_max_width);
         max-height: var(--img_max_height);
         vertical-align: middle;
         border: none;
     }
-    div.MikumarkImageContainer {
+    .Mikumark div.MikumarkImageContainer {
         padding: 10px 0;
         margin: var(--p_margin_bottom) auto;
         text-align: center;
     }
-    div.MikumarkImageTitle {
+    .Mikumark div.MikumarkImageTitle {
         font-size: calc(var(--p_font_size) - 1px);
         line-height: calc(var(--p_line_height) - 1px);
         margin-top: 8px;
@@ -428,7 +428,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
 
 /********** 标签样式 **********/
 
-.MikumarkTag {
+.Mikumark .MikumarkTag {
     font-size: calc(var(--p_font_size) - 1px);
     color: #0099e6;
     /* font-weight: bold; */
@@ -440,7 +440,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
 /********** 水平线样式 **********/
 
 @media(min-width:651px) { /* Desktop */
-    hr.MikumarkHorizontalLine {
+    .Mikumark hr {
         margin: var(--p_margin_bottom) 0px;
         height: 0px;
         border: 0;
@@ -449,7 +449,7 @@ i, cite, em, var, address, dfn { font-style: italic;}
     }
 }
 @media(max-width:650px) { /* Mobile */
-    hr.MikumarkHorizontalLine {
+    .Mikumark hr {
         margin: var(--p_margin_bottom) 0px;
         height: 0px;
         border: 0;
@@ -460,41 +460,41 @@ i, cite, em, var, address, dfn { font-style: italic;}
 
 /********** 框架样式 **********/
 
-.MikumarkIframe { width: 100%; border: none; }
+.Mikumark iframe { width: 100%; border: none; }
 
 /********** 按钮样式 **********/
 
-.MikumarkButton {
+.Mikumark button {
     line-height:0px; height:30px; font-size: 14px; border: none; border-radius: 5px;
     color: #00aaff; border: 1px solid #e1f5ff; background-color: #e1f5ff; padding: 3px 10px 3px 10px; }
-.MikumarkButton:hover { color: #00aaff; background-color: #cdeeff; border: 1px solid #cdeeff; }
-.MikumarkButton:active { color: #ffffff; background-color: #40bfff; border: 1px solid #40bfff; }
-.MikumarkButton:disabled { color: #888888; background-color: #eeeeee; border: 1px solid #eeeeee; }
+.Mikumark button:hover { color: #00aaff; background-color: #cdeeff; border: 1px solid #cdeeff; }
+.Mikumark button:active { color: #ffffff; background-color: #40bfff; border: 1px solid #40bfff; }
+.Mikumark button:disabled { color: #888888; background-color: #eeeeee; border: 1px solid #eeeeee; }
 
-.MikumarkButtonRed {
+.Mikumark .MikumarkButtonRed {
     line-height:0px; height:30px; font-size: 14px; border: none; border-radius: 5px;
     color: #ff5888; border: 1px solid #ffefef; background-color: #ffefef; padding: 3px 10px 3px 10px; }
-.MikumarkButtonRed:hover { color: #ff5888; background-color: #ffe3ef; border: 1px solid #ffe3ef; }
-.MikumarkButtonRed:active { color: #ffffff; background-color: #ff5888; border: 1px solid #ff5888; }
-.MikumarkButtonRed:disabled { color: #888888; background-color: #eeeeee; border: 1px solid #eeeeee; }
+.Mikumark .MikumarkButtonRed:hover { color: #ff5888; background-color: #ffe3ef; border: 1px solid #ffe3ef; }
+.Mikumark .MikumarkButtonRed:active { color: #ffffff; background-color: #ff5888; border: 1px solid #ff5888; }
+.Mikumark .MikumarkButtonRed:disabled { color: #888888; background-color: #eeeeee; border: 1px solid #eeeeee; }
 
-.MikumarkButtonGreen {
+.Mikumark .MikumarkButtonGreen {
     line-height:0px; height:30px; font-size: 14px; border: none; border-radius: 5px;
     color: #60c700; border: 1px solid #e7ffd0; background-color: #e7ffd0; padding: 3px 10px 3px 10px; }
-.MikumarkButtonGreen:hover { color: #60c700; background-color: #d8fcb7; border: 1px solid #d8fcb7; }
-.MikumarkButtonGreen:active { color: #ffffff; background-color: #60c700; border: 1px solid #60c700; }
-.MikumarkButtonGreen:disabled { color: #888888; background-color: #eeeeee; border: 1px solid #eeeeee; }
+.Mikumark .MikumarkButtonGreen:hover { color: #60c700; background-color: #d8fcb7; border: 1px solid #d8fcb7; }
+.Mikumark .MikumarkButtonGreen:active { color: #ffffff; background-color: #60c700; border: 1px solid #60c700; }
+.Mikumark .MikumarkButtonGreen:disabled { color: #888888; background-color: #eeeeee; border: 1px solid #eeeeee; }
 
-.MikumarkButtonYellow {
+.Mikumark .MikumarkButtonYellow {
     line-height:0px; height:30px; font-size: 14px; border: none; border-radius: 5px;
     color: #d6b600; border: 1px solid #fff7c7; background-color: #fff7c7; padding: 3px 10px 3px 10px; }
-.MikumarkButtonYellow:hover { color: #d6b600; background-color: #fff2ac; border: 1px solid #fff2ac; }
-.MikumarkButtonYellow:active { color: #ffffff; background-color: #ffd900; border: 1px solid #ffd900; }
-.MikumarkButtonYellow:disabled { color: #888888; background-color: #eeeeee; border: 1px solid #eeeeee; }
+.Mikumark .MikumarkButtonYellow:hover { color: #d6b600; background-color: #fff2ac; border: 1px solid #fff2ac; }
+.Mikumark .MikumarkButtonYellow:active { color: #ffffff; background-color: #ffd900; border: 1px solid #ffd900; }
+.Mikumark .MikumarkButtonYellow:disabled { color: #888888; background-color: #eeeeee; border: 1px solid #eeeeee; }
 
 /********** summary/details样式 **********/
 
-summary {
+.Mikumark summary {
     margin: var(--p_margin_bottom) 0;
     color: #1ea0f0;
     font-size: var(--p_font_size);
@@ -505,16 +505,16 @@ summary {
 
 /********** 代码高亮样式（暂不用） **********/
 
-.MikumarkCode_number { color:#44aadd; }
-.MikumarkCode_comment { color:#999999; /*font-weight:bold;*/ }
-.MikumarkCode_keyword { color:#1111ff; /*font-weight:bold;*/ }
-.MikumarkCode_string { color:green; }
-.MikumarkCode_boolean { color:#66ccff; }
-.MikumarkCode_type { color: #af00db; }
-.MikumarkCode_macro { color:#2E8B57; font-weight:bold; }
-.MikumarkCode_operator { color:#111111; }
-.MikumarkCode_function { color:#795e26; }
-.MikumarkCode_quote { color:#228B22; }
-.MikumarkCode_precompile { color:#800080; }
-.MikumarkCode_identifier { color:#000000; }
-.MikumarkCode_member { color:#ff0000; }
+.Mikumark .MikumarkCode_number { color:#44aadd; }
+.Mikumark .MikumarkCode_comment { color:#999999; /*font-weight:bold;*/ }
+.Mikumark .MikumarkCode_keyword { color:#1111ff; /*font-weight:bold;*/ }
+.Mikumark .MikumarkCode_string { color:green; }
+.Mikumark .MikumarkCode_boolean { color:#66ccff; }
+.Mikumark .MikumarkCode_type { color: #af00db; }
+.Mikumark .MikumarkCode_macro { color:#2E8B57; font-weight:bold; }
+.Mikumark .MikumarkCode_operator { color:#111111; }
+.Mikumark .MikumarkCode_function { color:#795e26; }
+.Mikumark .MikumarkCode_quote { color:#228B22; }
+.Mikumark .MikumarkCode_precompile { color:#800080; }
+.Mikumark .MikumarkCode_identifier { color:#000000; }
+.Mikumark .MikumarkCode_member { color:#ff0000; }

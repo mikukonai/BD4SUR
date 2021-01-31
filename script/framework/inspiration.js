@@ -138,10 +138,10 @@ function LoadInspirations() {
                                 
                                 let link = link_remain.substring(0,right_bracket);
                                 if(urlstr != '') {
-                                    HtmlBuffer.push(`<a class="PosterLink" href="${urlstr}">${link}</a>`);
+                                    HtmlBuffer.push(`<a class="PosterLink" target="_blank" href="${urlstr}">${link}</a>`);
                                 }
                                 else {
-                                    HtmlBuffer.push(`<a class="PosterLink" href="${link}">${link}</a>`);
+                                    HtmlBuffer.push(`<a class="PosterLink" target="_blank" href="${link}">${link}</a>`);
                                 }
                                 let remnent = link_remain.substring(right_bracket+1);
                                 if(hasurl == true) {
@@ -154,7 +154,7 @@ function LoadInspirations() {
                     }
                     // 标签内文本套上a输出
                     else {
-                        HtmlBuffer.push(` <a class="PosterLink PosterTag" href="javascript:topic('${slice}');" data-tag="${slice}">#${slice}#</a> `);
+                        HtmlBuffer.push(` <span class="PosterTag" data-tag="${slice}">#${slice}#</span> `);
                         tags.push(slice);
                     }
                 });

@@ -217,9 +217,19 @@ body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Aria
 
 .Poster blockquote { font-size: 13px; line-height: 21px; color:#888888; margin:10px 10px 10px 10px; padding: 8px 10px; border: 1px solid #9ee0f8; border-radius: 5px; box-shadow: #c0ebfb 0 0 5px 0;}
 .PosterParagraph { margin: 10px 0px; padding: 0; color: #333; font-size: 14px; line-height: 23px; display: block; text-indent: 0;}
-.PosterLink { color: #558bc4; text-decoration: none; cursor: pointer;}
-.PosterLink:hover { color: #0066dd; text-decoration: none;}
-.PosterTag { color: #1ea0f0; font-weight: bold;}
+.PosterLink { text-decoration: underline; cursor: pointer;}
+.PosterLink:hover { color: #1ea0f0; text-decoration: underline;}
+.PosterTag {
+    background-color: #fff7e6;
+    color: #e6aa20;
+    border: none;
+    border-radius: 100px;
+    padding: 1px 5px 1px 5px;
+    cursor: pointer;
+}
+.PosterTag:hover {
+    background-color: #fff0d0;
+}
 
 /****************************************/
 /*  列 表 样 式 */
