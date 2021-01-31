@@ -1,5 +1,15 @@
 [
     {
+        "title":     "安全注意事项",
+        "date":      "2020-12-08",
+        "updates":  ["2021-01-31"],
+        "authors":  ["Mikukonai"],
+        "category":  "安全",
+        "copyright": "",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
         "title":     "单边带调制",
         "date":      "2020-12-08",
         "updates":  ["2021-01-04"],
