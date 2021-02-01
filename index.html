@@ -97,14 +97,13 @@
         }
         </style>
         <div style="font-size: 20px; text-align: center; line-height: 32px; color: #ccc;" class="RBGradient">BD4SUR</div>
-        <div class="FooterContent">版权所有 © 2020-<span class="CopyrightYear"></span> BD4SUR</div>
         <div class="FooterContent">
+            <p style="letter-spacing: 2px; font-weight: bold;">体谅 · 忠诚 · 进取 · 友爱 · 适度 · 爱国</p>
+        </div>
+        <div class="FooterContent">版权所有 © 2016-2020-<span class="CopyrightYear"></span> BD4SUR</div>
+        <!-- <div class="FooterContent">
             <a class="FooterLink" href="https://mikukonai.com/" target="_blank">博客首页</a> / <a class="FooterLink" href="http://www.crac.org.cn/" target="_blank">CRAC</a> / <a class="FooterLink" href="https://www.iaru.org/" target="_blank">IARU</a>
-        </div>
-        <div class="FooterContent">
-            <span style="letter-spacing: 1px;">体谅·忠诚·进取·友爱·适度·爱国</span><br>
-            Considerate / Loyal / Progressive<br>Friendly / Balanced / Patriotic
-        </div>
+        </div> -->
     </footer>
 </div>
 
@@ -141,89 +140,110 @@ a:hover {
     margin: 25px 0;
 }
 .RigTitle {
-    font-size: 18px;
+    color: #c99149;
+    font-size: 17px;
     font-weight: bold;
-    margin: 3px 0;
+    margin: 0 0 10px 0;
     text-align: center;
 }
 .RigSubtitle {
-    font-size: 14px;
+    font-size: 12px;
     color: #aaa;
     margin: 3px 0;
     text-align: center;
 }
 .RigIntro {
     text-align: center;
-    margin: 15px 0;
+    margin: 15px 0 0 0;
     text-align: left;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 22px;
     color: #333;
 }
-p, ul, ol, summary {
-    margin: 15px 15px;
+.RigIntro p, .RigIntro ul, .RigIntro ol, .RigIntro summary {
+    margin: 15px 0px 0px 0px;
     text-align: left;
 }
-summary {
+.RigIntro summary {
     font-weight: bold;
     color: #1ea0f0;
 }
-ul {
+.RigIntro ul {
     padding-inline-start: 20px;
 }
-@media(min-width:651px) { /* Desktop */
-    .RigsImage {
-        display: block;
-        margin: 10px auto;
-        max-width: 650px;
-        max-height: 800px;
-        border: none;
-        border-radius: 5px;
-    }
+.RigsTitleImage {
+    display: block;
+    margin: 20px auto 10px auto;
+    width: 80%;
 }
-@media(max-width:650px) { /* Mobile */
-    .RigsImage {
-        display: block;
-        margin: 10px auto;
-        max-width: 320px;
-        max-height: 800px;
-        border: none;
-        border-radius: 5px;
-    }
+.RigsImage {
+    display: block;
+    margin: 10px auto;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+.RigTag {
+    display: inline-block;
+    background-color: #e8f6ff;
+    color: #1ea0f0;
+    font-size: inherit;
+    border-radius: 100px;
+    padding: 2px 6px 2px 6px;
+    margin: 3px;
+}
+
+.RigListLeft {
+    float:left; width: 50%;
+}
+.RigListRight {
+    float:right; width: 50%;
+}
+.RigBox {
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px 0 rgb(64 64 64 / 8%), 0 1px 3px 1px rgb(64 64 64 / 16%)
+}
+.RigListLeft .RigBox {
+    margin: 10px 5px 10px 10px;
+}
+.RigListRight .RigBox {
+    margin: 10px 10px 10px 5px;
 }
 </style>
 <template id="rigs">
-<div style="padding: 20px 20px;">
-    <div class="RigInfo">
-        <img src="image/rigs/rigs.jpg" class="RigsImage">
-    </div>
 
-    <div class="RigInfo">
-        <div class="RigTitle">ICOM IC-705</div>
-        <div class="RigSubtitle">便携式HF/UHF/VHF全模式收发信机</div>
-        <div class="RigSubtitle">2020年9月12日购</div>
-        <div class="RigSubtitle"><b>执照注册设备</b></div>
-        <div class="RigIntro">
-            <p>IC-705是ICOM社2019年推出的一款QRP全波段全模式便携电台，支持在HF/VHF/UHF波段的各业余频段上，以最高10W、最低0.5W的功率进行发射。</p>
-        </div>
-    </div>
+<img src="image/rigs/rigs.jpg" class="RigsTitleImage">
 
-    <div class="RigInfo">
-        <div class="RigTitle">宝锋 UV-5R</div>
-        <div class="RigSubtitle">手持UHF/VHF调频收发信机</div>
-        <div class="RigSubtitle">2020年8月3日购</div>
-        <div class="RigSubtitle"><b>执照注册设备</b></div>
-        <div class="RigIntro">
-            <p>宝锋的这款手台，价格非常便宜，仅100元出头，是许多新手Ham入门的第一部机器。该机支持业余V/U段收发以及调频广播接收，最大发射功率5W，仅支持模拟FM模式。作为入门机器，UV-5R带有一块点阵液晶屏幕以及全数字键盘，手动置频比较方便。</p>
-        </div>
+<div class="RigBox">
+    <div class="RigTitle">Icom IC-705</div>
+    <div class="RigSubtitle">便携式HF/UHF/VHF全模式收发信机</div>
+    <div class="RigSubtitle">2020年9月12日购</div>
+    <div class="RigSubtitle"><span class="RigTag">收发信机</span><span class="RigTag">执照注册设备</span></div>
+    <div class="RigIntro">
+        <p>这款机器是艾可慕于2019年推出、2020年发售的一款QRP全波段全模式便携电台，主打野外移动使用。支持在HF/VHF/UHF波段的各业余频段上，以最高10W、最低0.5W的功率进行发射。型号核准码：2020FP14257。</p>
     </div>
+</div>
 
-    <div class="RigInfo">
+<div class="RigBox" style="margin-bottom: 0px;">
+    <div class="RigTitle">宝锋 UV-5R</div>
+    <div class="RigSubtitle">手持UHF/VHF调频收发信机</div>
+    <div class="RigSubtitle">2020年8月3日购</div>
+    <div class="RigSubtitle"><span class="RigTag">收发信机</span><span class="RigTag">执照注册设备</span></div>
+    <div class="RigIntro">
+        <p>这款手台价格仅100元出头，是许多新手Ham入门的第一部机器。该机支持业余V/U段收发以及调频广播接收，最大发射功率5W，仅支持模拟FM模式。型号核准码：2017FR3280。</p>
+    </div>
+</div>
+
+<div class="RigListLeft">
+    <div class="RigBox">
         <div class="RigTitle">德生 PL-330</div>
         <div class="RigSubtitle">LW/MW/SW/FM/SSB收音机</div>
         <div class="RigSubtitle">2020年11月30日购</div>
+        <div class="RigSubtitle"><span class="RigTag">收信机</span></div>
         <div class="RigIntro">
-            <p>德生PL-330是2020年7月推出的一款支持SSB接收的中端DSP收音机，可接收的波段包括长波、中波、短波、以及调频广播。</p>
+            <p>德生PL-330是2020年7月推出的一款支持SSB接收和同步检波的中端DSP收音机，可接收的波段包括长波、中波、短波、以及调频广播。</p>
             <details>
                 <summary>PL-330彩蛋</summary>
                 <ul>
@@ -244,12 +264,55 @@ ul {
         </div>
     </div>
 
-    <div class="RigInfo">
+    <div class="RigBox">
+        <div class="RigTitle">RTL-SDR</div>
+        <div class="RigSubtitle">基于RTL2832U的SDR接收机</div>
+        <div class="RigSubtitle">2020年8月8日、14日购</div>
+        <div class="RigSubtitle"><span class="RigTag">收信机</span><span class="RigTag">SDR</span></div>
+        <div class="RigIntro">
+            <p>RTL-SDR是基于瑞昱RTL2832U和R820T2调谐芯片的电视棒，配合PC、手机上的SDR#等软件可实现SDR无线电接收和解调功能。目前拥有的有两个版本：普通版和上变频版。上变频版可以将短波段的信号上变频到125MHz，以提高接收短波的灵敏度。</p>
+            <details>
+                <summary>上变频版PCB</summary>
+                <img src="image/rigs/rtl-sdr.jpg" class="RigsImage">
+                <img src="image/rigs/rtl-sdr-fm.jpg" class="RigsImage">
+            </details>
+        </div>
+    </div>
+
+    <div class="RigBox">
+        <div class="RigTitle">五单元UHF八木天线</div>
+        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
+        <div class="RigIntro">
+            <p>仅工作在业余0.7m波段，主瓣方向标称增益8dBi。</p>
+        </div>
+    </div>
+
+    <div class="RigBox">
+        <div class="RigTitle">七单元UHF八木天线</div>
+        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
+        <div class="RigIntro">
+            <p>仅工作在业余0.7m波段，主瓣方向标称增益14dBi。</p>
+        </div>
+    </div>
+
+    <div class="RigBox">
+        <div class="RigTitle">HF20A</div>
+        <div class="RigSubtitle">单线短波全段行波天线</div>
+        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
+        <div class="RigIntro">
+            <p>这是一款行波天线，包含一个巴伦和一个吸收电阻元件（实测电阻150Ω）。由于暂时无法发射短波，因此发射效果未测试，但接收效果似乎不错，接收FM调频广播的效果尤其好，背景黑，信号强，不知道为什么。</p>
+        </div>
+    </div>
+</div>
+
+<div class="RigListRight">
+    <div class="RigBox">
         <div class="RigTitle">德生 PL-380</div>
         <div class="RigSubtitle">LW/MW/SW/FM收音机</div>
         <div class="RigSubtitle">2020年7月18日购</div>
+        <div class="RigSubtitle"><span class="RigTag">收信机</span></div>
         <div class="RigIntro">
-            <p>德生PL-380除不支持SSB解调之外，功能和架构上的差异不大，性能指标也大致相同。</p>
+            <p>德生PL-380除不支持SSB解调和同步检波之外，功能和架构上的差异不大，性能指标也大致相同。</p>
             <details>
                 <summary>PL-380参考资料</summary>
                 <ul>
@@ -261,72 +324,40 @@ ul {
         </div>
     </div>
 
-    <div class="RigInfo">
-        <div class="RigTitle">RTL-SDR</div>
-        <div class="RigSubtitle">基于RTL2832U的SDR接收机</div>
-        <div class="RigSubtitle">2020年8月8日、14日购</div>
-        <div class="RigIntro">
-            <p>RTL-SDR是基于瑞昱RTL2832U和R820T2调谐芯片的电视棒，配合PC、手机上的SDR#等软件可实现SDR无线电接收和解调功能。目前拥有的有两个版本：普通版和上变频版。上变频版可以将短波段的信号上变频到125MHz，以提高接收短波的灵敏度。</p>
-            <details>
-                <summary>上变频版PCB</summary>
-                <img src="image/rigs/rtl-sdr.jpg" class="RigsImage">
-                <img src="image/rigs/rtl-sdr-fm.jpg" class="RigsImage">
-            </details>
-        </div>
-    </div>
-
-    <div class="RigInfo">
+    <div class="RigBox">
         <div class="RigTitle">Comet HFJ-350M</div>
         <div class="RigSubtitle">短波全波段拉杆式GP天线</div>
         <div class="RigSubtitle">2020年9月12日购</div>
+        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
         <div class="RigIntro">
             <p>拉杆天线，支持3.5～50M所有业余短波段的发射和接收，耐功率100W（SSB，不含3.5MHz）。</p>
         </div>
     </div>
 
-    <div class="RigInfo">
+    <div class="RigBox">
         <div class="RigTitle">Diamond SRJ-770</div>
         <div class="RigSubtitle">VHF/UHF拉杆天线</div>
         <div class="RigSubtitle">2020年11月28日购</div>
+        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
         <div class="RigIntro">
             <p>拉杆天线，支持业余V/U段的发射和接收，支持300MHz接收。业余2m波段增益2.15dBi，业余0.7m波段增益5.5dBi。耐功率20W，阻抗50Ω。</p>
         </div>
     </div>
 
-    <div class="RigInfo">
-        <div class="RigTitle">五单元UHF八木天线</div>
-        <div class="RigIntro">
-            <p>仅工作在业余0.7m波段，主瓣方向标称增益8dBi。</p>
-        </div>
-    </div>
-
-    <div class="RigInfo">
-        <div class="RigTitle">七单元UHF八木天线</div>
-        <div class="RigIntro">
-            <p>仅工作在业余0.7m波段，主瓣方向标称增益14dBi。</p>
-        </div>
-    </div>
-
-    <div class="RigInfo">
-        <div class="RigTitle">HF20A</div>
-        <div class="RigSubtitle">单线短波全段行波天线</div>
-        <div class="RigIntro">
-            <p>这是一款行波天线，包含一个巴伦和一个吸收电阻元件（实测电阻150Ω）。由于暂时无法发射短波，因此发射效果未测试，但接收效果似乎不错，接收FM调频广播的效果尤其好，背景黑，信号强，不知道为什么。</p>
-        </div>
-    </div>
-
-    <div class="RigInfo">
+    <div class="RigBox">
         <div class="RigTitle">Y-200A</div>
         <div class="RigSubtitle">短波有源小环天线</div>
+        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
         <div class="RigIntro">
             <p>这款天线是有源天线，通过前置放大器放大微弱的信号，工作频率为100k~180MHz。</p>
         </div>
     </div>
 
-    <div class="RigInfo">
+    <div class="RigBox">
         <div class="RigTitle">NanoVNA</div>
         <div class="RigSubtitle">矢量网络分析仪</div>
         <div class="RigSubtitle">2020年10月10日购</div>
+        <div class="RigSubtitle"><span class="RigTag">仪器仪表</span></div>
         <div class="RigIntro">
             <p>一款低成本的网络分析仪。</p>
             <details>
@@ -335,7 +366,9 @@ ul {
             </details>
         </div>
     </div>
+
 </div>
+
 </template>
 
 
@@ -502,7 +535,7 @@ ul {
 
     <div class="SectionHeader">权利声明<div class="SectionHeaderComment">Copyright Notice</div></div>
     <div class="ContentBlock">
-        <div class="SectionBody">版权所有 &copy; 2020-<span class="CopyrightYear"></span> BD4SUR</div>
+        <div class="SectionBody">版权所有 &copy; 2016-2020-<span class="CopyrightYear"></span> BD4SUR</div>
         <div class="SectionBody" style="font-size: smaller;">除另有声明外，所有<b>原创</b>内容均可在<br>①署电台呼号BD4SUR或链接 & ②非盈利 & ③无实质修改<br>的前提下使用和传播。</div>
         <div class="SectionBody" style="font-size: smaller;">所有<b>非原创</b>内容均尽可能注明原作者或出处<br>且遵守合理使用原则。<br>在此感谢并致敬各位原作者。</div>
     </div>
