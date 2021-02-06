@@ -84,6 +84,11 @@ function SPA_Render(pathString, callback) {
         $('.SPA_MAIN_CONTAINER').html($(`template#${PageID}`).html());
     }
 
+    // 首页（电台日志）
+    if(PageID === "index") {
+        PortalConfigInit("index");
+        LoadStationLog();
+    }
     // 资料（文章）
     if(PageID === "docs") {
         // 正文
@@ -105,17 +110,14 @@ function SPA_Render(pathString, callback) {
             PortalConfigInit(PageID);
             LoadList("docs");
         }
-        
     }
-    // 日志
-    else if(PageID === "logs") {
+    // 灵感
+    else if(PageID === "inspirations") {
         PortalConfigInit(PageID);
-        $("#BackButton").hide();     // 不显示返回按钮
         $(".MenuContainer").show();  // 显示菜单（目录）按钮
         // 创建菜单内容的锚点"ContentsContainer"
         $("#MenuContentContainer").html(`<!--标签容器--><div id="InspirationMenuTags"></div><!--目录容器--><div id="InspirationMenuList"></div>`);
         LoadInspirations();
-        LoadStationLog();
     }
     // 其他 TODO 待开发，注意有些格局的初始化代码位于其他模块中，是动态加载动态执行的。这些模块之间的关系，后续需要妥善规划。
     else {

@@ -44,7 +44,7 @@
         <div class="StickyNavbar">
             <button id="MenuButton" class="MenuButton" data-state="off">=</button>
             <nav class="Navbar" id="MenuNavbar" style="top: 40px; z-index: 100000; border: none;">
-                <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="rigs">设 备</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="logs">日 志</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="docs">资 料</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
+                <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="collections">收 藏</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="docs">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
             </nav>
         </div>
         <!--菜单主题内容，一般是目录。由SPA_Render插入相应的锚点。-->
@@ -78,7 +78,7 @@
     </header>
     <!--导航栏-->
     <nav class="Navbar" id="MainNavbar">
-        <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="rigs">设 备</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="logs">日 志</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="docs">资 料</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
+        <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="collections">收 藏</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="docs">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
     </nav>
     <!--正文内容-->
     <article class="Article SPA_MAIN_CONTAINER"></article>
@@ -110,16 +110,103 @@
 
 
 <!--首页模板-->
+<style>
+.StationLogSummary {
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 17px;
+    color: #3a4147;
+    margin: 20px;
+    cursor: pointer;
+}
+.StationLogSummary:hover {
+    color: #1ea0f0;
+}
+.StationLogLaw {
+    font-size: 13px;
+    line-height: 23px;
+    color: #919da8;
+    margin: 20px;
+}
+.StationLog {
+    text-align: center;
+    line-height: 22px;
+    overflow-x: auto;
+    margin: 20px auto 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 1px 0 rgba(64,64,64,0.08), 0 1px 3px 1px rgba(64,64,64,0.16);
+}
+.StationLog table {
+    font-size: 14px;
+    color: #233;
+    border-collapse: collapse;
+    width: 100%;
+    border-spacing: 0;
+}
+.StationLog td, .StationLog th {
+    font-family: 'Consolas', Courier, monospace;
+    border: 1px solid #eee;
+    padding: 2px 3px;
+}
+.StationLog th {
+    color: #1ea0f0;
+    border: none;
+    padding: 3px 3px;
+}
+.StationLog tr:last-child,
+.StationLog tr:first-child {
+    border: none;
+}
+.StationLog td:last-child, .StationLog th:last-child { border-right: none; }
+.StationLog td:first-child, .StationLog th:first-child { border-left: none; }
 
+.StationLogItem {
+    font-size: 12px;
+    cursor: pointer;
+}
+.StationLogItem:hover {
+    background-color: #f0f9ff;
+}
+.StationLogItemDetails {
+    font-size: 12px;
+}
+</style>
 <template class="index" id="index">
 
     <div style="text-align: center;">
         <img src="image/licenses.jpg" style="width: 90%; max-width: 600px; margin: 20px auto; border-radius: 10px;">
     </div>
 
-    <div style="font-size: 14px; text-align: center; margin: 10px 0;">
+    <div style="font-size: 14px; text-align: center; margin: 0;">
         <a href="./html/exam.html">模拟考试</a> / <a href="./html/cw.html">CW练习器</a> / <a href="https://mikukonai.com">博客</a>
     </div>
+
+    <details>
+        <summary class="StationLogSummary">点击展开电台日志</summary>
+
+        <div class="StationLogLaw">
+            根据《业余无线电台管理办法》第三十条：业余无线电台的通信时间、通信频率、通信模式和通信对象等内容应当记入电台日志。电台日志应当保留两年，供无线电管理机构检查。
+        </div>
+        <!--时间线-->
+        <div class="TimelineContainer">
+            <table class="Timeline">
+                <tr id="WeekCountContainer"></tr>
+                <tr id="DaysContainer"></tr>
+            </table>
+        </div>
+        <!--电台日志-->
+        <div class="StationLog">
+            <table id="StationLogTable">
+                <tr>
+                    <th>时间</th>
+                    <th>对方呼号</th>
+                    <th>频率</th>
+                    <th>模式</th>
+                    <th>RST</th>
+                </tr>
+            </table>
+        </div>
+    </details>
 
 </template>
 
@@ -193,17 +280,21 @@ a:hover {
     margin: 3px;
 }
 
-.RigListLeft {
-    float:left; width: 50%;
+.RigListTable {
+    width: 100%;
+    border-collapse: collapse;
 }
-.RigListRight {
-    float:right; width: 50%;
-}
+.RigListLeft  { padding: 0; border: none; vertical-align: top; width: 50%; }
+.RigListRight { padding: 0; border: none; vertical-align: top; width: 50%; }
+
 .RigBox {
     padding: 20px;
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 1px 1px 0 rgb(64 64 64 / 8%), 0 1px 3px 1px rgb(64 64 64 / 16%)
+}
+.Noborder {
+    box-shadow: none;
 }
 .RigListLeft .RigBox {
     margin: 10px 5px 10px 10px;
@@ -212,7 +303,14 @@ a:hover {
     margin: 10px 10px 10px 5px;
 }
 </style>
-<template id="rigs">
+<template id="collections">
+
+<div class="SectionBody" style="margin: 30px;">
+    <p><a href="#collections_radio">无线电设备</a> / <a href="#collections_figure">手办</a> / <a href="#collections_book">图书</a> / <a href="#collections_">CD</a></p>
+    <p><a href="#collections_music">音乐</a> / <a href="#collections_anime">动画</a> / <a href="#collections_link">网络资源</a></p>
+</div>
+
+<div class="SectionHeader" id="collections_radio">无线电设备<div class="SectionHeaderComment">Radio Rigs</div></div>
 
 <img src="image/rigs/rigs.jpg" class="RigsTitleImage">
 
@@ -236,226 +334,224 @@ a:hover {
     </div>
 </div>
 
-<div class="RigListLeft">
-    <div class="RigBox">
-        <div class="RigTitle">德生 PL-330</div>
-        <div class="RigSubtitle">LW/MW/SW/FM/SSB收音机</div>
-        <div class="RigSubtitle">2020年11月30日购</div>
-        <div class="RigSubtitle"><span class="RigTag">收信机</span></div>
-        <div class="RigIntro">
-            <p>德生PL-330是2020年7月推出的一款支持SSB接收和同步检波的中端DSP收音机，可接收的波段包括长波、中波、短波、以及调频广播。</p>
-            <details>
-                <summary>PL-330彩蛋</summary>
-                <ul>
-                    <li>显示固件版本号。在关机的状态下，长按VF/VM按键，直至屏幕上呈现全显。在屏幕显示复归正常前，右上角会显示固件版本号。</li>
-                    <li>校准上边带或下边带。在开机的状态下，首先，调到一个调幅强台（即中波或短波强台都可以——译者注）。其次，长按SSB按键。再次，微调频率，直至实现零拍（零拍的标准为：除了声音的音调降低之外，没有呜呜声或其他声音失真现象——译者注）。最后，长按LSB按键，直至屏幕开始闪烁。</li>
-                    <li>在中波磁棒天线/拉杆天线与外接天线插口之间切换。在开机的状态下，进入长波或中波波段。长按数字键3，屏幕上显示CH-A时，代表使用机器自带的天线；显示CH-5时，代表使用外接天线。当选择外接天线这种模式的时候，屏幕上会同时显示SWMW的字眼。</li>
-                    <li>调制频偏设置。在开机状态下，进入调频波段。长按数字按键4，就能实现75HZ（适用于美国）和50HZ（适用于欧洲）之间的切换。</li>
-                    <li>最大音量。打开收音机，切换到任意波段。首先，长按数字键7。其次，调节音量旋钮。再次，长按数字键7保存。最后，每个波段都能进行单独的设置，默认值为58。</li>
-                    <li>让时间显示读秒。关闭收音机，长按数字按键8能够让时间显示读秒或关闭读秒。</li>
-                    <li>静音门槛。在PL990收音机上，长按数字键9能够启用静音门槛设置，然而在PL330上却没有生效。具体操作流程是：开启收音机，进入任何波段都可以。首先，长按数字键9，其次，旋转快步进飞梭。再次，改变屏幕左上角的数值，第四，长按ENTER按键保存。每个波段都可独立进行设置，默认值为01。</li>
-                </ul>
-                <p>参考资料：</p>
-                <ul>
-                    <li><a target="_blank" href="https://www.toutiao.com/i6855943904831734276/">PL330收音机评测</a></li>
-                    <li><a target="_blank" href="https://xw.qq.com/cmsid/20201013A00TWQ00">PL330彩蛋</a></li>
-                </ul>
-            </details>
+<table class="RigListTable"><tr>
+    <td class="RigListLeft">
+        <div class="RigBox">
+            <div class="RigTitle">德生 PL-330</div>
+            <div class="RigSubtitle">LW/MW/SW/FM/SSB收音机</div>
+            <div class="RigSubtitle">2020年11月30日购</div>
+            <div class="RigSubtitle"><span class="RigTag">收信机</span></div>
+            <div class="RigIntro">
+                <p>德生PL-330是2020年7月推出的一款支持SSB接收和同步检波的中端DSP收音机，可接收的波段包括长波、中波、短波、以及调频广播。</p>
+                <details>
+                    <summary>PL-330彩蛋</summary>
+                    <ul>
+                        <li>显示固件版本号。在关机的状态下，长按VF/VM按键，直至屏幕上呈现全显。在屏幕显示复归正常前，右上角会显示固件版本号。</li>
+                        <li>校准上边带或下边带。在开机的状态下，首先，调到一个调幅强台（即中波或短波强台都可以——译者注）。其次，长按SSB按键。再次，微调频率，直至实现零拍（零拍的标准为：除了声音的音调降低之外，没有呜呜声或其他声音失真现象——译者注）。最后，长按LSB按键，直至屏幕开始闪烁。</li>
+                        <li>在中波磁棒天线/拉杆天线与外接天线插口之间切换。在开机的状态下，进入长波或中波波段。长按数字键3，屏幕上显示CH-A时，代表使用机器自带的天线；显示CH-5时，代表使用外接天线。当选择外接天线这种模式的时候，屏幕上会同时显示SWMW的字眼。</li>
+                        <li>调制频偏设置。在开机状态下，进入调频波段。长按数字按键4，就能实现75HZ（适用于美国）和50HZ（适用于欧洲）之间的切换。</li>
+                        <li>最大音量。打开收音机，切换到任意波段。首先，长按数字键7。其次，调节音量旋钮。再次，长按数字键7保存。最后，每个波段都能进行单独的设置，默认值为58。</li>
+                        <li>让时间显示读秒。关闭收音机，长按数字按键8能够让时间显示读秒或关闭读秒。</li>
+                        <li>静音门槛。在PL990收音机上，长按数字键9能够启用静音门槛设置，然而在PL330上却没有生效。具体操作流程是：开启收音机，进入任何波段都可以。首先，长按数字键9，其次，旋转快步进飞梭。再次，改变屏幕左上角的数值，第四，长按ENTER按键保存。每个波段都可独立进行设置，默认值为01。</li>
+                    </ul>
+                    <p>参考资料：</p>
+                    <ul>
+                        <li><a target="_blank" href="https://www.toutiao.com/i6855943904831734276/">PL330收音机评测</a></li>
+                        <li><a target="_blank" href="https://xw.qq.com/cmsid/20201013A00TWQ00">PL330彩蛋</a></li>
+                    </ul>
+                </details>
+            </div>
         </div>
-    </div>
 
-    <div class="RigBox">
-        <div class="RigTitle">RTL-SDR</div>
-        <div class="RigSubtitle">基于RTL2832U的SDR接收机</div>
-        <div class="RigSubtitle">2020年8月8日、14日购</div>
-        <div class="RigSubtitle"><span class="RigTag">收信机</span><span class="RigTag">SDR</span></div>
-        <div class="RigIntro">
-            <p>RTL-SDR是基于瑞昱RTL2832U和R820T2调谐芯片的电视棒，配合PC、手机上的SDR#等软件可实现SDR无线电接收和解调功能。目前拥有的有两个版本：普通版和上变频版。上变频版可以将短波段的信号上变频到125MHz，以提高接收短波的灵敏度。</p>
-            <details>
-                <summary>上变频版PCB</summary>
-                <img src="image/rigs/rtl-sdr.jpg" class="RigsImage">
-                <img src="image/rigs/rtl-sdr-fm.jpg" class="RigsImage">
-            </details>
+        <div class="RigBox">
+            <div class="RigTitle">RTL-SDR</div>
+            <div class="RigSubtitle">2020年8月8日、14日购</div>
+            <div class="RigSubtitle"><span class="RigTag">收信机</span><span class="RigTag">SDR</span></div>
+            <div class="RigIntro">
+                <p>RTL-SDR是基于瑞昱RTL2832U和R820T2调谐芯片的电视棒，配合PC、手机上的SDR#等软件可实现SDR无线电接收和解调功能。目前拥有的有两个版本：普通版和上变频版。上变频版可以将短波段的信号上变频到125MHz，以提高接收短波的灵敏度。</p>
+                <details>
+                    <summary>上变频版PCB</summary>
+                    <img src="image/rigs/rtl-sdr.jpg" class="RigsImage">
+                    <img src="image/rigs/rtl-sdr-fm.jpg" class="RigsImage">
+                </details>
+            </div>
         </div>
-    </div>
 
-    <div class="RigBox">
-        <div class="RigTitle">五单元UHF八木天线</div>
-        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-        <div class="RigIntro">
-            <p>仅工作在业余0.7m波段，主瓣方向标称增益8dBi。</p>
+        <div class="RigBox">
+            <div class="RigTitle">五单元八木天线</div>
+            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
+            <div class="RigIntro">
+                <p>仅工作在业余0.7m波段，主瓣方向标称增益8dBi。</p>
+            </div>
         </div>
-    </div>
 
-    <div class="RigBox">
-        <div class="RigTitle">七单元UHF八木天线</div>
-        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-        <div class="RigIntro">
-            <p>仅工作在业余0.7m波段，主瓣方向标称增益14dBi。</p>
+        <div class="RigBox">
+            <div class="RigTitle">七单元八木天线</div>
+            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
+            <div class="RigIntro">
+                <p>仅工作在业余0.7m波段，主瓣方向标称增益14dBi。</p>
+            </div>
         </div>
-    </div>
 
-    <div class="RigBox">
-        <div class="RigTitle">HF20A</div>
-        <div class="RigSubtitle">单线短波全段行波天线</div>
-        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-        <div class="RigIntro">
-            <p>这是一款行波天线，包含一个巴伦和一个吸收电阻元件（实测电阻150Ω）。由于暂时无法发射短波，因此发射效果未测试，但接收效果似乎不错，接收FM调频广播的效果尤其好，背景黑，信号强，不知道为什么。</p>
+        <div class="RigBox">
+            <div class="RigTitle">HF20A</div>
+            <div class="RigSubtitle">单线短波全段行波天线</div>
+            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
+            <div class="RigIntro">
+                <p>这是一款行波天线，包含一个巴伦和一个吸收电阻元件（实测电阻150Ω）。由于暂时无法发射短波，因此发射效果未测试，但接收效果似乎不错，接收FM调频广播的效果尤其好，背景黑，信号强，不知道为什么。</p>
+            </div>
         </div>
-    </div>
+    </td>
+
+    <td class="RigListRight">
+        <div class="RigBox">
+            <div class="RigTitle">德生 PL-380</div>
+            <div class="RigSubtitle">LW/MW/SW/FM收音机</div>
+            <div class="RigSubtitle">2020年7月18日购</div>
+            <div class="RigSubtitle"><span class="RigTag">收信机</span></div>
+            <div class="RigIntro">
+                <p>德生PL-380除不支持SSB解调和同步检波之外，功能和架构上的差异不大，性能指标也大致相同。</p>
+                <details>
+                    <summary>PL-380参考资料</summary>
+                    <ul>
+                        <li><a target="_blank" href="http://bbs.mydigit.cn/read.php?tid=143662">PL-380数字全波段收音机拆解</a></li>
+                        <li><a target="_blank" href="https://kknews.cc/digital/z52p8rp.html">德生DSP经典收音机PL-380拆机图赏</a></li>
+                        <li><a target="_blank" href="https://tieba.baidu.com/p/5385996163">有关数字调谐技术和软件定义无线电</a></li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+
+        <div class="RigBox">
+            <div class="RigTitle">Comet HFJ-350M</div>
+            <div class="RigSubtitle">2020年9月12日购</div>
+            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
+            <div class="RigIntro">
+                <p>短波全段拉杆天线，支持3.5～50M所有业余短波段的发射和接收，耐功率100W（SSB，不含3.5MHz）。</p>
+            </div>
+        </div>
+
+        <div class="RigBox">
+            <div class="RigTitle">Diamond SRJ-770</div>
+            <div class="RigSubtitle">2020年11月28日购</div>
+            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
+            <div class="RigIntro">
+                <p>拉杆天线，支持业余V/U段的发射和接收，支持300MHz接收。业余2m波段增益2.15dBi，业余0.7m波段增益5.5dBi。耐功率20W，阻抗50Ω。</p>
+            </div>
+        </div>
+
+        <div class="RigBox">
+            <div class="RigTitle">Y-200A</div>
+            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
+            <div class="RigIntro">
+                <p>短波有源小环天线，通过前置放大器放大微弱的信号，工作频率为100k~180MHz。</p>
+            </div>
+        </div>
+
+        <div class="RigBox">
+            <div class="RigTitle">NanoVNA</div>
+            <div class="RigSubtitle">2020年10月10日购</div>
+            <div class="RigSubtitle"><span class="RigTag">仪器仪表</span></div>
+            <div class="RigIntro">
+                <p>一款低成本的矢量网络分析仪。</p>
+                <details>
+                    <summary>PCB</summary>
+                    <img src="image/rigs/nanovna.jpg" class="RigsImage">
+                </details>
+            </div>
+        </div>
+    </td></tr>
+</table>
+
+<div class="SectionHeader" id="collections_figure">手办<div class="SectionHeaderComment">Figure</div></div>
+
+<div class="SectionBody" style="margin: 30px 0;">
+    <a style="text-decoration: none; border: none;" target="_blank" href="https://www.hpoi.net/user/175068"><img src="http://res.hpoi.net.cn/gk/res/img/logo_flie.png" height="20px"></a>
 </div>
 
-<div class="RigListRight">
-    <div class="RigBox">
-        <div class="RigTitle">德生 PL-380</div>
-        <div class="RigSubtitle">LW/MW/SW/FM收音机</div>
-        <div class="RigSubtitle">2020年7月18日购</div>
-        <div class="RigSubtitle"><span class="RigTag">收信机</span></div>
-        <div class="RigIntro">
-            <p>德生PL-380除不支持SSB解调和同步检波之外，功能和架构上的差异不大，性能指标也大致相同。</p>
-            <details>
-                <summary>PL-380参考资料</summary>
-                <ul>
-                    <li><a target="_blank" href="http://bbs.mydigit.cn/read.php?tid=143662">PL-380数字全波段收音机拆解</a></li>
-                    <li><a target="_blank" href="https://kknews.cc/digital/z52p8rp.html">德生DSP经典收音机PL-380拆机图赏</a></li>
-                    <li><a target="_blank" href="https://tieba.baidu.com/p/5385996163">有关数字调谐技术和软件定义无线电</a></li>
-                </ul>
-            </details>
+<table class="RigListTable"><tr>
+    <td class="RigListLeft">
+        <div class="RigBox">
+            <div class="RigTitle">A.I.Gamers キズナアイ</div>
+            <div class="RigSubtitle">2021年2月4日购</div>
+            <div class="RigSubtitle"><span class="RigTag">比例人形</span></div>
+            <div class="RigIntro">
+                <img src="image/collections/figure/kizuna-ai.jpg" class="RigsImage">
+            </div>
         </div>
-    </div>
 
-    <div class="RigBox">
-        <div class="RigTitle">Comet HFJ-350M</div>
-        <div class="RigSubtitle">短波全波段拉杆式GP天线</div>
-        <div class="RigSubtitle">2020年9月12日购</div>
-        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-        <div class="RigIntro">
-            <p>拉杆天线，支持3.5～50M所有业余短波段的发射和接收，耐功率100W（SSB，不含3.5MHz）。</p>
+        <div class="RigBox">
+            <div class="RigTitle">初音ミク Noodle Stopper</div>
+            <div class="RigSubtitle">2021年2月6日购</div>
+            <div class="RigSubtitle"><span class="RigTag">景品</span><span class="RigTag">压泡面</span></div>
+            <div class="RigIntro">
+                <img src="image/collections/figure/miku-noodle-stopper.jpg" class="RigsImage">
+            </div>
         </div>
-    </div>
-
-    <div class="RigBox">
-        <div class="RigTitle">Diamond SRJ-770</div>
-        <div class="RigSubtitle">VHF/UHF拉杆天线</div>
-        <div class="RigSubtitle">2020年11月28日购</div>
-        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-        <div class="RigIntro">
-            <p>拉杆天线，支持业余V/U段的发射和接收，支持300MHz接收。业余2m波段增益2.15dBi，业余0.7m波段增益5.5dBi。耐功率20W，阻抗50Ω。</p>
+    </td>
+    <td class="RigListRight">
+        <div class="RigBox">
+            <div class="RigTitle">初音ミク Lat式</div>
+            <div class="RigSubtitle">2013年6月</div>
+            <div class="RigSubtitle"><span class="RigTag">景品</span></div>
+            <div class="RigIntro">
+                <img src="image/collections/figure/miku-lat.jpg" class="RigsImage">
+            </div>
         </div>
-    </div>
 
-    <div class="RigBox">
-        <div class="RigTitle">Y-200A</div>
-        <div class="RigSubtitle">短波有源小环天线</div>
-        <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-        <div class="RigIntro">
-            <p>这款天线是有源天线，通过前置放大器放大微弱的信号，工作频率为100k~180MHz。</p>
+        <div class="RigBox">
+            <div class="RigTitle">霞ヶ丘詩羽</div>
+            <div class="RigSubtitle">2021年2月6日购</div>
+            <div class="RigSubtitle"><span class="RigTag">景品</span></div>
+            <div class="RigIntro">
+                <img src="image/collections/figure/kasumigaoka-utaha.jpg" class="RigsImage">
+            </div>
         </div>
-    </div>
+    </td></tr>
+</table>
 
-    <div class="RigBox">
-        <div class="RigTitle">NanoVNA</div>
-        <div class="RigSubtitle">矢量网络分析仪</div>
-        <div class="RigSubtitle">2020年10月10日购</div>
-        <div class="RigSubtitle"><span class="RigTag">仪器仪表</span></div>
-        <div class="RigIntro">
-            <p>一款低成本的网络分析仪。</p>
-            <details>
-                <summary>PCB</summary>
-                <img src="image/rigs/nanovna.jpg" class="RigsImage">
-            </details>
-        </div>
-    </div>
 
+<div class="SectionHeader" id="collections_anime">动画<div class="SectionHeaderComment">Anime</div></div>
+
+<div class="SectionBody" style="margin: 30px 0;">
+    <a style="text-decoration: none; border: none;" target="_blank" href="https://bangumi.tv/user/mikukonai"><img src="https://bangumi.tv/img/rc3/logo.png"></a>
 </div>
+
+<table class="RigListTable"><tr>
+    <td class="RigListLeft">
+        <div class="RigBox">
+            <div class="RigTitle">涼宮ハルヒの憂鬱</div>
+            <div class="RigSubtitle">Suzumiya Haruhi no Yūutsu</div>
+            <div class="RigSubtitle">凉宫春日的忧郁</div>
+            <div class="RigSubtitle">2015.4</div>
+            <div class="RigIntro">
+                <img src="image/collections/anime/涼宮ハルヒの憂鬱.jpg" class="RigsImage" style="width: auto; height: 120px;">
+            </div>
+        </div>
+
+
+    </td>
+    <td class="RigListRight">
+        <div class="RigBox">
+            <div class="RigTitle">四月は君の嘘</div>
+            <div class="RigSubtitle">Shigatsu wa Kimi no Uso</div>
+            <div class="RigSubtitle">四月是你的谎言</div>
+            <div class="RigSubtitle">2014.12</div>
+            <div class="RigIntro">
+                <img src="image/collections/anime/四月は君の嘘.jpg" class="RigsImage" style="width: auto; height: 120px;">
+            </div>
+        </div>
+
+    </td></tr>
+</table>
+
 
 </template>
 
 
 
 <!--日志模板-->
-<style>
-.StationLogSummary {
-    font-size: 13px;
-    line-height: 23px;
-    color: #919da8;
-    padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
-    cursor: pointer;
-}
-.StationLogSummary:hover {
-    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
-}
-.StationLog {
-    text-align: center;
-    line-height: 22px;
-    overflow-x: auto;
-    margin: 20px auto 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 1px 1px 0 rgba(64,64,64,0.08), 0 1px 3px 1px rgba(64,64,64,0.16);
-}
-.StationLog table {
-    font-size: 14px;
-    color: #233;
-    border-collapse: collapse;
-    width: 100%;
-    border-spacing: 0;
-}
-.StationLog td, .StationLog th {
-    font-family: 'Consolas', Courier, monospace;
-    border: 1px solid #eee;
-    padding: 2px 3px;
-}
-.StationLog th {
-    color: #1ea0f0;
-    border: none;
-    padding: 3px 3px;
-}
-.StationLog tr:last-child,
-.StationLog tr:first-child {
-    border: none;
-}
-.StationLog td:last-child, .StationLog th:last-child { border-right: none; }
-.StationLog td:first-child, .StationLog th:first-child { border-left: none; }
-
-.StationLogItem {
-    font-size: 12px;
-    cursor: pointer;
-}
-.StationLogItem:hover {
-    background-color: #f0f9ff;
-}
-.StationLogItemDetails {
-    font-size: 12px;
-}
-</style>
-<template id="logs">
-    <details>
-        <summary class="StationLogSummary">
-            点击展开电台日志<br><span style="font-weight: normal;">根据《业余无线电台管理办法》第三十条：业余无线电台的通信时间、通信频率、通信模式和通信对象等内容应当记入电台日志。电台日志应当保留两年，供无线电管理机构检查。</span>
-        </summary>
-        <!--时间线-->
-        <div class="TimelineContainer">
-            <table class="Timeline">
-                <tr id="WeekCountContainer"></tr>
-                <tr id="DaysContainer"></tr>
-            </table>
-        </div>
-        <!--电台日志-->
-        <div class="StationLog">
-            <table id="StationLogTable">
-                <tr>
-                    <th>时间</th>
-                    <th>对方呼号</th>
-                    <th>频率</th>
-                    <th>模式</th>
-                    <th>RST</th>
-                </tr>
-            </table>
-        </div>
-    </details>
-
+<template id="inspirations">
     <!--正文容器-->
     <div class="InspirationContainer" id="InspirationContainer"></div>
     <!--底部内容-->
@@ -505,33 +601,33 @@ a:hover {
     <div class="SectionBody">
         <table class="Matrix">
             <tbody><tr>
-                <td><a class="Button" target="_blank" href="https://zephray.me/">ZephRay</a></td>
-                <td><a class="Button" target="_blank" href="https://imjad.cn/">猫与向日葵</a></td>
-                <td><a class="Button" target="_blank" href="https://256kb.cn/">野生喵喵</a></td>
+                <td><a target="_blank" href="https://zephray.me/">ZephRay</a></td>
+                <td><a target="_blank" href="https://imjad.cn/">猫与向日葵</a></td>
+                <td><a target="_blank" href="https://256kb.cn/">野生喵喵</a></td>
             </tr>
             <tr>
-                <td><a class="Button" target="_blank" href="https://blog.ddlee.cn/">萧爽楼</a></td>
-                <td><a class="Button" target="_blank" href="https://ice1000.org/">中间表示</a></td>
-                <td><a class="Button" target="_blank" href="https://tcxx.info/">甜欣屋</a></td>
+                <td><a target="_blank" href="https://blog.ddlee.cn/">萧爽楼</a></td>
+                <td><a target="_blank" href="https://ice1000.org/">中间表示</a></td>
+                <td><a target="_blank" href="https://tcxx.info/">甜欣屋</a></td>
             </tr>
             <tr>
-                <td><a class="Button" target="_blank" href="https://meow3.family.blog/">惡魔菌</a></td>
-                <td><a class="Button" target="_blank" href="https://tql.ink/">Akkariin</a></td>
-                <td><a class="Button" target="_blank" href="https://chanshiyu.com/">蝉時雨</a></td>
+                <td><a target="_blank" href="https://meow3.family.blog/">惡魔菌</a></td>
+                <td><a target="_blank" href="https://tql.ink/">Akkariin</a></td>
+                <td><a target="_blank" href="https://chanshiyu.com/">蝉時雨</a></td>
             </tr>
             <tr>
-                <td><a class="Button" target="_blank" href="https://ssshooter.com/">UsbnFantasy</a></td>
-                <td><a class="Button" target="_blank" href="http://yuki.systems/">Brethland</a></td>
-                <td><a class="Button" target="_blank" href="https://www.imalan.cn/">三无计划</a></td>
+                <td><a target="_blank" href="https://ssshooter.com/">UsbnFantasy</a></td>
+                <td><a target="_blank" href="http://yuki.systems/">Brethland</a></td>
+                <td><a target="_blank" href="https://www.imalan.cn/">三无计划</a></td>
             </tr>
             <tr>
-                <td><a class="Button" target="_blank" href="https://ntzyz.io">ntzyz</a></td>
-                <td><a class="Button" target="_blank" href="https://wenzhao-xiang.github.io/Blog/">Winzzzzard</a></td>
-                <td><a class="Button" target="_blank" href="https://geekinney.com/">Geekinney</a></td>
+                <td><a target="_blank" href="https://ntzyz.io">ntzyz</a></td>
+                <td><a target="_blank" href="https://wenzhao-xiang.github.io/Blog/">Winzzzzard</a></td>
+                <td><a target="_blank" href="https://geekinney.com/">Geekinney</a></td>
             </tr>
             <tr>
-                <td><a class="Button" target="_blank" href="https://blog.kaciras.com/">Kaciras的博客</a></td>
-                <td><a class="Button" target="_blank" href="https://ibcl.us/">I BCL.</a></td>
+                <td><a target="_blank" href="https://blog.kaciras.com/">Kaciras的博客</a></td>
+                <td><a target="_blank" href="https://ibcl.us/">I BCL.</a></td>
                 <td></td>
             </tr>
         </tbody></table>
