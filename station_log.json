@@ -533,5 +533,24 @@
         "qth_self": "家",
 
         "note":     "江苏无协中继点名"
+    },
+    {
+        "time":     "2021-02-13 19:36",
+        "callsign": "B4/BH6BJJ",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "Yaesu 8800",
+        "ant":      "玻璃钢",
+        "pwr":      "5W",
+        "qth":      "天印大道",
+
+        "rig_self": "IC-705",
+        "ant_self": "七单元八木",
+        "pwr_self": "10W",
+        "qth_self": "家",
+
+        "note":     "江苏无协中继点名"
     }
 ]
