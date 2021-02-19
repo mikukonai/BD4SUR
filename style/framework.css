@@ -98,7 +98,7 @@ body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Aria
 
 
 /* 导航按钮组件 */
-.NavbarItem { position: relative; height: var(--NavbarHeight); min-width: 55px; font-size: 14px; line-height: var(--NavbarHeight); padding: auto 15px; border: none; background-color: transparent; align-items: center; cursor: pointer;}
+.NavbarItem { position: relative; height: var(--NavbarHeight); min-width: 60px; font-size: 14px; line-height: var(--NavbarHeight); padding: auto 15px; border: none; background-color: transparent; align-items: center; cursor: pointer;}
 .NavbarItem:hover { color: #1ea0f0; background-color: #1ea0f010;}
 .NavbarItem[active="true"] { color: #1ea0f0; }
 .NavbarItem[active="true"]:after { content: "."; display: block; position: absolute; left: 0; top: 0; width: 100%; color: rgba(0,0,0,0); box-shadow: inset 0 -3px #1ea0f0; animation: NavbarItemActiveAnimation 0.3s cubic-bezier(0.4, 0, 0.4, 1) 0s;}
