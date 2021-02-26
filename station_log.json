@@ -552,5 +552,24 @@
         "qth_self": "家",
 
         "note":     "江苏无协中继点名"
+    },
+    {
+        "time":     "2021-02-20 19:52",
+        "callsign": "BD4SUH",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "滔滔",
+        "ant":      "-",
+        "pwr":      "-",
+        "qth":      "溧水",
+
+        "rig_self": "森海克斯8800",
+        "ant_self": "拉杆",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     "江苏无协中继点名"
     }
 ]
