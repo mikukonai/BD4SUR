@@ -107,7 +107,7 @@ body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Aria
 
 
 /* 底部版权栏-渐变文字 */
-.RBGradient { font-family: Verdana, Arial, sans-serif, Tahoma, "宋体", Microsoft YaHei; width: fit-content; width: -moz-fit-content; width: -webkit-fit-content; margin: 0 auto; font-weight: bold; background: linear-gradient(to right, rgb(255, 94, 134), rgb(210, 162, 255), rgb(36, 200, 255)); -webkit-text-fill-color: transparent; background-clip: text; -webkit-background-clip: text; }
+.RBGradient { font-family: Verdana, Arial, sans-serif, Tahoma, "宋体", Microsoft YaHei; text-align: center; width: fit-content; width: -moz-fit-content; width: -webkit-fit-content; margin: 0 auto; font-weight: bold; background: linear-gradient(to right, rgb(255, 94, 134), rgb(210, 162, 255), rgb(36, 200, 255)); -webkit-text-fill-color: transparent; background-clip: text; -webkit-background-clip: text; }
 
 /* 首屏加载遮罩 */
 .FirstLoadingMask { position: absolute; top: 0; left: 0; width: 100%; height: 100%; font-size: 20px; color: #888; text-align: center; backdrop-filter: blur(10px); background-color: rgba(255,255,255,0.5); z-index: 99999; }
@@ -215,7 +215,7 @@ body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Aria
     .PosterDate { display: block; color: #b1b6b9; font-weight: normal; font-size: 12px; margin-top: 4px; }
 }
 
-.Poster blockquote { font-size: 13px; line-height: 21px; color:#888888; margin:10px 10px 10px 10px; padding: 8px 10px; border: 1px solid #9ee0f8; border-radius: 5px; box-shadow: #c0ebfb 0 0 5px 0;}
+.Poster blockquote { font-size: 13px; line-height: 21px; color:#333; background-color: #f4fbff; margin:10px 0; padding: 8px 10px; border: none; border-radius: 5px; }
 .PosterParagraph { margin: 10px 0px; padding: 0; color: #333; font-size: 14px; line-height: 23px; display: block; text-indent: 0;}
 .PosterLink { text-decoration: underline; cursor: pointer;}
 .PosterLink:hover { color: #1ea0f0; text-decoration: underline;}

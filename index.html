@@ -63,18 +63,20 @@
         <style>
         @media(min-width:651px){
             .HeaderLogo {
-                height: 180px;
+                height: 160px;
                 margin: 0 auto 10px auto;
+                cursor: pointer;
             }
         }
         @media(max-width:650px){
             .HeaderLogo {
                 width: 80%;
                 margin: 30px auto 10px auto;
+                cursor: pointer;
             }
         }
         </style>
-        <img src="./image/callsign.png" class="HeaderLogo">
+        <img src="./image/callsign.png" class="HeaderLogo" onclick="window.location.href=`/`;">
     </header>
     <!--导航栏-->
     <nav class="Navbar" id="MainNavbar">
@@ -96,7 +98,10 @@
             color: #1ea0f0;
         }
         </style>
-        <div style="font-size: 20px; text-align: center; line-height: 32px; color: #ccc;" class="RBGradient">BD4SUR</div>
+        <div class="RBGradient" style="transform: scale(0.9); margin-bottom: 15px;">
+            <span style="font-size: 22px;">BD4SUR</span><br>
+            <span style="font-size: 10px; font-weight: lighter; line-height: 18px;">业 余 无 线 电 台</span>
+        </div>
         <div class="FooterContent">
             <p style="letter-spacing: 2px; font-weight: bold;">体谅 · 忠诚 · 进取 · 友爱 · 适度 · 爱国</p>
         </div>
@@ -227,9 +232,10 @@ a:hover {
     margin: 25px 0;
 }
 .RigTitle {
-    color: #c99149;
+    color: #494f53;
     font-size: 17px;
     font-weight: bold;
+    letter-spacing: 1px;
     margin: 0 0 10px 0;
     text-align: center;
 }
@@ -270,6 +276,15 @@ a:hover {
     border: none;
     border-radius: 5px;
 }
+.AnimeCover {
+    max-width: 180px;
+    width: 100%;
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px 0 rgb(60 60 60 / 20%), 0 1px 3px 1px rgb(60 60 60 / 20%);
+}
 .RigTag {
     display: inline-block;
     background-color: #e8f6ff;
@@ -288,13 +303,16 @@ a:hover {
 .RigListRight { padding: 0; border: none; vertical-align: top; width: 50%; }
 
 .RigBox {
-    padding: 20px;
+    padding-bottom: 20px;
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 1px 1px 0 rgb(64 64 64 / 8%), 0 1px 3px 1px rgb(64 64 64 / 16%)
 }
-.Noborder {
-    box-shadow: none;
+.RigBoxPadding {
+    padding: 20px !important;
+}
+.RigBoxNoBorder {
+    box-shadow: none !important;
 }
 .RigListLeft .RigBox {
     margin: 10px 5px 10px 10px;
@@ -314,35 +332,83 @@ a:hover {
 
 <img src="image/rigs/rigs.jpg" class="RigsTitleImage">
 
-<div class="RigBox">
-    <div class="RigTitle">Icom IC-705</div>
-    <div class="RigSubtitle">便携式HF/UHF/VHF全模式收发信机</div>
-    <div class="RigSubtitle">2020年9月12日购</div>
-    <div class="RigSubtitle"><span class="RigTag">收发信机</span><span class="RigTag">执照注册设备</span></div>
-    <div class="RigIntro">
-        <p>这款机器是艾可慕于2019年推出、2020年发售的一款QRP全波段全模式便携电台，主打野外移动使用。支持在HF/VHF/UHF波段的各业余频段上，以最高10W、最低0.5W的功率进行发射。型号核准码：2020FP14257。</p>
-    </div>
-</div>
-
-<div class="RigBox" style="margin-bottom: 0px;">
-    <div class="RigTitle">宝锋 UV-5R</div>
-    <div class="RigSubtitle">手持UHF/VHF调频收发信机</div>
-    <div class="RigSubtitle">2020年8月3日购</div>
-    <div class="RigSubtitle"><span class="RigTag">收发信机</span><span class="RigTag">执照注册设备</span></div>
-    <div class="RigIntro">
-        <p>这款手台价格仅100元出头，是许多新手Ham入门的第一部机器。该机支持业余V/U段收发以及调频广播接收，最大发射功率5W，仅支持模拟FM模式。型号核准码：2017FR3280。</p>
-    </div>
-</div>
-
 <table class="RigListTable"><tr>
     <td class="RigListLeft">
-        <div class="RigBox">
-            <div class="RigTitle">德生 PL-330</div>
-            <div class="RigSubtitle">LW/MW/SW/FM/SSB收音机</div>
-            <div class="RigSubtitle">2020年11月30日购</div>
+        <div class="RigBox RigBoxPadding">
+            <div class="RigTitle">Icom IC-705</div>
+            <div class="RigSubtitle">便携式HF/UHF/VHF全模式收发信机</div>
+            <div class="RigSubtitle">2020年9月12日购</div>
+            <div class="RigSubtitle"><span class="RigTag">收发信机</span><span class="RigTag">执照注册设备</span></div>
+            <div class="RigIntro">
+                <p>这款机器是艾可慕于2019年推出、2020年发售的一款QRP全波段全模式便携电台，主打野外移动使用。支持在HF/VHF/UHF波段的各业余频段上，以最高10W、最低0.5W的功率进行发射。型号核准码：2020FP14257。</p>
+            </div>
+        </div>
+
+        <div class="RigBox RigBoxPadding">
+            <div class="RigTitle">RTL-SDR</div>
+            <div class="RigSubtitle">2020年8月8日、14日购</div>
+            <div class="RigSubtitle"><span class="RigTag">收信机</span><span class="RigTag">SDR</span></div>
+            <div class="RigIntro">
+                <p>RTL-SDR是基于瑞昱RTL2832U和R820T2调谐芯片的电视棒，配合PC、手机上的SDR#等软件可实现SDR无线电接收和解调功能。目前拥有的有两个版本：普通版和上变频版。上变频版可以将短波段的信号上变频到125MHz，以提高接收短波的灵敏度。</p>
+                <details>
+                    <summary>上变频版PCB</summary>
+                    <img src="image/rigs/rtl-sdr.jpg" class="RigsImage">
+                    <img src="image/rigs/rtl-sdr-fm.jpg" class="RigsImage">
+                </details>
+            </div>
+        </div>
+
+        <div class="RigBox RigBoxPadding">
+            <div class="RigTitle">天线</div>
+            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
+            <div class="RigIntro">
+                <ul>
+                    <li>Comet HFJ-350M：短波拉杆天线，支持3.5～50M所有业余短波段。</li>
+                    <li>Diamond SRJ-770：业余V/U段拉杆天线，支持300MHz接收。VHF增益2.15dBi，UHF增益5.5dBi。</li>
+                    <li>Y-200A：短波有源小环天线，通过前置放大器放大微弱的信号，工作频率为100k~180MHz。</li>
+                    <li>五单元八木：业余0.7m波段，主瓣增益8dBi。</li>
+                    <li>七单元八木：业余0.7m波段，主瓣增益14dBi。</li>
+                    <li>HF20A单线短波全段行波天线。</li>
+                </ul>
+            </div>
+        </div>
+
+    </td>
+
+    <td class="RigListRight">
+        <div class="RigBox RigBoxPadding">
+            <div class="RigTitle">宝锋 UV-5R</div>
+            <div class="RigSubtitle">手持UHF/VHF调频收发信机</div>
+            <div class="RigSubtitle">2020年8月3日购</div>
+            <div class="RigSubtitle"><span class="RigTag">收发信机</span><span class="RigTag">执照注册设备</span></div>
+            <div class="RigIntro">
+                <p>这款手台价格低廉，适合新手Ham入门。该机支持业余V/U段收发以及调频广播接收，最大发射功率5W，仅支持模拟FM模式。型号核准码：2017FR3280。</p>
+            </div>
+        </div>
+
+        <div class="RigBox RigBoxPadding">
+            <div class="RigTitle">森海克斯8800</div>
+            <div class="RigSubtitle">手持UHF/VHF调频收发信机</div>
+            <div class="RigSubtitle">2021年2月20日购</div>
+            <div class="RigSubtitle"><span class="RigTag">收发信机</span><span class="RigTag">已验机设备</span></div>
+            <div class="RigIntro">
+                <p>这款手台非常流行。该机支持业余V/U段收发以及调频广播、航空VHF调幅语音接收，最大发射功率5W，仅支持模拟FM模式。型号核准码：2019FP6299。</p>
+            </div>
+        </div>
+
+        <div class="RigBox RigBoxPadding">
+            <div class="RigTitle">德生PL-330/380</div>
             <div class="RigSubtitle"><span class="RigTag">收信机</span></div>
             <div class="RigIntro">
-                <p>德生PL-330是2020年7月推出的一款支持SSB接收和同步检波的中端DSP收音机，可接收的波段包括长波、中波、短波、以及调频广播。</p>
+                <p>德生PL-330是2020年7月推出的一款支持SSB接收和同步检波的中端DSP收音机，可接收的波段包括长/中/短波/调频广播。德生PL-380不支持SSB解调和同步检波。</p>
+                <details>
+                    <summary>PL-380参考资料</summary>
+                    <ul>
+                        <li><a target="_blank" href="http://bbs.mydigit.cn/read.php?tid=143662">PL-380数字全波段收音机拆解</a></li>
+                        <li><a target="_blank" href="https://kknews.cc/digital/z52p8rp.html">德生DSP经典收音机PL-380拆机图赏</a></li>
+                        <li><a target="_blank" href="https://tieba.baidu.com/p/5385996163">有关数字调谐技术和软件定义无线电</a></li>
+                    </ul>
+                </details>
                 <details>
                     <summary>PL-330彩蛋</summary>
                     <ul>
@@ -363,92 +429,7 @@ a:hover {
             </div>
         </div>
 
-        <div class="RigBox">
-            <div class="RigTitle">RTL-SDR</div>
-            <div class="RigSubtitle">2020年8月8日、14日购</div>
-            <div class="RigSubtitle"><span class="RigTag">收信机</span><span class="RigTag">SDR</span></div>
-            <div class="RigIntro">
-                <p>RTL-SDR是基于瑞昱RTL2832U和R820T2调谐芯片的电视棒，配合PC、手机上的SDR#等软件可实现SDR无线电接收和解调功能。目前拥有的有两个版本：普通版和上变频版。上变频版可以将短波段的信号上变频到125MHz，以提高接收短波的灵敏度。</p>
-                <details>
-                    <summary>上变频版PCB</summary>
-                    <img src="image/rigs/rtl-sdr.jpg" class="RigsImage">
-                    <img src="image/rigs/rtl-sdr-fm.jpg" class="RigsImage">
-                </details>
-            </div>
-        </div>
-
-        <div class="RigBox">
-            <div class="RigTitle">五单元八木天线</div>
-            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-            <div class="RigIntro">
-                <p>仅工作在业余0.7m波段，主瓣方向标称增益8dBi。</p>
-            </div>
-        </div>
-
-        <div class="RigBox">
-            <div class="RigTitle">七单元八木天线</div>
-            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-            <div class="RigIntro">
-                <p>仅工作在业余0.7m波段，主瓣方向标称增益14dBi。</p>
-            </div>
-        </div>
-
-        <div class="RigBox">
-            <div class="RigTitle">HF20A</div>
-            <div class="RigSubtitle">单线短波全段行波天线</div>
-            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-            <div class="RigIntro">
-                <p>这是一款行波天线，包含一个巴伦和一个吸收电阻元件（实测电阻150Ω）。由于暂时无法发射短波，因此发射效果未测试，但接收效果似乎不错，接收FM调频广播的效果尤其好，背景黑，信号强，不知道为什么。</p>
-            </div>
-        </div>
-    </td>
-
-    <td class="RigListRight">
-        <div class="RigBox">
-            <div class="RigTitle">德生 PL-380</div>
-            <div class="RigSubtitle">LW/MW/SW/FM收音机</div>
-            <div class="RigSubtitle">2020年7月18日购</div>
-            <div class="RigSubtitle"><span class="RigTag">收信机</span></div>
-            <div class="RigIntro">
-                <p>德生PL-380除不支持SSB解调和同步检波之外，功能和架构上的差异不大，性能指标也大致相同。</p>
-                <details>
-                    <summary>PL-380参考资料</summary>
-                    <ul>
-                        <li><a target="_blank" href="http://bbs.mydigit.cn/read.php?tid=143662">PL-380数字全波段收音机拆解</a></li>
-                        <li><a target="_blank" href="https://kknews.cc/digital/z52p8rp.html">德生DSP经典收音机PL-380拆机图赏</a></li>
-                        <li><a target="_blank" href="https://tieba.baidu.com/p/5385996163">有关数字调谐技术和软件定义无线电</a></li>
-                    </ul>
-                </details>
-            </div>
-        </div>
-
-        <div class="RigBox">
-            <div class="RigTitle">Comet HFJ-350M</div>
-            <div class="RigSubtitle">2020年9月12日购</div>
-            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-            <div class="RigIntro">
-                <p>短波全段拉杆天线，支持3.5～50M所有业余短波段的发射和接收，耐功率100W（SSB，不含3.5MHz）。</p>
-            </div>
-        </div>
-
-        <div class="RigBox">
-            <div class="RigTitle">Diamond SRJ-770</div>
-            <div class="RigSubtitle">2020年11月28日购</div>
-            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-            <div class="RigIntro">
-                <p>拉杆天线，支持业余V/U段的发射和接收，支持300MHz接收。业余2m波段增益2.15dBi，业余0.7m波段增益5.5dBi。耐功率20W，阻抗50Ω。</p>
-            </div>
-        </div>
-
-        <div class="RigBox">
-            <div class="RigTitle">Y-200A</div>
-            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-            <div class="RigIntro">
-                <p>短波有源小环天线，通过前置放大器放大微弱的信号，工作频率为100k~180MHz。</p>
-            </div>
-        </div>
-
-        <div class="RigBox">
+        <div class="RigBox RigBoxPadding">
             <div class="RigTitle">NanoVNA</div>
             <div class="RigSubtitle">2020年10月10日购</div>
             <div class="RigSubtitle"><span class="RigTag">仪器仪表</span></div>
@@ -472,40 +453,58 @@ a:hover {
 <table class="RigListTable"><tr>
     <td class="RigListLeft">
         <div class="RigBox">
-            <div class="RigTitle">A.I.Gamers キズナアイ</div>
-            <div class="RigSubtitle">2021年2月7日购</div>
-            <div class="RigSubtitle"><span class="RigTag">比例人形</span></div>
             <div class="RigIntro">
                 <img src="image/collections/figure/kizuna-ai.jpg" class="RigsImage">
             </div>
+            <div class="RigTitle">A.I.Gamers キズナアイ</div>
+            <div class="RigSubtitle">2021年2月7日购</div>
+            <div class="RigSubtitle"><span class="RigTag">比例人形</span></div>
         </div>
 
         <div class="RigBox">
-            <div class="RigTitle">初音ミク Noodle Stopper</div>
-            <div class="RigSubtitle">2021年2月9日购</div>
-            <div class="RigSubtitle"><span class="RigTag">景品</span><span class="RigTag">压泡面</span></div>
             <div class="RigIntro">
                 <img src="image/miku-705.jpg" class="RigsImage">
             </div>
+            <div class="RigTitle">初音ミク Noodle Stopper</div>
+            <div class="RigSubtitle">2021年2月9日购</div>
+            <div class="RigSubtitle"><span class="RigTag">景品</span><span class="RigTag">压泡面</span></div>
+        </div>
+
+        <div class="RigBox">
+            <div class="RigIntro">
+                <img src="image/collections/figure/miku-xmas-2020.jpg" class="RigsImage">
+            </div>
+            <div class="RigTitle">初音ミク2020圣诞版</div>
+            <div class="RigSubtitle">2021年2月9日购</div>
+            <div class="RigSubtitle"><span class="RigTag">景品</span></div>
         </div>
     </td>
     <td class="RigListRight">
         <div class="RigBox">
-            <div class="RigTitle">初音ミク Lat式</div>
-            <div class="RigSubtitle">2013年6月</div>
-            <div class="RigSubtitle"><span class="RigTag">景品</span></div>
             <div class="RigIntro">
                 <img src="image/collections/figure/miku-lat.jpg" class="RigsImage">
             </div>
+            <div class="RigTitle">初音ミク Lat式</div>
+            <div class="RigSubtitle">2013年6月</div>
+            <div class="RigSubtitle"><span class="RigTag">景品</span></div>
         </div>
 
         <div class="RigBox">
-            <div class="RigTitle">霞ヶ丘詩羽</div>
-            <div class="RigSubtitle">2021年2月9日购</div>
-            <div class="RigSubtitle"><span class="RigTag">景品</span></div>
             <div class="RigIntro">
                 <img src="image/collections/figure/kasumigaoka-utaha.jpg" class="RigsImage">
             </div>
+            <div class="RigTitle">霞ヶ丘詩羽</div>
+            <div class="RigSubtitle">2021年2月9日购</div>
+            <div class="RigSubtitle"><span class="RigTag">景品</span></div>
+        </div>
+
+        <div class="RigBox">
+            <div class="RigIntro">
+                <img src="image/collections/figure/nikki-nendoloid.jpg" class="RigsImage">
+            </div>
+            <div class="RigTitle">暖暖粘土人</div>
+            <div class="RigSubtitle">2021年2月28日购</div>
+            <div class="RigSubtitle"><span class="RigTag">粘土人</span></div>
         </div>
     </td></tr>
 </table>
@@ -519,31 +518,442 @@ a:hover {
 
 <table class="RigListTable"><tr>
     <td class="RigListLeft">
-        <div class="RigBox">
-            <div class="RigTitle">涼宮ハルヒの憂鬱</div>
-            <div class="RigSubtitle">Suzumiya Haruhi no Yūutsu</div>
-            <div class="RigSubtitle">凉宫春日的忧郁</div>
-            <div class="RigSubtitle">2015.4</div>
+
+        <div class="RigBox RigBoxNoBorder">
             <div class="RigIntro">
-                <img src="image/collections/anime/涼宮ハルヒの憂鬱.jpg" class="RigsImage" style="width: auto; height: 120px;">
+                <img src="image/collections/anime/涼宮ハルヒの憂鬱.jpg" class="AnimeCover">
             </div>
+            <div class="RigTitle" lang="ja">涼宮ハルヒの憂鬱</div>
+            <div class="RigSubtitle">Suzumiya Haruhi no Yūutsu</div>
+            <div class="RigSubtitle" lang="zh-CN">凉宫春日的忧郁</div>
+            <div class="RigSubtitle">2015.4</div>
+            <div class="RigSubtitle">含衍生作品</div>
         </div>
 
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/夏目友人帳.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">夏目友人帳</div>
+            <div class="RigSubtitle">Natsume Yūjinchō</div>
+            <div class="RigSubtitle" lang="zh-CN">夏目友人帐</div>
+            <div class="RigSubtitle">2015.2</div>
+            <div class="RigSubtitle">全5季含衍生作品</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/ノラガミ.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">ノラガミ</div>
+            <div class="RigSubtitle">Noragami</div>
+            <div class="RigSubtitle" lang="zh-CN">野良神</div>
+            <div class="RigSubtitle">2016.10</div>
+            <div class="RigSubtitle">全2季</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/小林さんちのメイドラゴン.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">小林さんちのメイドラゴン</div>
+            <div class="RigSubtitle">Kobayashi Sanchi no Maidragon</div>
+            <div class="RigSubtitle" lang="zh-CN">小林家的龙女仆</div>
+            <div class="RigSubtitle">2017.4</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/響け！ユーフォニアム.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">響け！ユーフォニアム</div>
+            <div class="RigSubtitle">Hibike! Euphonium</div>
+            <div class="RigSubtitle" lang="zh-CN">吹响！悠风号</div>
+            <div class="RigSubtitle">2019.8~2020.6</div>
+            <div class="RigSubtitle">全2季及衍生作品</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/日常.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">日常</div>
+            <div class="RigSubtitle">Nichijō</div>
+            <div class="RigSubtitle" lang="zh-CN">日常</div>
+            <div class="RigSubtitle">2020.1.5~2020.1.12</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/かぐや様は告らせたい.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">かぐや様は告らせたい</div>
+            <div class="RigSubtitle">Kaguyasama wa Tsugerasetai</div>
+            <div class="RigSubtitle" lang="zh-CN">辉夜大小姐想让我告白</div>
+            <div class="RigSubtitle">2020.6</div>
+            <div class="RigSubtitle">全2季</div>
+        </div>
 
     </td>
     <td class="RigListRight">
-        <div class="RigBox">
-            <div class="RigTitle">四月は君の嘘</div>
-            <div class="RigSubtitle">Shigatsu wa Kimi no Uso</div>
-            <div class="RigSubtitle">四月是你的谎言</div>
-            <div class="RigSubtitle">2014.12</div>
+
+        <div class="RigBox RigBoxNoBorder">
             <div class="RigIntro">
-                <img src="image/collections/anime/四月は君の嘘.jpg" class="RigsImage" style="width: auto; height: 120px;">
+                <img src="image/collections/anime/四月は君の嘘.jpg" class="AnimeCover">
             </div>
+            <div class="RigTitle" lang="ja">四月は君の嘘</div>
+            <div class="RigSubtitle">Shigatsu wa Kimi no Uso</div>
+            <div class="RigSubtitle" lang="zh-CN">四月是你的谎言</div>
+            <div class="RigSubtitle">2014.12</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/花咲くいろは.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">花咲くいろは</div>
+            <div class="RigSubtitle">Hanasaku Iroha</div>
+            <div class="RigSubtitle" lang="zh-CN">花开伊吕波</div>
+            <div class="RigSubtitle">2016.7</div>
+            <div class="RigSubtitle">含衍生作品</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/氷菓.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">氷菓</div>
+            <div class="RigSubtitle">Hyōka</div>
+            <div class="RigSubtitle" lang="zh-CN">冰果</div>
+            <div class="RigSubtitle">2017.4</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/少女終末旅行.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">少女終末旅行</div>
+            <div class="RigSubtitle">Shōjō Shūmatsu Ryōkō</div>
+            <div class="RigSubtitle" lang="zh-CN">少女终末旅行</div>
+            <div class="RigSubtitle">2018.12</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/みなみけ.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">みなみけ</div>
+            <div class="RigSubtitle">Minami-ke</div>
+            <div class="RigSubtitle" lang="zh-CN">南家三姐妹</div>
+            <div class="RigSubtitle">2019.12.15~2020.1.3</div>
+            <div class="RigSubtitle">全4季</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/ゆるキャン.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">ゆるキャン△</div>
+            <div class="RigSubtitle">Yuru Camp</div>
+            <div class="RigSubtitle" lang="zh-CN">摇曳露营△</div>
+            <div class="RigSubtitle">2020.4~2020.5</div>
+            <div class="RigSubtitle">2021.1~</div>
+            <div class="RigSubtitle">全2季及衍生作品</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/anime/家庭教師ヒットマンREBORN.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja">家庭教師ヒットマンREBORN!</div>
+            <div class="RigSubtitle">2021.2~</div>
+        </div>
+    </td></tr>
+</table>
+
+
+
+
+
+
+
+<div class="SectionHeader" id="collections_anime">音乐<div class="SectionHeaderComment">Music</div></div>
+
+<table class="RigListTable"><tr>
+    <td class="RigListLeft">
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/music/星の在り処.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=559262" target="_blank">星の在り処</a></div>
+            <div class="RigSubtitle" lang="ja">う〜み</div>
+            <div class="RigSubtitle"><span class="RigTag">实体CD收藏</span></div>
+            <div class="RigSubtitle">空轨FC初回特典CD</div>
+            <div class="RigSubtitle">游戏「空之轨迹FC」主题歌</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/music/Scarlet-Destiny.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=836339" target="_blank">虹のカメリア</a></div>
+            <div class="RigSubtitle">Sensitive Heart</div>
+            <div class="RigSubtitle">Scarlet Destiny</div>
+            <div class="RigSubtitle"><a target="_blank" href="https://thwiki.cc/%E4%B8%8A%E6%B5%B7%E7%BA%A2%E8%8C%B6%E9%A6%86_%EF%BD%9E_Chinese_Tea">上海紅茶館</a>同人作</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/music/東方フィルハーモニー交響楽団-4-永＆萃.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=412785229" target="_blank">東方萃夢想</a></div>
+            <div class="RigSubtitle" lang="ja">交響アクティブNEETs</div>
+            <div class="RigSubtitle" lang="ja">東方フィルハーモニー交響楽団 4 永&amp;萃</div>
+            <div class="RigSubtitle"><a target="_blank" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E8%90%83%E6%A2%A6%E6%83%B3%EF%BC%88%E6%9B%B2%E7%9B%AE%EF%BC%89">東方萃夢想</a>同人作</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/music/Tiny-Dungeon-BLACK-and-WHITE-OST.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=4934355" target="_blank">黒翼は～と</a></div>
+            <div class="RigSubtitle">Rosebleu</div>
+            <div class="RigSubtitle">Tiny Dungeon - BLACK and WHITE OST</div>
+            <div class="RigSubtitle">游戏「小地牢·黑与白」原声音乐</div>
+        </div>
+
+    </td>
+    <td class="RigListRight">
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/music/ヴィヴァーチェ！.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja"><a href="https://i.y.qq.com/v8/playsong.html?songid=109072317" target="_blank">ヴィヴァーチェ！</a></div>
+            <div class="RigSubtitle" lang="ja">黒沢ともよ / 朝井彩加 /<br>豊田萌絵 / 安済知佳</div>
+            <div class="RigSubtitle"><span class="RigTag">实体CD收藏</span></div>
+            <div class="RigSubtitle" lang="ja">ヴィヴァーチェ！</div>
+            <div class="RigSubtitle">动画「吹响！悠风号2」片尾歌</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/music/花天月地.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=482636948" target="_blank">桜花繚乱</a></div>
+            <div class="RigSubtitle" lang="ja">はちみつれもん</div>
+            <div class="RigSubtitle" lang="ja">花天月地</div>
+            <div class="RigSubtitle"><a target="_blank" href="https://thwiki.cc/%E6%A8%B1%E8%8A%B1%E4%B9%8B%E6%81%8B%E5%A1%9A_%EF%BD%9E_Flower_of_Japan">桜花之恋塚</a>同人作</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/music/春のかたみ.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=574370" target="_blank">春のかたみ</a></div>
+            <div class="RigSubtitle" lang="ja">元ちとせ</div>
+            <div class="RigSubtitle" lang="ja">春のかたみ</div>
+            <div class="RigSubtitle">动画「怪~ayakashi~」主题歌</div>
+        </div>
+
+        <div class="RigBox RigBoxNoBorder">
+            <div class="RigIntro">
+                <img src="image/collections/music/谭某某.jpg" class="AnimeCover">
+            </div>
+            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=293948" target="_blank">如果有来生</a></div>
+            <div class="RigSubtitle">谭维维</div>
+            <div class="RigSubtitle">谭某某</div>
+            <div class="RigSubtitle">不才翻唱</div>
         </div>
 
     </td></tr>
 </table>
+
+<div class="SectionHeader" id="collections_anime">链接<div class="SectionHeaderComment">Link</div></div>
+
+<div class="SectionBody">
+    <table class="Matrix">
+        <tbody><tr>
+            <td><a target="_blank" href="http://www.matrix67.com/">Matrix67</a></td>
+            <td><a target="_blank" href="http://www.changhai.org/">卢昌海</a></td>
+            <td><a target="_blank" href="https://fwjmath.wordpress.com/">fwjmath</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://www.yinwang.org/">王垠</a></td>
+            <td><a target="_blank" href="http://mindhacks.cn/">刘未鹏</a></td>
+            <td><a target="_blank" href="https://blog.csdn.net/lipengcn">TangowL</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://leovan.me/">范叶亮</a></td>
+            <td><a target="_blank" href="http://madebyevan.com/">Evan Wallace</a></td>
+            <td><a target="_blank" href="http://www.dwenzhao.cn/">赵工个人空间</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://www.hyperiats.com/">风舞幻城</a></td>
+            <td><a target="_blank" href="http://norvig.com/">Peter Norvig</a></td>
+            <td><a target="_blank" href="http://matt.might.net/">Matt Might</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://www.hankcs.com/">码农场</a></td>
+            <td><a target="_blank" href="https://hcc.trilines.net/">H.C.Chu</a></td>
+            <td><a target="_blank" href="http://www.csksoft.net/">陈士凯</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://www.codingnow.com/">云风</a></td>
+            <td><a target="_blank" href="https://techsingular.net/">技术奇异点</a></td>
+            <td><a target="_blank" href="http://www.staroceans.org/">staroceans</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://phesoca.com/">Phesoca</a></td>
+            <td><a target="_blank" href="https://www.juroku.net/">致郁系</a></td>
+            <td><a target="_blank" href="http://wuli.wiki/">小时物理百科</a></td>
+        </tr>
+    </tbody></table>
+</div>
+
+<div class="SectionBody">
+    <table class="Matrix">
+        <tbody><tr>
+            <td><a target="_blank" href="http://www.iqdb.org/">图片检索</a></td>
+            <td><a target="_blank" href="http://waifu2x.udp.jp/">动画图片SRR</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://www.lalal.ai/">人声伴奏分离</a></td>
+            <td><a target="_blank" href="http://nipponcolors.com/">Nippon Iro</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://playground.tensorflow.org/">Neural Network</a></td>
+            <td><a target="_blank" href="http://www.cs.usfca.edu/~galles/visualization/Algorithms.html">数据结构可视化</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://www.json.cn/">JSON格式化</a></td>
+            <td><a target="_blank" href="https://www.iconfont.cn/">阿里巴巴矢量图标库</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://www.colorhexa.com/">ColorHexa</a></td>
+            <td><a target="_blank" href="http://ed6.orangeclk.com/">空之轨迹攻略</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://unsplash.com/">免费图片素材</a></td>
+            <td><a target="_blank" href="https://miuiver.com/">MIUI历史版本</a></td>
+        </tr>
+    </tbody></table>
+</div>
+
+<div class="SectionBody">
+    <table class="Matrix">
+        <tbody><tr>
+            <td><a target="_blank" href="http://www.cncalc.org/">cnCalc计算器论坛</a></td>
+            <td><a target="_blank" href="https://www.cnvintage.org/">cnVintage</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://bideyuanli.com/">比的原理</a></td>
+            <td><a target="_blank" href="http://vgmdb.net/db/main.php">VGMdb</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://www.alldatasheet.com/">ALLDATASHEET</a></td>
+            <td><a target="_blank" href="http://hitmen.c02.at/files/yapspd/psp_doc/">PSP文档</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://www.beis.de/Elektronik/DeltaSigma/DeltaSigma.html">Delta-Sigma介绍</a></td>
+            <td><a target="_blank" href="http://wiki.jackslab.org/">Jack's Lab</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://www.datamath.org/Graphing/JPEG_NSpire_CAS.htm">NSpire拆机图赏</a></td>
+            <td><a target="_blank" href="http://www.nixieclock.org/">辉光钟之家</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://wikidevi.com/">WikiDevi</a></td>
+            <td><a target="_blank" href="http://www.soomal.com/">数码多</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://wiki.friendlyarm.com/wiki/index.php/Main_Page">友善Wiki</a></td>
+            <td><a target="_blank" href="http://vocakey.info/">VOCAKEY</a></td>
+        </tr>
+    </tbody></table>
+</div>
+
+<div class="SectionBody">
+    <table class="Matrix">
+        <tbody><tr>
+            <td><a target="_blank" href="http://e-dictionary.apc.gov.tw/">台湾原住民族语言词典</a></td>
+            <td><a target="_blank" href="https://web.klokah.tw/">族語E樂園</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://htq.minpaku.ac.jp/databases/rGyalrong/">嘉绒语数据库</a></td>
+            <td><a target="_blank" href="http://ccdc.fudan.edu.cn/bases/index.jsp">复旦东亚语言研究中心</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://ckipsvr.iis.sinica.edu.tw/">“中央”研究院中文NLP</a></td>
+            <td><a target="_blank" href="http://www.eastling.org/">东方语言学</a></td>
+        </tr>
+    </tbody></table>
+</div>
+
+<div class="SectionBody">
+    <table class="Matrix">
+        <tbody><tr>
+            <td><a target="_blank" href="https://sicp.readthedocs.io/en/latest/">SICP解题集</a></td>
+            <td><a target="_blank" href="http://okmij.org/ftp/">okmij.org</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://www.braeunig.us/space/index.htm">火箭和空间技术</a></td>
+            <td><a target="_blank" href="http://www.linked-brain-data.org/">脑科学数据库</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://himawari8.nict.go.jp/">向日葵8号实时云图</a></td>
+            <td><a target="_blank" href="https://earth.nullschool.net/">全球气象可视化</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://marxists.anu.edu.au/chinese/">中文马克思主义文库</a></td>
+            <td><a target="_blank" href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/">区划代码</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://www.wikidata.org/wiki/Q13">WikiData</a></td>
+            <td><a target="_blank" href="https://www.langchao.org/">浪潮</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://isux.tencent.com/">腾讯ISUX</a></td>
+            <td><a target="_blank" href="http://www.mcescher.com/">艾舍尔官方网站</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://www.kegg.jp/">KEGG</a></td>
+            <td><a target="_blank" href="http://biochemical-pathways.com/">罗氏代谢路径图</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://www.wikipathways.org/">WikiPathways</a></td>
+            <td><a target="_blank" href="http://rosettacode.org/">Rosetta Code</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://thwiki.cc/">THBwiki</a></td>
+            <td><a target="_blank" href="https://zh.moegirl.org/">萌娘百科</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://www.ucdrs.superlib.net/">全国图书馆参考咨询联盟</a></td>
+            <td><a target="_blank" href="https://vcb-s.com/">VCB-Studio</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://beautifulracket.com/">Beau­tiful Racket</a></td>
+            <td><a target="_blank" href="http://sheet.stdioa.com/">StdioA的乐谱分享站</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://aidn.jp/mikutap/">MikuTap</a></td>
+            <td><a target="_blank" href="https://explainshell.com">explainshell</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://unicode-table.com/cn">Unicode字符百科</a></td>
+            <td></td>
+        </tr>
+    </tbody></table>
+</div>
+
+
+
+
+
+
+
 
 
 </template>
@@ -559,7 +969,37 @@ a:hover {
 </template>
 
 <!--资料模板-->
+<style>
+#TabSwitchContainer {
+    margin: 20px;
+}
+.TAB_SWITCH {
+    margin: 2px;
+    padding: 0 10px;
+    border: none;
+    background-color: #e8f6ff;
+    color: #1ea0f0;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.TAB_SWITCH:hover {
+    font-weight: bold;
+}
+.TabSwitchSelected {
+    background-color: #1ea0f0;
+    color: #fff;
+}
+.TabSwitchDefault {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+</style>
 <template id="docs">
+    <div id="TabSwitchContainer"></div>
     <table class="ArticleListContainer" id="ArticleListContainer"></table>
 </template>
 
@@ -600,6 +1040,17 @@ a:hover {
         <img src="image/nanjing-location.png" style="margin-top: 20px; width: 100px;">
     </div>
 
+    <div class="SectionBody">
+        <a target="_blank" href="https://github.com/mikukonai/">GitHub</a><span class="Separator">/</span><a target="_blank" href="https://twitter.com/BD4SUR">Twitter</a>
+    </div>
+
+    <div class="SectionBody">
+        <div style="margin:20px auto 0px auto">
+            <div style="font-size: 13px;color:#888888;line-height: 25px;">— 个人微信 —</div>
+            <img src="./image/qrcode.png" style="display:block; margin:0px auto 0 auto; width:20%; min-width: 150px;">
+        </div>
+    </div>
+
     <div class="SectionHeader">友情链接<div class="SectionHeaderComment">以交换时间先后为序</div></div>
     <div class="SectionBody">
         <table class="Matrix">
@@ -636,6 +1087,13 @@ a:hover {
         </tbody></table>
     </div>
 
+    <div class="SectionHeader">权利声明<div class="SectionHeaderComment">Copyright Notice</div></div>
+    <div class="ContentBlock">
+        <div class="SectionBody">版权所有 &copy; 2016-2020-<span class="CopyrightYear"></span> BD4SUR</div>
+        <div class="SectionBody" style="font-size: smaller;">除另有声明外，所有<b>原创</b>内容均可在<br>①署电台呼号BD4SUR或链接 & ②非盈利 & ③无实质修改<br>的前提下使用和传播。</div>
+        <div class="SectionBody" style="font-size: smaller;">所有<b>非原创</b>内容均尽可能注明原作者或出处<br>且遵守合理使用原则。<br>在此感谢并致敬各位原作者。</div>
+    </div>
+
     <div class="SectionHeader">电台编年史<div class="SectionHeaderComment">Station Chronicles</div></div>
     <div class="SectionBody">
         <div class="Chronicles">
@@ -669,11 +1127,28 @@ a:hover {
         </div>
     </div>
 
-    <div class="SectionHeader">权利声明<div class="SectionHeaderComment">Copyright Notice</div></div>
-    <div class="ContentBlock">
-        <div class="SectionBody">版权所有 &copy; 2016-2020-<span class="CopyrightYear"></span> BD4SUR</div>
-        <div class="SectionBody" style="font-size: smaller;">除另有声明外，所有<b>原创</b>内容均可在<br>①署电台呼号BD4SUR或链接 & ②非盈利 & ③无实质修改<br>的前提下使用和传播。</div>
-        <div class="SectionBody" style="font-size: smaller;">所有<b>非原创</b>内容均尽可能注明原作者或出处<br>且遵守合理使用原则。<br>在此感谢并致敬各位原作者。</div>
+    <div class="SectionHeader" id="changelog">网站版本记录<div class="SectionHeaderComment">Revisions</div></div>
+
+    <div class="SectionBody">
+        <div class="Chronicles">
+            <table>
+                <tr><th colspan="2" style="text-align: center; padding: 10px 0;">探索阶段</th></tr>
+                <tr><th>V0.1 2016.11.24</th><td>试验性的简单个人主页。</td></tr>
+                <tr><th>V1.0 2017.09.19</th><td>使用第三方Markdown解析器。</td></tr>
+                <tr><th>V2.0 2018.02.04</th><td>使用自主实现的Markdown解析器。</td></tr>
+                <tr><th>V3.0 2018.07.26</th><td>博客更名 Project Aurora。<br>开始采用 Material Design 风格。</td></tr>
+                <!-- <tr><th>V3.1 2019.01.11</th><td>MD解析器与文章模板重构。<br>Markdown与模板分离。</td></tr>
+                <tr><th>V3.2 2019.02.20</th><td>目录和灵感页重构。<br>使用TravisCI自动生成RSS。</td></tr>
+                <tr><th>V3.3 2019.03.15</th><td>重构为SPA单页应用。<br>样式设计参考 Material Design。</td></tr> -->
+
+                <tr><th colspan="2" style="text-align: center; padding: 10px 0;">建设阶段</th></tr>
+                <tr><th>V4.0 2019.10.23</th><td>博客框架SPA化。</td></tr>
+                <tr><th>V4.1 2020.02.14</th><td>提取博客框架为Iroha。</td></tr>
+
+                <tr><th colspan="2" style="text-align: center; padding: 10px 0;">电台网站阶段</th></tr>
+                <tr><th>V5.0 2021.02.01</th><td>启用<code>bd4sur.com</code>域名。<br>功能和样式优化。</td></tr>
+            </table>
+        </div>
     </div>
 
     <div class="SectionHeader">图书资料共享<div class="SectionHeaderComment">Book Sharing</div></div>

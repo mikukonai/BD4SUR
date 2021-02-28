@@ -7,7 +7,17 @@
 function LoadList(pageId) {
 
     // 列表渲染为HTML
-    function RenderArticleList(articleList, listingMode) {
+    function RenderArticleList(articleList, currentCategoty, listingMode) {
+
+        // 维护分类选项卡按钮状态
+        $('.TAB_SWITCH').each(function(i,e) {
+            if($(e).attr('data-category') === currentCategoty) {
+                $(e).addClass("TabSwitchSelected");
+            }
+            else {
+                $(e).removeClass("TabSwitchSelected");
+            }
+        });
 
         // 标题→文件名
         function TitleToFilename(title) {
@@ -53,6 +63,22 @@ function LoadList(pageId) {
 
     }
 
+
+    // 分类Tab切换按钮
+    function RenderTabSwitch(articleList) {
+        let categories = {};
+        for(let i = 0; i < articleList.length; i++) {
+            let item = articleList[i];
+            let category = item.category;
+            categories[category] = true;
+        }
+        $(`#TabSwitchContainer`).append(`<button class="TAB_SWITCH TabSwitchDefault" data-category="">全部</button>`);
+        for(cat in categories) {
+            $(`#TabSwitchContainer`).append(`<button class="TAB_SWITCH" data-category="${cat}">${cat}</button>`);
+        }
+    }
+
+
     /////////////////////////////
     //  函 数 主 体 部 分
     /////////////////////////////
@@ -77,12 +103,33 @@ function LoadList(pageId) {
             $("#Progressbar").animate({width: `100%`});
             $("#Progressbar").fadeOut();
 
-            // 绘制文章列表
-            let contents = JSON.parse(xhr.responseText); // ParseArticleList(xhr.responseText);
-            RenderArticleList(contents, SORTING_OPTION);
+            // 获取文章列表，并立即绘制
+            let contents = JSON.parse(xhr.responseText);
+            RenderArticleList(contents, "", SORTING_OPTION);
 
-            // 绘制时间线
-            // RenderTimeline(contents);
+            // 绘制分类选项卡按钮
+            RenderTabSwitch(contents);
+
+            // 给每个Tab按钮注册点击事件（筛选相应分类的文章）
+            $('.TAB_SWITCH').off('click'); // 避免重复绑定
+            $('.TAB_SWITCH').each(function(i,e) {
+                $(e).click(() => {
+                    let newList = [];
+                    let category = $(e).attr('data-category');
+                    if(category === "") {
+                        RenderArticleList(contents, category, SORTING_OPTION);
+                    }
+                    else {
+                        for(let i = 0; i < contents.length; i++) {
+                            let item = contents[i];
+                            if(item.category === category) {
+                                newList.push(item);
+                            }
+                        }
+                        RenderArticleList(newList, category, SORTING_OPTION);
+                    }
+                });
+            });
 
             // 排序选项按钮
             $(`.ListSortingOption[data-sorting-option=${SORTING_OPTION}]`).addClass('ListSortingOptionSelected');
@@ -91,7 +138,7 @@ function LoadList(pageId) {
                     let sortingOption = $(e).attr("data-sorting-option");
                     $(".ListSortingOption").removeClass("ListSortingOptionSelected");
                     $(e).addClass("ListSortingOptionSelected");
-                    RenderArticleList(contents, sortingOption);
+                    RenderArticleList(contents, "", sortingOption);
                     SORTING_OPTION = sortingOption;
                 });
             });

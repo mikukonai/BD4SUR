@@ -87,7 +87,7 @@ function LoadInspirations() {
             // 正文(超过1000字符即折叠，避免时间线过长)
             let content = poster.content;
             if(content.length > 1000) {
-                HtmlBuffer.push(`<div id="pst_${poster.id}" style="height:100px;overflow: hidden; margin-top: -8px;">${content}</div><div id="mask_${poster.id}" style="margin-top: -120px; padding: 120px 0 10px 0; position: relative; height:20px; background: linear-gradient(0deg, rgba(255,255,255,1.0),rgba(255,255,255,0.0)); text-align: center; line-height: 20px; font-weight: bold; color: #b395f0; font-size: 15px; cursor: pointer;" onclick="$('#pst_${poster.id}').css('height', '100%');$('#mask_${poster.id}').hide();">▼ 展 开 全 文</div>`);
+                HtmlBuffer.push(`<div id="pst_${poster.id}" style="height:100px;overflow: hidden;">${content}</div><div id="mask_${poster.id}" style="margin-top: -120px; padding: 120px 0 10px 0; position: relative; height:20px; background: linear-gradient(0deg, rgba(255,255,255,1.0),rgba(255,255,255,0.0)); text-align: center; line-height: 20px; font-weight: bold; color: #b395f0; font-size: 15px; cursor: pointer;" onclick="$('#pst_${poster.id}').css('height', '100%');$('#mask_${poster.id}').hide();">▼ 展 开 全 文</div>`);
             }
             else {
                 HtmlBuffer.push(content);
