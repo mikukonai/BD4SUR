@@ -631,7 +631,7 @@ function LoadArticle(PageID, ArticleID) {
     function TraceCurrentTitle() {
         // 遍历所有Title，根据当前滚动位置，计算当前所在的章节标题
         function GetVisibleTitle() {
-            let titleDOMs = $(".MikumarkTitle");
+            let titleDOMs = $("h1,h2,h3,h4");
             let currentTop = window.pageYOffset + 42;
             for(let i = 0; i < titleDOMs.length - 1; i++) {
                 let currentTitleTop = window.pageYOffset + titleDOMs[i].getBoundingClientRect().top;

@@ -1,26 +1,96 @@
 [
     {
+        "title":     "共产党宣言",
+        "date":      "",
+        "updates":  [],
+        "authors":  ["马克思", "恩格斯"],
+        "category":  "A.共产主义",
+        "copyright": "",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "递归论入门",
+        "date":      "2017-09-22",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "C.计算机科学",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "感觉与决策",
+        "date":      "2019-09-05",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "F.经济和管理",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "集体决策和阿罗不可能定理",
+        "date":      "2019-12-25",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "F.经济和管理",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "童谣与童真",
+        "date":      "2017-11-13",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "G.文娱传媒教育体育",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "外文翻译与文化自信",
+        "date":      "2019-04-24",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "G.文娱传媒教育体育",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "语义网和数据产权",
+        "date":      "2019-03-01",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "N.人工智能和知识工程",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
+        "title":     "水管结冰事故处理报告",
+        "date":      "2021-01-01",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "W.家政手工实用技术",
+        "copyright": "原创",
+        "tags":     [],
+        "cover":     ""
+    },
+    {
         "title":     "妙语拾零",
         "date":      "",
         "updates":  ["2021-02-13"],
         "authors":  ["BD4SUR"],
-        "category":  "Z",
+        "category":  "Z.杂类和未分类",
         "copyright": "",
         "tags":     [],
         "cover":     ""
     },
     {
-        "title":     "安全注意事项",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-31"],
-        "authors":  ["BD4SUR"],
-        "category":  "业余无线电/安全",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
-    },
-    {
-        "title":     "单边带调制",
+        "title":     "调制与解调",
         "date":      "2020-12-08",
         "updates":  ["2021-01-04"],
         "authors":  ["BD4SUR"],
@@ -160,16 +230,6 @@
         "cover":     ""
     },
     {
-        "title":     "麦克斯韦方程组",
-        "date":      "2021-01-31",
-        "updates":  ["2021-01-31"],
-        "authors":  ["BD4SUR"],
-        "category":  "业余无线电/电磁理论",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
-    },
-    {
         "title":     "电波传播规律",
         "date":      "2020-12-08",
         "updates":  ["2021-01-11"],
@@ -200,7 +260,7 @@
         "cover":     ""
     },
     {
-        "title":     "常用数值表",
+        "title":     "业余无线电常用数值表",
         "date":      "2020-12-08",
         "updates":  ["2021-01-12"],
         "authors":  ["BD4SUR"],
