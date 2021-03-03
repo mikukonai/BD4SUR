@@ -5,9 +5,47 @@
         "updates":  [],
         "authors":  ["马克思", "恩格斯"],
         "category":  "A.共产主义",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
+    },
+    {
+        "title":     "装机必备软件清单",
+        "date":      "2019-08-01",
+        "updates":  ["2021-01-19"],
+        "authors":  ["BD4SUR"],
+        "category":  "C.计算机科学",
+        "tags":     []
+    },
+    {
+        "title":     "在λ演算中构造前驱函数",
+        "date":      "2018-11-13",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "C.计算机科学",
+        "tags":     []
+    },
+    {
+        "title":     "阴阳谜题分析",
+        "date":      "2018-02-11",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "C.计算机科学",
+        "tags":     []
+    },
+    {
+        "title":     "Continuation简介",
+        "date":      "2017-11-22",
+        "updates":  [],
+        "authors":  ["TSPL4"],
+        "category":  "C.计算机科学",
+        "tags":     []
+    },
+    {
+        "title":     "我想给你整个世界",
+        "date":      "2017-09-30",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "C.计算机科学",
+        "tags":     []
     },
     {
         "title":     "递归论入门",
@@ -15,9 +53,31 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "C.计算机科学",
-        "copyright": "原创",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
+    },
+    {
+        "title":     "The Little Schemer 阅读笔记",
+        "date":      "2017-09-02",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "C.计算机科学",
+        "tags":     []
+    },
+    {
+        "title":     "SICP阅读笔记",
+        "date":      "2017-08-21",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "C.计算机科学",
+        "tags":     []
+    },
+    {
+        "title":     "奇妙的Y组合子",
+        "date":      "2016-09-05",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "C.计算机科学",
+        "tags":     []
     },
     {
         "title":     "感觉与决策",
@@ -25,9 +85,7 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "F.经济和管理",
-        "copyright": "原创",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "集体决策和阿罗不可能定理",
@@ -35,9 +93,7 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "F.经济和管理",
-        "copyright": "原创",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "童谣与童真",
@@ -45,9 +101,7 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "G.文娱传媒教育体育",
-        "copyright": "原创",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "外文翻译与文化自信",
@@ -55,9 +109,23 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "G.文娱传媒教育体育",
-        "copyright": "原创",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
+    },
+    {
+        "title":     "知识管理策略",
+        "date":      "",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "N.人工智能和知识工程",
+        "tags":     []
+    },
+    {
+        "title":     "人工智能随想录",
+        "date":      "",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "N.人工智能和知识工程",
+        "tags":     []
     },
     {
         "title":     "语义网和数据产权",
@@ -65,9 +133,55 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "N.人工智能和知识工程",
-        "copyright": "原创",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
+    },
+    {
+        "title":     "形式化方法与机器学习",
+        "date":      "2019-02-18",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "N.人工智能和知识工程",
+        "tags":     []
+    },
+    {
+        "title":     "摸鱼·冲刺·挖坑·填坑",
+        "date":      "2019-02-15",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "N.人工智能和知识工程",
+        "tags":     []
+    },
+    {
+        "title":     "磷酸铁锂电池和锂铁电池",
+        "date":      "2020-12-08",
+        "updates":  ["2021-01-11"],
+        "authors":  ["BD4SUR"],
+        "category":  "Q.电子电力技术",
+        "tags":     []
+    },
+    {
+        "title":     "开关电源",
+        "date":      "2020-03-01",
+        "updates":  ["2021-01-14"],
+        "authors":  ["BD4SUR"],
+        "category":  "Q.电子电力技术",
+        "tags":     ["综述"]
+    },
+    {
+        "title":     "轨道力学",
+        "date":      "2011-11-23",
+        "updates":  [],
+        "authors":  ["Robert A. Braeunig"],
+        "category":  "V.航空航天航海",
+        "tags":     []
+    },
+    {
+        "title":     "末日生存指南",
+        "date":      "2020-02-20",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "W.家政手工实用技术",
+        "tags":     []
     },
     {
         "title":     "水管结冰事故处理报告",
@@ -75,9 +189,7 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "W.家政手工实用技术",
-        "copyright": "原创",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "妙语拾零",
@@ -85,9 +197,7 @@
         "updates":  ["2021-02-13"],
         "authors":  ["BD4SUR"],
         "category":  "Z.杂类和未分类",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "调制与解调",
@@ -95,9 +205,7 @@
         "updates":  ["2021-01-04"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/通信理论",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "信号与系统",
@@ -105,9 +213,7 @@
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/通信理论",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "音频编码",
@@ -115,9 +221,7 @@
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/通信理论",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "视频编码",
@@ -125,9 +229,7 @@
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/通信理论",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "采样定理与压缩感知",
@@ -135,9 +237,7 @@
         "updates":  ["2021-01-14", "2021-01-17"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/通信理论",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "莫尔斯编码和ITA2",
@@ -145,9 +245,7 @@
         "updates":  ["2021-01-12"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/通信理论",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "软件定义无线电",
@@ -155,9 +253,7 @@
         "updates":  ["2021-01-10"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/SDR",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "IC-705内部结构",
@@ -165,9 +261,7 @@
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/设备",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "IC-705消费决策报告",
@@ -175,9 +269,7 @@
         "updates":  ["2021-01-11"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/设备",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "FT-817原理图",
@@ -185,9 +277,7 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/设备",
-        "copyright": "转载",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "天线与馈线",
@@ -195,29 +285,7 @@
         "updates":  ["2021-01-11"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/天线",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
-    },
-    {
-        "title":     "磷酸铁锂电池和锂铁电池",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-11"],
-        "authors":  ["BD4SUR"],
-        "category":  "业余无线电/电源",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
-    },
-    {
-        "title":     "开关电源",
-        "date":      "2020-03-01",
-        "updates":  ["2021-01-14"],
-        "authors":  ["BD4SUR"],
-        "category":  "业余无线电/电源",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "广播与放送文化",
@@ -225,9 +293,7 @@
         "updates":  ["2021-01-11"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/BCL",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "电波传播规律",
@@ -235,9 +301,7 @@
         "updates":  ["2021-01-11"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/电磁理论",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "业余无线电法规汇编",
@@ -245,9 +309,7 @@
         "updates":  ["2021-01-12"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/政策法规",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "操作证考试考点速记",
@@ -255,9 +317,7 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/政策法规",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "业余无线电常用数值表",
@@ -265,9 +325,7 @@
         "updates":  ["2021-01-12"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/杂项",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "常用无线电简语",
@@ -275,9 +333,7 @@
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/杂项",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     },
     {
         "title":     "业余无线电亚文化",
@@ -285,8 +341,6 @@
         "updates":  ["2021-01-16"],
         "authors":  ["BD4SUR"],
         "category":  "业余无线电/杂项",
-        "copyright": "",
-        "tags":     [],
-        "cover":     ""
+        "tags":     []
     }
 ]
