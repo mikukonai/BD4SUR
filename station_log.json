@@ -571,5 +571,62 @@
         "qth_self": "家",
 
         "note":     "江苏无协中继点名"
+    },
+    {
+        "time":     "2021-03-06 16:30",
+        "callsign": "BD4STQ<br>BH6AIK",
+        "freq":     "433.550",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "森海克斯8800/宝峰UV-5R",
+        "ant":      "八木/UV双段八木",
+        "pwr":      "5W",
+        "qth":      "百家湖/南理工",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "10W",
+        "qth_self": "家",
+
+        "note":     "与BD4STQ通联时，BH6AIK插入。"
+    },
+    {
+        "time":     "2021-03-06 17:30",
+        "callsign": "BD4STQ",
+        "freq":     "144.550",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "森海克斯8800",
+        "ant":      "八木",
+        "pwr":      "5W",
+        "qth":      "百家湖",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "10W",
+        "qth_self": "家",
+
+        "note":     "首次V段语音通联"
+    },
+    {
+        "time":     "2021-03-06 19:52",
+        "callsign": "BH6BJJ",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "-",
+        "ant":      "-",
+        "pwr":      "-",
+        "qth":      "-",
+
+        "rig_self": "IC-705",
+        "ant_self": "八木",
+        "pwr_self": "10W",
+        "qth_self": "家",
+
+        "note":     "江苏无协中继点名"
     }
 ]
