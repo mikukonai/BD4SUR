@@ -153,7 +153,7 @@
     /* 表格和单元格基础样式（只可改动参数） */
     .Mikumark table {
         color: var(--p_color);
-        font-size: calc(var(--p_font_size) - 1px);
+        font-size: calc(var(--p_font_size) - 2px);
         /* border: 2px solid var(--table_border_color); */
         border-collapse: collapse;
         width: 100%;
@@ -186,7 +186,7 @@
     /* 表格和单元格基础样式（只可改动参数） */
     .Mikumark table {
         color: var(--p_color);
-        font-size: calc(var(--p_font_size) - 1px);
+        font-size: calc(var(--p_font_size) - 2px);
         /* border: 2px solid var(--table_border_color); */
         border-collapse: collapse;
         width: 100%;
