@@ -106,7 +106,7 @@
 
 @title: 忆阻器
 @date: 2021-01-31
-@imageURL: ./image/em/memristor.svg
+@imageURL: ./image/G8/memristor.svg
 
 阻、容、感，还有一个忆阻器。
 
@@ -430,7 +430,7 @@
 
 @title: 评蚂蚁集团被约谈
 @date: 2020-11-03
-@imageURL: ./image/assets/D/花呗-杨白劳.jpg
+@imageURL: ./image/D/花呗-杨白劳.jpg
 
 普而不惠，放任风险，无视监管，为所欲为；以金融创新之名，行放贷割韭之实；垄断基础设施，掌控征信数据；公然抗拒监管，建立金融帝国。考虑到多少有一定的贡献，约谈，已经很客气了；暂缓上市，未尝不是一种宽大。
 
@@ -947,7 +947,7 @@ CHM作为一种文档格式，它的理念是相当先进的。很遗憾没有�
 
 @title: 铁石恒久远 七颗永流传
 @date: 2019-02-16
-@imageURL: ./image/assets/R/NADH-Dehydrogenase-Mechanism.jpg
+@imageURL: ./image/R/NADH-Dehydrogenase-Mechanism.jpg
 
 说到蛋白质，第一反应是牛奶和蛋清，都是很细腻、很丝滑、很“有机”的东西。
 
