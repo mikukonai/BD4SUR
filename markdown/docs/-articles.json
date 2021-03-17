@@ -12,7 +12,7 @@
         "date":      "",
         "updates":  ["2021-03-15"],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G5.情报学",
         "tags":     []
     },
     {
@@ -20,7 +20,15 @@
         "date":      "",
         "updates":  ["2021-03-15"],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G5.情报学",
+        "tags":     []
+    },
+    {
+        "title":     "知识管理策略",
+        "date":      "",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "G5.情报学",
         "tags":     []
     },
     {
@@ -28,7 +36,7 @@
         "date":      "2019-08-01",
         "updates":  ["2021-01-19"],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G6.计算机",
         "tags":     []
     },
     {
@@ -36,7 +44,7 @@
         "date":      "2018-11-13",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G2.离散数学",
         "tags":     []
     },
     {
@@ -44,7 +52,7 @@
         "date":      "2018-07-10",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G2.离散数学",
         "tags":     []
     },
     {
@@ -52,7 +60,7 @@
         "date":      "2018-02-11",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G2.离散数学",
         "tags":     []
     },
     {
@@ -60,7 +68,7 @@
         "date":      "2017-11-22",
         "updates":  [],
         "authors":  ["TSPL4"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G2.离散数学",
         "tags":     []
     },
     {
@@ -68,7 +76,7 @@
         "date":      "2017-09-30",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G2.离散数学",
         "tags":     []
     },
     {
@@ -76,7 +84,7 @@
         "date":      "2017-09-22",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G2.离散数学",
         "tags":     []
     },
     {
@@ -84,7 +92,7 @@
         "date":      "2017-09-02",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G2.离散数学",
         "tags":     []
     },
     {
@@ -92,7 +100,7 @@
         "date":      "2017-08-21",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G2.离散数学",
         "tags":     []
     },
     {
@@ -100,7 +108,7 @@
         "date":      "2016-09-05",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G2.离散数学",
         "tags":     []
     },
     {
@@ -136,19 +144,11 @@
         "tags":     []
     },
     {
-        "title":     "知识管理策略",
-        "date":      "",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
-        "tags":     []
-    },
-    {
         "title":     "人工智能随想录",
         "date":      "",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G4.人工智能",
         "tags":     []
     },
     {
@@ -156,7 +156,7 @@
         "date":      "2019-03-01",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G5.情报学",
         "tags":     []
     },
     {
@@ -180,7 +180,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-11"],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "K.工业交通工程技术",
         "tags":     []
     },
     {
@@ -188,7 +188,7 @@
         "date":      "2020-03-01",
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G8.电子",
         "tags":     ["综述"]
     },
     {
@@ -228,7 +228,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-04"],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G7.通信控制",
         "tags":     []
     },
     {
@@ -236,7 +236,7 @@
         "date":      "2020-02-06",
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G7.通信控制",
         "tags":     []
     },
     {
@@ -244,7 +244,7 @@
         "date":      "2019-11-03",
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G7.通信控制",
         "tags":     []
     },
     {
@@ -252,7 +252,7 @@
         "date":      "2019-08-04",
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G7.通信控制",
         "tags":     []
     },
     {
@@ -260,7 +260,7 @@
         "date":      "2020-05-28",
         "updates":  ["2021-01-14", "2021-01-17"],
         "authors":  ["BD4SUR"],
-        "category":  "G.数学统计电子信息",
+        "category":  "G7.通信控制",
         "tags":     []
     },
     {
@@ -268,7 +268,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-12"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -276,7 +276,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-10"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -284,7 +284,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -292,7 +292,7 @@
         "date":      "2020-09-14",
         "updates":  ["2021-01-11"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -300,7 +300,7 @@
         "date":      "2021-01-24",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -308,7 +308,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-11"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -316,7 +316,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-11"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -324,7 +324,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-11"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -332,7 +332,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-12"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -340,7 +340,7 @@
         "date":      "2020-09-07",
         "updates":  [],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -348,7 +348,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-12"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -356,7 +356,7 @@
         "date":      "2020-12-08",
         "updates":  ["2021-01-14"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     },
     {
@@ -364,7 +364,7 @@
         "date":      "2021-01-16",
         "updates":  ["2021-01-16"],
         "authors":  ["BD4SUR"],
-        "category":  "G/业余无线电",
+        "category":  "G9.业余无线电",
         "tags":     []
     }
 ]
