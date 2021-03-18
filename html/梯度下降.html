@@ -1,0 +1,139 @@
+<!-- Project Aurora - Blog Framework V4.0 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Project Aurora - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+
+
+<!--页面自定义样式开始-->
+<style>
+
+canvas {
+    display: block;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+    margin: 10px auto 10px auto;
+}
+.btn_div {
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 10px;
+    color: #233333;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body class="Mikumark">
+
+<!--页面内容开始-->
+
+<p style="text-align: center;">
+    <button id="sgd_start" class="MikumarkButton">选择起点</button>
+    <button id="sgd_point" class="MikumarkButtonYellow">切换为极大值</button>
+    <button id="sgd_clear" class="MikumarkButton">全部清除</button>
+</p>
+
+<div id="sgd_prompt" class="btn_div" style="color:#ff0000; font-size: 15px;">点击添加谷（极小值）</div>
+
+<canvas id="sgd" style="width: 300px; height: 300px;" width="300" height="300"></canvas>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/canvas.js"></script>
+<script src="../script/sgd.js"></script>
+<script>
+
+(function () {
+    let cv = new Canvas('sgd', [0,0], [300,300]);
+    cv.Clear();
+    cv.SetBackgroundColor('#000000');
+
+    let startX = 150;
+    let startY = 150;
+
+    let gs = new Array();
+
+    let extremum = 0; //0极小，1极大
+    let start = 0; //0无效 1起点
+
+    $('#sgd_point').attr('class', 'MikumarkButtonYellow');
+    $('#sgd_point').click(function() {
+        if(extremum === 0) {
+            extremum = 1;
+            $('#sgd_prompt').html('点击添加峰（极大值）');
+            $('#sgd_point').html('切换为极小值');
+            $('#sgd_point').attr('class', 'MikumarkButtonGreen');
+        }
+        else {
+            extremum = 0;
+            $('#sgd_prompt').html('点击添加谷（极小值）');
+            $('#sgd_point').html('切换为极大值');
+            $('#sgd_point').attr('class', 'MikumarkButtonYellow');
+        }
+    });
+
+    $('#sgd_start').click(function() {
+        if(start === 0) {
+            start = 1;
+            $('#sgd_prompt').html('选择搜索起点，完成后点“选择起点”按钮确认');
+            $('#sgd_point').attr('class', 'MikumarkButtonYellow');
+            $('#sgd_point').attr("disabled","true");
+        }
+        else {
+            start = 0;
+            $('#sgd_point').removeAttr("disabled");
+            if(extremum === 1) {
+                $('#sgd_prompt').html('点击添加峰（极大值）');
+                $('#sgd_point').attr('class', 'MikumarkButtonGreen');
+            }
+            else {
+                $('#sgd_prompt').html('点击添加谷（极小值）');
+                $('#sgd_point').attr('class', 'MikumarkButtonYellow');
+            }
+        }
+    });
+
+    $('#sgd_clear').click(function() {
+        cv.Clear();
+        cv.SetBackgroundColor('#000000');
+        gs = new Array();
+    });
+    
+    cv.AddClickHandler((point)=>{
+        let x = point[0];
+        let y = point[1];
+        if(start > 0) {
+            startX = x;
+            startY = y;
+        }
+        else {
+            if(extremum > 0) {
+                flag = -1;
+                let g = new Gaussian(10, 60, 60, x, y);
+                gs.push(g);
+            }
+            else if(extremum === 0) {
+                flag = 1;
+                let g = new Gaussian(-10, 60, 60, x, y);
+                gs.push(g);
+            }
+        }
+
+        show(gs, cv);
+        gd(gs, startX, startY, cv);
+    });
+})();
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>

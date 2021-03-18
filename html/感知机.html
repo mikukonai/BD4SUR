@@ -1,0 +1,120 @@
+<!-- Project Aurora - Blog Framework V4.0 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Project Aurora - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+
+
+<!--页面自定义样式开始-->
+<style>
+
+canvas {
+    display: block;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+    margin: 10px auto 10px auto;
+}
+.btn_div {
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 10px;
+    color: #233333;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<p style="text-align: center;">
+    <button id="gd" class="MikumarkButton">开始训练</button>
+    <button id="point" class="MikumarkButtonRed">正样本</button>
+    <button id="clear" class="MikumarkButton">重置</button>
+</p>
+
+<div id="prompt" class="btn_div" style="font-size: 15px;"><span style="color:#ff0000;">点击添加正样本点</span></div>
+
+<canvas id="perceptron" style="width:320px;height:320px;" width="320" height="320"></canvas>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/canvas.js"></script>
+<script src="../script/perceptron.js"></script>
+<script>
+
+
+(function () {
+    let cv = new Canvas('perceptron', [0,0], [320,320]);
+    cv.Clear();
+
+    // let xs    = [10,20,30,40,50,60,70,80];
+    // let ys    = [20,10,30,20,50,40,60,50];
+    // let label = [-1,-1,-1,-1,1,1,1,1];
+
+    let xs    = new Array();
+    let ys    = new Array();
+    let label = new Array();
+
+    let flag = 0;
+    let timer = 0;
+
+    $('#point').attr('class', 'MikumarkButtonRed');
+    $('#point').click(function() {
+        if(flag === 0) {
+            flag = 1;
+            $('#prompt').html('<span style="color:#0000ff;">点击添加负样本点</span>');
+            $('#point').html('负样本');
+            $('#point').attr('class', 'MikumarkButton');
+        }
+        else {
+            flag = 0;
+            $('#prompt').html('<span style="color:#ff0000;">点击添加正样本点</span>');
+            $('#point').html('正样本');
+            $('#point').attr('class', 'MikumarkButtonRed');
+        }
+    });
+
+    $('#gd').click(function() {
+        clearInterval(timer);
+        let pt = new Perceptron(xs, ys, label);
+        timer = GD(pt, cv);
+    });
+
+    $('#clear').click(function() {
+        clearInterval(timer);
+        cv.Clear();
+        xs = new Array();
+        ys = new Array();
+        label = new Array();
+    });
+
+    cv.AddClickHandler((point)=>{
+        let x = point[0];
+        let y = point[1];
+        if(flag <= 0) {
+            label.push(1);
+        }
+        else {
+            label.push(-1);
+        }
+        xs.push(x);
+        ys.push(y);
+        cv.Clear();
+        plot(xs, ys, label, cv);
+    });
+})();
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>

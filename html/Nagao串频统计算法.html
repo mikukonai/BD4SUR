@@ -1,0 +1,51 @@
+<!-- Framework Iroha -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Frame Iroha - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+
+
+<!--页面自定义样式开始-->
+<style>
+
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<button id="nagao" class="MikumarkButton" style="width:100%;">串频统计</button>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/canvas.js"></script>
+<script src="../script/nagao.js"></script>
+<script src="../script/dict.js"></script>
+<script>
+
+$('#nagao').click(function() {
+    let nw = newword(text);
+    // 过滤掉已经在词典的、凝固度小于100的、左右熵小于1.0的词
+    let nnw = new Object();
+    for(let t in nw) {
+        if(!(dict.indexOf(t) >= 0) && t.length >= 2) {
+            // if(nw[t]['ent'] >= 1.0 && nw[t]['solidity'] >= 100) {
+                nnw[t] = nw[t];
+            // }
+        }
+    }
+    console.log(nnw);
+});
+</script>
+<!--脚本结束-->
+
+</body>
+</html>

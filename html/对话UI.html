@@ -1,0 +1,299 @@
+<!-- Project Aurora - Blog Framework V4.0 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Project Aurora - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+
+
+<!--页面自定义样式开始-->
+<style>
+
+* {
+    margin:0;
+    padding:0;
+    outline:none;
+}
+body {
+    font-size: 14px;
+    background-color: #ffffff;
+    font-family: Microsoft YaHei, "Muli", "宋体", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+p {
+    margin: 10px;
+    font-size: 14px;
+    line-height: 20px;
+}
+a {
+    color: #33aadd; text-decoration: none;
+}
+a:hover{
+    color: #ff00ff; text-decoration: none;
+}
+ul, ol {
+    margin: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    padding-left:20px;
+}
+.top_title {
+    width:100%;
+    margin:0;padding: 0;
+    height:40px; line-height: 40px;
+    font-size: 16px;
+    background-color: #fefefe;
+    color:#33aadd;
+    text-align: center;
+    border-bottom:1px solid #cccccc;
+}
+.main_box {
+    overflow: hidden;
+    margin:0 auto 0 auto;/*10px;*/
+    padding:0;
+    /* border-radius: 10px; */
+    border: none;/*1px solid #66ccff;*/
+    background-color: #ffffff;
+    max-width: 700px;
+}
+.dialogue {
+    height:400px;
+    overflow: auto;
+    margin:0;
+    padding:10px;
+    background-color: #ffffff;
+    color: #333333;
+    border: none;
+    font-size: 14px;
+}
+.input_box {
+    width: 100%;
+    height: 32px;
+    line-height: 24px;
+    box-sizing: border-box;
+    margin:0;
+    padding:3px 12px 3px 12px;
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #33aadd;
+    border-radius: 15px;
+    font-size: 13px;
+    resize: none;
+}
+.button_ask {
+    position: relative;
+    float: right;
+    top: 28px;
+    right: 4px;
+    border: none;
+    border-radius: 11px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    background-color: #33aadd;
+    color: #ffffff;
+}
+.button_ask:hover {
+    background-color:#00b3ff;
+}
+
+.avatar_left {
+    float: left;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+}
+.avatar_right {
+    float: right;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border: 0.5px solid #dddddd;
+    border-radius: 5px;
+}
+
+/* 模仿iOS短信框 */
+.bubble_question {
+    width:fit-content;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    max-width: 70%;
+    margin:10px auto 10px 45px;
+    padding:8px;
+    background-color: #00cc00;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 10px;
+    border: none;
+}
+
+.bubble_answer {
+    width:fit-content;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    max-width: 70%;
+    margin:10px 45px 10px auto;
+    padding:8px;
+    background-color: #eaeaea;
+    color: #333333;
+    font-size: 14px;
+    border-radius: 10px;
+    border: none;
+}
+
+.prompt {
+    width:fit-content;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    max-width: 60%;
+    margin:10px auto 10px auto;
+    padding:4px 8px 4px 8px;
+    background-color: #aaaaaa;
+    color: #ffffff;
+    font-size: 11px;
+    border-radius: 10px;
+    border: none;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<div class="main_box">
+    <div class="dialogue" id="dialogue">
+</div>
+<button class="button_ask" id="button_ask">▲</button>
+<div>
+    <textarea class="input_box" id="input_box" placeholder="请输入问题">孙悟空有几个妖精女朋友？</textarea></div>
+</div>
+<div style="text-align: center;margin: 15px auto 30px auto;font-size:13px;color:#cccccc;">
+    2018.3 Project Aurora
+</div>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script>
+
+(function() {
+    const random_answer = [
+    '无可奉告。',
+    '不知道。',
+    '这么简单的问题你都不会。',
+    '<a href="../image/resource/trinity.jpg" target="_blank"><img src="../image/resource/trinity.jpg" style="width:200px;height:163px;"></a>',
+    ];
+
+    function getAnswer(question) {
+        if(/[?？]$/.test(question) ||
+        /怎/.test(question) ||
+        /什么/.test(question) ||
+        /吗/.test(question) ||
+        /谁/.test(question) ||
+        /么/.test(question) ||
+        /哪/.test(question) ||
+        /咋/.test(question) ||
+        /多少/.test(question) ||
+        /几/.test(question) ||
+        /何/.test(question)
+        ) {
+            return '<a href="../image/resource/trinity.jpg" target="_blank"><img src="../image/resource/trinity.jpg" style="width:200px;height:163px;"></a>';
+        }
+        else {
+            setTimeout(function() {
+                window.location.href = `https://www.baidu.com/s?wd=${question}`;
+            }, 1000);
+            return `帮你百度一下~`;
+        }
+        
+    }
+
+    function qa(question) {
+        var question = $('#input_box').val();
+        $('#dialogue').html($('#dialogue').html() + `
+<div>
+    <img class="avatar_left" src="../image/resource/huaji.jpg">
+    <div class="bubble_question">${question}</div>
+</div>`);
+        setTimeout(()=> {
+            let ans = getAnswer(question);
+            $('#dialogue').html($('#dialogue').html() + `
+<div>
+    <img class="avatar_right" src="../image/resource/kizuna-ai.jpg">
+    <div class="bubble_answer">${ans}</div>
+</div>`);
+            $('#dialogue').animate({scrollTop : $('#dialogue')[0].scrollHeight} , 'normal');
+        }, Math.random() * 500 + 500);
+    }
+
+    $(function() {
+        $('#input_box').focus();
+
+        let oldMinute = 0;
+
+        $('#dialogue').html($('#dialogue').html() + 
+            '<div class="prompt">' + new Date().getHours() + ':' + new Date().getMinutes() + '</div>');
+        oldMinute = new Date().getMinutes();
+
+        $('#dialogue').html($('#dialogue').html() + 
+            '<div class="prompt">人工智障Bot为您服务</div>');
+
+        let timer = setInterval(function() {
+            if(oldMinute !== new Date().getMinutes()) {
+                oldMinute = new Date().getMinutes();
+                $('#dialogue').html($('#dialogue').html() + 
+                    '<div class="prompt">' + new Date().getHours() + ':' + new Date().getMinutes() + '</div>');
+                //$('#dialogue').animate({scrollTop : $('#dialogue')[0].scrollHeight} , 'normal');
+            }
+        }, 1000);
+
+        $('#button_ask').click(function() {
+            if($('#input_box').val().length === 0) {
+                $('#input_box').css('border-color', '#ff6666');
+                $('#input_box').focus();
+                return false;
+            }
+            else {
+                $('#input_box').css('border-color', '#33aadd');
+                qa();
+                $('#input_box').focus();
+                setTimeout(()=>{
+                    $('#input_box').val('');
+                }, 0);
+            }
+        });
+
+        $('#input_box').keydown(function(e) {
+            if(e.which == 13) {
+                if($('#input_box').val().length === 0) {
+                    $('#input_box').css('border-color', '#ff6666');
+                    $('#input_box').focus();
+                    return false;
+                }
+                else {
+                    $('#input_box').css('border-color', '#33aadd');
+                    qa();
+                    $('#input_box').focus();
+                    setTimeout(()=>{
+                        $('#input_box').val('');
+                    }, 0);
+                }
+            }
+        });
+    });
+})();
+
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>

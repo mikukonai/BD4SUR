@@ -1,0 +1,304 @@
+<!-- Project Aurora - Blog Framework V4.0 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Project Aurora - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+
+
+<!--页面自定义样式开始-->
+<style>
+
+canvas {
+    display: block;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+    margin: 10px auto 10px auto;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<p style="text-align: center;">
+    <button id="point" class="MikumarkButtonYellow">正样本</button>
+    <button id="kernel" class="MikumarkButtonGreen">线性核</button>
+    <button id="clear" class="MikumarkButtonRed">重置</button>
+</p>
+
+<div id="prompt" style="padding:0 auto 0 auto;text-align: center;">
+    <span style="color:#ff9933;">点击添加正样本点</span>
+</div>
+
+<canvas id="cv" style="width:320px;height:320px;" width="320" height="320"></canvas>
+
+<p style="text-align: center;">
+    <button class="MikumarkButton" id="xor">异或</button> · <button class="MikumarkButton" id="spiral">螺旋</button> · <button class="MikumarkButton" id="linear">线性</button>
+</p>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/canvas.js"></script>
+<script src="../script/svm.js"></script>
+<script>
+
+$(function(){
+
+    let cv = new Canvas('cv', [0,0], [320,320]);
+    cv.Clear();
+
+    // 数据集合
+    let data = new Array();
+    let label = new Array();
+    // 正负样本状态
+    let catFlag = 0;
+    // 核函数状态
+    let kernelFlag = 0;
+
+    let svm = new svmjs.SVM();
+
+    // SVM参数
+    let svmOption = {
+        C: 1,
+        numpasses: 200,
+        kernel: 'linear',
+        rbfsigma: 1,
+    };
+
+    // 点击事件
+    cv.AddClickHandler((point)=>{
+        let x = point[0];
+        let y = point[1];
+        if(catFlag <= 0) {
+            label.push(1);
+        }
+        else {
+            label.push(-1);
+        }
+        data.push([x, y]);
+        train(data, label, svm, svmOption, cv);
+    });
+
+    // 分类切换按钮
+    $('#point').attr('class', 'MikumarkButtonYellow');
+    $('#point').click(function() {
+        if(catFlag === 0) {
+            catFlag = 1;
+            $('#prompt').html('<span style="color:#0086bb;">点击添加负样本点</span>');
+            $('#point').html('负样本');
+            $('#point').attr('class', 'MikumarkButton');
+        }
+        else {
+            catFlag = 0;
+            $('#prompt').html('<span style="color:#ff9933;">点击添加正样本点</span>');
+            $('#point').html('正样本');
+            $('#point').attr('class', 'MikumarkButtonYellow');
+        }
+    });
+
+    $('#clear').click(function() {
+        cv.Clear();
+        data = new Array();
+        label = new Array();
+        svm= new svmjs.SVM();
+        svmOption = {
+            C: 1,
+            numpasses: 200,
+            kernel: 'linear',
+            rbfsigma: 1,
+        };
+        kernelFlag = 0;
+        $('#kernel').html('线性核');
+    });
+
+    $('#kernel').click(function() {
+        if(kernelFlag === 0) {
+            kernelFlag = 1;
+            svmOption = {
+                C: 20,
+                numpasses: 200,
+                kernel: 'rbf',
+                rbfsigma: 20,
+            };
+            $('#kernel').html('RBF核');
+            train(data, label, svm, svmOption, cv);
+        }
+        else {
+            kernelFlag = 0;
+            svmOption = {
+                C: 1,
+                numpasses: 200,
+                kernel: 'linear',
+                rbfsigma: 1,
+            };
+            $('#kernel').html('线性核');
+            train(data, label, svm, svmOption, cv);
+        }
+    });
+
+    $('#xor').click(function() {
+        sample('xor', cv);
+    });
+
+    $('#spiral').click(function() {
+        sample('spiral', cv);
+    });
+
+    $('#linear').click(function() {
+        sample('linear', cv);
+    });
+});
+
+function plot(data, label, cv) {
+    let xs = new Array();
+    let ys = new Array();
+    for(let i = 0; i < data.length; i++) {
+        xs[i] = data[i][0];
+        ys[i] = data[i][1];
+    }
+    cv.context.lineWidth = 1.5;
+    let color;
+    for(let i = 0; i < xs.length; i++) {
+        if(label[i] >= 0) {
+            color = '#ff9933';
+        }
+        else {
+            color = '#0086bb';
+        }
+        cv.Circle([xs[i], ys[i]], 3, color);
+    }
+}
+
+function show(svm, cv) {
+    let density= 2;
+    for(let x = 0; x <= cv.Xmax; x+= density) {
+        for(let y = 0; y <= cv.Ymax; y+= density) {
+            let dec = svm.marginOne([x, y]);
+            let color;
+            if(dec > 0) {
+                color = '#fff7c7';
+            }
+            else{
+                color = 'rgba(0, 134, 187, 0.3)';
+            }
+            cv.Rect([x, y], density, density, color);
+        }
+    }
+
+    if(svm.kernelType === 'linear') {
+        let w1 = svm.w[0];
+        let w2 = svm.w[1];
+        let b = svm.b;
+
+        let xs= [cv.Xmin, cv.Xmax];
+        let ys= [0, 0];
+        ys[0]= (-svm.b - svm.w[0]*xs[0])/svm.w[1];
+        ys[1]= (-svm.b - svm.w[0]*xs[1])/svm.w[1];
+
+        // wx+b=0 line
+        cv.context.lineWidth = 2;
+        cv.Line([xs[0],ys[0]], [xs[1], ys[1]], 'rgb(255,0,0)');
+
+        // wx+b=1 line
+        cv.context.lineWidth = 0.5;
+        cv.Line([xs[0],(ys[0]-1.0/svm.w[1])], [xs[1], (ys[1]-1.0/svm.w[1])], 'rgba(0,0,0,0.5)');
+
+        // wx+b=-1 line
+        cv.context.lineWidth = 0.5;
+        cv.Line([xs[0],(ys[0]+1.0/svm.w[1])], [xs[1], (ys[1]+1.0/svm.w[1])], 'rgba(0,0,0,0.5)');
+
+        cv.context.textBaseline = 'top';
+        cv.Text('   wx=' + w1.toFixed(3).toString(), [8, cv.Ymax-(8+14*0)], "#000", "14px Consolas");
+        cv.Text('   wy=' + w2.toFixed(3).toString(), [8, cv.Ymax-(8+14*1)], "#000", "14px Consolas");
+        cv.Text(' bias=' + b.toFixed(3).toString(), [8, cv.Ymax-(8+14*2)], "#000", "14px Consolas");
+
+        // draw margin lines for support vectors. The sum of the lengths of these
+        // lines, scaled by C is essentially the total hinge loss.
+        for(let i = 0; i < svm.N; i++) {
+            if(svm.alpha[i] < 1e-2) {
+                continue;
+            }
+            if(svm.labels[i]==1) {
+                ys[0]= (1 -svm.b - svm.w[0]*xs[0])/svm.w[1];
+                ys[1]= (1 -svm.b - svm.w[0]*xs[1])/svm.w[1];
+            } else {
+                ys[0]= (-1 -svm.b - svm.w[0]*xs[0])/svm.w[1];
+                ys[1]= (-1 -svm.b - svm.w[0]*xs[1])/svm.w[1];
+            }
+            let u= (svm.data[i][0]-xs[0])*(xs[1]-xs[0])+(svm.data[i][1]-ys[0])*(ys[1]-ys[0]);
+            u = u/((xs[0]-xs[1])*(xs[0]-xs[1])+(ys[0]-ys[1])*(ys[0]-ys[1]));
+            let xi= xs[0]+u*(xs[1]-xs[0]);
+            let yi= ys[0]+u*(ys[1]-ys[0]);
+
+            cv.Line([svm.data[i][0], svm.data[i][1]], [xi, yi], 'rgba(0,0,0,0.5)');
+        }
+    }
+
+}
+
+function train(data, label, svm, option, cv) {
+    if(data.length < 2) {
+        cv.Clear();
+        plot(data, label, cv);
+        return;
+    }
+
+    let res = svm.train(data, label, option);
+    console.log(svm);
+    cv.Clear();
+    show(svm, cv);
+    plot(data, label, cv);
+}
+
+function sample(name, cv) {
+    let svm = new svmjs.SVM();
+    if(name === 'xor') {
+        let data = [[75,75],[225,225],[75,225],[225,75]];
+        let label = [1,1,-1,-1];
+        let svmOption = {
+            C: 20,
+            numpasses: 200,
+            kernel: 'rbf',
+            rbfsigma: 20,
+        };
+        train(data, label, svm, svmOption, cv);
+    }
+    else if(name === 'spiral') {
+        let data = [[202,249],[159,245],[124,229],[101,211],[87,174],[84,142],[90,114],[121,90],[159,79],[197,77],[215,99],[230,125],[226,152],[207,172],[189,180],[160,181],[130,166],[185,135],[145,132],[111,141],[110,175],[144,208],[179,213],[223,209],[258,187],[273,140],[266,109],[250,79],[214,52],[180,42],[141,41],[106,54],[71,75],[48,124],[41,185],[68,232],[111,264],[180,286],[237,285],[272,256]];
+        let label = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
+        let svmOption = {
+            C: 20,
+            numpasses: 200,
+            kernel: 'rbf',
+            rbfsigma: 20,
+        };
+        train(data, label, svm, svmOption, cv);
+    }
+    else if(name === 'linear') {
+        let data = [[60,128],[95,152],[140,183],[185,214],[225,245],[110,70],[154,105],[188,128],[221,158],[265,190],[108,235],[235,86]];
+        let label = [1,1,1,1,1,-1,-1,-1,-1,-1,-1,1];
+        let svmOption = {
+            C: 1,
+            numpasses: 200,
+            kernel: 'linear',
+            rbfsigma: 1,
+        };
+        train(data, label, svm, svmOption, cv);
+    }
+}
+
+
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>

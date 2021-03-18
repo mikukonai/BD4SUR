@@ -1,0 +1,75 @@
+<!-- Project Aurora - Blog Framework V4.0 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Project Aurora - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+
+
+<!--页面自定义样式开始-->
+<style>
+
+canvas {
+    display: block;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+    margin: 10px auto 10px auto;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body class="Mikumark">
+
+<!--页面内容开始-->
+
+<p style="text-align: center;">
+    <button class="MikumarkButton" id="start" style="width:100%;">计算TSP</button>
+</p>
+
+<canvas id="tsp" style="width:320px;height:240px;" width="320" height="240"></canvas><canvas id="stat" style="width:320px;height:100px;" width="320" height="100"></canvas>
+
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/canvas.js"></script>
+<script src="../script/genetic.js"></script>
+<script>
+
+var timer = 0;
+const historySize = 3000;
+
+$("#start").click(()=> {
+    let cv = new Canvas('tsp', [80,15], [135,50]);
+    let stat = new Canvas('stat', [0,120], [historySize, 400]);
+    cv.Clear();
+    stat.Clear();
+
+    clearInterval(timer);
+
+    let history = new Array();
+
+    let eden = new Eden(500);
+    let result = eden.Evolve();
+    timer = setInterval(()=>{
+        drawMap(cv, result.route);
+        history.push(result.distance);
+        if(history.length > historySize) {
+            history.shift();
+        }
+        drawStat(stat, history);
+        result = eden.Evolve();
+    }, 0);
+});
+
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>

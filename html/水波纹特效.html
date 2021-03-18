@@ -1,0 +1,70 @@
+<!-- Project Aurora - Blog Framework V4.0 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Project Aurora - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+
+
+<!--页面自定义样式开始-->
+<style>
+
+canvas {
+    display: block;
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+    margin: 10px auto 10px auto;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<canvas id="ripple"></canvas>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/ripple.js"></script>
+<script>
+
+(function () {
+    var settings = {
+        image: '../image/resource/hyouka.jpg',
+        dropRadius: 5,
+        width: 320,
+        height: 320,
+    };
+
+    var waterRippleEffect = new WaterRipple( document.getElementById( 'ripple' ), settings );
+
+    //on click
+    document.getElementById( 'ripple' ).addEventListener( 'click', function( e ) {
+        var mouseX = e.layerX;
+        var mouseY = e.layerY;
+        waterRippleEffect.disturb( mouseX, mouseY );
+    } );
+
+
+    //on mousemove
+    document.getElementById( 'ripple' ).addEventListener( 'mousemove', function( e ) {
+        var mouseX = e.layerX;
+        var mouseY = e.layerY;
+        waterRippleEffect.disturb( mouseX, mouseY );
+    } );
+
+})();
+
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>

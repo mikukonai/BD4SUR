@@ -1,0 +1,171 @@
+<!-- Project Aurora - Blog Framework V4.0 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Project Aurora - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+
+
+<!--页面自定义样式开始-->
+<style>
+
+table {
+    margin: auto;
+}
+.btn_div {
+    text-align: center;
+    font-size: 14px;
+    margin: 10px;
+}
+
+table {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border-color: grey;
+}
+td {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    border: 1px solid #888888;
+}
+td:hover {
+    background-color: #66ccff;
+}
+.piano {
+    overflow: auto;
+    padding: 10px;
+}
+
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<button id="Suimusou" class="MikumarkButton">東方萃夢想（请等待伴奏加载完成）</button>
+<button id="HoshiNoArika" class="MikumarkButton">星の在り処（点击播放）</button>
+<button id="HaruNoKatami" class="MikumarkButton">春のかたみ（点击播放）</button>
+
+<div class="piano">
+    <table>
+        <tr><td id="tone1">C2</td><td id="tone2">D2</td><td id="tone3">E2</td><td id="tone4">F2</td><td id="tone5">G2</td><td id="tone6"><span style="color:red;">A2</span></td><td id="tone7">B2</td></tr>
+        <tr><td id="tone8">C3</td><td id="tone9">D3</td><td id="tone10">E3</td><td id="tone11">F3</td><td id="tone12">G3</td><td id="tone13">A3</td><td id="tone14">B3</td></tr>
+        <tr><td id="tone15">C4</td><td id="tone16">D4</td><td id="tone17">E4</td><td id="tone18">F4</td><td id="tone19">G4</td><td id="tone20">A4</td><td id="tone21">B4</td></tr>
+        <tr><td id="tone22">C5</td><td id="tone23">D5</td><td id="tone24">E5</td><td id="tone25">F5</td><td id="tone26">G5</td><td id="tone27">A5</td><td id="tone28">B5</td></tr>
+        <tr><td id="tone29">C6</td><td id="tone30">D6</td><td id="tone31">E6</td><td id="tone32">F6</td><td id="tone33">G6</td><td id="tone34">A6</td><td id="tone35">B6</td></tr>
+    </table>
+</div>
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/score.js"></script>
+<script src="../script/jukebox.js"></script>
+<script>
+
+$(function(){
+    const instGain = 0.35; // 伴奏增益
+    let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let source;
+    (function getData() {
+        source = audioCtx.createBufferSource();
+        var request = new XMLHttpRequest();
+        request.open('GET', 'http://ys-f.ys168.com/612002218/k5U5S4775HINKFTTvhws/suimusou.mp3', true);
+        request.responseType = 'arraybuffer';
+        request.onload = function() {
+            var audioData = request.response;
+            audioCtx.decodeAudioData(audioData, function(buffer) {
+                source.buffer = buffer;
+                // 伴奏→增益→终点
+                var gainNode = audioCtx.createGain();
+                source.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                gainNode.gain.setValueAtTime(instGain, 0);
+                source.loop = false;
+                $('#Suimusou').attr('disabled', false);
+                $('#Suimusou').html('東方萃夢想（点击播放，<strong>音量可能较大</strong>）');
+            },
+            function(e){"Error with decoding audio data" + e.err});
+        }
+        request.send();
+    })();
+
+    // 春痕
+    $('#HaruNoKatami').click(function() {
+        JukeBox(140.5, 37, haru); // bpm=140.5，调号（升C），乐谱
+    });
+    // 星之所在
+    $('#HoshiNoArika').click(function() {
+        JukeBox(162, 40, hoshi); // bpm=162，调号（E），乐谱
+        JukeBox(162, 24, hoshi2); // bpm=162，调号（E），乐谱
+    });
+    // 东方萃梦想
+    $('#Suimusou').click(function() {
+        const TONE_DELAY = 16990; // 这个延时可能需要微调
+        source.start(0);
+        setTimeout(()=>{
+            JukeBox(240.9, 39+12, touhousuimusou); // bpm=240.9，调号（降B），乐谱
+        }, TONE_DELAY);
+        $('#Suimusou').attr('disabled', true);
+        $('#Suimusou').html('東方萃夢想（播放中，刷新以停止）');
+    });
+    
+    $("td[id^='tone']").each(function(index, e) {
+        // console.log(parseInt(($(this).attr('id').match(/\d+/ig))[0]));
+        $(e).click(function() {
+            let n = parseInt((e.id.match(/\d+/ig))[0])+7;
+            let group = (n % 7 === 0) ? Math.floor(n / 7) - 1 : Math.floor(n / 7);
+            let f = freq[TO_TONENAME[n % 7] + parseInt(parseInt(group) * 12)];
+            console.log(n + ' / ' + (TO_TONENAME[n % 7] + parseInt(parseInt(group) * 12)) + ':' + f);
+            tone.play(f);
+        });
+    });
+
+    $(document).keydown((event) => {
+        console.log(event.keyCode);
+        switch(event.keyCode) {
+            case 81: tone.play(freq[TONENAME_TO_INDEX["C3"]]); break; // Q
+            case 87: tone.play(freq[TONENAME_TO_INDEX["D3"]]); break; // W
+            case 69: tone.play(freq[TONENAME_TO_INDEX["E3"]]); break; // E
+            case 82: tone.play(freq[TONENAME_TO_INDEX["F3"]]); break; // R
+            case 84: tone.play(freq[TONENAME_TO_INDEX["G3"]]); break; // T
+            case 89: tone.play(freq[TONENAME_TO_INDEX["A3"]]); break; // Y
+            case 85: tone.play(freq[TONENAME_TO_INDEX["B3"]]); break; // U
+            case 73: tone.play(freq[TONENAME_TO_INDEX["C4"]]); break; // I
+
+            case 65: tone.play(freq[TONENAME_TO_INDEX["C4"]]); break; // A
+            case 83: tone.play(freq[TONENAME_TO_INDEX["D4"]]); break; // S
+            case 68: tone.play(freq[TONENAME_TO_INDEX["E4"]]); break; // D
+            case 70: tone.play(freq[TONENAME_TO_INDEX["F4"]]); break; // F
+            case 71: tone.play(freq[TONENAME_TO_INDEX["G4"]]); break; // G
+            case 72: tone.play(freq[TONENAME_TO_INDEX["A4"]]); break; // H
+            case 74: tone.play(freq[TONENAME_TO_INDEX["B4"]]); break; // J
+            case 75: tone.play(freq[TONENAME_TO_INDEX["C5"]]); break; // K
+
+            case 90: tone.play(freq[TONENAME_TO_INDEX["C5"]]); break; // Z
+            case 88: tone.play(freq[TONENAME_TO_INDEX["D5"]]); break; // X
+            case 67: tone.play(freq[TONENAME_TO_INDEX["E5"]]); break; // C
+            case 86: tone.play(freq[TONENAME_TO_INDEX["F5"]]); break; // V
+            case 66: tone.play(freq[TONENAME_TO_INDEX["G5"]]); break; // B
+            case 78: tone.play(freq[TONENAME_TO_INDEX["A5"]]); break; // N
+            case 77: tone.play(freq[TONENAME_TO_INDEX["B5"]]); break; // M
+            case 188: tone.play(freq[TONENAME_TO_INDEX["C6"]]); break; // ,
+
+            default: break;
+        }
+     });
+});
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>
