@@ -15,6 +15,7 @@ let CONFIG = {
         "png":   "image/png",
         "gif":   "image/gif",
         "bmp":   "image/bmp",
+        "webp":   "image/webp",
         "js":    "text/javascript",
         "ico":   "image/vnd.microsoft.icon",
         "mp3":   "audio/mpeg",
