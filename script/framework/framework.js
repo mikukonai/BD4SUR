@@ -90,7 +90,7 @@ function SPA_Render(pathString, callback) {
         LoadStationLog();
     }
     // 资料（文章）
-    if(PageID === "docs") {
+    if(PageID === "blog") {
         // 正文
         if(ArticleID !== undefined) {
             $("#BackButton").show();     // 显示返回按钮
@@ -108,7 +108,7 @@ function SPA_Render(pathString, callback) {
         // 列表
         else {
             PortalConfigInit(PageID);
-            LoadList("docs");
+            LoadList("blog");
         }
     }
     // 灵感

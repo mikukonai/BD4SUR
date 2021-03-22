@@ -1,130 +1,10 @@
 [
     {
-        "title":     "A.哲学宗教伦理心理",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "B.文学艺术教育体育",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "C.历史地理语言文化",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "D.政治法律社会时事",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "E.军事战略国际关系",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "F.经济管理贸易营销",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "G.数学统计电子信息",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "H.物理化学天文地学",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "I.医药卫生生命科学",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "J.农业景观生态环境",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "K.工业交通工程技术",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
-        "title":     "L.家政轻工实用技术",
-        "date":      "",
-        "updates":  [],
-        "authors":  [""],
-        "category":  "综合知识",
-        "tags":     []
-    },
-    {
         "title":     "共产党宣言",
         "date":      "",
         "updates":  [],
         "authors":  ["马克思", "恩格斯"],
         "category":  "A.哲学宗教伦理心理",
-        "tags":     []
-    },
-    {
-        "title":     "日新阁图书分类法",
-        "date":      "",
-        "updates":  ["2021-03-15"],
-        "authors":  ["BD4SUR"],
-        "category":  "G5.情报学",
-        "tags":     []
-    },
-    {
-        "title":     "日新阁藏书目录",
-        "date":      "",
-        "updates":  ["2021-03-15"],
-        "authors":  ["BD4SUR"],
-        "category":  "G5.情报学",
-        "tags":     []
-    },
-    {
-        "title":     "知识管理策略",
-        "date":      "",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G5.情报学",
         "tags":     []
     },
     {
@@ -373,14 +253,6 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "L.家政轻工实用技术",
-        "tags":     []
-    },
-    {
-        "title":     "妙语拾零",
-        "date":      "",
-        "updates":  ["2021-02-13"],
-        "authors":  ["BD4SUR"],
-        "category":  "Z.杂类",
         "tags":     []
     },
     {

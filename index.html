@@ -44,7 +44,7 @@
         <div class="StickyNavbar">
             <button id="MenuButton" class="MenuButton" data-state="off">=</button>
             <nav class="Navbar" id="MenuNavbar" style="top: 40px; z-index: 100000; border: none;">
-                <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="collections">收 藏</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="docs">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
+                <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="collections">收 藏</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="blog">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
             </nav>
         </div>
         <!--菜单主题内容，一般是目录。由SPA_Render插入相应的锚点。-->
@@ -80,7 +80,7 @@
     </header>
     <!--导航栏-->
     <nav class="Navbar" id="MainNavbar">
-        <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="collections">收 藏</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="docs">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
+        <button class="NavbarItem SPA_TRIGGER" active="false" data-target="index">首 页</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="collections">收 藏</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="inspirations">灵 感</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="blog">博 客</button><button class="NavbarItem SPA_TRIGGER" active="false" data-target="about">关 于</button>
     </nav>
     <!--正文内容-->
     <article class="Article SPA_MAIN_CONTAINER"></article>
@@ -1015,8 +1015,115 @@ a:hover {
     color: #666;
 }
 
+
+.SummativeNoteIcon {
+    padding: 8px 0 !important;
+    color: #888;
+    font-size: 10px;
+    line-height: normal;
+    cursor: pointer;
+}
+
+
+.SummativeNote td {
+    text-align: center;
+    padding: 3px 0;
+}
+
+@media(min-width:651px){
+    .SummativeNote {
+        width: 80%; table-layout:fixed;
+        margin: 10px auto;
+    }
+    .CategoryIcon {
+        font-family: 'consolas', monospace;
+        display:inline-block;
+        width:32px; height:32px;
+        line-height: 32px;
+        background-color:#cad6dd;
+        color:#fff;
+        text-align:center;
+        font-size:18px;
+        font-weight:bold;
+        margin: 0px 1px 5px 1px;
+        border-radius: 3px;
+    }
+    .CategoryIcon:hover {
+        background-color:#aedffc;
+    }
+    .crlf {
+        display: none;
+    }
+}
+@media(max-width:650px){
+    .SummativeNote {
+        width: 100%; table-layout:fixed;
+    }
+    .CategoryIcon {
+        font-family: 'consolas', monospace;
+        display:inline-block;
+        width:36px; height:36px;
+        line-height: 36px;
+        background-color:#cad6dd;
+        color:#fff;
+        text-align:center;
+        font-size:22px;
+        font-weight:bold;
+        margin: 0px 1px 5px 1px;
+        border-radius: 3px;
+    }
+}
+
+
 </style>
-<template id="docs">
+<template id="blog">
+    <div class="SectionBody">
+        <table class="SummativeNote">
+            <tr>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/日新阁图书分类法">
+                    <div class="CategoryIcon">◐</div><br>图书分类</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/日新阁藏书目录">
+                    <div class="CategoryIcon">❤</div><br>藏书目录</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/知识管理策略">
+                    <div class="CategoryIcon">✿</div><br>知识管理</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/妙语拾零">
+                    <div class="CategoryIcon">★</div><br>妙语拾零</td>
+            </tr>
+
+            <tr>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/A.哲学宗教伦理心理">
+                    <div class="CategoryIcon">哲</div><br>哲学宗教<br class="crlf">伦理心理</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/B.文学艺术教育体育">
+                    <div class="CategoryIcon">文</div><br>文学艺术<br class="crlf">教育体育</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/C.历史地理语言文化">
+                    <div class="CategoryIcon">史</div><br>历史地理<br class="crlf">语言文化</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/D.政治法律社会时事">
+                    <div class="CategoryIcon">政</div><br>政治法律<br class="crlf">社会时事</td>
+            </tr>
+
+            <tr>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/E.军事战略国际关系">
+                    <div class="CategoryIcon">军</div><br>军事战略<br class="crlf">国际关系</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/F.经济管理贸易营销">
+                    <div class="CategoryIcon">商</div><br>经济管理<br class="crlf">贸易营销</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/G.数学统计电子信息">
+                    <div class="CategoryIcon">数</div><br>数学统计<br class="crlf">电子信息</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/H.物理化学天文地学">
+                    <div class="CategoryIcon">理</div><br>物理化学<br class="crlf">天文地学</td>
+            </tr>
+
+            <tr>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/I.医药卫生生命科学">
+                    <div class="CategoryIcon">医</div><br>医药卫生<br class="crlf">生命科学</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/J.农业景观生态环境">
+                    <div class="CategoryIcon">农</div><br>农业景观<br class="crlf">生态环境</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/K.工业交通工程技术">
+                    <div class="CategoryIcon">工</div><br>工业交通<br class="crlf">工程技术</td>
+                <td class="SummativeNoteIcon SPA_TRIGGER" data-target="blog/L.家政轻工实用技术">
+                    <div class="CategoryIcon">轻</div><br>家政轻工<br class="crlf">实用技术</td>
+            </tr>
+        </table>
+    </div>
     <div id="TabSwitchContainer"></div>
     <table class="ArticleListContainer" id="ArticleListContainer"></table>
 </template>
@@ -1190,7 +1297,7 @@ a:hover {
 
 
 <!--文章正文框架模板-->
-<template id="docs-article">
+<template id="blog-article">
     <div id="MikumarkArticleTitle" class="MikumarkArticleTitle"></div>
     <div class="MikumarkMetadata">
         <span id="MikumarkMetadataDate" style="padding-right:8px;"><span class="SkeletonPlaceholder" style="width:70px;">0</span></span>·<span id="MikumarkMetadataAuthors" style="padding-left:8px;"><span class="SkeletonPlaceholder" style="width:70px;">0</span></span>
@@ -1267,7 +1374,7 @@ MathJax.Hub.Config({
         else {
             SPA_Render(currentPath, () => {
                 // 跳转到标题处
-                if(pageId === "docs") {
+                if(pageId === "blog") {
                     $('html').scrollTop(prevScrollY);
                 }
             });

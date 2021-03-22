@@ -1,7 +1,7 @@
 
 @title: 思维玩具
 @date: 置顶
-@imageURL: ./image/G/学问之趣味.jpg
+@imageURL: 
 
 2020-01-16
 2020-11-24

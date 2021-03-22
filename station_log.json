@@ -647,5 +647,24 @@
         "qth_self": "公司",
 
         "note":     "江苏无协中继点名"
+    },
+    {
+        "time":     "2021-03-20 22:11",
+        "callsign": "BD4SUH",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "-",
+        "ant":      "-",
+        "pwr":      "-",
+        "qth":      "-",
+
+        "rig_self": "森海克斯8800",
+        "ant_self": "拇指天线",
+        "pwr_self": "5W",
+        "qth_self": "家",
+
+        "note":     "江苏无协中继点名"
     }
 ]
