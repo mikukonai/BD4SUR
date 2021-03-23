@@ -8,19 +8,11 @@
         "tags":     []
     },
     {
-        "title":     "装机必备软件清单",
-        "date":      "",
-        "updates":  ["2021-01-19"],
+        "title":     "舟山游记",
+        "date":      "2017-12-13",
+        "updates":  ["2018-01-04"],
         "authors":  ["BD4SUR"],
-        "category":  "G6.计算机",
-        "tags":     []
-    },
-    {
-        "title":     "博客运营记录",
-        "date":      "",
-        "updates":  [""],
-        "authors":  ["BD4SUR"],
-        "category":  "G6.计算机",
+        "category":  "C.历史地理语言文化",
         "tags":     []
     },
     {
@@ -104,6 +96,86 @@
         "tags":     []
     },
     {
+        "title":     "机器学习算法可视化",
+        "date":      "",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "G3.统计学和机器学习",
+        "tags":     []
+    },
+    {
+        "title":     "启发式算法集锦",
+        "date":      "",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "G4.人工智能",
+        "tags":     []
+    },
+    {
+        "title":     "人工智能随想录",
+        "date":      "",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "G4.人工智能",
+        "tags":     []
+    },
+    {
+        "title":     "元胞自动机之生命游戏",
+        "date":      "2018-05-22",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "G4.人工智能",
+        "tags":     []
+    },
+    {
+        "title":     "语义网和数据产权",
+        "date":      "2019-03-01",
+        "updates":  [],
+        "authors":  ["BD4SUR"],
+        "category":  "G5.情报学",
+        "tags":     []
+    },
+    {
+        "title":     "装机必备软件清单",
+        "date":      "",
+        "updates":  ["2021-01-19"],
+        "authors":  ["BD4SUR"],
+        "category":  "G6.计算机",
+        "tags":     []
+    },
+    {
+        "title":     "博客运营记录",
+        "date":      "",
+        "updates":  [""],
+        "authors":  ["BD4SUR"],
+        "category":  "G6.计算机",
+        "tags":     []
+    },
+    {
+        "title":     "前端设计备忘录",
+        "date":      "",
+        "updates":  [""],
+        "authors":  ["BD4SUR"],
+        "category":  "G6.计算机",
+        "tags":     []
+    },
+    {
+        "title":     "台式机装机报告",
+        "date":      "2019-07-10",
+        "updates":  [""],
+        "authors":  ["BD4SUR"],
+        "category":  "G6.计算机",
+        "tags":     []
+    },
+    {
+        "title":     "音乐盒",
+        "date":      "2018-05-20",
+        "updates":  [""],
+        "authors":  ["BD4SUR"],
+        "category":  "G6.计算机",
+        "tags":     []
+    },
+    {
         "title":     "感觉与决策",
         "date":      "2019-09-05",
         "updates":  [],
@@ -133,30 +205,6 @@
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "B.文学艺术教育体育",
-        "tags":     []
-    },
-    {
-        "title":     "启发式算法集锦",
-        "date":      "",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G4.人工智能",
-        "tags":     []
-    },
-    {
-        "title":     "人工智能随想录",
-        "date":      "",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G4.人工智能",
-        "tags":     []
-    },
-    {
-        "title":     "语义网和数据产权",
-        "date":      "2019-03-01",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G5.情报学",
         "tags":     []
     },
     {

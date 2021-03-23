@@ -1,0 +1,165 @@
+<!-- Framework Iroha -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>Frame Iroha - Demo page</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+
+
+<!--页面自定义样式开始-->
+<style>
+
+textarea {
+    font-size: 14px;
+    box-sizing: border-box;
+    font: inherit;
+    line-height: 20px;
+    height: 100px;
+    width: 100%;
+    border: 1px solid #66ccff;
+    border-radius: 10px;
+    padding: 5px 8px 5px 8px;
+    resize: none;
+}
+.shadow_mask {
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    display: block;
+    z-index: 99999;
+}
+.mask_text {
+    display:block;
+    font-size:20px;
+    text-align: center;
+    color: #ffffff;
+    margin: 3px 0 3px 0;
+    letter-spacing: 1px;
+}
+.label {
+    text-align: center;
+    color: #1899c0;
+    margin: 10px 0 10px 0;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+.token {
+    display: inline-block;
+    font-size: 13px;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 5px 0 5px;
+    margin: 2px 4px 2px 0;
+    background-color:rgb(173, 228, 238);
+    color:#222222;
+    border: none;
+    border-radius: 2px;
+}
+.token:hover {
+    color:#ffffff;
+    background-color: #005a9e;
+}
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<div id="mask" class="shadow_mask">
+    <div class="mask_text" style="margin: 180px 0 25px 0;font-size:28px;">正在构造字典树</div>
+    <div class="mask_text">请稍等片刻</div>
+    <div class="mask_text">词典大小408KB</div>
+</div>
+
+<textarea id="text">长春市长春药店。南京市长江大桥。结婚的和尚未结婚的。科技处女干事每月经过下属科室都要亲口交代24口交换机等技术性器件的安装工作。研究生命令本科生研究生命科学。原子结合成分子时，碳碳键键能能否否定定理一。</textarea>
+
+<button id="tokenize" class="MikumarkButton" style="width:100%;">分 词</button>
+
+<div id="result" class="btn_div"></div>
+
+分词词典：[现代汉语常用词表](https://book.douban.com/subject/3311517/)
+
+
+2018.02.01 / 2018.05.23
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/dict.js"></script>
+<script src="../script/tokenize.js"></script>
+<script>
+$(function(){
+
+let tree = TrieTree();
+
+setTimeout(function() {
+    console.time("添加常用词");
+    for(let i = 0; i < dict.length; i++) {
+        AddToken(tree, dict[i]);
+    }
+    // 添加数词
+    var numZh = ["零","一","二","三","四","五","六","七","八","九","十"];
+    var logZh = ["十","百","千","万","亿","兆"];
+    for(var n = 0; n < 10; n++) {
+        AddToken(tree, numZh[n]);
+    }
+    for(var n = 10; n < 100; n++) {
+        var nstr = "";
+        if(n >= 20) {
+            nstr += numZh[Math.floor(n / 10)];
+        }
+        nstr += "十";
+        nstr += numZh[n % 10];
+        AddToken(tree, nstr);
+    }
+    console.log("词汇添加结束");
+    console.timeEnd("添加常用词");
+    $('#mask').fadeToggle(200);
+}, 200);
+
+$('#tokenize').click(function() {
+    let text = $('#text').val();
+
+    nmm = negMaxMatch(tree, text);
+    pmm = posMaxMatch(tree, text);
+
+    let pmmstr = "";
+    for(let i = 0; i < pmm.length; i++) {
+        pmmstr += ('<span class="token">' + pmm[i] + '</span>');
+    }
+
+    let nmmstr = "";
+    for(let i = 0; i < nmm.length; i++) {
+        nmmstr += ('<span class="token">' + nmm[i] + '</span>');
+    }
+
+    console.log("最大正向匹配：" + pmmstr);
+    console.log("最大逆向匹配：" + nmmstr);
+
+    let html = `
+<div class="label">~正向匹配~</div>
+<div>${pmmstr}</div>
+<div class="label">~反向匹配~</div>
+<div>${nmmstr}</div>`;
+
+    $('#result').html(html);
+
+});
+});
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>

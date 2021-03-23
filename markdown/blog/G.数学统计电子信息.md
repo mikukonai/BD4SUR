@@ -158,7 +158,15 @@
 
 物理学家像是旅客，他知道自己的目的地，却不知道做哪辆车到达；数学家像司机，他有一辆车，却不知道自己要去哪里。
 
+# 单峰映射的混沌
 
+2018-05-15
+
+<iframe class="MikumarkIframe" src="./html/单峰映射的混沌.html" height="500px"></iframe>
+
+![分枝图](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/LogisticMap_BifurcationDiagram.png/640px-LogisticMap_BifurcationDiagram.png)
+
+: [单峰映射](https://en.wikipedia.org/wiki/Logistic_map) | [费根鲍姆常数](https://en.wikipedia.org/wiki/Feigenbaum_constants) | [分岔理论](https://zh.wikipedia.org/wiki/%E5%88%86%E5%B2%94%E7%90%86%E8%AB%96)
 
 # 非对称加密
 
