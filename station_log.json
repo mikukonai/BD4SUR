@@ -666,5 +666,24 @@
         "qth_self": "家",
 
         "note":     "江苏无协中继点名"
+    },
+    {
+        "time":     "2021-03-27 19:39",
+        "callsign": "BD4STG",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "-",
+        "ant":      "-",
+        "pwr":      "-",
+        "qth":      "-",
+
+        "rig_self": "IC-705",
+        "ant_self": "七单元八木",
+        "pwr_self": "10W",
+        "qth_self": "家",
+
+        "note":     "江苏无协中继点名"
     }
 ]
