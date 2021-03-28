@@ -5,6 +5,10 @@
     font-family: "Material Icons";
     src: url("../font/material-icons.woff2") format("woff2");
 }
+@font-face {
+    font-family: "Font Awesome 5 Brands";
+    src: url("https://use.fontawesome.com/releases/v5.12.0/webfonts/fa-brands-400.woff2") format("woff2");
+}
 
 * { outline: none; }
 body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 0; }

@@ -183,7 +183,7 @@
     </div>
 
     <div style="font-size: 14px; text-align: center; margin: 0;">
-        <a href="./html/exam.html">模拟考试</a> / <a href="./html/cw.html">CW练习器</a> / <a href="https://mikukonai.com">博客</a>
+        <a href="./html/exam.html">模拟考试</a> / <a href="./html/cw.html">CW练习器</a>
     </div>
 
     <details>
@@ -264,11 +264,22 @@ a:hover {
 .RigIntro ul {
     padding-inline-start: 20px;
 }
-.RigsTitleImage {
-    display: block;
-    margin: 20px auto 10px auto;
-    width: 80%;
+
+@media(min-width:651px) {
+    .RigsTitleImage {
+        display: block;
+        margin: 10px auto;
+        width: 50%;
+    }
 }
+@media(max-width:650px) {
+    .RigsTitleImage {
+        display: block;
+        margin: 10px auto;
+        width: 100%;
+    }
+}
+
 .RigsImage {
     display: block;
     margin: 10px auto;
@@ -322,11 +333,6 @@ a:hover {
 }
 </style>
 <template id="collections">
-
-<div class="SectionBody" style="margin: 30px;">
-    <p><a href="#collections_radio">无线电设备</a> / <a href="#collections_figure">手办</a> / <a href="#collections_book">图书</a> / <a href="#collections_">CD</a></p>
-    <p><a href="#collections_music">音乐</a> / <a href="#collections_anime">动画</a> / <a href="#collections_link">网络资源</a></p>
-</div>
 
 <div class="SectionHeader" id="collections_radio">无线电设备<div class="SectionHeaderComment">Radio Rigs</div></div>
 
@@ -790,9 +796,11 @@ a:hover {
 
 <div class="SectionHeader" id="collections_anime">链接<div class="SectionHeaderComment">Link</div></div>
 
+<div style="text-align: center; font-weight: bold; margin: 20px 0;">博客</div>
+
 <div class="SectionBody">
     <table class="Matrix">
-        <tbody><tr>
+        <tr>
             <td><a target="_blank" href="http://www.matrix67.com/">Matrix67</a></td>
             <td><a target="_blank" href="http://www.changhai.org/">卢昌海</a></td>
             <td><a target="_blank" href="https://fwjmath.wordpress.com/">fwjmath</a></td>
@@ -827,12 +835,14 @@ a:hover {
             <td><a target="_blank" href="https://www.juroku.net/">致郁系</a></td>
             <td><a target="_blank" href="http://wuli.wiki/">小时物理百科</a></td>
         </tr>
-    </tbody></table>
+    </table>
 </div>
+
+<div style="text-align: center; font-weight: bold; margin: 20px 0;">工具</div>
 
 <div class="SectionBody">
     <table class="Matrix">
-        <tbody><tr>
+        <tr>
             <td><a target="_blank" href="http://www.iqdb.org/">图片检索</a></td>
             <td><a target="_blank" href="http://waifu2x.udp.jp/">动画图片SRR</a></td>
         </tr>
@@ -856,14 +866,28 @@ a:hover {
             <td><a target="_blank" href="https://unsplash.com/">免费图片素材</a></td>
             <td><a target="_blank" href="https://miuiver.com/">MIUI历史版本</a></td>
         </tr>
-    </tbody></table>
+    </table>
 </div>
+
+<div style="text-align: center; font-weight: bold; margin: 20px 0;">无线电·电子</div>
 
 <div class="SectionBody">
     <table class="Matrix">
-        <tbody><tr>
-            <td><a target="_blank" href="http://www.cncalc.org/">cnCalc计算器论坛</a></td>
+        <tr>
+            <td><a target="_blank" href="https://www.by4wng.com/">东南大学业余电台BY4WNG</a></td>
+            <td><a target="_blank" href="https://weibo.com/by2hit">哈工大业余电台BY2HIT</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://7400.me/">EE ARCHEOLOGY</a></td>
             <td><a target="_blank" href="https://www.cnvintage.org/">cnVintage</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="http://www.cncalc.org/">cnCalc计算器论坛</a></td>
+            <td><a target="_blank" href="http://wiki.jackslab.org/">Jack's Lab</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" href="https://www.kechuang.org/">科创论坛</a></td>
+            <td><a target="_blank" href="http://www.nixieclock.org/">辉光钟之家</a></td>
         </tr>
         <tr>
             <td><a target="_blank" href="https://bideyuanli.com/">比的原理</a></td>
@@ -875,26 +899,16 @@ a:hover {
         </tr>
         <tr>
             <td><a target="_blank" href="http://www.beis.de/Elektronik/DeltaSigma/DeltaSigma.html">Delta-Sigma介绍</a></td>
-            <td><a target="_blank" href="http://wiki.jackslab.org/">Jack's Lab</a></td>
-        </tr>
-        <tr>
             <td><a target="_blank" href="http://www.datamath.org/Graphing/JPEG_NSpire_CAS.htm">NSpire拆机图赏</a></td>
-            <td><a target="_blank" href="http://www.nixieclock.org/">辉光钟之家</a></td>
         </tr>
-        <tr>
-            <td><a target="_blank" href="https://wikidevi.com/">WikiDevi</a></td>
-            <td><a target="_blank" href="http://www.soomal.com/">数码多</a></td>
-        </tr>
-        <tr>
-            <td><a target="_blank" href="http://7400.me/">EE ARCHEOLOGY</a></td>
-            <td><a target="_blank" href="http://vocakey.info/">VOCAKEY</a></td>
-        </tr>
-    </tbody></table>
+    </table>
 </div>
+
+<div style="text-align: center; font-weight: bold; margin: 20px 0;">巴别塔</div>
 
 <div class="SectionBody">
     <table class="Matrix">
-        <tbody><tr>
+        <tr>
             <td><a target="_blank" href="http://e-dictionary.apc.gov.tw/">台湾原住民族语言词典</a></td>
             <td><a target="_blank" href="https://web.klokah.tw/">族語E樂園</a></td>
         </tr>
@@ -906,12 +920,14 @@ a:hover {
             <td><a target="_blank" href="http://ckipsvr.iis.sinica.edu.tw/">“中央”研究院中文NLP</a></td>
             <td><a target="_blank" href="http://www.eastling.org/">东方语言学</a></td>
         </tr>
-    </tbody></table>
+    </table>
 </div>
+
+<div style="text-align: center; font-weight: bold; margin: 20px 0;">大千世界</div>
 
 <div class="SectionBody">
     <table class="Matrix">
-        <tbody><tr>
+        <tr>
             <td><a target="_blank" href="https://sicp.readthedocs.io/en/latest/">SICP解题集</a></td>
             <td><a target="_blank" href="http://okmij.org/ftp/">okmij.org</a></td>
         </tr>
@@ -963,7 +979,7 @@ a:hover {
             <td><a target="_blank" href="https://unicode-table.com/cn">Unicode字符百科</a></td>
             <td></td>
         </tr>
-    </tbody></table>
+    </table>
 </div>
 
 
@@ -1155,31 +1171,83 @@ a:hover {
 .Chronicles td, .Chronicles th {
     border: none;
 }
+@media(min-width:651px){
+    .LicenseImage {
+        width: 50%;
+        max-width: 600px;
+        margin: 20px auto;
+        border-radius: 10px;
+    }
+}
+@media(max-width:650px){
+    .LicenseImage {
+        width: 80%;
+        max-width: 600px;
+        margin: 20px auto;
+        border-radius: 10px;
+    }
+}
+a.ContactLink { font-size: 16px; line-height: 32px; text-decoration: none; border: none; }
+a.ContactLink:hover { text-decoration: none; border: none; }
+a.GitHub::before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f09b";
+    padding-right: 5px;
+}
+a.Twitter::before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f099";
+    padding-right: 5px;
+}
+a.Weibo::before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f18a";
+    padding-right: 5px;
+}
 </style>
 <template id="about">
     <div class="SectionBody" style="margin-top: 30px;">
+        <table style="margin: 20px auto 10px auto;">
+            <tr>
+                <td><img src="image/nanjing-location.png" style="width: 80px; padding-right: 10px;"></td>
+                <td style="text-align: left; font-size: 14px;">
+                    <div><b>BD4SUR</b> 中国A类业余无线电台</div>
+                    <div>CQ 24 / ITU 44 / OM91</div>
+                    <div style="font-weight: bold;">中国·江苏·南京</div>
+                    <div>Nanjing, Jiangsu, China</div>
+                </td>
+            </tr>
+        </table>
         <div style="text-align: center;">
-            <img src="image/licenses.jpg" style="width: 80%; max-width: 600px; margin: 20px auto; border-radius: 10px;">
+            <img src="image/licenses.jpg" class="LicenseImage">
         </div>
-        CQ 24 / ITU 44 / OM91<br>中国·江苏·南京<br>Nanjing, Jiangsu, China<br>
-        <img src="image/nanjing-location.png" style="margin-top: 20px; width: 100px;">
+        <div>
+            本业余无线电台于2020年12月7日<br>经无线电管理机关批准设立并颁发执照
+        </div>
     </div>
 
     <div class="SectionBody">
-        <a target="_blank" href="https://github.com/bd4sur/">GitHub</a><span class="Separator">/</span><a target="_blank" href="https://twitter.com/BD4SUR">Twitter</a>
-    </div>
-
-    <div class="SectionBody">
-        <div style="margin:20px auto 0px auto">
-            <div style="font-size: 13px;color:#888888;line-height: 25px;">— 个人微信 —</div>
-            <img src="./image/qrcode.png" style="display:block; margin:0px auto 0 auto; width:20%; min-width: 150px;">
-        </div>
+        <table style="margin: 20px auto;">
+            <tr>
+                <td style="padding-right: 10px; border-right: 1px solid #ccc;">
+                    <div style="font-size: 13px;color:#888888;line-height: 25px;">— 个人微信 —</div>
+                    <img src="./image/qrcode.png" style="display:block; margin:0px auto 0 auto; width: 150px;">
+                </td>
+                <td style="padding-left: 15px; text-align: left;">
+                    <div><a class="ContactLink GitHub" target="_blank" href="https://github.com/bd4sur/">GitHub</a></div>
+                    <div><a class="ContactLink Twitter" target="_blank" href="https://twitter.com/BD4SUR">Twitter</a></div>
+                    <div><a class="ContactLink Weibo" target="_blank" href="https://weibo.com/">Weibo</a></div>
+                    <div>(暂不使用QRZ.com<br>或同类服务)</div>
+                </td>
+            </tr>
+        </table>
+        
     </div>
 
     <div class="SectionHeader">友情链接<div class="SectionHeaderComment">以交换时间先后为序</div></div>
     <div class="SectionBody">
         <table class="Matrix">
-            <tbody><tr>
+            <tr>
                 <td><a target="_blank" href="https://zephray.me/">ZephRay</a></td>
                 <td><a target="_blank" href="https://imjad.cn/">猫与向日葵</a></td>
                 <td><a target="_blank" href="https://256kb.cn/">野生喵喵</a></td>
@@ -1209,7 +1277,7 @@ a:hover {
                 <td><a target="_blank" href="https://ibcl.us/">I BCL.</a></td>
                 <td></td>
             </tr>
-        </tbody></table>
+        </table>
     </div>
 
     <div class="SectionHeader">权利声明<div class="SectionHeaderComment">Copyright Notice</div></div>
@@ -1279,8 +1347,8 @@ a:hover {
     <div class="SectionHeader">图书资料共享<div class="SectionHeaderComment">Book Sharing</div></div>
     <div class="ContentBlock">
         <div class="SectionBody"><img src="image/arbook.jpg" style="width: 300px; margin: 0 auto;"></div>
-        <div class="SectionBody">本台收藏有一些关于业余无线电的图书资料，欢迎各位Ham和对业余无线电感兴趣的朋友们索取。<br>请访问<a href="https://mikukonai.com/#/about" target="_blank">博客</a>，以与本台取得联系。</div>
-        <div class="SectionBody">欢迎持证（照）Ham到本台来客席操作。</div>
+        <div class="SectionBody">本台收藏有一些关于业余无线电的图书资料，欢迎各位爱好者和对业余无线电感兴趣的朋友们索取。</div>
+        <div class="SectionBody">欢迎持证（照）同好到本台来客席操作。</div>
     </div>
 
     <div class="SectionHeader">QSL卡片</div>
