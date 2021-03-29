@@ -287,15 +287,6 @@ a:hover {
     border: none;
     border-radius: 5px;
 }
-.AnimeCover {
-    max-width: 180px;
-    width: 100%;
-    display: block;
-    margin: 10px auto;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 1px 2px 0 rgb(60 60 60 / 20%), 0 1px 3px 1px rgb(60 60 60 / 20%);
-}
 .RigTag {
     display: inline-block;
     background-color: #e8f6ff;
@@ -317,7 +308,7 @@ a:hover {
     padding-bottom: 20px;
     margin: 10px;
     border-radius: 10px;
-    box-shadow: 0 1px 1px 0 rgb(64 64 64 / 8%), 0 1px 3px 1px rgb(64 64 64 / 16%)
+    box-shadow: 0 1px 1px 0 rgb(64 64 64 / 8%), 0 1px 3px 1px rgb(64 64 64 / 16%);
 }
 .RigBoxPadding {
     padding: 20px !important;
@@ -540,259 +531,326 @@ a:hover {
     <a style="text-decoration: none; border: none;" target="_blank" href="https://bangumi.tv/user/mikukonai"><img src="https://bangumi.tv/img/rc3/logo.png"></a>
 </div>
 
-<table class="RigListTable"><tr>
-    <td class="RigListLeft">
+<style>
+.BangumiCover {
+    width: 100%;
+    display: block;
+    max-height: 180px;
+    margin: 10px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px 0 rgb(60 60 60 / 20%), 0 1px 3px 1px rgb(60 60 60 / 20%);
+}
+.BangumiBox {
+    max-width: 130px;
+    display: inline-block;
+    vertical-align: top;
+    padding-bottom: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.BangumiTitle {
+    color: #494f53;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+.BangumiSubtitle {
+    font-size: 12px;
+    color: #aaa;
+    margin: 3px 0;
+    text-align: center;
+}
+.BangumiIntro {
+    text-align: center;
+    margin: 15px 0 0 0;
+    text-align: left;
+    font-size: 13px;
+    line-height: 22px;
+    color: #333;
+}
+</style>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/涼宮ハルヒの憂鬱.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">涼宮ハルヒの憂鬱</div>
-            <div class="RigSubtitle">Suzumiya Haruhi no Yūutsu</div>
-            <div class="RigSubtitle" lang="zh-CN">凉宫春日的忧郁</div>
-            <div class="RigSubtitle">2015.4</div>
-            <div class="RigSubtitle">含衍生作品</div>
+<div style="text-align: center;">
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/涼宮ハルヒの憂鬱.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">涼宮ハルヒの憂鬱</div>
+        <div class="BangumiSubtitle">Suzumiya Haruhi no Yūutsu</div>
+        <div class="BangumiSubtitle" lang="zh-CN">凉宫春日的忧郁</div>
+        <div class="BangumiSubtitle">2015.4</div>
+        <div class="BangumiSubtitle">含衍生作品</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/夏目友人帳.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">夏目友人帳</div>
-            <div class="RigSubtitle">Natsume Yūjinchō</div>
-            <div class="RigSubtitle" lang="zh-CN">夏目友人帐</div>
-            <div class="RigSubtitle">2015.2</div>
-            <div class="RigSubtitle">全5季含衍生作品</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/四月は君の嘘.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">四月は君の嘘</div>
+        <div class="BangumiSubtitle">Shigatsu wa Kimi no Uso</div>
+        <div class="BangumiSubtitle" lang="zh-CN">四月是你的谎言</div>
+        <div class="BangumiSubtitle">2014.12</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/ノラガミ.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">ノラガミ</div>
-            <div class="RigSubtitle">Noragami</div>
-            <div class="RigSubtitle" lang="zh-CN">野良神</div>
-            <div class="RigSubtitle">2016.10</div>
-            <div class="RigSubtitle">全2季</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/夏目友人帳.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">夏目友人帳</div>
+        <div class="BangumiSubtitle">Natsume Yūjinchō</div>
+        <div class="BangumiSubtitle" lang="zh-CN">夏目友人帐</div>
+        <div class="BangumiSubtitle">2015.2</div>
+        <div class="BangumiSubtitle">全5季含衍生作品</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/小林さんちのメイドラゴン.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">小林さんちのメイドラゴン</div>
-            <div class="RigSubtitle">Kobayashi Sanchi no Maidragon</div>
-            <div class="RigSubtitle" lang="zh-CN">小林家的龙女仆</div>
-            <div class="RigSubtitle">2017.4</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/花咲くいろは.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">花咲くいろは</div>
+        <div class="BangumiSubtitle">Hanasaku Iroha</div>
+        <div class="BangumiSubtitle" lang="zh-CN">花开伊吕波</div>
+        <div class="BangumiSubtitle">2016.7</div>
+        <div class="BangumiSubtitle">含衍生作品</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/響け！ユーフォニアム.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">響け！ユーフォニアム</div>
-            <div class="RigSubtitle">Hibike! Euphonium</div>
-            <div class="RigSubtitle" lang="zh-CN">吹响！悠风号</div>
-            <div class="RigSubtitle">2019.8~2020.6</div>
-            <div class="RigSubtitle">全2季及衍生作品</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/ノラガミ.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">ノラガミ</div>
+        <div class="BangumiSubtitle">Noragami</div>
+        <div class="BangumiSubtitle" lang="zh-CN">野良神</div>
+        <div class="BangumiSubtitle">2016.10</div>
+        <div class="BangumiSubtitle">全2季</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/日常.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">日常</div>
-            <div class="RigSubtitle">Nichijō</div>
-            <div class="RigSubtitle" lang="zh-CN">日常</div>
-            <div class="RigSubtitle">2020.1.5~2020.1.12</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/氷菓.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">氷菓</div>
+        <div class="BangumiSubtitle">Hyōka</div>
+        <div class="BangumiSubtitle" lang="zh-CN">冰果</div>
+        <div class="BangumiSubtitle">2017.4</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/かぐや様は告らせたい.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">かぐや様は告らせたい</div>
-            <div class="RigSubtitle">Kaguyasama wa Tsugerasetai</div>
-            <div class="RigSubtitle" lang="zh-CN">辉夜大小姐想让我告白</div>
-            <div class="RigSubtitle">2020.6</div>
-            <div class="RigSubtitle">全2季</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/小林さんちのメイドラゴン.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">小林さんちのメイドラゴン</div>
+        <div class="BangumiSubtitle">Kobayashi Sanchi no Maidragon</div>
+        <div class="BangumiSubtitle" lang="zh-CN">小林家的龙女仆</div>
+        <div class="BangumiSubtitle">2017.4</div>
+    </div>
 
-    </td>
-    <td class="RigListRight">
-
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/四月は君の嘘.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">四月は君の嘘</div>
-            <div class="RigSubtitle">Shigatsu wa Kimi no Uso</div>
-            <div class="RigSubtitle" lang="zh-CN">四月是你的谎言</div>
-            <div class="RigSubtitle">2014.12</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/少女終末旅行.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">少女終末旅行</div>
+        <div class="BangumiSubtitle">Shōjō Shūmatsu Ryōkō</div>
+        <div class="BangumiSubtitle" lang="zh-CN">少女终末旅行</div>
+        <div class="BangumiSubtitle">2018.12</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/花咲くいろは.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">花咲くいろは</div>
-            <div class="RigSubtitle">Hanasaku Iroha</div>
-            <div class="RigSubtitle" lang="zh-CN">花开伊吕波</div>
-            <div class="RigSubtitle">2016.7</div>
-            <div class="RigSubtitle">含衍生作品</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/響け！ユーフォニアム.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">響け！ユーフォニアム</div>
+        <div class="BangumiSubtitle">Hibike! Euphonium</div>
+        <div class="BangumiSubtitle" lang="zh-CN">吹响！悠风号</div>
+        <div class="BangumiSubtitle">2019.8~2020.6</div>
+        <div class="BangumiSubtitle">全2季及衍生作品</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/氷菓.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">氷菓</div>
-            <div class="RigSubtitle">Hyōka</div>
-            <div class="RigSubtitle" lang="zh-CN">冰果</div>
-            <div class="RigSubtitle">2017.4</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/みなみけ.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">みなみけ</div>
+        <div class="BangumiSubtitle">Minami-ke</div>
+        <div class="BangumiSubtitle" lang="zh-CN">南家三姐妹</div>
+        <div class="BangumiSubtitle">2019.12.15~2020.1.3</div>
+        <div class="BangumiSubtitle">全4季</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/少女終末旅行.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">少女終末旅行</div>
-            <div class="RigSubtitle">Shōjō Shūmatsu Ryōkō</div>
-            <div class="RigSubtitle" lang="zh-CN">少女终末旅行</div>
-            <div class="RigSubtitle">2018.12</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/日常.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">日常</div>
+        <div class="BangumiSubtitle">Nichijō</div>
+        <div class="BangumiSubtitle" lang="zh-CN">日常</div>
+        <div class="BangumiSubtitle">2020.1.5~2020.1.12</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/みなみけ.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">みなみけ</div>
-            <div class="RigSubtitle">Minami-ke</div>
-            <div class="RigSubtitle" lang="zh-CN">南家三姐妹</div>
-            <div class="RigSubtitle">2019.12.15~2020.1.3</div>
-            <div class="RigSubtitle">全4季</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/ゆるキャン.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">ゆるキャン△</div>
+        <div class="BangumiSubtitle">Yuru Camp</div>
+        <div class="BangumiSubtitle" lang="zh-CN">摇曳露营△</div>
+        <div class="BangumiSubtitle">2020.4~2020.5</div>
+        <div class="BangumiSubtitle">2021.1~</div>
+        <div class="BangumiSubtitle">全2季及衍生作品</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/ゆるキャン.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">ゆるキャン△</div>
-            <div class="RigSubtitle">Yuru Camp</div>
-            <div class="RigSubtitle" lang="zh-CN">摇曳露营△</div>
-            <div class="RigSubtitle">2020.4~2020.5</div>
-            <div class="RigSubtitle">2021.1~</div>
-            <div class="RigSubtitle">全2季及衍生作品</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/かぐや様は告らせたい.jpg" class="BangumiCover">
         </div>
+        <div class="BangumiTitle" lang="ja">かぐや様は告らせたい</div>
+        <div class="BangumiSubtitle">Kaguyasama wa Tsugerasetai</div>
+        <div class="BangumiSubtitle" lang="zh-CN">辉夜大小姐想让我告白</div>
+        <div class="BangumiSubtitle">2020.6</div>
+        <div class="BangumiSubtitle">全2季</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/anime/家庭教師ヒットマンREBORN.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja">家庭教師ヒットマンREBORN!</div>
-            <div class="RigSubtitle">2021.2~</div>
+    <div class="BangumiBox">
+        <div class="BangumiIntro">
+            <img src="image/collections/anime/家庭教師ヒットマンREBORN.jpg" class="BangumiCover">
         </div>
-    </td></tr>
-</table>
+        <div class="BangumiTitle" lang="ja">家庭教師ヒットマンREBORN!</div>
+        <div class="BangumiSubtitle">2021.2~</div>
+    </div>
 
-
-
-
-
+</div>
 
 
 <div class="SectionHeader" id="collections_anime">音乐<div class="SectionHeaderComment">Music</div></div>
 
-<table class="RigListTable"><tr>
-    <td class="RigListLeft">
+<style>
+.MusicCover {
+    width: 100%;
+    display: block;
+    max-height: 130px;
+    margin: 10px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px 0 rgb(60 60 60 / 20%), 0 1px 3px 1px rgb(60 60 60 / 20%);
+}
+.MusicBox {
+    max-width: 130px;
+    display: inline-block;
+    vertical-align: top;
+    padding-bottom: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.MusicTitle {
+    color: #494f53;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+.MusicSubtitle {
+    font-size: 12px;
+    color: #aaa;
+    margin: 3px 0;
+    text-align: center;
+}
+.MusicIntro {
+    text-align: center;
+    margin: 15px 0 0 0;
+    text-align: left;
+    font-size: 13px;
+    line-height: 22px;
+    color: #333;
+}
+</style>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/music/星の在り処.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=559262" target="_blank">星の在り処</a></div>
-            <div class="RigSubtitle" lang="ja">う〜み</div>
-            <div class="RigSubtitle"><span class="RigTag">实体CD收藏</span></div>
-            <div class="RigSubtitle">空轨FC初回特典CD</div>
-            <div class="RigSubtitle">游戏「空之轨迹FC」主题歌</div>
+<div style="text-align: center;">
+    <div class="MusicBox">
+        <div class="MusicIntro">
+            <img src="image/collections/music/星の在り処.jpg" class="MusicCover">
         </div>
+        <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=559262" target="_blank">星の在り処</a></div>
+        <div class="MusicSubtitle" lang="ja">う〜み</div>
+        <div class="MusicSubtitle"><span class="RigTag">实体CD收藏</span></div>
+        <div class="MusicSubtitle">空轨FC初回特典CD</div>
+        <div class="MusicSubtitle">游戏「空之轨迹FC」主题歌</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/music/Scarlet-Destiny.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=836339" target="_blank">虹のカメリア</a></div>
-            <div class="RigSubtitle">Sensitive Heart</div>
-            <div class="RigSubtitle">Scarlet Destiny</div>
-            <div class="RigSubtitle"><a target="_blank" href="https://thwiki.cc/%E4%B8%8A%E6%B5%B7%E7%BA%A2%E8%8C%B6%E9%A6%86_%EF%BD%9E_Chinese_Tea">上海紅茶館</a>同人作</div>
+    <div class="MusicBox">
+        <div class="MusicIntro">
+            <img src="image/collections/music/ヴィヴァーチェ！.jpg" class="MusicCover">
         </div>
+        <div class="MusicTitle" lang="ja"><a href="https://i.y.qq.com/v8/playsong.html?songid=109072317" target="_blank">ヴィヴァーチェ！</a></div>
+        <div class="MusicSubtitle" lang="ja">黒沢ともよ / 朝井彩加 /<br>豊田萌絵 / 安済知佳</div>
+        <div class="MusicSubtitle"><span class="RigTag">实体CD收藏</span></div>
+        <div class="MusicSubtitle" lang="ja">ヴィヴァーチェ！</div>
+        <div class="MusicSubtitle">动画「吹响！悠风号2」片尾歌</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/music/東方フィルハーモニー交響楽団-4-永＆萃.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=412785229" target="_blank">東方萃夢想</a></div>
-            <div class="RigSubtitle" lang="ja">交響アクティブNEETs</div>
-            <div class="RigSubtitle" lang="ja">東方フィルハーモニー交響楽団 4 永&amp;萃</div>
-            <div class="RigSubtitle"><a target="_blank" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E8%90%83%E6%A2%A6%E6%83%B3%EF%BC%88%E6%9B%B2%E7%9B%AE%EF%BC%89">東方萃夢想</a>同人作</div>
+    <div class="MusicBox">
+        <div class="MusicIntro">
+            <img src="image/collections/music/Scarlet-Destiny.jpg" class="MusicCover">
         </div>
+        <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=836339" target="_blank">虹のカメリア</a></div>
+        <div class="MusicSubtitle">Sensitive Heart</div>
+        <div class="MusicSubtitle">Scarlet Destiny</div>
+        <div class="MusicSubtitle"><a target="_blank" href="https://thwiki.cc/%E4%B8%8A%E6%B5%B7%E7%BA%A2%E8%8C%B6%E9%A6%86_%EF%BD%9E_Chinese_Tea">上海紅茶館</a>同人作</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/music/Tiny-Dungeon-BLACK-and-WHITE-OST.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=4934355" target="_blank">黒翼は～と</a></div>
-            <div class="RigSubtitle">Rosebleu</div>
-            <div class="RigSubtitle">Tiny Dungeon - BLACK and WHITE OST</div>
-            <div class="RigSubtitle">游戏「小地牢·黑与白」原声音乐</div>
+    <div class="MusicBox">
+        <div class="MusicIntro">
+            <img src="image/collections/music/花天月地.jpg" class="MusicCover">
         </div>
+        <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=482636948" target="_blank">桜花繚乱</a></div>
+        <div class="MusicSubtitle" lang="ja">はちみつれもん</div>
+        <div class="MusicSubtitle" lang="ja">花天月地</div>
+        <div class="MusicSubtitle"><a target="_blank" href="https://thwiki.cc/%E6%A8%B1%E8%8A%B1%E4%B9%8B%E6%81%8B%E5%A1%9A_%EF%BD%9E_Flower_of_Japan">桜花之恋塚</a>同人作</div>
+    </div>
 
-    </td>
-    <td class="RigListRight">
-
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/music/ヴィヴァーチェ！.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja"><a href="https://i.y.qq.com/v8/playsong.html?songid=109072317" target="_blank">ヴィヴァーチェ！</a></div>
-            <div class="RigSubtitle" lang="ja">黒沢ともよ / 朝井彩加 /<br>豊田萌絵 / 安済知佳</div>
-            <div class="RigSubtitle"><span class="RigTag">实体CD收藏</span></div>
-            <div class="RigSubtitle" lang="ja">ヴィヴァーチェ！</div>
-            <div class="RigSubtitle">动画「吹响！悠风号2」片尾歌</div>
+    <div class="MusicBox">
+        <div class="MusicIntro">
+            <img src="image/collections/music/東方フィルハーモニー交響楽団-4-永＆萃.jpg" class="MusicCover">
         </div>
+        <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=412785229" target="_blank">東方萃夢想</a></div>
+        <div class="MusicSubtitle" lang="ja">交響アクティブNEETs</div>
+        <div class="MusicSubtitle" lang="ja">東方フィルハーモニー交響楽団 4 永&amp;萃</div>
+        <div class="MusicSubtitle"><a target="_blank" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E8%90%83%E6%A2%A6%E6%83%B3%EF%BC%88%E6%9B%B2%E7%9B%AE%EF%BC%89">東方萃夢想</a>同人作</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/music/花天月地.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=482636948" target="_blank">桜花繚乱</a></div>
-            <div class="RigSubtitle" lang="ja">はちみつれもん</div>
-            <div class="RigSubtitle" lang="ja">花天月地</div>
-            <div class="RigSubtitle"><a target="_blank" href="https://thwiki.cc/%E6%A8%B1%E8%8A%B1%E4%B9%8B%E6%81%8B%E5%A1%9A_%EF%BD%9E_Flower_of_Japan">桜花之恋塚</a>同人作</div>
+    <div class="MusicBox">
+        <div class="MusicIntro">
+            <img src="image/collections/music/春のかたみ.jpg" class="MusicCover">
         </div>
+        <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=574370" target="_blank">春のかたみ</a></div>
+        <div class="MusicSubtitle" lang="ja">元ちとせ</div>
+        <div class="MusicSubtitle" lang="ja">春のかたみ</div>
+        <div class="MusicSubtitle">动画「怪~ayakashi~」主题歌</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/music/春のかたみ.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=574370" target="_blank">春のかたみ</a></div>
-            <div class="RigSubtitle" lang="ja">元ちとせ</div>
-            <div class="RigSubtitle" lang="ja">春のかたみ</div>
-            <div class="RigSubtitle">动画「怪~ayakashi~」主题歌</div>
+    <div class="MusicBox">
+        <div class="MusicIntro">
+            <img src="image/collections/music/Tiny-Dungeon-BLACK-and-WHITE-OST.jpg" class="MusicCover">
         </div>
+        <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=4934355" target="_blank">黒翼は～と</a></div>
+        <div class="MusicSubtitle">Rosebleu</div>
+        <div class="MusicSubtitle">Tiny Dungeon - BLACK and WHITE OST</div>
+        <div class="MusicSubtitle">游戏「小地牢·黑与白」原声音乐</div>
+    </div>
 
-        <div class="RigBox RigBoxNoBorder">
-            <div class="RigIntro">
-                <img src="image/collections/music/谭某某.jpg" class="AnimeCover">
-            </div>
-            <div class="RigTitle" lang="ja"><a href="https://music.163.com/#/song?id=293948" target="_blank">如果有来生</a></div>
-            <div class="RigSubtitle">谭维维</div>
-            <div class="RigSubtitle">谭某某</div>
-            <div class="RigSubtitle">不才翻唱</div>
+    <div class="MusicBox">
+        <div class="MusicIntro">
+            <img src="image/collections/music/谭某某.jpg" class="MusicCover">
         </div>
+        <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=293948" target="_blank">如果有来生</a></div>
+        <div class="MusicSubtitle">谭维维</div>
+        <div class="MusicSubtitle">谭某某</div>
+        <div class="MusicSubtitle">不才翻唱</div>
+    </div>
 
-    </td></tr>
-</table>
+</div>
+
 
 <div class="SectionHeader" id="collections_anime">链接<div class="SectionHeaderComment">Link</div></div>
 
@@ -1303,11 +1361,11 @@ a.Weibo::before {
                 <tr><th colspan="2" style="text-align: center; padding: 10px 0;">2021年</th></tr>
                 <tr><th>01.12</th><td>电台网站 bd4sur.cc 发布首个正式版本。</td></tr>
             </table>
-            <details>
+            <details style="text-align: left; margin: 20px auto;">
                 <summary style="text-align: center;">新时代大厦铁塔</summary>
                 <img src="image/新时代大厦铁塔.jpg" class="RigsImage">
             </details>
-            <details>
+            <details style="text-align: left; margin: 20px auto;">
                 <summary style="text-align: center;">其他事件</summary>
                 <p><strong>2020-08-04</strong> 使用PL-380收听到10MHz的BPM，并发出收听报告。收听到央广中国之声的停机检修音乐。</p>
                 <p><strong>2020-08-05</strong> 电话咨询无线电管理处。</p>
@@ -1326,20 +1384,20 @@ a.Weibo::before {
         <div class="Chronicles">
             <table>
                 <tr><th colspan="2" style="text-align: center; padding: 10px 0;">探索阶段</th></tr>
-                <tr><th>V0.1 2016.11.24</th><td>试验性的简单个人主页。</td></tr>
-                <tr><th>V1.0 2017.09.19</th><td>使用第三方Markdown解析器。</td></tr>
-                <tr><th>V2.0 2018.02.04</th><td>使用自主实现的Markdown解析器。</td></tr>
-                <tr><th>V3.0 2018.07.26</th><td>博客更名 Project Aurora。<br>开始采用 Material Design 风格。</td></tr>
-                <!-- <tr><th>V3.1 2019.01.11</th><td>MD解析器与文章模板重构。<br>Markdown与模板分离。</td></tr>
-                <tr><th>V3.2 2019.02.20</th><td>目录和灵感页重构。<br>使用TravisCI自动生成RSS。</td></tr>
-                <tr><th>V3.3 2019.03.15</th><td>重构为SPA单页应用。<br>样式设计参考 Material Design。</td></tr> -->
+                <tr><th>V0.1</th><td>2016.11.24 试验性的简单个人主页。</td></tr>
+                <tr><th>V1.0</th><td>2017.09.19 使用第三方Markdown解析器。</td></tr>
+                <tr><th>V2.0</th><td>2018.02.04 使用自主实现的Markdown解析器。</td></tr>
+                <tr><th>V3.0</th><td>2018.07.26 博客更名 Project Aurora。<br>开始采用 Material Design 风格。</td></tr>
+                <!-- <tr><th>V3.1</th><td>2019.01.11 MD解析器与文章模板重构。<br>Markdown与模板分离。</td></tr>
+                <tr><th>V3.2</th><td>2019.02.20 目录和灵感页重构。<br>使用TravisCI自动生成RSS。</td></tr>
+                <tr><th>V3.3</th><td>2019.03.15 重构为SPA单页应用。<br>样式设计参考 Material Design。</td></tr> -->
 
                 <tr><th colspan="2" style="text-align: center; padding: 10px 0;">建设阶段</th></tr>
-                <tr><th>V4.0 2019.10.23</th><td>博客框架SPA化。</td></tr>
-                <tr><th>V4.1 2020.02.14</th><td>提取博客框架为Iroha。</td></tr>
+                <tr><th>V4.0</th><td>2019.10.23 博客框架SPA化。</td></tr>
+                <tr><th>V4.1</th><td>2020.02.14 提取博客框架为Iroha。</td></tr>
 
                 <tr><th colspan="2" style="text-align: center; padding: 10px 0;">电台网站阶段</th></tr>
-                <tr><th>V5.0 2021.02.01</th><td>启用<code>bd4sur.com</code>域名。<br>功能和样式优化。</td></tr>
+                <tr><th>V5.0</th><td>2021.02.01 启用<code>bd4sur.com</code>域名。</td></tr>
             </table>
         </div>
     </div>
@@ -1354,8 +1412,8 @@ a.Weibo::before {
     <div class="SectionHeader">QSL卡片</div>
     <div class="SectionBody">
         <img src="image/G9/qsl.jpg" style="width: 90%;">
-        <img src="image/G9/qsl-v2.png" style="width: 90%;">
-        <img src="image/G9/qsl2.png" style="width: 90%;">
+        <!-- <img src="image/G9/qsl-v2.png" style="width: 90%;"> -->
+        <!-- <img src="image/G9/qsl2.png" style="width: 90%;"> -->
     </div>
 
     <div class="SectionBody" style="color:#ff88aa; font-size: 18px; letter-spacing: 2px; margin: 30px 0;">73!</div>
