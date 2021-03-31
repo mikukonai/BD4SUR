@@ -16,14 +16,6 @@
         "tags":     []
     },
     {
-        "title":     "Scheme编译器设计笔记",
-        "date":      "2019-01-25",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G2.离散数学",
-        "tags":     []
-    },
-    {
         "title":     "在λ演算中构造前驱函数",
         "date":      "2018-11-13",
         "updates":  [],
@@ -56,22 +48,6 @@
         "tags":     []
     },
     {
-        "title":     "我想给你整个世界",
-        "date":      "2017-09-30",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G2.离散数学",
-        "tags":     []
-    },
-    {
-        "title":     "递归论笔记",
-        "date":      "2017-09-22",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G2.离散数学",
-        "tags":     []
-    },
-    {
         "title":     "The Little Schemer 阅读笔记",
         "date":      "2017-09-02",
         "updates":  [],
@@ -96,75 +72,11 @@
         "tags":     []
     },
     {
-        "title":     "机器学习算法可视化",
-        "date":      "",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G3.统计学和机器学习",
-        "tags":     []
-    },
-    {
-        "title":     "启发式算法集锦",
-        "date":      "",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G4.人工智能",
-        "tags":     []
-    },
-    {
-        "title":     "人工智能随想录",
-        "date":      "",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G4.人工智能",
-        "tags":     []
-    },
-    {
-        "title":     "元胞自动机之生命游戏",
-        "date":      "2018-05-22",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G4.人工智能",
-        "tags":     []
-    },
-    {
         "title":     "语义网和数据产权",
         "date":      "2019-03-01",
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "G5.情报学",
-        "tags":     []
-    },
-    {
-        "title":     "通用计算机盘点",
-        "date":      "",
-        "updates":  ["2021-01-19"],
-        "authors":  ["BD4SUR"],
-        "category":  "G6.计算机",
-        "tags":     []
-    },
-    {
-        "title":     "装机必备软件清单",
-        "date":      "",
-        "updates":  ["2021-01-19"],
-        "authors":  ["BD4SUR"],
-        "category":  "G6.计算机",
-        "tags":     []
-    },
-    {
-        "title":     "博客运营记录",
-        "date":      "",
-        "updates":  [""],
-        "authors":  ["BD4SUR"],
-        "category":  "G6.计算机",
-        "tags":     []
-    },
-    {
-        "title":     "前端设计备忘录",
-        "date":      "",
-        "updates":  [""],
-        "authors":  ["BD4SUR"],
-        "category":  "G6.计算机",
         "tags":     []
     },
     {
@@ -240,14 +152,6 @@
         "tags":     []
     },
     {
-        "title":     "硬件笔记",
-        "date":      "",
-        "updates":  [""],
-        "authors":  ["BD4SUR"],
-        "category":  "G8.电子",
-        "tags":     []
-    },
-    {
         "title":     "Galileo开发板",
         "date":      "2017-10-18",
         "updates":  [""],
@@ -256,195 +160,11 @@
         "tags":     []
     },
     {
-        "title":     "开关电源",
-        "date":      "2020-03-01",
-        "updates":  ["2021-01-14"],
-        "authors":  ["BD4SUR"],
-        "category":  "G8.电子",
-        "tags":     ["综述"]
-    },
-    {
-        "title":     "燃烧你的卡路里",
-        "date":      "2018-11-13",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "I.医药卫生生命科学",
-        "tags":     []
-    },
-    {
-        "title":     "食谱与营养学笔记",
-        "date":      "2019-08-18",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "I.医药卫生生命科学",
-        "tags":     []
-    },
-    {
-        "title":     "新型冠状病毒肺炎情报",
-        "date":      "2020-02-08",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "I.医药卫生生命科学",
-        "tags":     []
-    },
-    {
-        "title":     "轨道力学",
-        "date":      "2011-11-23",
-        "updates":  [],
-        "authors":  ["Robert A. Braeunig"],
-        "category":  "K.工业交通工程技术",
-        "tags":     []
-    },
-    {
-        "title":     "末日生存指南",
-        "date":      "2020-02-20",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "L.家政轻工实用技术",
-        "tags":     []
-    },
-    {
         "title":     "水管结冰事故处理报告",
         "date":      "2021-01-01",
         "updates":  [],
         "authors":  ["BD4SUR"],
         "category":  "L.家政轻工实用技术",
-        "tags":     []
-    },
-    {
-        "title":     "调制与解调",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-04"],
-        "authors":  ["BD4SUR"],
-        "category":  "G7.通信控制",
-        "tags":     []
-    },
-    {
-        "title":     "信号与系统",
-        "date":      "2020-02-06",
-        "updates":  ["2021-01-14"],
-        "authors":  ["BD4SUR"],
-        "category":  "G7.通信控制",
-        "tags":     []
-    },
-    {
-        "title":     "音频编码",
-        "date":      "2019-11-03",
-        "updates":  ["2021-01-14"],
-        "authors":  ["BD4SUR"],
-        "category":  "G7.通信控制",
-        "tags":     []
-    },
-    {
-        "title":     "视频编码",
-        "date":      "2019-08-04",
-        "updates":  ["2021-01-14"],
-        "authors":  ["BD4SUR"],
-        "category":  "G7.通信控制",
-        "tags":     []
-    },
-    {
-        "title":     "采样定理与压缩感知",
-        "date":      "2020-05-28",
-        "updates":  ["2021-01-14", "2021-01-17"],
-        "authors":  ["BD4SUR"],
-        "category":  "G7.通信控制",
-        "tags":     []
-    },
-    {
-        "title":     "莫尔斯编码和ITA2",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-12"],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "软件定义无线电",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-10"],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "IC-705内部结构",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-14"],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "IC-705消费决策报告",
-        "date":      "2020-09-14",
-        "updates":  ["2021-01-11"],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "FT-817原理图",
-        "date":      "2021-01-24",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "天线与馈线",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-11"],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "广播与放送文化",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-11"],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "电波传播规律",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-11"],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "业余无线电法规汇编",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-12"],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "操作证考试考点速记",
-        "date":      "2020-09-07",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "业余无线电常用数值表",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-12"],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
-        "tags":     []
-    },
-    {
-        "title":     "常用无线电简语",
-        "date":      "2020-12-08",
-        "updates":  ["2021-01-14"],
-        "authors":  ["BD4SUR"],
-        "category":  "G9.业余无线电",
         "tags":     []
     }
 ]
