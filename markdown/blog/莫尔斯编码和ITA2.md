@@ -1,6 +1,6 @@
 #!title:    莫尔斯编码和ITA2
 #!date:     2020-12-08
-#!authors:  Mikukonai
+#!authors:  BD4SUR
 #!cover:    
 #!type:     
 #!tags:     

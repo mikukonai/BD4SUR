@@ -1,6 +1,6 @@
 // LifeGame.js
 // A simulator for Conway's Game of Life
-// 2018.5.22 mikukonai@GitHub
+// 2018.5.22 BD4SUR@GitHub
 
 function LifeGame(w, h) {
     this.width = w;

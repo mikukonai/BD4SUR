@@ -103,12 +103,9 @@
             <span style="font-size: 10px; font-weight: lighter; line-height: 18px;">业 余 无 线 电 台</span>
         </div>
         <div class="FooterContent">
-            <p style="letter-spacing: 2px; font-weight: bold;">体谅 · 忠诚 · 进取 · 友爱 · 适度 · 爱国</p>
+            <p style="letter-spacing: 2px; font-weight: 600;">体谅 · 忠诚 · 进取 · 友爱 · 适度 · 爱国</p>
         </div>
         <div class="FooterContent">版权所有 © 2016-2020-<span class="CopyrightYear"></span> BD4SUR</div>
-        <!-- <div class="FooterContent">
-            <a class="FooterLink" href="https://mikukonai.com/" target="_blank">博客首页</a> / <a class="FooterLink" href="http://www.crac.org.cn/" target="_blank">CRAC</a> / <a class="FooterLink" href="https://www.iaru.org/" target="_blank">IARU</a>
-        </div> -->
     </footer>
 </div>
 
@@ -287,6 +284,44 @@ a:hover {
 
 </style>
 <template id="collections">
+
+<script>
+function TurnToCollectionSection(elementId) {
+    let targetTop = window.pageYOffset + $(`#${elementId}`)[0].getBoundingClientRect().top;
+    $('html, body').animate({ scrollTop: targetTop-40 }, 200, 'easeOutExpo'); // 照顾顶部sticky导航栏的40px高度
+}
+</script>
+
+<style>
+.CollectionNav {
+    text-align: center;
+    margin: 30px auto;
+    color: #ccc;
+    background: #f5f5f5;
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 14px;
+    line-height: 25px;
+}
+.CollectionSectionSwitch {
+    margin: 5px;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+}
+.CollectionSectionSwitch:hover {
+    color: #1ea0f0;
+}
+</style>
+
+<div class="CollectionNav">
+    <span class="CollectionSectionSwitch" onclick="TurnToCollectionSection(`collections_radio`);">无线电设备</span> /
+    <span class="CollectionSectionSwitch" onclick="TurnToCollectionSection(`collections_figure`);">手办</span> /
+    <span class="CollectionSectionSwitch" onclick="TurnToCollectionSection(`collections_anime`);">动画</span> /
+    <span class="CollectionSectionSwitch" onclick="TurnToCollectionSection(`collections_music`);">音乐</span> /
+    <span class="CollectionSectionSwitch" onclick="TurnToCollectionSection(`collections_link`);">链接</span>
+</div>
 
 <div class="SectionHeader" id="collections_radio">无线电设备<div class="SectionHeaderComment">Radio Rigs</div></div>
 
@@ -680,7 +715,7 @@ a:hover {
 </div>
 
 
-<div class="SectionHeader" id="collections_anime">音乐<div class="SectionHeaderComment">Music</div></div>
+<div class="SectionHeader" id="collections_music">音乐<div class="SectionHeaderComment">Music</div></div>
 
 <style>
 .MusicCover {
@@ -932,7 +967,7 @@ a:hover {
 </div>
 
 
-<div class="SectionHeader" id="collections_anime">链接<div class="SectionHeaderComment">Link</div></div>
+<div class="SectionHeader" id="collections_link">链接<div class="SectionHeaderComment">Link</div></div>
 
 <div style="text-align: center; font-weight: bold; margin: 20px 0;">博客·垂直领域社区</div>
 
@@ -1669,8 +1704,8 @@ MathJax.Hub.Config({
     window.onload = () => {
         console.log("%c ★ Framework Iroha ★ ", "font-size: 16px; height: 26px; line-height: 26px; border-radius: 5px; text-align: center; color:#fff; background: linear-gradient(to right, rgb(255, 94, 134), rgb(210, 162, 255), rgb(36, 200, 255));");
         console.log(`版本 4.0 (2019.10.23)`);
-        console.log(`版权所有 © 2016-2019 Mikukonai (https://github.com/mikukonai)`);
-        console.log(`Git仓库：https://github.com/mikukonai/Iroha`);
+        console.log(`版权所有 © 2016-2019 BD4SUR (https://github.com/bd4sur)`);
+        console.log(`Git仓库：https://github.com/bd4sur/Iroha`);
         console.log(``);
         let HashString = (window.location.hash === "") ? "#/index" : window.location.hash;
         SPA_Render(HashString);

@@ -1,7 +1,7 @@
 
 // Framework IROHA V4.0
-// mikukonai.com
-// Copyright © 2016-2019 Mikukonai
+// BD4SUR.com
+// Copyright © 2016-2019 BD4SUR
 
 // 载入并渲染列表
 function LoadList(pageId) {

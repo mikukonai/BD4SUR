@@ -1,6 +1,6 @@
 // SGD.js
 // Stochastic gradient descent
-// 2018.05.24 Mikukonai
+// 2018.05.24 BD4SUR
 
 function Gaussian(A, sigmaX, sigmaY, x0, y0) {
     this.A = A;

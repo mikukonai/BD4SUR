@@ -261,7 +261,7 @@ Racket好像没有`list-set`，写一个：
     (print-iter year month 0 0)))
 
 (display "Scheme日历")(newline)
-(display "2017.8.26 mikukonai")(newline)
+(display "2017.8.26 BD4SUR")(newline)
 (display "====================")(newline)
 (display "Su Mo Tu We Th Fr Sa")(newline)
 (display "====================")(newline)
