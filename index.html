@@ -223,45 +223,11 @@
 a {
     color: inherit;
     text-decoration: underline;
+    cursor: pointer;
 }
 a:hover {
     text-decoration: underline;
     color: #1ea0f0;
-}
-.RigInfo {
-    margin: 25px 0;
-}
-.RigTitle {
-    color: #494f53;
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0 0 10px 0;
-    text-align: center;
-}
-.RigSubtitle {
-    font-size: 12px;
-    color: #aaa;
-    margin: 3px 0;
-    text-align: center;
-}
-.RigIntro {
-    text-align: center;
-    margin: 15px 0 0 0;
-    text-align: left;
-    font-size: 13px;
-    line-height: 22px;
-    color: #333;
-}
-.RigIntro p, .RigIntro ul, .RigIntro ol, .RigIntro summary {
-    margin: 15px 0px 0px 0px;
-    text-align: left;
-}
-.RigIntro summary {
-    font-weight: bold;
-    color: #1ea0f0;
-}
-.RigIntro ul {
-    padding-inline-start: 20px;
 }
 
 @media(min-width:651px) {
@@ -286,7 +252,7 @@ a:hover {
     border: none;
     border-radius: 5px;
 }
-.RigTag {
+.CollectionTag {
     display: inline-block;
     background-color: #e8f6ff;
     color: #1ea0f0;
@@ -296,31 +262,29 @@ a:hover {
     margin: 3px;
 }
 
-.RigListTable {
+.RigListContainer {
+    text-align: center;
+    overflow-x: auto;
+}
+.RigList {
     width: 100%;
     border-collapse: collapse;
+    border-spacing: 0;
 }
-.RigListLeft  { padding: 0; border: none; vertical-align: top; width: 50%; }
-.RigListRight { padding: 0; border: none; vertical-align: top; width: 50%; }
 
-.RigBox {
-    padding-bottom: 20px;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 0 1px 1px 0 rgb(64 64 64 / 8%), 0 1px 3px 1px rgb(64 64 64 / 16%);
+.RigName { min-width: 10em; text-align: left; font-weight: bold; padding: 5px 5px 5px 15px; }
+.RigInfo { text-align: left; padding: 5px 15px 5px 5px; }
+
+.RigList th, .RigList td {
+    color: #666;
+    font-size: 12px;
+    line-height: 20px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    border-left: none;
+    border-right: none;
 }
-.RigBoxPadding {
-    padding: 20px !important;
-}
-.RigBoxNoBorder {
-    box-shadow: none !important;
-}
-.RigListLeft .RigBox {
-    margin: 10px 5px 10px 10px;
-}
-.RigListRight .RigBox {
-    margin: 10px 10px 10px 5px;
-}
+
 </style>
 <template id="collections">
 
@@ -328,113 +292,63 @@ a:hover {
 
 <img src="image/G9/rigs/rigs.jpg" class="RigsTitleImage">
 
-<table class="RigListTable"><tr>
-    <td class="RigListLeft">
-        <div class="RigBox RigBoxPadding">
-            <div class="RigTitle">Icom IC-705</div>
-            <div class="RigSubtitle">2020年9月12日购</div>
-            <div class="RigSubtitle"><span class="RigTag">收发信机</span><span class="RigTag">执照注册设备</span></div>
-            <div class="RigIntro">
-                <p>这款机器是艾可慕于2019年推出、2020年发售的一款QRP全波段全模式便携电台，主打野外移动使用。支持在HF/VHF/UHF波段的各业余频段上，以最高10W、最低0.5W的功率进行发射。型号核准码：2020FP14257。</p>
-            </div>
-        </div>
+<div class="RigListContainer">
+    <table class="RigList">
+        <tr>
+            <td class="RigName">Icom IC-705</td>
+            <td class="RigInfo">2020年9月12日购。支持在HF/VHF/UHF波段的各业余频段上，以最高10W的功率进行发射。<br><a href="https://www.icomjapan.com/lineup/products/IC-705/" target="_blank">产品支持</a>。型号核准码：2020FP14257。</td>
+        </tr>
+        <tr>
+            <td class="RigName">宝锋 UV-5R</td>
+            <td class="RigInfo">2020年8月3日购。支持业余V/U段收发以及调频广播接收，最大发射功率5W。<br>型号核准码：2017FR3280。</td>
+        </tr>
+        <tr>
+            <td class="RigName">森海克斯8800</td>
+            <td class="RigInfo">2021年2月20日购。支持业余V/U段收发以及调频广播、航空VHF语音接收，最大发射功率5W。<br>型号核准码：2019FP6299。</td>
+        </tr>
+        <tr>
+            <td class="RigName">RTL-SDR</td>
+            <td class="RigInfo">2020年8月8日、14日购。详见 <a class="SPA_TRIGGER" data-target="blog/软件定义无线电">软件定义无线电</a>。</td>
+        </tr>
+        <tr>
+            <td class="RigName">德生PL-330</td>
+            <td class="RigInfo">详见 <a class="SPA_TRIGGER" data-target="blog/收音机与放送文化">收音机与放送文化</a>。</td>
+        </tr>
+        <tr>
+            <td class="RigName">德生PL-380</td>
+            <td class="RigInfo">详见 <a class="SPA_TRIGGER" data-target="blog/收音机与放送文化">收音机与放送文化</a>。</td>
+        </tr>
+        <tr>
+            <td class="RigName">Comet HFJ-350M</td>
+            <td class="RigInfo">短波拉杆天线，支持3.5～50M所有业余短波段。</td>
+        </tr>
+        <tr>
+            <td class="RigName">Diamond SRJ-770</td>
+            <td class="RigInfo">业余V/U段拉杆天线，支持300MHz接收。VHF增益2.15dBi，UHF增益5.5dBi。</td>
+        </tr>
+        <tr>
+            <td class="RigName">Y-200A</td>
+            <td class="RigInfo">短波有源小环天线，通过前置放大器放大微弱的信号，工作频率为100k~180MHz。</td>
+        </tr>
+        <tr>
+            <td class="RigName">五单元八木</td>
+            <td class="RigInfo">业余0.7m波段，主瓣增益8dBi。</td>
+        </tr>
+        <tr>
+            <td class="RigName">七单元八木</td>
+            <td class="RigInfo">业余0.7m波段，主瓣增益14dBi。</td>
+        </tr>
+        <tr>
+            <td class="RigName">HF20A</td>
+            <td class="RigInfo">单线短波全段行波天线。</td>
+        </tr>
+        <tr>
+            <td class="RigName">NanoVNA</td>
+            <td class="RigInfo">2020年10月10日购。一款廉价的便携式矢量网络分析仪。<details><summary>PCB</summary><img src="image/G9/rigs/nanovna.jpg" class="RigsImage"></details></td>
+        </tr>
+    </table>
+</div>
 
-        <div class="RigBox RigBoxPadding">
-            <div class="RigTitle">RTL-SDR</div>
-            <div class="RigSubtitle">2020年8月8日、14日购</div>
-            <div class="RigSubtitle"><span class="RigTag">收信机</span><span class="RigTag">SDR</span></div>
-            <div class="RigIntro">
-                <p>RTL-SDR是基于瑞昱RTL2832U和R820T2调谐芯片的电视棒，配合PC、手机上的SDR#等软件可实现SDR无线电接收和解调功能。目前拥有的有两个版本：普通版和上变频版。上变频版可以将短波段的信号上变频到125MHz，以提高接收短波的灵敏度。</p>
-                <details>
-                    <summary>上变频版PCB</summary>
-                    <img src="image/G9/rigs/rtl-sdr.jpg" class="RigsImage">
-                    <img src="image/G9/rigs/rtl-sdr-fm.jpg" class="RigsImage">
-                </details>
-            </div>
-        </div>
-
-        <div class="RigBox RigBoxPadding">
-            <div class="RigTitle">天线</div>
-            <div class="RigSubtitle"><span class="RigTag">天线</span></div>
-            <div class="RigIntro">
-                <ul>
-                    <li>Comet HFJ-350M：短波拉杆天线，支持3.5～50M所有业余短波段。</li>
-                    <li>Diamond SRJ-770：业余V/U段拉杆天线，支持300MHz接收。VHF增益2.15dBi，UHF增益5.5dBi。</li>
-                    <li>Y-200A：短波有源小环天线，通过前置放大器放大微弱的信号，工作频率为100k~180MHz。</li>
-                    <li>五单元八木：业余0.7m波段，主瓣增益8dBi。</li>
-                    <li>七单元八木：业余0.7m波段，主瓣增益14dBi。</li>
-                    <li>HF20A单线短波全段行波天线。</li>
-                </ul>
-            </div>
-        </div>
-
-    </td>
-
-    <td class="RigListRight">
-        <div class="RigBox RigBoxPadding">
-            <div class="RigTitle">宝锋 UV-5R</div>
-            <div class="RigSubtitle">2020年8月3日购</div>
-            <div class="RigSubtitle"><span class="RigTag">收发信机</span><span class="RigTag">执照注册设备</span></div>
-            <div class="RigIntro">
-                <p>这款手台价格低廉，适合新手Ham入门。该机支持业余V/U段收发以及调频广播接收，最大发射功率5W，仅支持模拟FM模式。型号核准码：2017FR3280。</p>
-            </div>
-        </div>
-
-        <div class="RigBox RigBoxPadding">
-            <div class="RigTitle">森海克斯8800</div>
-            <div class="RigSubtitle">2021年2月20日购</div>
-            <div class="RigSubtitle"><span class="RigTag">收发信机</span><span class="RigTag">已验机设备</span></div>
-            <div class="RigIntro">
-                <p>这款手台非常流行。该机支持业余V/U段收发以及调频广播、航空VHF调幅语音接收，最大发射功率5W，仅支持模拟FM模式。型号核准码：2019FP6299。</p>
-            </div>
-        </div>
-
-        <div class="RigBox RigBoxPadding">
-            <div class="RigTitle">德生PL-330/380</div>
-            <div class="RigIntro">
-                <p>德生PL-330是2020年7月推出的一款支持SSB接收和同步检波的中端DSP收音机，可接收的波段包括长/中/短波/调频广播。德生PL-380不支持SSB解调和同步检波。</p>
-                <details>
-                    <summary>PL-380参考资料</summary>
-                    <ul>
-                        <li><a target="_blank" href="http://bbs.mydigit.cn/read.php?tid=143662">PL-380数字全波段收音机拆解</a></li>
-                        <li><a target="_blank" href="https://kknews.cc/digital/z52p8rp.html">德生DSP经典收音机PL-380拆机图赏</a></li>
-                        <li><a target="_blank" href="https://tieba.baidu.com/p/5385996163">有关数字调谐技术和软件定义无线电</a></li>
-                    </ul>
-                </details>
-                <details>
-                    <summary>PL-330彩蛋</summary>
-                    <ul>
-                        <li>显示固件版本号。在关机的状态下，长按VF/VM按键，直至屏幕上呈现全显。在屏幕显示复归正常前，右上角会显示固件版本号。</li>
-                        <li>校准上边带或下边带。在开机的状态下，首先，调到一个调幅强台（即中波或短波强台都可以——译者注）。其次，长按SSB按键。再次，微调频率，直至实现零拍（零拍的标准为：除了声音的音调降低之外，没有呜呜声或其他声音失真现象——译者注）。最后，长按LSB按键，直至屏幕开始闪烁。</li>
-                        <li>在中波磁棒天线/拉杆天线与外接天线插口之间切换。在开机的状态下，进入长波或中波波段。长按数字键3，屏幕上显示CH-A时，代表使用机器自带的天线；显示CH-5时，代表使用外接天线。当选择外接天线这种模式的时候，屏幕上会同时显示SWMW的字眼。</li>
-                        <li>调制频偏设置。在开机状态下，进入调频波段。长按数字按键4，就能实现75HZ（适用于美国）和50HZ（适用于欧洲）之间的切换。</li>
-                        <li>最大音量。打开收音机，切换到任意波段。首先，长按数字键7。其次，调节音量旋钮。再次，长按数字键7保存。最后，每个波段都能进行单独的设置，默认值为58。</li>
-                        <li>让时间显示读秒。关闭收音机，长按数字按键8能够让时间显示读秒或关闭读秒。</li>
-                        <li>静音门槛。在PL990收音机上，长按数字键9能够启用静音门槛设置，然而在PL330上却没有生效。具体操作流程是：开启收音机，进入任何波段都可以。首先，长按数字键9，其次，旋转快步进飞梭。再次，改变屏幕左上角的数值，第四，长按ENTER按键保存。每个波段都可独立进行设置，默认值为01。</li>
-                    </ul>
-                    <p>参考资料：</p>
-                    <ul>
-                        <li><a target="_blank" href="https://www.toutiao.com/i6855943904831734276/">PL330收音机评测</a></li>
-                        <li><a target="_blank" href="https://xw.qq.com/cmsid/20201013A00TWQ00">PL330彩蛋</a></li>
-                    </ul>
-                </details>
-            </div>
-        </div>
-
-        <div class="RigBox RigBoxPadding">
-            <div class="RigTitle">NanoVNA</div>
-            <div class="RigSubtitle">2020年10月10日购</div>
-            <div class="RigSubtitle"><span class="RigTag">仪器仪表</span></div>
-            <div class="RigIntro">
-                <p>一款低成本的矢量网络分析仪。</p>
-                <details>
-                    <summary>PCB</summary>
-                    <img src="image/G9/rigs/nanovna.jpg" class="RigsImage">
-                </details>
-            </div>
-        </div>
-    </td></tr>
-</table>
 
 <div class="SectionHeader" id="collections_figure">手办<div class="SectionHeaderComment">Figure</div></div>
 
@@ -443,16 +357,24 @@ a:hover {
 </div>
 
 <style>
+
+.FigureListTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+.FigureListLeft  { padding: 0; border: none; vertical-align: top; width: 50%; }
+.FigureListRight { padding: 0; border: none; vertical-align: top; width: 50%; }
+
 .FigureBox {
     margin: 10px;
     padding-bottom: 10px;
     border-radius: 10px;
     box-shadow: 0 1px 1px 0 rgb(64 64 64 / 8%), 0 1px 3px 1px rgb(64 64 64 / 16%);
 }
-.RigListLeft .FigureBox {
+.FigureListLeft .FigureBox {
     margin: 10px 5px 10px 10px;
 }
-.RigListRight .FigureBox {
+.FigureListRight .FigureBox {
     margin: 10px 10px 10px 5px;
 }
 .FigureImage {
@@ -484,14 +406,14 @@ a:hover {
 }
 </style>
 
-<table class="RigListTable"><tr>
-    <td class="RigListLeft">
+<table class="FigureListTable"><tr>
+    <td class="FigureListLeft">
         <div class="FigureBox">
             <div class="FigureIntro">
                 <img src="image/collections/figure/kizuna-ai.jpg" class="FigureImage">
             </div>
             <div class="FigureTitle">A.I.Gamers キズナアイ</div>
-            <div class="FigureSubtitle"><span class="RigTag">比例人形</span></div>
+            <div class="FigureSubtitle"><span class="CollectionTag">比例人形</span></div>
             <div class="FigureSubtitle">2021年2月7日购</div>
         </div>
 
@@ -500,7 +422,7 @@ a:hover {
                 <img src="image/miku-705.jpg" class="FigureImage">
             </div>
             <div class="FigureTitle">初音ミク Noodle Stopper</div>
-            <div class="FigureSubtitle"><span class="RigTag">景品</span><span class="RigTag">压泡面</span></div>
+            <div class="FigureSubtitle"><span class="CollectionTag">景品</span><span class="CollectionTag">压泡面</span></div>
             <div class="FigureSubtitle">2021年2月9日购</div>
         </div>
 
@@ -509,7 +431,7 @@ a:hover {
                 <img src="image/collections/figure/miku-xmas-2020.jpg" class="FigureImage">
             </div>
             <div class="FigureTitle">初音ミク2020圣诞版</div>
-            <div class="FigureSubtitle"><span class="RigTag">景品</span></div>
+            <div class="FigureSubtitle"><span class="CollectionTag">景品</span></div>
             <div class="FigureSubtitle">2021年2月9日购</div>
         </div>
 
@@ -518,17 +440,17 @@ a:hover {
                 <img src="image/collections/figure/nikki-vol1.jpg" class="FigureImage">
             </div>
             <div class="FigureTitle">闪耀暖暖 欲望之音</div>
-            <div class="FigureSubtitle"><span class="RigTag">景品</span><span class="RigTag">预订中</span></div>
+            <div class="FigureSubtitle"><span class="CollectionTag">景品</span><span class="CollectionTag">预订中</span></div>
             <div class="FigureSubtitle">2021年3月预订</div>
         </div>
     </td>
-    <td class="RigListRight">
+    <td class="FigureListRight">
         <div class="FigureBox">
             <div class="FigureIntro">
                 <img src="image/collections/figure/miku-lat.jpg" class="FigureImage">
             </div>
             <div class="FigureTitle">初音ミク Lat式</div>
-            <div class="FigureSubtitle"><span class="RigTag">景品</span></div>
+            <div class="FigureSubtitle"><span class="CollectionTag">景品</span></div>
             <div class="FigureSubtitle">2013年6月</div>
         </div>
 
@@ -537,7 +459,7 @@ a:hover {
                 <img src="image/collections/figure/kasumigaoka-utaha.jpg" class="FigureImage">
             </div>
             <div class="FigureTitle">霞ヶ丘詩羽</div>
-            <div class="FigureSubtitle"><span class="RigTag">景品</span></div>
+            <div class="FigureSubtitle"><span class="CollectionTag">景品</span></div>
             <div class="FigureSubtitle">2021年2月9日购</div>
         </div>
 
@@ -546,7 +468,7 @@ a:hover {
                 <img src="image/collections/figure/nikki-nendoloid.jpg" class="FigureImage">
             </div>
             <div class="FigureTitle">暖暖粘土人</div>
-            <div class="FigureSubtitle"><span class="RigTag">粘土人</span></div>
+            <div class="FigureSubtitle"><span class="CollectionTag">粘土人</span></div>
             <div class="FigureSubtitle">2021年2月28日购</div>
         </div>
 
@@ -555,7 +477,7 @@ a:hover {
                 <img src="image/collections/figure/katou-megumi.jpg" class="FigureImage">
             </div>
             <div class="FigureTitle">加藤恵</div>
-            <div class="FigureSubtitle"><span class="RigTag">景品</span><span class="RigTag">预订中</span></div>
+            <div class="FigureSubtitle"><span class="CollectionTag">景品</span><span class="CollectionTag">预订中</span></div>
             <div class="FigureSubtitle">2021年3月预订</div>
         </div>
     </td></tr>
@@ -589,7 +511,7 @@ a:hover {
     color: #494f53;
     font-size: 15px;
     font-weight: bold;
-    margin: 0 0 10px 0;
+    margin: 10px 0;
     text-align: center;
 }
 .BangumiSubtitle {
@@ -781,7 +703,16 @@ a:hover {
     color: #494f53;
     font-size: 15px;
     font-weight: bold;
-    margin: 0 0 10px 0;
+    margin: 10px 0;
+    text-align: center;
+}
+.MusicTitle a {
+    text-decoration: none;
+}
+.MusicArtist {
+    font-size: 12px;
+    color: #494f53;
+    margin: 3px 0;
     text-align: center;
 }
 .MusicSubtitle {
@@ -802,11 +733,11 @@ a:hover {
 <div style="text-align: center;">
     <div class="MusicBox">
         <div class="MusicIntro">
-            <img src="image/collections/music/星の在り処.jpg" class="MusicCover">
+            <img src="https://p2.music.126.net/xfoctAfoTyREA7DapTtR_A==/865315651059961.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=559262" target="_blank">星の在り処</a></div>
-        <div class="MusicSubtitle" lang="ja">う〜み</div>
-        <div class="MusicSubtitle"><span class="RigTag">实体CD收藏</span></div>
+        <div class="MusicArtist" lang="ja">う〜み</div>
+        <div class="MusicSubtitle"><span class="CollectionTag">实体CD收藏</span></div>
         <div class="MusicSubtitle">空轨FC初回特典CD</div>
         <div class="MusicSubtitle">游戏「空之轨迹FC」主题歌</div>
     </div>
@@ -816,8 +747,8 @@ a:hover {
             <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000003G9wKv0OXrsY_1.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://y.qq.com/n/yqq/album/003G9wKv0OXrsY.html" target="_blank">この場所で。</a></div>
-        <div class="MusicSubtitle" lang="ja">亜咲花</div>
-        <!-- <div class="MusicSubtitle"><span class="RigTag">实体CD收藏</span></div> -->
+        <div class="MusicArtist" lang="ja">佐々木恵梨 / 亜咲花</div>
+        <!-- <div class="MusicSubtitle"><span class="CollectionTag">实体CD收藏</span></div> -->
         <div class="MusicSubtitle" lang="ja">TVアニメ『ゆるキャン△ SEASON2』OST</div>
         <div class="MusicSubtitle">动画「摇曳露营△第2季」插入歌</div>
     </div>
@@ -827,47 +758,47 @@ a:hover {
             <img src="https://p2.music.126.net/ZjzAs6OoMiB8CURK23ACRg==/18237599370364310.jpg?param=177y177" class="MusicCover">
         </div>
         <div class="MusicTitle"><a href="https://music.163.com/#/song?id=430026994" target="_blank">神代梦华谭</a></div>
-        <div class="MusicSubtitle">泠鸢yousa</div>
+        <div class="MusicArtist">泠鸢yousa</div>
         <div class="MusicSubtitle">游戏《神代梦华谭》主题歌</div>
     </div>
 
     <div class="MusicBox">
         <div class="MusicIntro">
-            <img src="image/collections/music/ヴィヴァーチェ！.jpg" class="MusicCover">
+            <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000003JZ3Uv3Tsjpu_1.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://i.y.qq.com/v8/playsong.html?songid=109072317" target="_blank">ヴィヴァーチェ！</a></div>
-        <div class="MusicSubtitle" lang="ja">黒沢ともよ / 朝井彩加 /<br>豊田萌絵 / 安済知佳</div>
-        <div class="MusicSubtitle"><span class="RigTag">实体CD收藏</span></div>
+        <div class="MusicArtist" lang="ja">黒沢ともよ 等</div>
+        <div class="MusicSubtitle"><span class="CollectionTag">实体CD收藏</span></div>
         <div class="MusicSubtitle" lang="ja">ヴィヴァーチェ！</div>
         <div class="MusicSubtitle">动画「吹响！悠风号2」片尾歌</div>
     </div>
 
     <div class="MusicBox">
         <div class="MusicIntro">
-            <img src="image/collections/music/Scarlet-Destiny.jpg" class="MusicCover">
+            <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000000d9Mgy2gLhkd_2.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=836339" target="_blank">虹のカメリア</a></div>
-        <div class="MusicSubtitle">Sensitive Heart</div>
+        <div class="MusicArtist">Sensitive Heart</div>
         <div class="MusicSubtitle">Scarlet Destiny</div>
         <div class="MusicSubtitle"><a target="_blank" href="https://thwiki.cc/%E4%B8%8A%E6%B5%B7%E7%BA%A2%E8%8C%B6%E9%A6%86_%EF%BD%9E_Chinese_Tea">上海紅茶館</a>同人作</div>
     </div>
 
     <div class="MusicBox">
         <div class="MusicIntro">
-            <img src="image/collections/music/花天月地.jpg" class="MusicCover">
+            <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000001kYMey3NMqsj_1.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=482636948" target="_blank">桜花繚乱</a></div>
-        <div class="MusicSubtitle" lang="ja">はちみつれもん</div>
+        <div class="MusicArtist" lang="ja">はちみつれもん</div>
         <div class="MusicSubtitle" lang="ja">花天月地</div>
         <div class="MusicSubtitle"><a target="_blank" href="https://thwiki.cc/%E6%A8%B1%E8%8A%B1%E4%B9%8B%E6%81%8B%E5%A1%9A_%EF%BD%9E_Flower_of_Japan">桜花之恋塚</a>同人作</div>
     </div>
 
     <div class="MusicBox">
         <div class="MusicIntro">
-            <img src="image/collections/music/東方フィルハーモニー交響楽団-4-永＆萃.jpg" class="MusicCover">
+            <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000002OlfJq3Qvgwt_1.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=412785229" target="_blank">東方萃夢想</a></div>
-        <div class="MusicSubtitle" lang="ja">交響アクティブNEETs</div>
+        <div class="MusicArtist" lang="ja">交響アクティブNEETs</div>
         <div class="MusicSubtitle" lang="ja">東方フィルハーモニー交響楽団 4 永&amp;萃</div>
         <div class="MusicSubtitle"><a target="_blank" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E8%90%83%E6%A2%A6%E6%83%B3%EF%BC%88%E6%9B%B2%E7%9B%AE%EF%BC%89">東方萃夢想</a>同人作</div>
     </div>
@@ -877,27 +808,27 @@ a:hover {
             <img src="https://p2.music.126.net/aH0W98R2M-uel951bb2Bfw==/109951163835984832.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=1311347592" target="_blank">remember</a></div>
-        <div class="MusicSubtitle" lang="ja">Uru</div>
+        <div class="MusicArtist" lang="ja">Uru</div>
         <div class="MusicSubtitle" lang="ja">Remember</div>
         <div class="MusicSubtitle">剧场版动画「夏目友人帐：缘结空蝉」主题歌</div>
     </div>
 
     <div class="MusicBox">
         <div class="MusicIntro">
-            <img src="image/collections/music/春のかたみ.jpg" class="MusicCover">
+            <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000004Nbo1Q25YYK9_1.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=574370" target="_blank">春のかたみ</a></div>
-        <div class="MusicSubtitle" lang="ja">元ちとせ</div>
+        <div class="MusicArtist" lang="ja">元ちとせ</div>
         <div class="MusicSubtitle" lang="ja">春のかたみ</div>
         <div class="MusicSubtitle">动画「怪~ayakashi~」主题歌</div>
     </div>
 
     <div class="MusicBox">
         <div class="MusicIntro">
-            <img src="image/collections/music/Tiny-Dungeon-BLACK-and-WHITE-OST.jpg" class="MusicCover">
+            <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M0000038sJ201ezLbb_1.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=4934355" target="_blank">黒翼は～と</a></div>
-        <div class="MusicSubtitle">Rosebleu</div>
+        <div class="MusicArtist">Rosebleu</div>
         <div class="MusicSubtitle">Tiny Dungeon - BLACK and WHITE OST</div>
         <div class="MusicSubtitle">游戏「小地牢·黑与白」原声音乐</div>
     </div>
@@ -907,7 +838,7 @@ a:hover {
             <img src="https://p2.music.126.net/Li-XsFdYi7D00meK_2YCXQ==/5798824325014681.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=4956875" target="_blank">あさき、ゆめみし</a></div>
-        <div class="MusicSubtitle" lang="ja">瀧沢一留</div>
+        <div class="MusicArtist" lang="ja">瀧沢一留</div>
         <div class="MusicSubtitle" lang="ja">ゲーム「あさき、ゆめみし」OST</div>
         <div class="MusicSubtitle">游戏「晨曦时梦见兮」主题歌</div>
     </div>
@@ -917,8 +848,8 @@ a:hover {
             <img src="https://p1.music.126.net/C46EsA5gsbTPWjOFNLXlTA==/109951163023120938.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle"><a href="https://music.163.com/#/song?id=28188427" target="_blank">裁梦为魂</a></div>
-        <div class="MusicSubtitle">银临</div>
-        <div class="MusicSubtitle"><span class="RigTag">实体CD收藏</span></div>
+        <div class="MusicArtist">银临</div>
+        <div class="MusicSubtitle"><span class="CollectionTag">实体CD收藏</span></div>
         <div class="MusicSubtitle">蚍蜉渡海</div>
     </div>
 
@@ -927,7 +858,7 @@ a:hover {
             <img src="https://p1.music.126.net/LBnYDAUED2mD1veBvBnC8g==/5859297464524710.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle"><a href="https://music.163.com/#/song?id=28188427" target="_blank">棠梨煎雪</a></div>
-        <div class="MusicSubtitle">银临</div>
+        <div class="MusicArtist">银临</div>
         <div class="MusicSubtitle">腐草为萤</div>
     </div>
 
@@ -936,8 +867,8 @@ a:hover {
             <img src="https://p2.music.126.net/LTEcJoeajuhP5C2BtbGhtA==/109951165822358136.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://music.163.com/#/song?id=27876224" target="_blank">God knows...</a></div>
-        <div class="MusicSubtitle" lang="ja">平野綾</div>
-        <div class="MusicSubtitle"><span class="RigTag">实体CD收藏</span></div>
+        <div class="MusicArtist" lang="ja">平野綾</div>
+        <div class="MusicSubtitle"><span class="CollectionTag">实体CD收藏</span></div>
         <div class="MusicSubtitle" lang="ja">TVアニメ『涼宮ハルヒの憂鬱』 Imaginary ENOZ featuring HARUHI</div>
     </div>
 
@@ -946,8 +877,8 @@ a:hover {
             <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000000j3reu4Mnqfj_1.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle"><a href="https://y.qq.com/n/yqq/song/0037bZFH0EbqAc.html" target="_blank">LIFE</a></div>
-        <div class="MusicSubtitle">YUI</div>
-        <div class="MusicSubtitle"><span class="RigTag">实体CD收藏</span></div>
+        <div class="MusicArtist">YUI</div>
+        <div class="MusicSubtitle"><span class="CollectionTag">实体CD收藏</span></div>
         <div class="MusicSubtitle">LIFE</div>
     </div>
 
@@ -956,8 +887,8 @@ a:hover {
             <img src="https://p1.music.126.net/T6EwKjP4pIVAQiX17prmeQ==/109951163612079871.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle"><a href="https://music.163.com/#/song?id=209112" target="_blank">太阳</a></div>
-        <div class="MusicSubtitle">陈绮贞</div>
-        <div class="MusicSubtitle"><span class="RigTag">实体CD收藏</span></div>
+        <div class="MusicArtist">陈绮贞</div>
+        <div class="MusicSubtitle"><span class="CollectionTag">实体CD收藏</span></div>
         <div class="MusicSubtitle">太阳</div>
     </div>
 
@@ -966,16 +897,16 @@ a:hover {
             <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000001Uw1WJ4L7q5S_3.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle" lang="ja"><a href="https://y.qq.com/n/yqq/song/000Ia3aP0cjrN8.html" target="_blank">Time after time ～花舞う街で～</a></div>
-        <div class="MusicSubtitle" lang="ja">倉木麻衣</div>
+        <div class="MusicArtist" lang="ja">倉木麻衣</div>
         <div class="MusicSubtitle" lang="ja">Time after time ～花舞う街で～</div>
     </div>
 
     <div class="MusicBox">
         <div class="MusicIntro">
-            <img src="image/collections/music/谭某某.jpg" class="MusicCover">
+            <img src="https://p1.music.126.net/V1oiaFl104PH0yuHLCKVuQ==/109951163061827624.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle"><a href="https://music.163.com/#/song?id=293948" target="_blank">如果有来生</a></div>
-        <div class="MusicSubtitle">谭维维</div>
+        <div class="MusicArtist">谭维维</div>
         <div class="MusicSubtitle">谭某某</div>
         <div class="MusicSubtitle">不才翻唱</div>
     </div>
@@ -985,7 +916,7 @@ a:hover {
             <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000001ACTlE01fU6a_1.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle"><a href="https://y.qq.com/n/yqq/song/001t1qJd0DaKOs.html" target="_blank">欧若拉</a></div>
-        <div class="MusicSubtitle">张韶涵</div>
+        <div class="MusicArtist">张韶涵</div>
         <div class="MusicSubtitle">欧若拉</div>
     </div>
 
@@ -994,7 +925,7 @@ a:hover {
             <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000002jLGWe16Tf1H_1.jpg" class="MusicCover">
         </div>
         <div class="MusicTitle"><a href="https://y.qq.com/n/yqq/song/004RUiXu49ufy1.html" target="_blank">菊花台</a></div>
-        <div class="MusicSubtitle">周杰伦</div>
+        <div class="MusicArtist">周杰伦</div>
         <div class="MusicSubtitle">依然范特西</div>
     </div>
 
@@ -1432,7 +1363,7 @@ a:hover {
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/天线与馈线">天线与馈线</span></td>
             </tr>
             <tr>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/广播与放送文化">广播与放送文化</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/收音机与放送文化">收音机与放送文化</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/业余无线电法规汇编">法规汇编</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/电波传播规律">电波传播规律</span></td>
             </tr>
