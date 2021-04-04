@@ -17,6 +17,11 @@
 慎加杠杆，未雨绸缪。管控欲望，分析需求。
 合理消费，适度投资。提质增效，优化结构。
 
+# Cynefin框架
+
+- [Cynefin框架](https://wiki.mbalib.com/wiki/Cynefin%E6%A1%86%E6%9E%B6)
+- [Cynefin framework](https://en.wikipedia.org/wiki/Cynefin_framework)
+
 # 实证陈述和规范陈述
 
 2019-11-20

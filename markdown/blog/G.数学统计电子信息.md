@@ -222,6 +222,11 @@
 
 [参考](https://www.cnblogs.com/straybirds/p/9110854.html)
 
+# 硬件Bug
+
+- [奔腾浮点除错误](https://zh.wikipedia.org/wiki/%E5%A5%94%E8%85%BE%E6%B5%AE%E7%82%B9%E9%99%A4%E9%94%99%E8%AF%AF)
+- Intel Quark X1000 的`lock`指令[错误](https://en.wikipedia.org/wiki/Intel_Quark)。
+
 # 水波纹特殊效果
 
 <iframe class="MikumarkIframe" src="./html/水波纹特效.html" height="350px"></iframe>

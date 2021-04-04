@@ -9,6 +9,9 @@
 
 # 拾零
 
+- 《[实践论](https://www.marxists.org/chinese/maozedong/marxist.org-chinese-mao-193707.htm)》
+- 《[矛盾论](https://www.marxists.org/chinese/maozedong/marxist.org-chinese-mao-193708.htm)》
+
 - [#(斯特鲁普\(Stroop\)效应)#](https://zh.wikipedia.org/wiki/%E6%96%AF%E7%89%B9%E9%B2%81%E6%99%AE%E6%95%88%E5%BA%94)
 - [#(孟乔森综合征)#](https://zh.wikipedia.org/wiki/%E5%AD%9F%E4%B9%94%E6%A3%AE%E7%BB%BC%E5%90%88%E5%BE%81)（所谓“病娇”的一种）
 - #(季节性情感障碍)#：冬季负面情绪的来源。

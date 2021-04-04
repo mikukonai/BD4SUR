@@ -10,6 +10,8 @@
 # 拾零
 
 - #(二甲基亚砜)#（溶剂）
+- [#(土臭素)#](https://zh.wikipedia.org/wiki/%E5%9C%9F%E8%87%AD%E7%B4%A0)：甜菜的泥土气味、天气干旱后降雨时空气中的气味或当土壤被翻动时产生的气味都是由它引起的。
+- [#(斑蝥素)#](https://en.wikipedia.org/wiki/Cantharidin)
 - #(激光散斑)#
 - 中国#(锦屏地下实验室)#
 - #(超级神冈探测器)#：日本的中微子探测装置
@@ -22,6 +24,7 @@
 - #(土星北极六边形)#：见微博[@haibaraemily](https://weibo.com/ttarticle/p/show?id=2309404284442452603432)
 - #(郯庐断裂带)#
 - #(中央构造线)#
+- [#(墨脱大地震)#](http://www.cas.cn/zt/jzt/kxhyzt/2003ndygzhy/kkwc/200310/t20031015_2664311.shtml)
 
 # 香蕉辐射剂量
 
