@@ -1661,13 +1661,10 @@ a.Weibo::before {
 
 <!--SPA交互和渲染控制-->
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$']]},
-    delayStartupUntil: "configured"
-});
+<script>
+MathJax = { tex: { inlineMath: [["$", "$"]] } };
 </script>
-<script async src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML&delayStartupUntil=configured"></script>
+<script id="MathJax-script" async src="./script/framework/mathjax/tex-chtml-full.js"></script>
 
 <script src="./script/framework/jquery/jquery.min.js"></script>
 <script src="./script/framework/jquery/jquery.easing.js"></script>
@@ -1696,10 +1693,7 @@ MathJax.Hub.Config({
     ActionsOnReady();
 
     window.onload = () => {
-        console.log("%c ★ Framework Iroha ★ ", "font-size: 16px; height: 26px; line-height: 26px; border-radius: 5px; text-align: center; color:#fff; background: linear-gradient(to right, rgb(255, 94, 134), rgb(210, 162, 255), rgb(36, 200, 255));");
-        console.log(`版本 4.0 (2019.10.23)`);
-        console.log(`版权所有 © 2016-2019 BD4SUR (https://github.com/bd4sur)`);
-        console.log(`Git仓库：https://github.com/bd4sur/Iroha`);
+        console.log("%c ★ BD4SUR ★ ", "font-size: 16px; height: 26px; line-height: 26px; border-radius: 5px; text-align: center; color:#fff; background: linear-gradient(to right, rgb(255, 94, 134), rgb(210, 162, 255), rgb(36, 200, 255));");
         console.log(``);
         let HashString = (window.location.hash === "") ? "#/index" : window.location.hash;
         SPA_Render(HashString);

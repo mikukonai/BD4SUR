@@ -19,7 +19,7 @@ let CONFIG = {
         "js":    "text/javascript",
         "ico":   "image/vnd.microsoft.icon",
         "mp3":   "audio/mpeg",
-        "woff":  "application/x-font-woff",
+        "woff":  "application/font-woff",
         "woff2": "font/woff2",
         "ttf":   "application/x-font-truetype",
         "otf":   "application/x-font-opentype",

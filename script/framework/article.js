@@ -718,8 +718,7 @@ function LoadArticle(PageID, ArticleID) {
         MenuToggle("off");
 
         // MathJax刷新
-        MathJax.Hub.Configured();
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        MathJax.startup.defaultPageReady();
 
         // 各触发一次以刷新布局
         $(window).scroll();
