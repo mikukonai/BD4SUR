@@ -37,12 +37,16 @@
 
 ![ ](./image/G3/curve-fitting.png)
 
-# “准确”和“精确”
+# “准”和“确”
 
 - 录入时间：2021-03-24
 - 来源：见水印
 
-![ ](./image/G3/accurate-and-precise.png)
+![不准不确→准而不确→确而不准→准确](./image/G3/accurate-and-precise.png)
+
+- 查准率 和 查全率
+- 灵敏度 和 特异度
+- ROC曲线和AUC
 
 # 有关“定理”的几个词的区别
 
