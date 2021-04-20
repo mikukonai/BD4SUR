@@ -220,7 +220,7 @@ body { font-family: Microsoft YaHei, "宋体", "Helvetica Neue", Helvetica, Aria
 }
 
 .Poster blockquote { font-size: 13px; line-height: 21px; color:#333; background-color: #f4fbff; margin:10px 0; padding: 8px 10px; border: none; border-radius: 5px; }
-.PosterParagraph { margin: 10px 0px; padding: 0; color: #333; font-size: 14px; line-height: 23px; display: block; text-indent: 0;}
+.PosterParagraph { margin: 10px 0px; padding: 0; color: #333; font-size: 13px; line-height: 22px; display: block; text-indent: 0;}
 .PosterLink { text-decoration: underline; cursor: pointer;}
 .PosterLink:hover { color: #1ea0f0; text-decoration: underline;}
 .PosterTag {
