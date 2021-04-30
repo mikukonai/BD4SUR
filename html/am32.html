@@ -242,7 +242,7 @@ function playLine(lineCode) {
     }
 
 
-    // 播放各个单音
+    // 播放各个单音。采用先升后降的增益，目的是减缓通断瞬间的跳变引入噪声。
     for(let i = 0; i < NODES.length; i++) {
         OSCS[i].start();
         NODES[i].gain.linearRampToValueAtTime(GAIN, audioCtx.currentTime + SLOT_LEN/1000/2);

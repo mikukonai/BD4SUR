@@ -10,12 +10,13 @@
 # 拾零
 
 - #(本福特定律)#：可用于检查财务造假。
-- [#(Chaitin常数)#](https://en.wikipedia.org/wiki/Chaitin%27s_constant)
 - [#(布隆过滤器)#](https://zh.wikipedia.org/wiki/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8)
 - #(时序攻击)#
 - [#(数字微镜器件)#](https://en.wikipedia.org/wiki/Digital_micromirror_device)
 - #(AT命令集)#（#(海斯命令集)#）
 - [#(安提基特拉机械)#](https://zh.wikipedia.org/wiki/%E5%AE%89%E6%8F%90%E5%9F%BA%E7%89%B9%E6%8B%89%E6%9C%BA%E6%A2%B0)
+- [#(毛球定理)#](https://zh.wikipedia.org/wiki/%E6%AF%9B%E7%90%83%E5%AE%9A%E7%90%86)：地球上必定存在气旋和水涡（如日本的鸣门漩涡）
+- [#(角谷猜想)#](https://zh.wikipedia.org/wiki/%E8%80%83%E6%8B%89%E5%85%B9%E7%8C%9C%E6%83%B3)：数论未解之谜，详见[未解决的数学问题](https://zh.wikipedia.org/wiki/%E6%9C%AA%E8%A7%A3%E5%86%B3%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98)。
 
 # 一些具有滞回特性的东西
 
@@ -29,6 +30,8 @@
 ![ ](./image/G2/common-proof-techniques.jpg)
 
 **幸存者偏差的实例** 二战期间，美国军方对返航轰炸机的机身中弹情况进行了研究，并打算对中弹最多的部位（比如机翼）加装额外装甲。但哥伦比亚大学的匈牙利数学家亚伯拉罕·沃德却指出，应该对中弹最少的部分（比如发动机）加装额外装甲，因为那些部位之所以中弹少，是由于一中弹就往往机毁人亡，而那些中弹最多的部位，恰恰是因为抗打击能力较强，中弹也能返航，才有机会被注意到。沃德所指出的这一因素被称为“幸存者偏差”，忽略这种偏差是很多错误推理的源泉。（2021-03-25 卢昌海微博）
+
+- 见：[形式谬误](https://zh.wikipedia.org/wiki/Template:%E5%BD%A2%E5%BC%8F%E8%AC%AC%E8%AA%A4)和[非形式谬误](https://zh.wikipedia.org/wiki/Template:%E9%9D%9E%E5%BD%A2%E5%BC%8F%E8%AC%AC%E8%AA%A4)
 
 # 曲线拟合
 
