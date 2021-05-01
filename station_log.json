@@ -799,5 +799,24 @@
         "qth_self": "家",
 
         "note":     "第六届中国航天日东大集体台SSTV活动。分别在10:30、11:00、11:30发送了三张图片。<a target=\"_blank\" href=\"./image/G9/by4wng-sstv-210424.jpg\">接收到的图片</a>"
+    },
+    {
+        "time":     "2021-05-01 20:21",
+        "callsign": "BD4REC",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "-",
+        "ant":      "-",
+        "pwr":      "-",
+        "qth":      "江宁",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "10W",
+        "qth_self": "家",
+
+        "note":     "江苏无协中继点名"
     }
 ]
