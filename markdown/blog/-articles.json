@@ -16,62 +16,6 @@
         "tags":     []
     },
     {
-        "title":     "在λ演算中构造前驱函数",
-        "date":      "2018-11-13",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G2.离散数学",
-        "tags":     []
-    },
-    {
-        "title":     "一条永恒的金带",
-        "date":      "2018-07-10",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G2.离散数学",
-        "tags":     []
-    },
-    {
-        "title":     "阴阳谜题分析",
-        "date":      "2018-02-11",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G2.离散数学",
-        "tags":     []
-    },
-    {
-        "title":     "Continuation简介",
-        "date":      "2017-11-22",
-        "updates":  [],
-        "authors":  ["TSPL4"],
-        "category":  "G2.离散数学",
-        "tags":     []
-    },
-    {
-        "title":     "The Little Schemer 阅读笔记",
-        "date":      "2017-09-02",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G2.离散数学",
-        "tags":     []
-    },
-    {
-        "title":     "SICP阅读笔记",
-        "date":      "2017-08-21",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G2.离散数学",
-        "tags":     []
-    },
-    {
-        "title":     "奇妙的Y组合子",
-        "date":      "2016-09-05",
-        "updates":  [],
-        "authors":  ["BD4SUR"],
-        "category":  "G2.离散数学",
-        "tags":     []
-    },
-    {
         "title":     "语义网和数据产权",
         "date":      "2019-03-01",
         "updates":  [],
@@ -149,14 +93,6 @@
         "updates":  ["2021-01-11"],
         "authors":  ["BD4SUR"],
         "category":  "K.工业交通工程技术",
-        "tags":     []
-    },
-    {
-        "title":     "Galileo开发板",
-        "date":      "2017-10-18",
-        "updates":  [""],
-        "authors":  ["BD4SUR"],
-        "category":  "G8.电子",
         "tags":     []
     },
     {
