@@ -14,6 +14,9 @@
     margin: 0;
     padding: 0;
 }
+button {
+    font-size: inherit;
+}
 .Main {
     max-width: 1000px;
     margin: 0px auto;
@@ -36,10 +39,12 @@
     font-weight: bold;
 }
 .Collections {
+    border-top: 1px solid #aaa;
     padding: 10px;
+    margin: 10px 0;
 }
 .Collections::before {
-    content: "错题：";
+    content: "错题 & 收藏：";
 }
 .Collection {
     display: inline-block;
@@ -104,6 +109,20 @@
     background-color: rgb(255, 239, 239);
 }
 
+#addToCollection {
+    margin: 10px 0;
+    color: #833c99;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    background: #fdf6ff;
+    border-radius: 100px;
+    cursor: pointer;
+}
+#addToCollection:hover {
+    background: #fbecff;
+}
+
 </style>
 <!--页面自定义样式结束-->
 
@@ -113,13 +132,11 @@
 <!--页面内容开始-->
 
 <div class="Main">
-    <div style="padding: 10px; background-color: #f8f8f8;">
-        <strong>题库：B类</strong>（版本<a href="http://www.crac.org.cn/News/Detail?ID=1862">V171031</a>）<br>
-        可以自动保存做题进度和错题记录，刷新页面不会清除。除非点击这个按钮→<button id="clear">清除所有状态</button><br>
-        <button id="goto">跳转到任意题目</button> <a href="https://bd4sur.com">返回BD4SUR首页</a>
+    <div style="font-size: 13px; padding: 10px; background-color: #f8f8f8;">
+        <strong>题库：B类</strong>（版本<a href="http://www.crac.org.cn/News/Detail?ID=1862">V171031</a>） <a href="https://bd4sur.com">BD4SUR首页</a><br>
+        自动保存进度和错题，刷新不会清除。<button id="clear">清除并刷新</button><br>
+        <button id="goto">跳转</button> <button id="autoJump">自动下一题(已关闭)</button> <button id="toggleRandom">随机刷题(已关闭)</button>
     </div>
-
-    <div class="Collections" id="collections"></div>
 
     <div class="Header">
         <button class="Nav" id="prev" style="float: left;">◀ 上一题</button>
@@ -128,15 +145,20 @@
     </div>
 
     <div class="QuestionContainer">
-        <span id="id" class="ID">123</span><span id="question">456</span>
+        <span id="id" class="ID">编号</span><span id="question">题干</span>
         <img class="Illust" id="illust">
     </div>
     <div class="OptionContainer">
-        <div class="Option" id="option0">ABVD</div>
-        <div class="Option" id="option1">ABVD</div>
-        <div class="Option" id="option2">ABVD</div>
-        <div class="Option" id="option3">ABVD</div>
+        <div class="Option" id="option0">选项</div>
+        <div class="Option" id="option1">选项</div>
+        <div class="Option" id="option2">选项</div>
+        <div class="Option" id="option3">选项</div>
     </div>
+
+    <div id="addToCollection">✚ 收藏</div>
+
+    <div class="Collections" id="collections"></div>
+
 </div>
 
 
@@ -8908,6 +8930,29 @@ class_C_idlist.sort(compare);
 
 const IDLIST = class_B_idlist;
 
+let isAutoJump = false;
+let isRandom = false;
+
+$("#autoJump").click(() => {
+    isAutoJump = !isAutoJump;
+    if(isAutoJump) {
+        $("#autoJump").html("自动下一题(已开启)");
+    }
+    else {
+        $("#autoJump").html("自动下一题(已关闭)");
+    }
+});
+
+$("#toggleRandom").click(() => {
+    isRandom = !isRandom;
+    if(isRandom) {
+        $("#toggleRandom").html("随机刷题(已开启)");
+    }
+    else {
+        $("#toggleRandom").html("随机刷题(已关闭)");
+    }
+});
+
 function generate_paper(lib, idlist) {
     // 解析文本题库
     let problem_list = {};
@@ -8982,6 +9027,12 @@ function render_question(paper, index, amount) {
     $("#id").html(id);
     $("#question").html(question);
 
+    $("#addToCollection").unbind("click");
+    $("#addToCollection").click(() => {
+        add_to_collections(id);
+    });
+
+
     if(illust.length > 0) {
         $("#illust").attr("src", `../image/G9/exam/${illust}`);
         $("#illust").show();
@@ -9010,10 +9061,12 @@ function render_question(paper, index, amount) {
             $(`#option${i}`).attr("data-answer", "true");
         }
         $(`#option${i}`).click(() => {
+            // 回答正确
             if($(`#option${i}`).attr("data-answer") === "true") {
                 $(`#option${i}`).addClass("Correct");
-                setTimeout(next_problem, 500);
+                if(isAutoJump) setTimeout(next_problem, 500);
             }
+            // 回答错误
             else {
                 $(`#option${i}`).addClass("Wrong");
                 add_to_collections(id);
@@ -9062,7 +9115,10 @@ function render_collections() {
         let id = COLLECTIONS[i];
         $("#collections").append(`<span class="Collection" id="c_${id}">${id}<span class="DeleteCollection" id="delete_${id}">✖</span></span>`);
         $(`#c_${id}`).click(() => {
-            render_question(PAPER, PAPER.idindex[id], IDLIST.length);
+            // render_question(PAPER, PAPER.idindex[id], IDLIST.length);
+            CURRENT_INDEX = PAPER.idindex[id];
+            render_question(PAPER, CURRENT_INDEX, IDLIST.length);
+            save_status();
         });
         $(`#delete_${id}`).click((e) => {
             e.stopPropagation();
@@ -9081,8 +9137,13 @@ restore_status();
 render_question(PAPER, CURRENT_INDEX, IDLIST.length);
 
 function next_problem() {
-    if(CURRENT_INDEX > IDLIST.length) return;
-    CURRENT_INDEX++;
+    if(isRandom) {
+        CURRENT_INDEX = Math.floor(Math.random() * PAPER.problems.length);
+    }
+    else {
+        if(CURRENT_INDEX > IDLIST.length) return;
+        CURRENT_INDEX++;
+    }
     render_question(PAPER, CURRENT_INDEX, IDLIST.length);
     save_status();
 }
