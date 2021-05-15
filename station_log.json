@@ -612,7 +612,7 @@
     },
     {
         "time":     "2021-03-06 19:52",
-        "callsign": "BH6BJJ",
+        "callsign": "B4/BH6BJJ",
         "freq":     "439.675R",
         "mode":     "NFM",
         "rst":      "59/59",
@@ -631,7 +631,7 @@
     },
     {
         "time":     "2021-03-13 20:19",
-        "callsign": "BH6BJJ",
+        "callsign": "B4/BH6BJJ",
         "freq":     "439.675R",
         "mode":     "NFM",
         "rst":      "59/59",
@@ -837,5 +837,43 @@
         "qth_self": "家",
 
         "note":     "江苏无协中继频率点名。因受恶意干扰，点名改为直频。"
+    },
+    {
+        "time":     "2021-05-15 20:13",
+        "callsign": "B4/BH6BJJ",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "-",
+        "ant":      "-",
+        "pwr":      "-",
+        "qth":      "-",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "10W",
+        "qth_self": "家",
+
+        "note":     "江苏无协中继点名。"
+    },
+    {
+        "time":     "2021-05-15 20:23",
+        "callsign": "BD4SXW",
+        "freq":     "439.0625",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "摩托罗拉XTS-5000",
+        "ant":      "钻石770",
+        "pwr":      "5W",
+        "qth":      "将军大道",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "2.5W",
+        "qth_self": "家",
+
+        "note":     "在此频率上呼叫CQ，对方通过SDR发现并回应。"
     }
 ]
