@@ -877,6 +877,25 @@
         "note":     "在此频率上呼叫CQ，对方通过SDR发现并回应。"
     },
     {
+        "time":     "2021-05-16 11:55",
+        "callsign": "BPM",
+        "freq":     "10.000",
+        "mode":     "AM",
+        "rst":      "43",
+
+        "rig":      "-",
+        "ant":      "-",
+        "pwr":      "-",
+        "qth":      "陕西蒲城",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "10W",
+        "qth_self": "天元西路",
+
+        "note":     "向BPM邮件发送了收听报告，获得第一张QSL卡片。"
+    },
+    {
         "time":     "2021-05-22 19:56",
         "callsign": "BD4SYH",
         "freq":     "439.675R",
