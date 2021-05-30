@@ -913,5 +913,24 @@
         "qth_self": "天元西路",
 
         "note":     "江苏无协中继点名。"
+    },
+    {
+        "time":     "2021-05-29 19:50",
+        "callsign": "BD4SUH",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "",
+        "ant":      "八木",
+        "pwr":      "",
+        "qth":      "溧水",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "10W",
+        "qth_self": "天元西路",
+
+        "note":     "江苏无协中继点名。"
     }
 ]
