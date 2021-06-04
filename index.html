@@ -98,9 +98,8 @@
             color: #1ea0f0;
         }
         </style>
-        <div class="RBGradient" style="transform: scale(0.9); margin-bottom: 15px;">
-            <span style="font-size: 22px;">BD4SUR</span><br>
-            <span style="font-size: 10px; font-weight: lighter; line-height: 18px;">业 余 无 线 电 台</span>
+        <div class="RBGradient" style="transform: scale(0.9); margin-bottom: 20px;">
+            <span style="font-size: 12px;">—··· —·· ····— ··· ··— ·—·</span>
         </div>
         <div class="FooterContent">
             <p style="letter-spacing: 2px; font-weight: 600;">体谅 · 忠诚 · 进取 · 友爱 · 适度 · 爱国</p>
@@ -175,14 +174,12 @@
 </style>
 <template class="index" id="index">
 
-    <div style="text-align: center; margin: 30px 0 0 0; color: #1ea0f0;">正在准备B类操作技术能力验证考试</div>
-
     <div style="text-align: center;">
         <img src="image/miku-705.jpg" style="width: 90%; max-width: 550px; margin: 20px auto; border-radius: 10px;">
     </div>
 
     <div style="font-size: 14px; text-align: center; margin: 0;">
-        <a href="./html/exam.html">模拟考试</a> / <a href="./html/cw.html">CW练习器</a> / <a href="./html/am32.html">AM32点阵图形调制</a>
+        <a href="./Aqua">MP3编码器</a> / <a href="./html/exam.html">模拟考试</a> / <a href="./html/cw.html">CW练习器</a> / <a href="./html/am32.html">频谱绘图</a>
     </div>
 
     <details>
@@ -288,6 +285,14 @@ a:hover {
     border-right: none;
 }
 
+.RigType {
+    padding: 10px 0 !important;
+    font-weight: bold !important;
+    font-size: 13px !important;
+    letter-spacing: 1px;
+    color: #1ea0f0 !important;
+}
+
 </style>
 <template id="collections">
 
@@ -338,6 +343,9 @@ function TurnToCollectionSection(elementId) {
 <div id="collections_radio_main">
     <div class="RigListContainer">
         <table class="RigList">
+
+            <tr><td class="RigType" colspan="2">收发信机</td></tr>
+
             <tr>
                 <td class="RigName">Icom IC-705</td>
                 <td class="RigInfo">2020年9月12日购。支持在HF/VHF/UHF波段的各业余频段上，以最高10W的功率进行发射。<br><a href="https://www.icomjapan.com/lineup/products/IC-705/" target="_blank">产品支持</a>。型号核准码：2020FP14257。</td>
@@ -350,25 +358,20 @@ function TurnToCollectionSection(elementId) {
                 <td class="RigName">森海克斯8800</td>
                 <td class="RigInfo">2021年2月20日购。支持业余V/U段收发以及调频广播、航空VHF语音接收，最大发射功率5W。<br>型号核准码：2019FP6299。</td>
             </tr>
+
+            <tr><td class="RigType" colspan="2">天线·馈线·天调</td></tr>
+
             <tr>
-                <td class="RigName">HackRF One +<br>PortaPack H2</td>
-                <td class="RigInfo">2021年4月购。详见 <a class="SPA_TRIGGER" data-target="blog/软件无线电">软件无线电</a>。</td>
+                <td class="RigName">Icom AH-705</td>
+                <td class="RigInfo">2021年5月8日购。短波/50MHz自动天线调谐器。可用于IC-705。</td>
             </tr>
             <tr>
-                <td class="RigName">RTL-SDR</td>
-                <td class="RigInfo">2020年8月8日、14日购。详见 <a class="SPA_TRIGGER" data-target="blog/软件无线电">软件无线电</a>。</td>
-            </tr>
-            <tr>
-                <td class="RigName">德生PL-330</td>
-                <td class="RigInfo">详见 <a class="SPA_TRIGGER" data-target="blog/收音机资料汇编">收音机资料汇编</a>。</td>
-            </tr>
-            <tr>
-                <td class="RigName">德生PL-380</td>
-                <td class="RigInfo">详见 <a class="SPA_TRIGGER" data-target="blog/收音机资料汇编">收音机资料汇编</a>。</td>
+                <td class="RigName">JPC-7</td>
+                <td class="RigInfo">短波正V便携天线，支持7～144M业余波段。</td>
             </tr>
             <tr>
                 <td class="RigName">Comet HFJ-350M</td>
-                <td class="RigInfo">短波拉杆天线，支持3.5～50M所有业余短波段。</td>
+                <td class="RigInfo">短波拉杆天线，支持3.5～50M业余短波段。</td>
             </tr>
             <tr>
                 <td class="RigName">Diamond SRJ-770</td>
@@ -390,10 +393,46 @@ function TurnToCollectionSection(elementId) {
                 <td class="RigName">HF20A</td>
                 <td class="RigInfo">单线短波全段行波天线。</td>
             </tr>
+
+            <tr><td class="RigType" colspan="2">软件无线电设备</td></tr>
+
             <tr>
-                <td class="RigName">Icom AH-705</td>
-                <td class="RigInfo">2021年5月8日购。短波/50MHz自动天线调谐器。可用于IC-705。</td>
+                <td class="RigName">HackRF One +<br>PortaPack H2</td>
+                <td class="RigInfo">2021年4月购。详见 <a class="SPA_TRIGGER" data-target="blog/软件无线电">软件无线电</a>。</td>
             </tr>
+            <tr>
+                <td class="RigName">RTL-SDR</td>
+                <td class="RigInfo">2020年8月8日、14日购。详见 <a class="SPA_TRIGGER" data-target="blog/软件无线电">软件无线电</a>。</td>
+            </tr>
+
+            <tr><td class="RigType" colspan="2">广播收音机</td></tr>
+
+            <tr>
+                <td class="RigName">德生PL-330</td>
+                <td class="RigInfo">详见 <a class="SPA_TRIGGER" data-target="blog/收音机资料汇编">收音机资料汇编</a>。</td>
+            </tr>
+            <tr>
+                <td class="RigName">德生PL-380</td>
+                <td class="RigInfo">详见 <a class="SPA_TRIGGER" data-target="blog/收音机资料汇编">收音机资料汇编</a>。</td>
+            </tr>
+
+            <tr><td class="RigType" colspan="2">电源·电池</td></tr>
+
+            <tr>
+                <td class="RigName">PS30SWIV</td>
+                <td class="RigInfo">可调开关电源。</td>
+            </tr>
+            <tr>
+                <td class="RigName">QJ3005N</td>
+                <td class="RigInfo">可调线性电源。</td>
+            </tr>
+            <tr>
+                <td class="RigName">磷酸铁锂电池</td>
+                <td class="RigInfo">若干。</td>
+            </tr>
+
+            <tr><td class="RigType" colspan="2">仪表·工具</td></tr>
+
             <tr>
                 <td class="RigName">NanoVNA</td>
                 <td class="RigInfo">2020年10月10日购。一款廉价的便携式矢量网络分析仪。<details><summary>PCB</summary><img src="image/G9/rigs/nanovna.jpg" class="RigsImage"></details></td>
@@ -536,8 +575,8 @@ function TurnToCollectionSection(elementId) {
                     <img src="image/collections/figure/katou-megumi.jpg" class="FigureImage">
                 </div>
                 <div class="FigureTitle">加藤恵</div>
-                <div class="FigureSubtitle"><span class="CollectionTag">景品</span><span class="CollectionTag">预订中</span></div>
-                <div class="FigureSubtitle">2021年3月预订</div>
+                <div class="FigureSubtitle"><span class="CollectionTag">景品</span></div>
+                <div class="FigureSubtitle">2021年3月预订，5月到货</div>
             </div>
         </td></tr>
     </table>
@@ -1382,7 +1421,7 @@ function TurnToCollectionSection(elementId) {
                 <td colspan="3"><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/业余无线电知识集锦" style="font-weight: bold; font-size: 15px;">【业余无线电知识集锦】</span></td>
             </tr>
             <tr>
-                <td colspan="3"><span style="font-size: 13px; font-weight: 600; color: #1ea0f0;">★ 信息通信原理 ★</span></td>
+                <td colspan="3"><span style="font-size: 13px; font-weight: 600; color: #1ea0f0;">★ 信息·通信·电子·射频 ★</span></td>
             </tr>
             <tr>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/视频编码">视频编码</span></td>
@@ -1398,9 +1437,6 @@ function TurnToCollectionSection(elementId) {
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/无线电接收机">无线电接收机</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/感知通信计算融合">感知通信计算融合</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/前端设计备忘录">Web前端</span></td>
-            </tr>
-            <tr>
-                <td colspan="3"><span style="font-size: 13px; font-weight: 600; color: #1ea0f0;">★ 射频与电子技术 ★</span></td>
             </tr>
             <tr>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/软件无线电">软件无线电</span></td>
@@ -1623,7 +1659,8 @@ a.Weibo::before {
                 <tr><th>12.08</th><td>领取电台执照；首次合法通联。</td></tr>
                 <tr><th>12.13</th><td>首次野外通联（羊山公园）。</td></tr>
                 <tr><th colspan="2" style="text-align: center; padding: 10px 0;">2021年</th></tr>
-                <tr><th>01.12</th><td>电台网站 bd4sur.cc 发布首个正式版本。</td></tr>
+                <tr><th>02.01</th><td>启用 bd4sur.com 域名。</td></tr>
+                <tr><th>05.16</th><td>收到BPM的QSL卡片。</td></tr>
             </table>
             <details style="text-align: left; margin: 20px auto;">
                 <summary style="text-align: center;">新时代大厦铁塔</summary>
@@ -1632,7 +1669,6 @@ a.Weibo::before {
             <details style="text-align: left; margin: 20px auto;">
                 <summary style="text-align: center;">其他事件</summary>
                 <p><strong>2020-08-04</strong> 使用PL-380收听到10MHz的BPM，并发出收听报告。收听到央广中国之声的停机检修音乐。</p>
-                <p><strong>2020-08-05</strong> 电话咨询无线电管理处。</p>
                 <p><strong>2020-08-15</strong> 诸君！深夜守在SDR#前面，观察人类文明在电波频谱上激起的微弱涟漪，这种感觉实在是好极了。希望操作证考试早日恢复，早日领取呼号，早日实现通联，在业余频段也留下属于我的一点涟漪。</p>
                 <p><strong>2020-08-18</strong> 在8484kHz上收听到清晰的CW信号，RST599，报文内容为：CQ CQ CQ DE HLG HLG HLG QSX 8MHZ K。经查询，此电台是韩国首尔海岸电台。<br>在15325kHz上听到NHK国际日语广播，信号59。电波来自八俣送信所（茨城县古河市），同之前听到的“故乡的风”对朝电台。</p>
                 <p><strong>2020-09-16</strong> 晚间，江北发生停电事故，在439.675中继上第一时间听到这个消息。</p>
