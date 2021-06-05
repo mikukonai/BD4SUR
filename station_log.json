@@ -932,5 +932,24 @@
         "qth_self": "天元西路",
 
         "note":     "江苏无协中继点名。"
+    },
+    {
+        "time":     "2021-06-05 19:43",
+        "callsign": "BD4SYG",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "",
+        "ant":      "",
+        "pwr":      "",
+        "qth":      "丁家庄",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "10W",
+        "qth_self": "天元西路",
+
+        "note":     "江苏无协中继点名。"
     }
 ]
