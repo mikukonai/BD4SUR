@@ -324,6 +324,14 @@ function TurnToCollectionSection(elementId) {
 .CollectionSectionSwitch:hover {
     color: #1ea0f0;
 }
+
+.ComputerListToggle {
+    margin: 20px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #234;
+    cursor: pointer;
+}
 </style>
 
 <div class="CollectionNav">
@@ -436,6 +444,29 @@ function TurnToCollectionSection(elementId) {
             <tr>
                 <td class="RigName">NanoVNA</td>
                 <td class="RigInfo">2020年10月10日购。一款廉价的便携式矢量网络分析仪。<details><summary>PCB</summary><img src="image/G9/rigs/nanovna.jpg" class="RigsImage"></details></td>
+            </tr>
+            <tr>
+                <td class="RigName">XXX示波器</td>
+                <td class="RigInfo"></td>
+            </tr>
+        </table>
+
+        <div class="ComputerListToggle" onclick="$(`#ComputerList`).fadeToggle(200);">其他值得一提的电子设备</div>
+
+        <table class="RigList" id="ComputerList">
+
+            <tr><td class="RigType" colspan="2">微型主机</td></tr>
+
+            <tr>
+                <td class="RigName">NUC8i5BEH</td>
+                <td class="RigInfo">1</td>
+            </tr>
+
+            <tr><td class="RigType" colspan="2">家用电器</td></tr>
+
+            <tr>
+                <td class="RigName">NUC8i5BEH</td>
+                <td class="RigInfo">1</td>
             </tr>
         </table>
     </div>
@@ -1327,7 +1358,7 @@ function TurnToCollectionSection(elementId) {
     margin-top: -8px;
 }
 .HorizonContent {
-    font-size: 14px;
+    font-size: 15px;
     padding: 0 10px;
     color: #789;
     background-color: #fff;
@@ -1357,7 +1388,7 @@ function TurnToCollectionSection(elementId) {
             </tr>
         </table>
 
-        <div class="Horizon"><span class="HorizonContent">豆 知 识 拾 零</span></div>
+        <div class="Horizon"><span class="HorizonContent">豆知识拾零</span></div>
 
         <table class="TopArticleTable">
             <tr>
@@ -1394,7 +1425,7 @@ function TurnToCollectionSection(elementId) {
             </tr>
         </table>
 
-        <div class="Horizon"><span class="HorizonContent">专 题 综 述</span></div>
+        <div class="Horizon"><span class="HorizonContent">专题综述</span></div>
 
         <table class="TopArticleTable">
             <tr>
@@ -1414,14 +1445,14 @@ function TurnToCollectionSection(elementId) {
             </tr>
         </table>
 
-        <div class="Horizon"><span class="HorizonContent">信息通信·无线电</span></div>
+        <div class="Horizon"><span class="HorizonContent">业余无线电</span></div>
 
         <table class="TopArticleTable" style="table-layout: fixed;">
             <tr>
                 <td colspan="3"><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/业余无线电知识集锦" style="font-weight: bold; font-size: 15px;">【业余无线电知识集锦】</span></td>
             </tr>
             <tr>
-                <td colspan="3"><span style="font-size: 13px; font-weight: 600; color: #1ea0f0;">★ 信息·通信·电子·射频 ★</span></td>
+                <td colspan="3"><span style="font-size: 13px; font-weight: 600; color: #1ea0f0;">★ 电信理论 ★</span></td>
             </tr>
             <tr>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/视频编码">视频编码</span></td>
@@ -1429,14 +1460,9 @@ function TurnToCollectionSection(elementId) {
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/信号与系统">信号与系统</span></td>
             </tr>
             <tr>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/成像技术">成像技术</span></td>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/采样定理与压缩感知">压缩感知</span></td>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/调制与解调">调制解调</span></td>
-            </tr>
-            <tr>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/无线电接收机">无线电接收机</span></td>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/感知通信计算融合">感知通信计算融合</span></td>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/前端设计备忘录">Web前端</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/调制与编码">调制与编码</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/移动通信">移动通信</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/无线电收发信机">无线电收发信机</span></td>
             </tr>
             <tr>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/软件无线电">软件无线电</span></td>
@@ -1445,13 +1471,8 @@ function TurnToCollectionSection(elementId) {
             </tr>
             <tr>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/开关电源">开关电源</span></td>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/硬件笔记">硬件笔记</span></td>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/GNU-Radio-笔记">GNU Radio 笔记</span></td>
-            </tr>
-            <tr>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/Galileo开发板">Galileo开发板</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/电波传播规律">电波传播规律</span></td>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/波束赋形与信道估计">波束赋形与信道估计</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/前端设计备忘录">Web前端</span></td>
             </tr>
             <tr>
                 <td colspan="3"><span style="font-size: 13px; font-weight: 600; color: #1ea0f0;">★ 设备器材 ★</span></td>
@@ -1462,12 +1483,17 @@ function TurnToCollectionSection(elementId) {
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/收音机资料汇编">收音机资料汇编</span></td>
             </tr>
             <tr>
-                <td colspan="3"><span style="font-size: 13px; font-weight: 600; color: #1ea0f0;">★ 操作经验技巧 ★</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/Galileo开发板">Galileo开发板</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/硬件笔记">硬件笔记</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/磷酸铁锂电池">磷酸铁锂电池</span></td>
+            </tr>
+            <tr>
+                <td colspan="3"><span style="font-size: 13px; font-weight: 600; color: #1ea0f0;">★ 操作实践 ★</span></td>
             </tr>
             <tr>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/业余无线电备忘录">业余无线电备忘录</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/广播与放送文化">广播与放送文化</span></td>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/操作证考试考点速记">操作证考试考点速记</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/野外架台技巧">野外架台技巧</span></td>
             </tr>
         </table>
 
@@ -1646,6 +1672,7 @@ a.Weibo::before {
     </div>
 
     <div class="SectionHeader">电台编年史<div class="SectionHeaderComment">Station Chronicles</div></div>
+    <div class="SectionBody"><img src="image/arbook.jpg" style="width: 300px; margin: 0 auto;"></div>
     <div class="SectionBody">
         <div class="Chronicles">
             <table>
@@ -1702,20 +1729,14 @@ a.Weibo::before {
         </div>
     </div>
 
-    <div class="SectionHeader">图书资料共享<div class="SectionHeaderComment">Book Sharing</div></div>
-    <div class="ContentBlock">
-        <div class="SectionBody"><img src="image/arbook.jpg" style="width: 300px; margin: 0 auto;"></div>
-        <div class="SectionBody">本台收藏有一些关于业余无线电的图书资料，欢迎各位爱好者和对业余无线电感兴趣的朋友们索取。</div>
-        <div class="SectionBody">欢迎持证（照）同好到本台来客席操作。</div>
-    </div>
-
     <div class="SectionHeader">QSL卡片</div>
+    <div class="SectionBody">凡未经本台操作员签名或者加盖呼号印章的卡片<br>均为无效卡片，不能作为通联依据</div>
     <div class="SectionBody">
         <img src="image/G9/QSL-A.png" style="width: 100%; max-width: 400px;">
         <img src="image/G9/QSL-B.png" style="width: 100%; max-width: 400px;">
     </div>
 
-    <div class="SectionBody" style="color:#ff88aa; font-size: 18px; letter-spacing: 2px; margin: 30px 0;">73!</div>
+    <div class="SectionBody" style="color:#ff88aa; font-size: 18px; letter-spacing: 2px; margin: 30px 0;">VY 73!</div>
 
 </template>
 
