@@ -1,0 +1,287 @@
+<!-- Framework Iroha -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../style/framework.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../style/markdown.css" charset="utf-8"/>
+<title>BD4SUR CW Decoder</title>
+<script src="../script/framework/jquery/jquery.min.js"></script>
+
+
+<!--页面自定义样式开始-->
+<style>
+
+
+</style>
+<!--页面自定义样式结束-->
+
+</head>
+<body>
+
+<!--页面内容开始-->
+
+<div style="margin: 50px auto; text-align: center;">
+    <div style="font-size: 20px; font-weight: bold;">CW Morse Code Decoder</div>
+    <div style="font-size: 15px;">BD4SUR</div>
+    <canvas id="visualizer" height="60px"></canvas>
+    <div id="copy" style="font-size: 18px; font-weight: bold;"></div>
+</div>
+
+
+<!--页面内容结束-->
+
+<!--脚本开始-->
+<script src="../script/canvas.js"></script>
+<script>
+
+// 莫尔斯编码表
+const Morse = {
+    "01":   "A",   "1000": "B",  "1010": "C",   "100":  "D",   "0": "E",
+    "0010": "F",   "110":  "G",  "0000": "H",   "00":   "I",   "0111": "J",
+    "101":  "K",   "0100": "L",  "11":   "M",   "10":   "N",   "111": "O",
+    "0110": "P",   "1101": "Q",  "010":  "R",   "000":  "S",   "1": "T",
+    "001":  "U",   "0001": "V",  "011":  "W",   "1001": "X",   "1011": "Y",   "1100": "Z",
+
+    "11111": "0", "01111": "1", "00111": "2", "00011": "3", "00001": "4",
+    "00000": "5", "10000": "6", "11000": "7", "11100": "8", "11110": "9",
+
+    "011010": "@", "001100": "?", "10010": "/", "101101": "()",
+    "100001": "—", "010101": "。"
+};
+
+// 全局变量
+
+const LONG_SIGN_DURATION = 13;
+
+let timer = 0;              // 绝对时钟
+let idleTimer = 0;          // 空闲时间时钟（即没有载波的空闲时间）
+let prevCarrierFreq = -1;   // 上一个出现的载波的量化频点
+let status = -1;            // 状态标识
+let startTime, endTime;     // 某一符号的起始/终止时间戳
+let prevSign = 0;           // 上一个符号（点/划）
+let signString = "";        // 符号序列缓冲
+
+let words = new Array();
+
+// 检测载波的存在性以及位置。不存在明显载波，则返回-1，存在则返回载波频率所落入的量化频点。
+function getCarrierFreq(frame) {
+    // 计算频谱平坦度
+    let avr = 0;
+    for(let f = 0; f < frame.length; f++) {
+        avr += frame[f];
+    }
+    avr /= frame.length;
+
+    let maxIndex = -1;
+    let maxValue = Number.MIN_VALUE;
+    for(let f = 0; f < frame.length; f++) {
+        if(frame[f] > maxValue) {
+            maxIndex = f;
+            maxValue = frame[f];
+        }
+    }
+
+    // TODO 这里的算法非常关键，需要继续研究
+
+    // console.log(avr / maxValue);
+
+    // 如果方差小于某个阈值，则认为频谱平坦，不存在明显的峰值（载波）
+    if(maxValue < 200) {
+        return -1;
+    }
+    // 否则，取谱的最大值所在的量化频点，作为载波所在的频点。
+    else {
+        return maxIndex;
+    }
+}
+
+// 电键按下，即载波出现（从无到有）
+function keydown() {
+    if(status === -1) {
+        status = 0;
+    }
+    else if(status !== 0) {
+        return;
+    }
+
+    startTime = timer;
+    status = 1;
+    // CW Start
+}
+
+// 电键抬起，即载波消失（从有到无）
+function keyup() {
+    // CW End
+    endTime = timer;
+    status = 0;
+
+    let duration = endTime - startTime; // 符号持续时间
+    let sign = 0;
+    if(prevSign === 0 && duration >= LONG_SIGN_DURATION) sign = 1;
+    else if(prevSign === 0 && duration < LONG_SIGN_DURATION) sign = 0;
+    else if(prevSign === 1 && duration < LONG_SIGN_DURATION) sign = 0;
+    else if(prevSign === 1 && duration >= LONG_SIGN_DURATION) sign = 1;
+
+    signString += String(sign);
+    prevSign = sign;
+}
+
+// 译码（触发时机为空闲了一个长划的时间以上）
+function decodeWord() {
+    let morseWord = Morse[signString];
+    signString = "";
+    return morseWord;
+}
+
+
+
+
+function decodeBuffer(frame) {
+
+    let carrierFreq = getCarrierFreq(frame);
+
+    // 前一帧没有载波
+    if(prevCarrierFreq === -1) {
+        // 空闲
+        if(carrierFreq === -1) {
+            idleTimer++;
+        }
+        // 按下电键
+        else {
+            idleTimer = 0;
+            keydown();
+        }
+    }
+    // 前一帧有载波
+    else {
+        // 电键抬起
+        if(carrierFreq === -1) {
+            idleTimer++;
+            keyup();
+        }
+        // 电键继续按下
+        else {
+            idleTimer == 0;
+        }
+    }
+
+    // 空闲时，翻译码字
+    if(idleTimer >= LONG_SIGN_DURATION) {
+        idleTimer = 0;
+        let morseWord = decodeWord();
+        if(morseWord) words.push(morseWord);
+    }
+
+    prevCarrierFreq = carrierFreq;
+    timer++;
+}
+
+
+const canvas = document.querySelector('#visualizer');
+
+let audioCtx;
+const canvasCtx = canvas.getContext("2d");
+
+const constraints = { audio: true };
+
+if(navigator.mediaDevices.getUserMedia) {
+
+    let chunks = [];
+
+    let onSuccess = (stream) => {
+        const mediaRecorder = new MediaRecorder(stream);
+
+        visualize(stream);
+    };
+
+
+    let onError = (err) => {
+        console.log('The following error occured: ' + err);
+    }
+
+
+    navigator.mediaDevices.getUserMedia({
+        audio: true
+    }).then(onSuccess, onError);
+}
+
+
+
+function visualize(stream) {
+    if(!audioCtx) {
+        audioCtx = new AudioContext();
+    }
+
+    const source = audioCtx.createMediaStreamSource(stream);
+
+    const analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 1024;
+    analyser.smoothingTimeConstant = 0;
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    source.connect(analyser);
+
+    let lastLen = 0;
+
+    let listenTimer = setInterval(() => {
+        analyser.getByteFrequencyData(dataArray);
+
+        decodeBuffer(dataArray);
+        if(words.length > 0 && words.length > lastLen) {
+            console.log(words);
+            document.querySelector("#copy").innerHTML = words.join(" ");
+        }
+        lastLen = words.length;
+    }, 20);
+
+    draw();
+
+    function draw() {
+
+        const WIDTH = canvas.width
+        const HEIGHT = canvas.height;
+
+        requestAnimationFrame(draw);
+
+        // analyser.getByteTimeDomainData(dataArray);
+        analyser.getByteFrequencyData(dataArray);
+
+        canvasCtx.fillStyle = "#000";
+        canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+        canvasCtx.lineWidth = 2;
+        canvasCtx.strokeStyle = "#6cf";
+
+        canvasCtx.beginPath();
+
+        let sliceWidth = WIDTH * 1.0 / bufferLength;
+        let x = 0;
+
+        for(let i = 0; i < bufferLength; i++) {
+            let v = dataArray[i] / 128.0;
+            let y = HEIGHT - v * HEIGHT / 2;
+            if(i === 0) {
+                canvasCtx.moveTo(x, y);
+            }
+            else {
+                canvasCtx.lineTo(x, y);
+            }
+            x += sliceWidth;
+        }
+
+        canvasCtx.lineTo(canvas.width, canvas.height / 2);
+        canvasCtx.stroke();
+    }
+
+}
+
+
+
+
+</script>
+<!--脚本结束-->
+
+</body>
+</html>
