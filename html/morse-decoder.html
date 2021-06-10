@@ -24,8 +24,10 @@
 <div style="margin: 50px auto; text-align: center;">
     <div style="font-size: 20px; font-weight: bold;">CW Morse Code Decoder</div>
     <div style="font-size: 15px;">BD4SUR</div>
-    <canvas id="visualizer" height="60px"></canvas>
+    <canvas id="spectrum" style="height: 80px; width: 300px;" height="512px" width="512px"></canvas><br>
+    <canvas id="spectrogram" style="height: 300px; width: 300px;" height="512px" width="512px"></canvas>
     <div id="copy" style="font-size: 18px; font-weight: bold;"></div>
+    <div>2021年6月</div>
 </div>
 
 
@@ -54,6 +56,9 @@ const Morse = {
 
 const LONG_SIGN_DURATION = 13;
 
+const FFT_SIZE = 1024;
+const HALF_FFT_SIZE = FFT_SIZE / 2;
+
 let timer = 0;              // 绝对时钟
 let idleTimer = 0;          // 空闲时间时钟（即没有载波的空闲时间）
 let prevCarrierFreq = -1;   // 上一个出现的载波的量化频点
@@ -62,7 +67,118 @@ let startTime, endTime;     // 某一符号的起始/终止时间戳
 let prevSign = 0;           // 上一个符号（点/划）
 let signString = "";        // 符号序列缓冲
 
+const SPECTROGRAM_LENGTH = 512;
+let spectrogram = [];
+
 let words = new Array();
+
+// HSV转RGB（[0,1]）
+function HSV_to_RGB(h, s, v) {
+    let hi = Math.floor(h / 60);
+    let f = h / 60 - hi;
+    let p = v * (1 - s);
+    let q = v * (1 - f * s);
+    let t = v * (1 - (1 - f) * s);
+    switch(hi) {
+        case 0: return [v, t, p];
+        case 1: return [q, v, p];
+        case 2: return [p, v, t];
+        case 3: return [p, q, v];
+        case 4: return [t, p, v];
+        case 5: return [v, p, q];
+        default: return [0, 0, 0];
+    }
+}
+
+// dB转颜色
+function dB2Color(dB) {
+
+    const MIN = 0;
+    const MAX = 255;
+
+    let ratio = (dB - MIN) / (MAX - MIN);
+    let hue, v;
+    const threshold = 0.12;
+    if(ratio < threshold) {
+        v = 1 - (threshold - ratio) / threshold;
+        hue = (1 - threshold) * (1 - threshold) * 360;
+    }
+    else {
+        v = 1;
+        hue = (1-ratio) * (1-ratio) * 360;
+    }
+    let rgb = HSV_to_RGB(hue, 1, v);
+
+    return [
+        ((rgb[0] * 255) | 0),
+        ((rgb[1] * 255) | 0),
+        ((rgb[2] * 255) | 0)
+    ];
+}
+
+// 绘制声谱图
+function RenderSpectrogram(cvContext, spectrogramBuffer) {
+    let spectLength = spectrogramBuffer.length;
+
+    // 每个像素4个byte(R.G.B.Alpha)
+    let frameBuffer = new Uint8ClampedArray(spectLength * HALF_FFT_SIZE * 4);
+
+    for(let t = 0; t < spectLength; t++) {
+        let spect = spectrogramBuffer[t];
+        // let carrierFreq = getCarrierFreq(spect);
+        // console.log(carrierFreq);
+        // 展开循环（duff's device）
+        for(let i = 0; i < HALF_FFT_SIZE;) {
+            let byteIndex, color;
+            // 以下可以重复
+            byteIndex = ((HALF_FFT_SIZE * (spectLength - t) + i) << 2);
+            color = dB2Color(spect[i]);
+            // if(i === carrierFreq) color = [255,255,255];
+            frameBuffer[  byteIndex  ] = color[0]; frameBuffer[ byteIndex+1 ] = color[1];
+            frameBuffer[ byteIndex+2 ] = color[2]; frameBuffer[ byteIndex+3 ] = 255;
+            i++;
+        }
+    }
+
+    let frame = new ImageData(frameBuffer, HALF_FFT_SIZE, spectLength);
+    cvContext.putImageData(frame, 0, 0);
+}
+
+function RenderSpectrum(cvContext, spect) {
+    const WIDTH = HALF_FFT_SIZE;
+    const HEIGHT = HALF_FFT_SIZE;
+
+    let spectLength = spect.length;
+
+    cvContext.fillStyle = "#000";
+    cvContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+    cvContext.lineWidth = 2;
+    cvContext.strokeStyle = "#fff";
+
+    cvContext.beginPath();
+
+    let sliceWidth = WIDTH * 1.0 / spectLength;
+    let x = 0;
+
+    for(let i = 0; i < spectLength; i++) {
+        let v = spect[i] / 128.0;
+        let y = HEIGHT - v * HEIGHT / 2;
+        if(i === 0) {
+            cvContext.moveTo(x, y);
+        }
+        else {
+            cvContext.lineTo(x, y);
+        }
+        x += sliceWidth;
+    }
+
+    cvContext.lineTo(WIDTH, HEIGHT);
+    cvContext.lineTo(0, HEIGHT);
+    // cvContext.stroke();
+    cvContext.fillStyle = "#6cf";
+    cvContext.fill();
+}
 
 // 检测载波的存在性以及位置。不存在明显载波，则返回-1，存在则返回载波频率所落入的量化频点。
 function getCarrierFreq(frame) {
@@ -94,6 +210,7 @@ function getCarrierFreq(frame) {
     else {
         return maxIndex;
     }
+
 }
 
 // 电键按下，即载波出现（从无到有）
@@ -178,10 +295,12 @@ function decodeBuffer(frame) {
 }
 
 
-const canvas = document.querySelector('#visualizer');
+const cvSpectrogram = document.querySelector('#spectrogram');
+const cvSpectrum = document.querySelector('#spectrum');
 
 let audioCtx;
-const canvasCtx = canvas.getContext("2d");
+const cvCtxSpectrogram = cvSpectrogram.getContext("2d");
+const cvCtxSpectrum = cvSpectrum.getContext("2d");
 
 const constraints = { audio: true };
 
@@ -216,7 +335,7 @@ function visualize(stream) {
     const source = audioCtx.createMediaStreamSource(stream);
 
     const analyser = audioCtx.createAnalyser();
-    analyser.fftSize = 1024;
+    analyser.fftSize = FFT_SIZE;
     analyser.smoothingTimeConstant = 0;
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
@@ -228,52 +347,20 @@ function visualize(stream) {
     let listenTimer = setInterval(() => {
         analyser.getByteFrequencyData(dataArray);
 
-        decodeBuffer(dataArray);
+        let frame = Array.from(dataArray);
+
+        spectrogram.push(frame);
+        if(spectrogram.length > SPECTROGRAM_LENGTH) spectrogram.shift();
+        RenderSpectrum(cvCtxSpectrum, frame)
+        RenderSpectrogram(cvCtxSpectrogram, spectrogram);
+
+        decodeBuffer(frame);
         if(words.length > 0 && words.length > lastLen) {
             console.log(words);
             document.querySelector("#copy").innerHTML = words.join(" ");
         }
         lastLen = words.length;
     }, 20);
-
-    draw();
-
-    function draw() {
-
-        const WIDTH = canvas.width
-        const HEIGHT = canvas.height;
-
-        requestAnimationFrame(draw);
-
-        // analyser.getByteTimeDomainData(dataArray);
-        analyser.getByteFrequencyData(dataArray);
-
-        canvasCtx.fillStyle = "#000";
-        canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-
-        canvasCtx.lineWidth = 2;
-        canvasCtx.strokeStyle = "#6cf";
-
-        canvasCtx.beginPath();
-
-        let sliceWidth = WIDTH * 1.0 / bufferLength;
-        let x = 0;
-
-        for(let i = 0; i < bufferLength; i++) {
-            let v = dataArray[i] / 128.0;
-            let y = HEIGHT - v * HEIGHT / 2;
-            if(i === 0) {
-                canvasCtx.moveTo(x, y);
-            }
-            else {
-                canvasCtx.lineTo(x, y);
-            }
-            x += sliceWidth;
-        }
-
-        canvasCtx.lineTo(canvas.width, canvas.height / 2);
-        canvasCtx.stroke();
-    }
 
 }
 
