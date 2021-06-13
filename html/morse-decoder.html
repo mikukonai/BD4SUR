@@ -23,11 +23,14 @@
 
 <div style="margin: 50px auto; text-align: center;">
     <div style="font-size: 20px; font-weight: bold;">CW Morse Code Decoder</div>
-    <div style="font-size: 15px;">BD4SUR</div>
-    <canvas id="spectrum" style="height: 80px; width: 300px;" height="512px" width="512px"></canvas><br>
+    <div style="font-size: 15px;">BD4SUR / 2021.6</div>
+    <canvas id="spectrum" style="height: 150px; width: 300px;" height="256px" width="512px"></canvas><br>
     <canvas id="spectrogram" style="height: 300px; width: 300px;" height="512px" width="512px"></canvas>
     <div id="copy" style="font-size: 18px; font-weight: bold;"></div>
-    <div>2021年6月</div>
+    <div id="sbEnergy"></div>
+    <table id="sbDecode" style="font-size: 13px;">
+
+    </div>
 </div>
 
 
@@ -54,23 +57,42 @@ const Morse = {
 
 // 全局变量
 
-const LONG_SIGN_DURATION = 13;
+const LONG_SIGN_DURATION = 200; // ms
 
 const FFT_SIZE = 1024;
 const HALF_FFT_SIZE = FFT_SIZE / 2;
 
-let timer = 0;              // 绝对时钟
-let idleTimer = 0;          // 空闲时间时钟（即没有载波的空闲时间）
-let prevCarrierFreq = -1;   // 上一个出现的载波的量化频点
-let status = -1;            // 状态标识
-let startTime, endTime;     // 某一符号的起始/终止时间戳
-let prevSign = 0;           // 上一个符号（点/划）
-let signString = "";        // 符号序列缓冲
+const SUBBAND_WIDTH = 32;
+const SUBBAND_NUMBER = HALF_FFT_SIZE / SUBBAND_WIDTH;
+
+const DEBOUNCE_DELAY = 40;      // 边沿防抖延时
+
+const ABSOLUTE_THRESHOLD = 100; // 绝对判定门限：低于这个值的不作为有效的信号
+const TRIGGER_THRESHOLD = 50;   // 边沿触发门限
+
+let idleTimer = [];          // 空闲时间时钟（即没有载波的空闲时间）
+let prevCarrierFreq = [];   // 上一个出现的载波的量化频点
+let status = [];            // 状态标识
+let startTime = [];
+let endTime = [];     // 某一符号的起始/终止时间戳
+let prevSign = [];           // 上一个符号（点/划）
+let signString = [];        // 符号序列缓冲
 
 const SPECTROGRAM_LENGTH = 512;
 let spectrogram = [];
 
 let words = new Array();
+
+for(let sb = 0; sb < SUBBAND_NUMBER; sb++) {
+    $("#sbDecode").append(`<tr><td>SB_${sb}</td><td id="sb_${sb}"></td></tr>`);
+}
+
+
+// 推入队列
+function pushIntoBuffer(element, buffer, bufferLength) {
+    buffer.push(element);
+    if(buffer.length > bufferLength) buffer.shift();
+}
 
 // HSV转RGB（[0,1]）
 function HSV_to_RGB(h, s, v) {
@@ -125,15 +147,12 @@ function RenderSpectrogram(cvContext, spectrogramBuffer) {
 
     for(let t = 0; t < spectLength; t++) {
         let spect = spectrogramBuffer[t];
-        // let carrierFreq = getCarrierFreq(spect);
-        // console.log(carrierFreq);
         // 展开循环（duff's device）
         for(let i = 0; i < HALF_FFT_SIZE;) {
             let byteIndex, color;
             // 以下可以重复
             byteIndex = ((HALF_FFT_SIZE * (spectLength - t) + i) << 2);
             color = dB2Color(spect[i]);
-            // if(i === carrierFreq) color = [255,255,255];
             frameBuffer[  byteIndex  ] = color[0]; frameBuffer[ byteIndex+1 ] = color[1];
             frameBuffer[ byteIndex+2 ] = color[2]; frameBuffer[ byteIndex+3 ] = 255;
             i++;
@@ -144,9 +163,9 @@ function RenderSpectrogram(cvContext, spectrogramBuffer) {
     cvContext.putImageData(frame, 0, 0);
 }
 
-function RenderSpectrum(cvContext, spect) {
+function RenderSpectrumAndPeaks(cvContext, spect, peaks) {
     const WIDTH = HALF_FFT_SIZE;
-    const HEIGHT = HALF_FFT_SIZE;
+    const HEIGHT = HALF_FFT_SIZE / 2;
 
     let spectLength = spect.length;
 
@@ -178,6 +197,75 @@ function RenderSpectrum(cvContext, spect) {
     // cvContext.stroke();
     cvContext.fillStyle = "#6cf";
     cvContext.fill();
+
+
+
+    // 绘制峰值点
+    for(let i = 0; i < peaks.length; i++) {
+        let peakIndex = peaks[i];
+        x = sliceWidth * peakIndex;
+        let y = HEIGHT - (spect[peakIndex] / 128.0) * HEIGHT / 2;
+        cvContext.lineWidth = 3;
+        cvContext.strokeStyle = "#ff0";
+        cvContext.beginPath();
+        cvContext.arc(x, y, 3, 0, 2 * Math.PI);
+        cvContext.stroke();
+    }
+}
+
+
+// 计算序列的滑动平均
+function movingAverage(input, windowLength) {
+    let output = [];
+    output[0] = input[0];
+    // 计算序列的前(windowLength-1)个点的平均
+    for(let t = 1; t < windowLength - 1; t++) {
+        let sum = 0;
+        for(let i = 0; i <= t; i++) {
+            sum += input[i];
+        }
+        output[t] = sum / t;
+    }
+    // 计算序列从下标为(windowLength-1)的点开始的其余点的滑动平均
+    for(let t = (windowLength - 1); t < input.length; t++) {
+        let sum = 0;
+        for(let i = t - (windowLength - 1); i <= t; i++) {
+            sum += input[i];
+        }
+        output[t] = sum / windowLength;
+    }
+    return output;
+}
+
+// 峰值检测
+function detectPeaks(input) {
+    // 自适应阈值：以序列的滑动平均线往上一段距离为峰值判定阈值
+    let thresholds = movingAverage(input, Math.ceil(input.length / 50));
+    const offset = 10;
+
+    let peaks = [];
+    let peakValue = Number.MIN_VALUE;
+    let peakIndex = -1;
+    for(let t = 0; t < input.length; t++) {
+        let value = input[t];
+        if(value > thresholds[t] + offset) {
+            if(value > peakValue) {
+                peakValue = value;
+                peakIndex = t;
+            }
+        }
+        else if(peakIndex > -1) {
+            peaks.push(peakIndex);
+            peakIndex = -1;
+            peakValue = Number.MIN_VALUE;
+        }
+    }
+
+    if(peakIndex > -1) {
+        peaks.push(peakIndex);
+    }
+
+    return peaks;
 }
 
 // 检测载波的存在性以及位置。不存在明显载波，则返回-1，存在则返回载波频率所落入的量化频点。
@@ -214,85 +302,46 @@ function getCarrierFreq(frame) {
 }
 
 // 电键按下，即载波出现（从无到有）
-function keydown() {
-    if(status === -1) {
-        status = 0;
+function keydown(index) {
+    if(status[index] === undefined) {
+        status[index] = 0;
     }
-    else if(status !== 0) {
+    else if(status[index] !== 0) {
         return;
     }
 
-    startTime = timer;
-    status = 1;
+    startTime[index] = new Date().getTime();
+    status[index] = 1;
     // CW Start
 }
 
 // 电键抬起，即载波消失（从有到无）
-function keyup() {
+function keyup(index) {
     // CW End
-    endTime = timer;
-    status = 0;
+    endTime[index] = new Date().getTime();
+    status[index] = 0;
 
-    let duration = endTime - startTime; // 符号持续时间
+    let duration = endTime[index] - startTime[index]; // 符号持续时间
     let sign = 0;
-    if(prevSign === 0 && duration >= LONG_SIGN_DURATION) sign = 1;
-    else if(prevSign === 0 && duration < LONG_SIGN_DURATION) sign = 0;
-    else if(prevSign === 1 && duration < LONG_SIGN_DURATION) sign = 0;
-    else if(prevSign === 1 && duration >= LONG_SIGN_DURATION) sign = 1;
+    let signPrev = (prevSign[index] === undefined) ? 0 : prevSign[index];
+    if(signPrev === 0 && duration >= LONG_SIGN_DURATION) sign = 1;
+    else if(signPrev === 0 && duration < LONG_SIGN_DURATION) sign = 0;
+    else if(signPrev === 1 && duration < LONG_SIGN_DURATION) sign = 0;
+    else if(signPrev === 1 && duration >= LONG_SIGN_DURATION) sign = 1;
 
-    signString += String(sign);
-    prevSign = sign;
+    if(signString[index] === undefined) signString[index] = "";
+    signString[index] += String(sign);
+    prevSign[index] = sign;
 }
 
 // 译码（触发时机为空闲了一个长划的时间以上）
-function decodeWord() {
-    let morseWord = Morse[signString];
-    signString = "";
+function decodeWord(index) {
+    let morseWord = Morse[signString[index]];
+    signString[index] = "";
     return morseWord;
 }
 
 
-
-
-function decodeBuffer(frame) {
-
-    let carrierFreq = getCarrierFreq(frame);
-
-    // 前一帧没有载波
-    if(prevCarrierFreq === -1) {
-        // 空闲
-        if(carrierFreq === -1) {
-            idleTimer++;
-        }
-        // 按下电键
-        else {
-            idleTimer = 0;
-            keydown();
-        }
-    }
-    // 前一帧有载波
-    else {
-        // 电键抬起
-        if(carrierFreq === -1) {
-            idleTimer++;
-            keyup();
-        }
-        // 电键继续按下
-        else {
-            idleTimer == 0;
-        }
-    }
-
-    // 空闲时，翻译码字
-    if(idleTimer >= LONG_SIGN_DURATION) {
-        idleTimer = 0;
-        let morseWord = decodeWord();
-        if(morseWord) words.push(morseWord);
-    }
-
-    prevCarrierFreq = carrierFreq;
-    timer++;
-}
 
 
 const cvSpectrogram = document.querySelector('#spectrogram');
@@ -311,7 +360,7 @@ if(navigator.mediaDevices.getUserMedia) {
     let onSuccess = (stream) => {
         const mediaRecorder = new MediaRecorder(stream);
 
-        visualize(stream);
+        decodeAndVisualize(stream);
     };
 
 
@@ -327,7 +376,7 @@ if(navigator.mediaDevices.getUserMedia) {
 
 
 
-function visualize(stream) {
+function decodeAndVisualize(stream) {
     if(!audioCtx) {
         audioCtx = new AudioContext();
     }
@@ -344,23 +393,112 @@ function visualize(stream) {
 
     let lastLen = 0;
 
+    let prevEdgeTimestamp = [];
+
+    let subbandFrameBuffer = [];
+
     let listenTimer = setInterval(() => {
         analyser.getByteFrequencyData(dataArray);
 
         let frame = Array.from(dataArray);
+        // let frame = movingAverage(dataArray, 2); // 滑动平均
+        let peaks = detectPeaks(frame);          // 峰值所在的量化频点
 
-        spectrogram.push(frame);
-        if(spectrogram.length > SPECTROGRAM_LENGTH) spectrogram.shift();
-        RenderSpectrum(cvCtxSpectrum, frame)
+        // 对频谱作降采样，取带内最大值
+        let subbandFrame = [];
+        for(let i = 0; i < HALF_FFT_SIZE; i += SUBBAND_WIDTH) {
+            let indexFrom = i;
+            let indexTo = i + SUBBAND_WIDTH;
+            let max = 0;
+            for(let j = indexFrom; j < indexTo; j++) {
+                if(frame[j] > max) max = frame[j];
+            }
+            subbandFrame.push(max);
+        }
+        pushIntoBuffer(subbandFrame, subbandFrameBuffer, 100);
+
+/*
+        let quantFrame = [];
+        for(let i = 0; i < HALF_FFT_SIZE; i++) {
+            let index = Math.floor(i / SUBBAND_WIDTH);
+            quantFrame[i] = subbandFrame[index];
+        }
+
+        // 检测每个子带的载波存在情况
+        const activeThreshold = 50; // 判定载波存在的阈值
+        let sbEnergy = [];
+        for(let i = 0; i < SUBBAND_NUMBER; i++) {
+            let energy = 0;
+            for(let t = 0; t < subbandFrameBuffer.length; t++) {
+                energy += subbandFrameBuffer[t][i];
+            }
+            sbEnergy[i] = Math.round(energy / subbandFrameBuffer.length);
+        }
+        $("#sbEnergy").html(JSON.stringify(sbEnergy));
+*/
+
+        // 分子带检测边沿
+
+        for(let i = 0; i < SUBBAND_NUMBER; i++) {
+            let currentTimestamp = new Date().getTime();
+            let currentSubband = subbandFrameBuffer[subbandFrameBuffer.length-1][i];
+
+            if(currentSubband < ABSOLUTE_THRESHOLD) {
+                continue;
+            }
+
+            if(currentTimestamp - prevEdgeTimestamp[i] <= 40) {
+                continue;
+            }
+
+            // 前面若干点的滑动平均
+            let avr = 0;
+            const wlen = 4;
+            for(let t = (subbandFrameBuffer.length - 2 - wlen); t < (subbandFrameBuffer.length - 2); t++) {
+                avr += subbandFrameBuffer[t][i];
+            }
+            avr /= wlen;
+
+            let delta = currentSubband - avr;
+
+            // keydown
+            if(delta > TRIGGER_THRESHOLD) {
+                delta = 128;
+                idleTimer[i] = Number.MAX_SAFE_INTEGER;
+                keydown(i);
+                console.log(`${i} down`);
+                prevEdgeTimestamp[i] = currentTimestamp;
+            }
+            // keyup
+            else if(delta < -TRIGGER_THRESHOLD){
+                delta = 255;
+                idleTimer[i] = new Date().getTime();
+                keyup(i);
+                console.log(`${i} up`);
+                prevEdgeTimestamp[i] = currentTimestamp;
+            }
+            else {
+                delta = 0;
+            }
+        }
+
+        // 对每个子带进行解码
+        for(let i = 0; i < SUBBAND_NUMBER; i++) {
+            if(new Date().getTime() - idleTimer[i] > LONG_SIGN_DURATION) {
+                idleTimer[i] = Number.MAX_SAFE_INTEGER;
+                let morseWord = decodeWord(i);
+                if(morseWord)
+                    $(`#sb_${i}`).append(morseWord);
+            }
+        }
+
+        // pushIntoBuffer(quantFrame, spectrogram, SPECTROGRAM_LENGTH);
+        pushIntoBuffer(frame, spectrogram, SPECTROGRAM_LENGTH);
+
+        RenderSpectrumAndPeaks(cvCtxSpectrum, frame, peaks);
         RenderSpectrogram(cvCtxSpectrogram, spectrogram);
 
-        decodeBuffer(frame);
-        if(words.length > 0 && words.length > lastLen) {
-            console.log(words);
-            document.querySelector("#copy").innerHTML = words.join(" ");
-        }
-        lastLen = words.length;
-    }, 20);
+    }, 10);
 
 }
 
