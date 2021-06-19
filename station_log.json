@@ -969,6 +969,25 @@
         "pwr_self": "5W",
         "qth_self": "天元西路",
 
-        "note":     "江苏无协中继频率（直频）点名"
+        "note":     "江苏无协中继频率（直频）点名。"
+    },
+    {
+        "time":     "2021-06-19 19:37",
+        "callsign": "BD4REC",
+        "freq":     "439.675R",
+        "mode":     "NFM",
+        "rst":      "59/59",
+
+        "rig":      "Yaesu 8800",
+        "ant":      "华鸿1.2m玻璃钢天线",
+        "pwr":      "5W",
+        "qth":      "天印大道",
+
+        "rig_self": "IC-705",
+        "ant_self": "SRJ770",
+        "pwr_self": "5W",
+        "qth_self": "天元西路",
+
+        "note":     "江苏无协中继点名。"
     }
 ]
