@@ -57,7 +57,8 @@ const Morse = {
 
 // 全局变量
 
-const LONG_SIGN_DURATION = 200; // ms
+const LONG_SIGN_DURATION = 100; // ms
+const SHORT_SIGN_DURATION = 80; // ms
 
 const FFT_SIZE = 1024;
 const HALF_FFT_SIZE = FFT_SIZE / 2;
@@ -65,7 +66,7 @@ const HALF_FFT_SIZE = FFT_SIZE / 2;
 const SUBBAND_WIDTH = 32;
 const SUBBAND_NUMBER = HALF_FFT_SIZE / SUBBAND_WIDTH;
 
-const DEBOUNCE_DELAY = 40;      // 边沿防抖延时
+const DEBOUNCE_DELAY = 30;      // 边沿防抖延时
 
 const ABSOLUTE_THRESHOLD = 100; // 绝对判定门限：低于这个值的不作为有效的信号
 const TRIGGER_THRESHOLD = 50;   // 边沿触发门限
@@ -237,6 +238,25 @@ function movingAverage(input, windowLength) {
     return output;
 }
 
+// 计算频谱平坦度（维纳熵）
+// https://en.wikipedia.org/wiki/Spectral_flatness
+function spectrumFlatness(input) {
+    let temp1 = 0, temp2 = 0;
+    let xrlen = 0;
+    for(let i = 0; i < input.length; i++) {
+        if(input[i] === 0) continue;
+        let sqr = input[i] * input[i];
+        temp1 += Math.log(sqr);
+        temp2 += sqr;
+        xrlen++;
+    }
+    if(temp2 === 0) return 1;
+    temp1 /= xrlen;
+    temp1 = Math.exp(temp1);
+    temp2 /= xrlen;
+    return 10 * Math.log10(temp1 / temp2);
+}
+
 // 峰值检测
 function detectPeaks(input) {
     // 自适应阈值：以序列的滑动平均线往上一段距离为峰值判定阈值
@@ -265,41 +285,45 @@ function detectPeaks(input) {
         peaks.push(peakIndex);
     }
 
+    // 对峰值点重排序
+    peaks.sort((a, b) => {
+        return input[b] - input[a];
+    })
+
     return peaks;
 }
 
-// 检测载波的存在性以及位置。不存在明显载波，则返回-1，存在则返回载波频率所落入的量化频点。
-function getCarrierFreq(frame) {
-    // 计算频谱平坦度
-    let avr = 0;
-    for(let f = 0; f < frame.length; f++) {
-        avr += frame[f];
+
+// 判断一个频点（一般是峰值点）是否是载波
+function isCarrier(spectrum, index) {
+    if(index < 0 || index >= spectrum.length) return false;
+    // 检查这个峰值是否够陡
+    let value = spectrum[index];
+
+    let left1 = spectrum[index - 1] || 0;
+    let left2 = spectrum[index - 2] || 0;
+    let left3 = spectrum[index - 3] || 0;
+    let left4 = spectrum[index - 4] || 0;
+    let right1 = spectrum[index + 1] || 0;
+    let right2 = spectrum[index + 2] || 0;
+    let right3 = spectrum[index + 3] || 0;
+    let right4 = spectrum[index + 4] || 0;
+
+    let d1 = value - left1;
+    let d2 = value - left2;
+    let d3 = value - left3;
+    let d4 = value - left4;
+    let d5 = value - right1;
+    let d6 = value - right2;
+    let d7 = value - right3;
+    let d8 = value - right4;
+
+    if(Math.max(d1, d2, d3, d4, d5, d6, d7, d8) >= TRIGGER_THRESHOLD) {
+        return true;
     }
-    avr /= frame.length;
-
-    let maxIndex = -1;
-    let maxValue = Number.MIN_VALUE;
-    for(let f = 0; f < frame.length; f++) {
-        if(frame[f] > maxValue) {
-            maxIndex = f;
-            maxValue = frame[f];
-        }
-    }
-
-    // TODO 这里的算法非常关键，需要继续研究
-
-    // console.log(avr / maxValue);
-
-    // 如果方差小于某个阈值，则认为频谱平坦，不存在明显的峰值（载波）
-    if(maxValue < 200) {
-        return -1;
-    }
-    // 否则，取谱的最大值所在的量化频点，作为载波所在的频点。
-    else {
-        return maxIndex;
-    }
-
+    else return false;
 }
+
 
 // 电键按下，即载波出现（从无到有）
 function keydown(index) {
@@ -325,8 +349,8 @@ function keyup(index) {
     let sign = 0;
     let signPrev = (prevSign[index] === undefined) ? 0 : prevSign[index];
     if(signPrev === 0 && duration >= LONG_SIGN_DURATION) sign = 1;
-    else if(signPrev === 0 && duration < LONG_SIGN_DURATION) sign = 0;
-    else if(signPrev === 1 && duration < LONG_SIGN_DURATION) sign = 0;
+    else if(signPrev === 0 && duration <= SHORT_SIGN_DURATION) sign = 0;
+    else if(signPrev === 1 && duration <= SHORT_SIGN_DURATION) sign = 0;
     else if(signPrev === 1 && duration >= LONG_SIGN_DURATION) sign = 1;
 
     if(signString[index] === undefined) signString[index] = "";
@@ -402,7 +426,28 @@ function decodeAndVisualize(stream) {
 
         let frame = Array.from(dataArray);
         // let frame = movingAverage(dataArray, 2); // 滑动平均
-        let peaks = detectPeaks(frame);          // 峰值所在的量化频点
+
+        // 转回线性值
+        for(let i = 0; i < frame.length; i++) {
+            let v = (frame[i] / 255);
+            frame[i] = v * v * v * 255;
+        }
+
+        // 计算频谱的方差
+        let variant = spectrumFlatness(frame);
+
+
+        // 寻找峰值点
+        let peaks = [];
+        let peakValue = 0;
+
+        if(variant < -6.2) {
+            peaks = detectPeaks(frame).slice(0, 1);
+            peakValue = frame[peaks[0]];
+        }
+
+        // console.log(variant);
+
 
         // 对频谱作降采样，取带内最大值
         let subbandFrame = [];
@@ -442,12 +487,36 @@ function decodeAndVisualize(stream) {
         for(let i = 0; i < SUBBAND_NUMBER; i++) {
             let currentTimestamp = new Date().getTime();
             let currentSubband = subbandFrameBuffer[subbandFrameBuffer.length-1][i];
+            let prevSubband = subbandFrameBuffer[subbandFrameBuffer.length-2][i];
 
+            // 阈值判决
+            if(prevSubband >= ABSOLUTE_THRESHOLD && currentSubband >= ABSOLUTE_THRESHOLD) {
+                // on
+            }
+            else if(prevSubband >= ABSOLUTE_THRESHOLD && currentSubband < ABSOLUTE_THRESHOLD) {
+                // keyup
+                idleTimer[i] = new Date().getTime();
+                keyup(i);
+                // console.log(`${i} up`);
+                prevEdgeTimestamp[i] = currentTimestamp;
+            }
+            else if(prevSubband < ABSOLUTE_THRESHOLD && currentSubband < ABSOLUTE_THRESHOLD) {
+                // off
+            }
+            else if(prevSubband < ABSOLUTE_THRESHOLD && currentSubband >= ABSOLUTE_THRESHOLD) {
+                // keydown
+                idleTimer[i] = Number.MAX_SAFE_INTEGER;
+                keydown(i);
+                // console.log(`${i} down`);
+                prevEdgeTimestamp[i] = currentTimestamp;
+            }
+            
+/*
             if(currentSubband < ABSOLUTE_THRESHOLD) {
                 continue;
             }
 
-            if(currentTimestamp - prevEdgeTimestamp[i] <= 40) {
+            if(currentTimestamp - prevEdgeTimestamp[i] <= DEBOUNCE_DELAY) {
                 continue;
             }
 
@@ -480,6 +549,7 @@ function decodeAndVisualize(stream) {
             else {
                 delta = 0;
             }
+            */
         }
 
         // 对每个子带进行解码
@@ -498,7 +568,7 @@ function decodeAndVisualize(stream) {
         RenderSpectrumAndPeaks(cvCtxSpectrum, frame, peaks);
         RenderSpectrogram(cvCtxSpectrogram, spectrogram);
 
-    }, 10);
+    }, 5);
 
 }
 
