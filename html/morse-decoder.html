@@ -27,7 +27,10 @@
     <canvas id="spectrum" style="height: 150px; width: 300px;" height="256px" width="512px"></canvas><br>
     <canvas id="spectrogram" style="height: 300px; width: 300px;" height="512px" width="512px"></canvas>
     <div id="copy" style="font-size: 18px; font-weight: bold;"></div>
-    <div id="sbEnergy"></div>
+    <div id="indicator" style="font-size: 18px;">◉</div>
+    <div>频谱平坦度 = <span id="spectrumFlatness"></span></div>
+    <div>载波频率 = <span id="carrierFreq"></span></div>
+    <div>边沿delta = <span id="delta"></span></div>
     <table id="sbDecode" style="font-size: 13px;">
 
     </div>
@@ -68,8 +71,8 @@ const SUBBAND_NUMBER = HALF_FFT_SIZE / SUBBAND_WIDTH;
 
 const DEBOUNCE_DELAY = 30;      // 边沿防抖延时
 
-const ABSOLUTE_THRESHOLD = 100; // 绝对判定门限：低于这个值的不作为有效的信号
-const TRIGGER_THRESHOLD = 50;   // 边沿触发门限
+const ABSOLUTE_THRESHOLD = 180; // 绝对判定门限：低于这个值的不作为有效的信号
+const TRIGGER_THRESHOLD = 70;   // 边沿触发门限
 
 let idleTimer = [];          // 空闲时间时钟（即没有载波的空闲时间）
 let prevCarrierFreq = [];   // 上一个出现的载波的量化频点
@@ -238,7 +241,7 @@ function movingAverage(input, windowLength) {
     return output;
 }
 
-// 计算频谱平坦度（维纳熵）
+// 计算频谱平坦度（维纳熵），越小（绝对值越大）说明越不平坦
 // https://en.wikipedia.org/wiki/Spectral_flatness
 function spectrumFlatness(input) {
     let temp1 = 0, temp2 = 0;
@@ -421,6 +424,14 @@ function decodeAndVisualize(stream) {
 
     let subbandFrameBuffer = [];
 
+    let peakBuffer = [];
+    let maskedPeakBuffer = [];
+
+    let sfBuffer = []; // 频谱平坦度
+    let deltaBuffer = []; // 边沿delta
+
+    let peakDist = []; // 统计载波频率的分布，用于确定CW载波
+
     let listenTimer = setInterval(() => {
         analyser.getByteFrequencyData(dataArray);
 
@@ -434,21 +445,125 @@ function decodeAndVisualize(stream) {
         }
 
         // 计算频谱的方差
-        let variant = spectrumFlatness(frame);
-
+        let variant = spectrumFlatness(frame.slice(0, 100));
+        $("#spectrumFlatness").html(Math.round(variant));
+        pushIntoBuffer(-Math.round(variant), sfBuffer, 200);
 
         // 寻找峰值点
         let peaks = [];
         let peakValue = 0;
 
-        if(variant < -6.2) {
+        // if(variant < -6.2) {
             peaks = detectPeaks(frame).slice(0, 1);
+            peakFreq = peaks[0];
             peakValue = frame[peaks[0]];
+        // }
+
+        if(!peakDist[peakFreq]) {
+            peakDist[peakFreq] = 1;
+        }
+        // else if(peakDist[peakFreq] > 200) {
+        //     peakDist[peakFreq] = 0;
+        // }
+        else {
+            peakDist[peakFreq]++;
+        }
+        
+        // 统计载波分布
+        let carrierFreq = 0;
+        let freqCount = Number.MIN_VALUE;
+        for(let i = 0; i < peakDist.length; i++) {
+            if(peakDist[i] > freqCount) {
+                freqCount = peakDist[i];
+                carrierFreq = i;
+            }
         }
 
-        // console.log(variant);
+        $("#carrierFreq").html(carrierFreq);
+
+        let carrierValue = Math.max(frame[carrierFreq-1], frame[carrierFreq], frame[carrierFreq+1]);
 
 
+        let sbIndex = Math.floor(peakFreq / SUBBAND_WIDTH);
+        let sbFrom = sbIndex * SUBBAND_WIDTH;
+        let sbTo = (sbIndex + 1) * SUBBAND_WIDTH - 1;
+
+        pushIntoBuffer(carrierValue, peakBuffer, 200);
+
+        // 计算掩蔽阈值
+        const maskThresholds = [1, 0.6, 0.3, 0.15, 0.05];
+        const maskLength = maskThresholds.length;
+        let maskTh = Number.MIN_VALUE;
+        for(let i = 1; i < maskLength; i++) {
+            let th = peakBuffer[peakBuffer.length - i] * maskThresholds[i];
+            if(th >= maskTh) maskTh = th;
+        }
+
+        // 判断当前点是否被掩蔽
+        let currentPeakValue = 0;
+
+        if(carrierValue >= maskTh) {
+            currentPeakValue = carrierValue;
+        }
+        else {
+            currentPeakValue = 0;
+        }
+
+        // 前面若干点的滑动平均
+        let avr = 0;
+        const wlen = 4;
+        for(let t = (maskedPeakBuffer.length - 2 - wlen); t < (maskedPeakBuffer.length - 2); t++) {
+            avr += maskedPeakBuffer[t];
+        }
+        avr /= wlen;
+
+        let delta = currentPeakValue - avr;
+        pushIntoBuffer(Math.abs(delta), deltaBuffer, 200);
+        $("#delta").html(Math.round(delta));
+
+        let prevMaskedPeakValue = maskedPeakBuffer[maskedPeakBuffer.length - 1];
+
+        let currentTimestamp = new Date().getTime();
+
+        // 阈值判决
+        if(prevMaskedPeakValue >= ABSOLUTE_THRESHOLD && currentPeakValue >= ABSOLUTE_THRESHOLD) {
+        // if(Math.abs(delta) < TRIGGER_THRESHOLD && currentPeakValue >= ABSOLUTE_THRESHOLD) {
+            // on
+        }
+        else if(prevMaskedPeakValue >= ABSOLUTE_THRESHOLD && currentPeakValue < ABSOLUTE_THRESHOLD) {
+        // else if(delta < -TRIGGER_THRESHOLD && currentPeakValue < ABSOLUTE_THRESHOLD) {
+            // keyup
+            idleTimer[2] = new Date().getTime();
+            keyup(2);
+            $("#indicator").css("color", "#fff");
+            prevEdgeTimestamp[2] = currentTimestamp;
+        }
+        else if(prevMaskedPeakValue < ABSOLUTE_THRESHOLD && currentPeakValue < ABSOLUTE_THRESHOLD) {
+        // else if(Math.abs(delta) < TRIGGER_THRESHOLD && currentPeakValue < ABSOLUTE_THRESHOLD) {
+            // off
+        }
+        else if(prevMaskedPeakValue < ABSOLUTE_THRESHOLD && currentPeakValue >= ABSOLUTE_THRESHOLD) {
+        // else if(delta > TRIGGER_THRESHOLD && currentPeakValue >= ABSOLUTE_THRESHOLD) {
+            // keydown
+            idleTimer[2] = Number.MAX_SAFE_INTEGER;
+            keydown(2);
+            $("#indicator").css("color", "#f00");
+            prevEdgeTimestamp[2] = currentTimestamp;
+        }
+
+        // 解码
+        if(new Date().getTime() - idleTimer[2] > LONG_SIGN_DURATION) {
+            idleTimer[2] = Number.MAX_SAFE_INTEGER;
+            let morseWord = decodeWord(2);
+            if(morseWord)
+                $(`#sb_${2}`).append(morseWord);
+        }
+
+
+        pushIntoBuffer(currentPeakValue, maskedPeakBuffer, 200);
+
+
+/*
         // 对频谱作降采样，取带内最大值
         let subbandFrame = [];
         for(let i = 0; i < HALF_FFT_SIZE; i += SUBBAND_WIDTH) {
@@ -462,7 +577,7 @@ function decodeAndVisualize(stream) {
         }
         pushIntoBuffer(subbandFrame, subbandFrameBuffer, 100);
 
-/*
+
         let quantFrame = [];
         for(let i = 0; i < HALF_FFT_SIZE; i++) {
             let index = Math.floor(i / SUBBAND_WIDTH);
@@ -480,7 +595,7 @@ function decodeAndVisualize(stream) {
             sbEnergy[i] = Math.round(energy / subbandFrameBuffer.length);
         }
         $("#sbEnergy").html(JSON.stringify(sbEnergy));
-*/
+
 
         // 分子带检测边沿
 
@@ -510,8 +625,7 @@ function decodeAndVisualize(stream) {
                 // console.log(`${i} down`);
                 prevEdgeTimestamp[i] = currentTimestamp;
             }
-            
-/*
+
             if(currentSubband < ABSOLUTE_THRESHOLD) {
                 continue;
             }
@@ -549,7 +663,7 @@ function decodeAndVisualize(stream) {
             else {
                 delta = 0;
             }
-            */
+            
         }
 
         // 对每个子带进行解码
@@ -561,11 +675,14 @@ function decodeAndVisualize(stream) {
                     $(`#sb_${i}`).append(morseWord);
             }
         }
-
+*/
         // pushIntoBuffer(quantFrame, spectrogram, SPECTROGRAM_LENGTH);
         pushIntoBuffer(frame, spectrogram, SPECTROGRAM_LENGTH);
 
-        RenderSpectrumAndPeaks(cvCtxSpectrum, frame, peaks);
+        RenderSpectrumAndPeaks(cvCtxSpectrum, maskedPeakBuffer, peaks);
+        // RenderSpectrumAndPeaks(cvCtxSpectrum, frame, peaks);
+        // RenderSpectrumAndPeaks(cvCtxSpectrum, deltaBuffer, peaks);
+        // RenderSpectrumAndPeaks(cvCtxSpectrum, sfBuffer, peaks);
         RenderSpectrogram(cvCtxSpectrogram, spectrogram);
 
     }, 5);
