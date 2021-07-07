@@ -1382,9 +1382,9 @@ function TurnToCollectionSection(elementId) {
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/博客运营记录">博客运营记录</span></td>
             </tr>
             <tr>
-                <td></td>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/首页封面往期回顾">首页封面往期回顾</span></td>
-                <td></td>
+                <!-- <td></td> -->
+                <td colspan="3"><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/首页封面往期回顾">首页封面往期回顾</span></td>
+                <!-- <td></td> -->
             </tr>
         </table>
 
@@ -1393,24 +1393,24 @@ function TurnToCollectionSection(elementId) {
         <table class="TopArticleTable">
             <tr>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/A.哲学宗教伦理心理">
-                    <div class="CategoryIcon" style="background-color:#a6e6ff;">A</div><br>哲学宗教<br class="crlf">伦理心理</span></td>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/B.文学艺术教育体育">
-                    <div class="CategoryIcon" style="background-color:#a6e6ff;">B</div><br>文学艺术<br class="crlf">教育体育</span></td>
+                    <div class="CategoryIcon" style="background-color:#bec6ec;">A</div><br>哲学宗教<br class="crlf">伦理心理</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/B.文艺传播教育体育">
+                    <div class="CategoryIcon" style="background-color:#bec6ec;">B</div><br>文艺传播<br class="crlf">教育体育</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/C.历史地理语言文化">
-                    <div class="CategoryIcon" style="background-color:#a6e6ff;">C</div><br>历史地理<br class="crlf">语言文化</span></td>
+                    <div class="CategoryIcon" style="background-color:#bec6ec;">C</div><br>历史地理<br class="crlf">语言文化</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/D.政治法律社会时事">
-                    <div class="CategoryIcon" style="background-color:#a6e6ff;">D</div><br>政治法律<br class="crlf">社会时事</span></td>
+                    <div class="CategoryIcon" style="background-color:#bec6ec;">D</div><br>政治法律<br class="crlf">社会时事</span></td>
             </tr>
 
             <tr>
-                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/E.军事战略国际关系">
-                    <div class="CategoryIcon" style="background-color:#a6d7ff;">E</div><br>军事战略<br class="crlf">国际关系</span></td>
+                <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/E.军事战备安全消防">
+                    <div class="CategoryIcon" style="background-color:#bec6ec;">E</div><br>军事战备<br class="crlf">安全消防</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/F.经济管理贸易营销">
-                    <div class="CategoryIcon" style="background-color:#a6d7ff;">F</div><br>经济管理<br class="crlf">贸易营销</span></td>
+                    <div class="CategoryIcon" style="background-color:#bec6ec;">F</div><br>经济管理<br class="crlf">贸易营销</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/G.数学统计电子信息">
-                    <div class="CategoryIcon" style="background-color:#a6d7ff;">G</div><br>数学统计<br class="crlf">电子信息</span></td>
+                    <div class="CategoryIcon" style="background-color:#bec6ec;">G</div><br>数学统计<br class="crlf">电子信息</span></td>
                 <td><span class="TopArticleTitle SPA_TRIGGER" data-target="blog/H.物理化学天文地学">
-                    <div class="CategoryIcon" style="background-color:#a6d7ff;">H</div><br>物理化学<br class="crlf">天文地学</span></td>
+                    <div class="CategoryIcon" style="background-color:#bec6ec;">H</div><br>物理化学<br class="crlf">天文地学</span></td>
             </tr>
 
             <tr>
@@ -1531,30 +1531,73 @@ function TurnToCollectionSection(elementId) {
 
 <!--"关于"模板-->
 <style>
-.Chronicles {
-    text-align: center;
-    max-width: 650px;
-    margin: 10px auto;
-    padding: 0 15px;
-    font-size: 14px;
-    line-height: 22px;
-    color: #333;
-}
-.Chronicles table {
-    border-collapse: collapse;
-    margin: 0 auto;
-}
-.Chronicles th {
-    padding-right: 10px;
-    text-align: right;
-}
-.Chronicles td {
-    padding-left: 10px;
+.bd4sur-timeline {
+    --timeline-font-size: 13px;
+    --circle-radius: 7px;
+    --tail-left-offset: 4.5px;
+
+    width: fit-content;
+    max-width: 550px;
+    box-sizing: border-box;
+    line-height: 1.7;
     text-align: left;
+    margin: 30px auto;
+    padding: 0 30px;
+    list-style: none;
+    letter-spacing: 0.2px;
 }
-.Chronicles td, .Chronicles th {
-    border: none;
+.bd4sur-timeline-item {
+    position: relative;
+    padding-bottom: 15px;
+    font-size: var(--timeline-font-size);
+    list-style: none;
 }
+.bd4sur-timeline-item-tail {
+    position: absolute;
+    top: var(--circle-radius);
+    left: var(--tail-left-offset);
+    height: 100%;
+    border-left: 2px solid #f0f0f0;
+}
+.bd4sur-timeline-item:last-child .bd4sur-timeline-item-tail {
+    display: none;
+}
+.bd4sur-timeline-item-head {
+    position: absolute;
+    width: var(--circle-radius);
+    height: var(--circle-radius);
+    background-color: #fff;
+    border: 2px solid transparent;
+    border-radius: 100px;
+    border-color: #ccc;
+}
+.bd4sur-timeline-item-content {
+    position: relative;
+    top: calc(0px - var(--timeline-font-size) / 2);
+    margin: 0 0 0 25px;
+    word-break: break-word;
+}
+.bd4sur-timeline-item-content i { /* 标题 */
+    font-weight: bold;
+    font-style: normal;
+}
+.bd4sur-timeline-item-content p { /* 正文 */
+    margin: 0;
+}
+.bd4sur-timeline-item-content time { /* 时间日期 */
+    color: #ccc;
+    font-size: 10px;
+    font-weight: normal;
+    padding-left: 8px;
+    top: -1px;
+}
+
+.bd4sur-timeline-item-head-blue  { border-color: #29e; }
+.bd4sur-timeline-item-head-red   { border-color: #f33; }
+.bd4sur-timeline-item-head-green { border-color: #5c2; }
+.bd4sur-timeline-item-head-gold  { border-color: #fd0; }
+
+
 @media(min-width:651px){
     .LicenseImage {
         width: 50%;
@@ -1620,7 +1663,7 @@ a.Weibo::before {
                 <td style="padding-left: 15px; text-align: left;">
                     <div><a class="ContactLink GitHub" target="_blank" href="https://github.com/bd4sur/">GitHub</a></div>
                     <div><a class="ContactLink Twitter" target="_blank" href="https://twitter.com/BD4SUR">Twitter</a></div>
-                    <div><a class="ContactLink Weibo" target="_blank" href="https://weibo.com/">Weibo</a></div>
+                    <!-- <div><a class="ContactLink Weibo" target="_blank" href="https://weibo.com/">Weibo</a></div> -->
                     <div>(暂不使用QRZ.com<br>或同类服务)</div>
                 </td>
             </tr>
@@ -1667,66 +1710,216 @@ a.Weibo::before {
     <div class="SectionHeader">权利声明<div class="SectionHeaderComment">Copyright Notice</div></div>
     <div class="ContentBlock">
         <div class="SectionBody">版权所有 &copy; 2016-2020-<span class="CopyrightYear"></span> BD4SUR</div>
-        <div class="SectionBody" style="font-size: smaller;">除另有声明外，所有<b>原创</b>内容均可在<br>①署电台呼号BD4SUR或链接 & ②非盈利 & ③无实质修改<br>的前提下使用和传播。</div>
+        <div class="SectionBody" style="font-size: smaller;">除另有声明外，所有<b>原创</b>内容均可在<br>①署电台呼号BD4SUR & ②非盈利目的 & ③无实质修改<br>的前提下使用和传播。</div>
         <div class="SectionBody" style="font-size: smaller;">所有<b>非原创</b>内容均尽可能注明原作者或出处<br>且遵守合理使用原则。<br>在此感谢并致敬各位原作者。</div>
     </div>
 
     <div class="SectionHeader">电台编年史<div class="SectionHeaderComment">Station Chronicles</div></div>
-    <div class="SectionBody"><img src="image/arbook.jpg" style="width: 300px; margin: 0 auto;"></div>
     <div class="SectionBody">
-        <div class="Chronicles">
-            <table>
-                <tr><th colspan="2" style="text-align: center; padding: 10px 0;">2020年</th></tr>
-                <tr><th>07.18</th><td>购买PL-380。</td></tr>
-                <tr><th>07.20</th><td>开始阅读《业余无线电通信》。</td></tr>
-                <tr><th>08.01</th><td>前往新时代大厦（操作证考场）探路。</td></tr>
-                <tr><th>08.13</th><td>凌晨1点左右在楼顶看到一颗英仙座流星。</td></tr>
-                <tr><th>09.05</th><td>参加并通过A类操作证考试。</td></tr>
-                <tr><th>11.20</th><td>领取操作证并验机。</td></tr>
-                <tr><th>12.08</th><td>领取电台执照；首次合法通联。</td></tr>
-                <tr><th>12.13</th><td>首次野外通联（羊山公园）。</td></tr>
-                <tr><th colspan="2" style="text-align: center; padding: 10px 0;">2021年</th></tr>
-                <tr><th>02.01</th><td>启用 bd4sur.com 域名。</td></tr>
-                <tr><th>05.16</th><td>收到BPM的QSL卡片。</td></tr>
-            </table>
-            <details style="text-align: left; margin: 20px auto;">
-                <summary style="text-align: center;">新时代大厦铁塔</summary>
-                <img src="image/新时代大厦铁塔.jpg" class="RigsImage">
-            </details>
-            <details style="text-align: left; margin: 20px auto;">
-                <summary style="text-align: center;">其他事件</summary>
-                <p><strong>2020-08-04</strong> 使用PL-380收听到10MHz的BPM，并发出收听报告。收听到央广中国之声的停机检修音乐。</p>
-                <p><strong>2020-08-15</strong> 诸君！深夜守在SDR#前面，观察人类文明在电波频谱上激起的微弱涟漪，这种感觉实在是好极了。希望操作证考试早日恢复，早日领取呼号，早日实现通联，在业余频段也留下属于我的一点涟漪。</p>
-                <p><strong>2020-08-18</strong> 在8484kHz上收听到清晰的CW信号，RST599，报文内容为：CQ CQ CQ DE HLG HLG HLG QSX 8MHZ K。经查询，此电台是韩国首尔海岸电台。<br>在15325kHz上听到NHK国际日语广播，信号59。电波来自八俣送信所（茨城县古河市），同之前听到的“故乡的风”对朝电台。</p>
-                <p><strong>2020-09-16</strong> 晚间，江北发生停电事故，在439.675中继上第一时间听到这个消息。</p>
-                <p><strong>2020-10-26</strong> 买了30多米的廉价同轴线，每米价格不到10元，用来连接拉杆天线和IC-705听短波广播。不知道这种线跟那些动辄成百上千的成品品牌货有什么区别。我隐约感觉到火腿器材市场上也有很多智商税，但是目前还没有足够的判断力。先凑合用吧，毕竟现在还不用发射。</p>
-                <p><strong>2020-10-31</strong> 在家里架设一条15米长的馈线，从环境比较好的北侧小房间接到主卧，这样就可以躺在床上听短波了。短波损耗比较小，但是U/V段损耗非常大。今晚中继点名是直频方式进行，信号本来就很弱，接上这条馈线后就完全收不到什么信号了。在7050上第一次听到有人跟朴某对骂。</p>
-            </details>
-        </div>
+        <ul class="bd4sur-timeline">
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.07.18</i>
+                    <p>购买PL-380作为起床闹钟。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.07.20</i>
+                    <p>开始阅读《业余无线电通信》。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.08.01</i>
+                    <p>下午，冒着酷暑天气，前往中山东路新时代大厦（操作证考场）探路，在西侧楼顶（实际上是外贸口岸大楼）天台看到各种天线。</p>
+                    <p><img src="image/新时代大厦铁塔.jpg" class="RigsImage" style="max-width: 300px;"></p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.08.04</i>
+                    <p>使用PL-380收听到10MHz的BPM，首次发出收听报告，但并未收到QSL卡片。凌晨2点，收听到央广中国之声的停机检修音乐。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.08.13</i>
+                    <p>凌晨上天台，使用UV-5R收听160.650MHz长江海事广播“长江之声”。1点左右，在楼顶看到一颗英仙座流星雨的流星。</p>
+                </div>
+            </li>
+
+            <!-- <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.08.15</i>
+                    <p>诸君！深夜守在SDR#前面，观察人类文明在电波频谱上激起的微弱涟漪，这种感觉实在是好极了。希望操作证考试早日恢复，早日领取呼号，早日实现通联，在业余频段也留下属于我的一点涟漪。</p>
+                </div>
+            </li> -->
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.08.18</i>
+                    <p>在8484kHz上收听到首尔海岸台HLG的CW信号，RST599。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-green"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.09.05</i>
+                    <p>参加并通过A类操作证考试。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.09.12</i>
+                    <p>购买IC-705电台。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.09.16</i>
+                    <p>晚间，江北发生停电事故。当晚守听江苏无协中继（439.675MHz）时，第一时间听到这个消息。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.11.20</i>
+                    <p>领取操作证并验机。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-green"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.12.08</i>
+                    <p>领取电台执照；首次合法通联。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2020.12.13</i>
+                    <p>首次野外通联（羊山公园）。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2021.02.01</i>
+                    <p>启用 bd4sur.com 域名。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>2021.05.16</i>
+                    <p>收到BPM的QSL卡片。</p>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <div class="SectionHeader" id="changelog">网站版本记录<div class="SectionHeaderComment">Revisions</div></div>
 
     <div class="SectionBody">
-        <div class="Chronicles">
-            <table>
-                <tr><th colspan="2" style="text-align: center; padding: 10px 0;">探索阶段</th></tr>
-                <tr><th>V0.1</th><td>2016.11.24 试验性的简单个人主页。</td></tr>
-                <tr><th>V1.0</th><td>2017.09.19 使用第三方Markdown解析器。</td></tr>
-                <tr><th>V2.0</th><td>2018.02.04 使用自主实现的Markdown解析器。</td></tr>
-                <tr><th>V3.0</th><td>2018.07.26 博客更名 Project Aurora。<br>开始采用 Material Design 风格。</td></tr>
-                <!-- <tr><th>V3.1</th><td>2019.01.11 MD解析器与文章模板重构。<br>Markdown与模板分离。</td></tr>
-                <tr><th>V3.2</th><td>2019.02.20 目录和灵感页重构。<br>使用TravisCI自动生成RSS。</td></tr>
-                <tr><th>V3.3</th><td>2019.03.15 重构为SPA单页应用。<br>样式设计参考 Material Design。</td></tr> -->
+        <ul class="bd4sur-timeline">
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>V0.1<time>2016.11.24</time></i>
+                    <p>试验性的简单个人主页。</p>
+                </div>
+            </li>
 
-                <tr><th colspan="2" style="text-align: center; padding: 10px 0;">建设阶段</th></tr>
-                <tr><th>V4.0</th><td>2019.10.23 博客框架SPA化。</td></tr>
-                <tr><th>V4.1</th><td>2020.02.14 提取博客框架为Iroha。</td></tr>
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>V1.0<time>2017.09.19</time></i>
+                    <p>使用第三方Markdown解析器。</p>
+                </div>
+            </li>
 
-                <tr><th colspan="2" style="text-align: center; padding: 10px 0;">电台网站阶段</th></tr>
-                <tr><th>V5.0</th><td>2021.02.01 启用<code>bd4sur.com</code>域名。</td></tr>
-            </table>
-        </div>
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>V2.0<time>2018.02.04</time></i>
+                    <p>使用自主实现的Markdown解析器。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>V3.0<time>2018.07.26</time></i>
+                    <p>博客更名 Project Aurora，开始采用 Material Design 风格。</p>
+                </div>
+            </li>
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>V4.0<time>2019.10.23</time></i>
+                    <p>博客改造为单页应用（SPA）。</p>
+                </div>
+            </li>
+
+            <!--
+                V3.1  2019.01.11  MD解析器与文章模板重构。<br>Markdown与模板分离。
+                V3.2  2019.02.20  目录和灵感页重构。<br>使用TravisCI自动生成RSS。
+                V3.3  2019.03.15  重构为SPA单页应用。<br>样式设计参考 Material Design。
+                V4.1  2020.02.14  提取博客框架为Iroha。
+            -->
+
+            <li class="bd4sur-timeline-item">
+                <div class="bd4sur-timeline-item-tail"></div>
+                <div class="bd4sur-timeline-item-head bd4sur-timeline-item-head-blue"></div>
+                <div class="bd4sur-timeline-item-content">
+                    <i>V5.0<time>2021.02.01</time></i>
+                    <p>博客转型为电台网站，启用<code>bd4sur.com</code>域名。</p>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <div class="SectionHeader">QSL卡片</div>

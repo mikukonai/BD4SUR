@@ -1,4 +1,4 @@
-#!title:    B.文学艺术教育体育
+#!title:    B.文艺传播教育体育
 #!date:     
 #!authors:  
 #!cover:    
